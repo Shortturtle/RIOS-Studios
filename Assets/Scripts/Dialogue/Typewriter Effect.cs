@@ -7,15 +7,14 @@ public class TypewriterEffect : MonoBehaviour
     [SerializeField] private float typeSpeed = 50f;
 
     //Responsible for running the code
-    public void Run(string textToType, TMP_Text textLabel)                      //(the string we wanna type, the text label we wanna type it into)
+    public Coroutine Run(string textToType, TMP_Text textLabel)                      //(the string we wanna type, the text label we wanna type it into)
     {
-        StartCoroutine(TypeText(textToType, textLabel));
+        return StartCoroutine(TypeText(textToType, textLabel));
     }
 
     private IEnumerator TypeText(string textToType, TMP_Text textLabel)         //Responsible for the typewriter effect
     {
         textLabel.text = string.Empty;                                          //clear the text label at the start
-        yield return new WaitForSeconds(1);                                     //wait for 1 seconds before starting to type
 
         //measures how many characters we type on screen at the given frame
         float t = 0; 

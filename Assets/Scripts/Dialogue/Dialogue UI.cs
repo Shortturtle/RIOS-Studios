@@ -1,18 +1,31 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private DialogueObject testDialogue;
+
+    private TypewriterEffect typewriterEffect;
 
     private void Start()
     {
-        GetComponent<TypewriterEffect>().Run("This is a simple dialogue system. \nThis is the next line.", textLabel);
+        typewriterEffect=GetComponent<TypewriterEffect>();
+        ShowDialogue(testDialogue);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowDialogue(DialogueObject dialogueObject)
     {
-        
+        StartCoroutine(RunDialogue(dialogueObject));
+    }
+
+    private IEnumerator RunDialogue(DialogueObject dialogueObject)
+    {
+        foreach (string dialogue in dialogueObject.Dialogue)
+        {
+            yield return typewriterEffect.Run(dialogue, textLabel);
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)); //"||" means "or"
+        }
     }
 }

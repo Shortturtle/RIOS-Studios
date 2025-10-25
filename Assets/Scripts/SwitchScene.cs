@@ -20,7 +20,7 @@ public class SwitchScene : MonoBehaviour
 
     IEnumerator switchScene(string sceneName)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
     }
 
