@@ -2,14 +2,13 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public class Enemy : MonoBehaviour, IEnemyDamageable, IEnemyWaypointFollow
+public class Enemy : MonoBehaviour, IDamageable, IWaypointFollow
 {
-    [field: SerializeField] public EnemyStats enemyStats {  get; }
+    public EnemyStats enemyStats {  get; }
     public float currentHealth { get; set; }
-    [field: SerializeField] public WaypointManager waypointManager { get; set; }
     public float speed { get; set; }
-
-    private Transform[] waypoints;
+    public Transform target { get; set; }
+    public int waypointIndex { get; set; } = 0;
 
     public void Damage(float damageAmount)
     {
@@ -28,24 +27,43 @@ public class Enemy : MonoBehaviour, IEnemyDamageable, IEnemyWaypointFollow
 
     public void GetNextWaypoint()
     {
-        throw new System.NotImplementedException();
+        if (waypointIndex == WaypointManager.points.Length - 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        waypointIndex++;
+        target = WaypointManager.points[waypointIndex];
     }
 
     public void MoveEnemy()
     {
-        throw new System.NotImplementedException();
+        Vector3 dir = transform.position - target.position;
+        transform.Translate(dir.normalized * speed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, target.position) <= 0.3f)
+        {
+            GetNextWaypoint();
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         currentHealth = enemyStats.maxHealth;
-        speed = enemyStats .speed;
+        speed = enemyStats.speed;
+        target = WaypointManager.points[waypointIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void FixedUpdate()
+    {
+        MoveEnemy();
     }
 }
