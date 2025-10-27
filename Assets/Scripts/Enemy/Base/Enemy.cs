@@ -4,13 +4,13 @@ using UnityEngine.Assertions.Must;
 
 public class Enemy : MonoBehaviour, IDamageable, IWaypointFollow
 {
-    public EnemyStats enemyStats {  get; }
+    public EnemyStats enemyStats;
     public float currentHealth { get; set; }
     public float speed { get; set; }
     public Transform target { get; set; }
-    public int waypointIndex { get; set; } = 0;
+    public int waypointIndex { get; set; } = 1;
 
-    public void Damage(float damageAmount)
+    public virtual void Damage(float damageAmount)
     {
         currentHealth -= damageAmount;
 
@@ -20,16 +20,16 @@ public class Enemy : MonoBehaviour, IDamageable, IWaypointFollow
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Destroy(gameObject);
     }
 
     public void GetNextWaypoint()
     {
-        if (waypointIndex == WaypointManager.points.Length - 1)
-        {
-            Destroy(gameObject);
+        if (waypointIndex >= WaypointManager.points.Length - 1)
+        { 
+            Die();
             return;
         }
 
@@ -37,10 +37,11 @@ public class Enemy : MonoBehaviour, IDamageable, IWaypointFollow
         target = WaypointManager.points[waypointIndex];
     }
 
-    public void MoveEnemy()
+    virtual public void MoveEnemy()
     {
-        Vector3 dir = transform.position - target.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime);
+        Vector3 dir = target.position - transform.position;
+        Debug.Log(dir);
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.3f)
         {
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour, IDamageable, IWaypointFollow
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    void Start()
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
