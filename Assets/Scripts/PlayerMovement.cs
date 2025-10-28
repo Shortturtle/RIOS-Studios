@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentSpeed;   //speed of player
     
+
     private InputSystem_Actions myControls;   //input system
     private Vector3 playerInput;   //player input vector number
+    private bool pauseInput;
 
     //refs
     private CharacterController characterController;
-
+    public GameObject pauseScreen;
 
     private void Awake()
     {
@@ -35,11 +37,16 @@ public class PlayerMovement : MonoBehaviour
     //For input system, enable & disable
     private void OnEnable()
     {
+        myControls.Player.Pause.performed += PauseMenu;
         myControls.Player.Enable();
+
+        
     }
     private void OnDisable()
     {
+        myControls.Player.Pause.performed -= PauseMenu;
         myControls.Player.Disable();
+
     }
 
     private void Update()
@@ -50,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
         CalculateSpeed();
 
         Move();
+
+        //PauseMenu();
     }
 
     //player movement
@@ -91,5 +100,35 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 input = myControls.Player.Move.ReadValue<Vector2>();
         playerInput = new Vector3(input.x, 0, input.y);
+
+        //pauseInput input = myControls.Player.Pause.ReadValue<Input>();
+    }
+
+    private void PauseMenu(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("pause open");
+        //f(pauseInput == true)i
+        if (Time.timeScale == 0)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
+
+    //for pause screen
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseScreen.SetActive(true);
+        //playerMove.hasControl = false;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        pauseScreen.SetActive(false);
+
     }
 }
