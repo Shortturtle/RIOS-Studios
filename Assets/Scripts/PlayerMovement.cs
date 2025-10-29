@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     private float currentSpeed;   //speed of player
-    
+    public bool hasControl = true;
+    private bool towerSelectOpen;
 
     private InputSystem_Actions myControls;   //input system
     private Vector3 playerInput;   //player input vector number
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         myControls.Player.Pause.performed += PauseMenu;
+        myControls.Player.Select.performed += SelectMenu;
         myControls.Player.Enable();
 
         
@@ -45,18 +47,23 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         myControls.Player.Pause.performed -= PauseMenu;
+        myControls.Player.Select.performed -= SelectMenu;
         myControls.Player.Disable();
 
     }
 
     private void Update()
     {
-        GatherInput();
+        if(hasControl == true)
+        {
+            GatherInput();
 
-        Look();
-        CalculateSpeed();
+            Look();
+            CalculateSpeed();
 
-        Move();
+            Move();
+        }
+        
 
         //PauseMenu();
     }
@@ -96,26 +103,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //gather player input
-    private void GatherInput(/*InputAction.CallbackContext ctx*/)
+    private void GatherInput()
     {
         Vector2 input = myControls.Player.Move.ReadValue<Vector2>();
         playerInput = new Vector3(input.x, 0, input.y);
-
-        //pauseInput input = myControls.Player.Pause.ReadValue<Input>();
     }
 
     private void PauseMenu(InputAction.CallbackContext ctx)
     {
-        Debug.Log("pause open");
-        //f(pauseInput == true)i
-        if (Time.timeScale == 0)
-        {
-            ResumeGame();
-        }
-        else
-        {
-            PauseGame();
-        }
+        if (Time.timeScale == 0) { ResumeGame(); }
+        else { PauseGame(); }        
     }
 
     //for pause screen
@@ -123,12 +120,35 @@ public class PlayerMovement : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseScreen.SetActive(true);
-        //playerMove.hasControl = false;
+        hasControl = false;
     }
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
         pauseScreen.SetActive(false);
+        hasControl = true;
+    }
 
+    public void SelectMenu(InputAction.CallbackContext ctx)
+    {
+        if(towerSelectOpen == false)
+        {
+            SelectOpen();
+            towerSelectOpen = true;
+        }
+        else
+        {
+            SelectClose();
+            towerSelectOpen = false;
+        }
+    }
+    //for pause screen
+    public void SelectOpen()
+    {
+        Debug.Log("Open tower select");
+    }
+    public void SelectClose()
+    {
+        Debug.Log("Close tower select");
     }
 }
