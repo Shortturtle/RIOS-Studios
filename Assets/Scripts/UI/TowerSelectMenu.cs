@@ -1,24 +1,45 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TowerSelectMenu : MonoBehaviour
 {
     private bool menuOpen = false;
+    private bool canOpenMenu = true;
 
 
     public void TowerSelectMenuPopup()
     {
-        if (menuOpen == false) { OpenTowerSelectMenu(); }
-        else { CloseTowerSelectMenu(); }
+        if (menuOpen == false)
+        {
+            if(canOpenMenu == true)
+            {
+                StartCoroutine(OpenTowerSelectMenu());
+            }
+        }
+        else
+        {
+            if (canOpenMenu == true)
+            {
+                StartCoroutine(CloseTowerSelectMenu());
+            }
+        }
     }
 
-    private void OpenTowerSelectMenu()
+    private IEnumerator OpenTowerSelectMenu()
     {
         transform.LeanMoveLocal(new Vector2(290, 0), 0.5f).setEaseOutCirc();
         menuOpen = true;
+        canOpenMenu = false;
+        yield return new WaitForSeconds(0.6f);
+        canOpenMenu = true;
     }
-    private void CloseTowerSelectMenu()
+    private IEnumerator CloseTowerSelectMenu()
     {
         transform.LeanMoveLocal(new Vector2(1925, 0), 0.5f).setEaseOutCirc();
         menuOpen = false;
+        canOpenMenu = false;
+        yield return new WaitForSeconds(0.6f);
+        canOpenMenu = true;
     }
 }

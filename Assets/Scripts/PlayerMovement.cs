@@ -131,24 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SelectMenu(InputAction.CallbackContext ctx)
     {
-        if(towerSelectOpen == false)
-        {
-            SelectOpen();
-            towerSelectOpen = true;
-        }
-        else
-        {
-            SelectClose();
-            towerSelectOpen = false;
-        }
+        FindAnyObjectByType<TowerSelectMenu>().TowerSelectMenuPopup();
     }
-    //for pause screen
-    public void SelectOpen()
-    {
-        Debug.Log("Open tower select");
-    }
-    public void SelectClose()
-    {
-        Debug.Log("Close tower select");
-    }
+
 }
