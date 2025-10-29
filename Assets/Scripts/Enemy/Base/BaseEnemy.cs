@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public class Enemy : MonoBehaviour, IDamageable, IWaypointFollow
+public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
 {
     public EnemyStats enemyStats;
     public float currentHealth { get; set; }

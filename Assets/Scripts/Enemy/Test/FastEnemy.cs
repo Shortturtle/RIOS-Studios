@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FastEnemy : Enemy
+public class FastEnemy : BaseEnemy
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
