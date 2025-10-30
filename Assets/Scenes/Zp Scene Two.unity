@@ -730,10 +730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4341629d718718445b570b79ea9e55d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasControl: 1
   pauseScreen: {fileID: 0}
+  moveSpeed: 500
   speed: 500
-  turnRate: 180
 --- !u!143 &1835150856
 CharacterController:
   m_ObjectHideFlags: 0
@@ -788,7 +787,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1835150855}
         m_TargetAssemblyTypeName: CameraSystem, Assembly-CSharp
-        m_MethodName: Turn
+        m_MethodName: SideMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -804,7 +803,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1835150855}
         m_TargetAssemblyTypeName: CameraSystem, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: ForwardMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
