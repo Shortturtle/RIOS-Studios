@@ -10,7 +10,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
     public Transform target { get; set; }
     public int waypointIndex { get; set; } = 1;
 
-    public virtual void Damage(float damageAmount)
+    public virtual void Damage(float damageAmount) // Script to damage enemies (can be overridden)
     {
         currentHealth -= damageAmount;
 
@@ -20,12 +20,12 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
         }
     }
 
-    public virtual void Die()
+    public virtual void Die() // death code (can be overridden)
     {
         Destroy(gameObject);
     }
 
-    public void GetNextWaypoint()
+    public void GetNextWaypoint() // waypoint tracking
     {
         if (waypointIndex >= WaypointManager.points.Length - 1)
         { 
@@ -37,7 +37,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
         target = WaypointManager.points[waypointIndex];
     }
 
-    virtual public void MoveEnemy()
+    virtual public void MoveEnemy() // enemy movement script
     {
         Vector3 dir = target.position - transform.position;
         Debug.Log(dir);
