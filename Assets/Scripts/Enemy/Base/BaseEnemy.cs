@@ -10,6 +10,14 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
     public Transform target { get; set; }
     public int waypointIndex { get; set; } = 1;
 
+    protected float distanceTravelled;
+    public float percentageDistance; 
+    protected enum direction
+    {
+        Forward, Backward
+    }
+    protected direction directionTravelling = direction.Forward;
+
     public virtual void Damage(float damageAmount) // Script to damage enemies (can be overridden)
     {
         currentHealth -= damageAmount;
@@ -40,7 +48,6 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
     virtual public void MoveEnemy() // enemy movement script
     {
         Vector3 dir = target.position - transform.position;
-        Debug.Log(dir);
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.3f)
@@ -66,5 +73,23 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
     void FixedUpdate()
     {
         MoveEnemy();
+        DistanceTracker();
+    }
+
+    void DistanceTracker()
+    {
+        if (directionTravelling == direction.Forward)
+        {
+            distanceTravelled += speed * Time.deltaTime;
+        }
+
+        else if (directionTravelling == direction.Backward)
+        {
+            distanceTravelled -= speed * Time.deltaTime;
+        }
+
+        percentageDistance = (distanceTravelled / WaypointManager.totalDistance) * 100;
+
+        Debug.Log(percentageDistance);
     }
 }

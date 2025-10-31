@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BaseTowerClass: MonoBehaviour
 {
-    [SerializeField] protected float degradeTimerDuration;
+    protected float degradeTimerDuration;
     protected float countdownTimer;
 
     //Tower Cost System (TBD)
