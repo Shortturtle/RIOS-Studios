@@ -79,7 +79,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     }
 
-    protected GameObject GetTargetEnemy()
+    /*protected GameObject GetTargetEnemy()
     {
         switch (targettingMode)
         {
@@ -108,5 +108,5 @@ public class OffenseTowerBase : BaseTowerClass
 
                 break;
         }
-    }
+    }*/
 }
