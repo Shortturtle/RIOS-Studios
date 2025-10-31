@@ -8,11 +8,14 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private DialogueObject testDialogue;
 
+    private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
 
     private void Start()
     {
         typewriterEffect=GetComponent<TypewriterEffect>();
+        responseHandler=GetComponent<ResponseHandler>();
+
         CloseDialogueBox();
         ShowDialogue(testDialogue);
     }
@@ -25,13 +28,26 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator RunDialogue(DialogueObject dialogueObject)
     {
-        foreach (string dialogue in dialogueObject.Dialogue)
+        for (int i = 0/*while*/; i < dialogueObject.Dialogue.Length; i++)
         {
+            string dialogue = dialogueObject.Dialogue[i];
             yield return typewriterEffect.Run(dialogue, textLabel);
+
+
+            //Check: Are we at the end of the dialogue?
+            if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
+            
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)); //"||" means "or"
         }
 
-        CloseDialogueBox();
+        if (dialogueObject.HasResponses)
+        {
+            responseHandler.ShowResponses(dialogueObject.Responses);
+        }
+        else
+        {
+            CloseDialogueBox();
+        }
     }
 
     private void CloseDialogueBox()
