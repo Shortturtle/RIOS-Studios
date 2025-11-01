@@ -21,7 +21,5 @@ public class WaypointManager : MonoBehaviour
 
             previousPoint = points[i];
         }
-
-        Debug.Log(totalDistance);
     }
 }

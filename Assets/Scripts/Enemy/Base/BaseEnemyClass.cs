@@ -2,7 +2,8 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
+[RequireComponent(typeof(Rigidbody))]
+public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 {
     public EnemyStats enemyStats;
     public float currentHealth { get; set; }
@@ -57,7 +58,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual void Start()
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
@@ -89,7 +90,5 @@ public class BaseEnemy : MonoBehaviour, IDamageable, IWaypointFollow
         }
 
         percentageDistance = (distanceTravelled / WaypointManager.totalDistance) * 100;
-
-        Debug.Log(percentageDistance);
     }
 }
