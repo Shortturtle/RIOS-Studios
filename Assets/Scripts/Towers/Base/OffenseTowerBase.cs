@@ -7,19 +7,21 @@ using UnityEngine;
 [RequireComponent (typeof(SphereCollider))]
 public class OffenseTowerBase : BaseTowerClass
 {
+    // Stat Block
+    public OffenseTowerStats stats;
+
     // Range variables
-    protected float rangeValue;
     protected SphereCollider rangeSphere;
 
     // Target variables
     protected List<BaseEnemyClass> targets = new List<BaseEnemyClass>();
     protected GameObject currentTarget;
 
-    public enum TargettingModes
+    protected enum TargettingModes
     {
         First, Last, Close, Strong
     }
-    public TargettingModes targettingMode = TargettingModes.First;
+    protected TargettingModes targettingMode = TargettingModes.First;
     protected int targetModeNum = 0;
 
     protected enum ChangeDirection
@@ -30,14 +32,15 @@ public class OffenseTowerBase : BaseTowerClass
     // Damage variables
     protected float damageValue;
     protected float timeBetweenAttacks;
+    protected float attackTimer;
 
     // Projectile variables
+    public GameObject bulletExitPoint;
     protected GameObject projectile;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
-        rangeValue = 7;
-        SetStats();
+        Initialize();
     }
 
     private void Awake()
@@ -46,18 +49,19 @@ public class OffenseTowerBase : BaseTowerClass
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate()
+    protected virtual void Update()
     {
         GetTargetEnemy();
         TrackEnemy();
+        AttackTimer();
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void FixedUpdate()
+    {
+
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.GetComponent<BaseEnemyClass>())
         {
@@ -66,7 +70,7 @@ public class OffenseTowerBase : BaseTowerClass
         }
     }
 
-    protected void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (targets.Contains(other.GetComponent<BaseEnemyClass>()))
         {
@@ -96,17 +100,17 @@ public class OffenseTowerBase : BaseTowerClass
     {
         if (targets.Count != 0)
         {
-            BaseEnemyClass targetedEnemy = null;
+            GameObject targetedEnemy = null;
 
             switch (targettingMode)
             {
                 case TargettingModes.First:
                     float highestPercentage = 0;
-                    foreach (BaseEnemyClass option in targets)
+                    foreach (var option in targets)
                     {
                         if (option.percentageDistance > highestPercentage)
                         {
-                            targetedEnemy = option;
+                            targetedEnemy = option.gameObject;
                             highestPercentage = option.percentageDistance;
                         }
                     }
@@ -114,11 +118,11 @@ public class OffenseTowerBase : BaseTowerClass
 
                 case TargettingModes.Last:
                     float lowestPercentage = 100;
-                    foreach (BaseEnemyClass option in targets)
+                    foreach (var option in targets)
                     {
                         if (option.percentageDistance < lowestPercentage)
                         {
-                            targetedEnemy = option;
+                            targetedEnemy = option.gameObject;
                             lowestPercentage = option.percentageDistance;
                         }
                     }
@@ -127,13 +131,13 @@ public class OffenseTowerBase : BaseTowerClass
                 case TargettingModes.Close:
                     float nearestDistance = 0;
                     float currentDistance;
-                    foreach (BaseEnemyClass option in targets)
+                    foreach (var option in targets)
                     {
                         currentDistance = Vector3.Distance(option.transform.position, this.transform.position);
 
                         if ((nearestDistance == 0) || (currentDistance < nearestDistance))
                         {
-                            targetedEnemy = option;
+                            targetedEnemy = option.gameObject;
                             nearestDistance = currentDistance;
                         }
                     }
@@ -141,18 +145,18 @@ public class OffenseTowerBase : BaseTowerClass
 
                 case TargettingModes.Strong:
                     float currentHP = 0;
-                    foreach (BaseEnemyClass option in targets)
+                    foreach (var option in targets)
                     {
                         if (currentHP < option.currentHealth)
                         {
-                            targetedEnemy = option;
+                            targetedEnemy = option.gameObject;
                             currentHP = option.currentHealth;
                         }
                     }
                     break;
             }
 
-            currentTarget = targetedEnemy.gameObject;
+            currentTarget = targetedEnemy;
         }
 
         else
@@ -161,7 +165,7 @@ public class OffenseTowerBase : BaseTowerClass
         }
     }
 
-    protected void TrackEnemy()
+    protected virtual void TrackEnemy()
     {
         if (currentTarget != null)
         {
@@ -170,9 +174,32 @@ public class OffenseTowerBase : BaseTowerClass
         }
     }
 
-    protected void SetStats()
+    protected virtual void Initialize()
     {
         rangeSphere.isTrigger = true;
-        rangeSphere.radius = rangeValue;
+        rangeSphere.radius = stats.Range;
+
+        damageValue = stats.Damage;
+
+        timeBetweenAttacks = stats.TimeBetweenAttacks;
+
+        projectile = stats.Projectile;
+    }
+
+    protected virtual void AttackTimer()
+    {
+        attackTimer -= Time.deltaTime;
+
+        if (currentTarget != null && attackTimer <= 0)
+            {
+                Attack();
+            attackTimer = timeBetweenAttacks;
+            }
+    }
+
+    protected virtual void Attack()
+    {
+        GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
+        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget);
     }
 }

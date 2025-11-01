@@ -71,13 +71,13 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         MoveEnemy();
         DistanceTracker();
     }
 
-    void DistanceTracker()
+    protected virtual void DistanceTracker()
     {
         if (directionTravelling == direction.Forward)
         {

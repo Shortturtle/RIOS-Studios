@@ -34,8 +34,4 @@ public class BaseTowerClass: MonoBehaviour
         countdownTimer = degradeTimerDuration;
     }
     #endregion
-
-    #region Level Functions
-    // to add if needed
-    #endregion
 }

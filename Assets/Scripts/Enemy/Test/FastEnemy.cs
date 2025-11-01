@@ -8,12 +8,7 @@ public class FastEnemy : BaseEnemyClass
     {
         
     }
-
-    private void FixedUpdate()
-    {
-        MoveEnemy();
-    }
-
+ 
     public override void Die()
     {
         base.Die();
