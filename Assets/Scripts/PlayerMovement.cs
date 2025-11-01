@@ -6,6 +6,10 @@ using static UnityEngine.Rendering.DebugUI;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    //Dialogue stuff
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
 
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float rotationSpeed = 360f;
@@ -63,11 +67,16 @@ public class PlayerMovement : MonoBehaviour
 
             Move();
         }
-        
 
         //PauseMenu();
-    }
 
+        //manual interaction to activate dialogue
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interactable?.Interact(this);        
+        }
+    }
+    
     //player movement
     private void Move()
     {
@@ -133,5 +142,4 @@ public class PlayerMovement : MonoBehaviour
     {
         FindAnyObjectByType<TowerSelectMenu>().TowerSelectMenuPopup();
     }
-
 }
