@@ -15,7 +15,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     // Target variables
     protected List<BaseEnemyClass> targets = new List<BaseEnemyClass>();
-    protected GameObject currentTarget;
+    public GameObject currentTarget;
 
     protected enum TargettingModes
     {
@@ -108,6 +108,12 @@ public class OffenseTowerBase : BaseTowerClass
                     float highestPercentage = 0;
                     foreach (var option in targets)
                     {
+                        if (option == null)
+                        {
+                            targets.Remove(option);
+                            return;
+                        }
+
                         if (option.percentageDistance > highestPercentage)
                         {
                             targetedEnemy = option.gameObject;
@@ -120,6 +126,12 @@ public class OffenseTowerBase : BaseTowerClass
                     float lowestPercentage = 100;
                     foreach (var option in targets)
                     {
+                        if (option == null)
+                        {
+                            targets.Remove(option);
+                            return;
+                        }
+
                         if (option.percentageDistance < lowestPercentage)
                         {
                             targetedEnemy = option.gameObject;
@@ -133,6 +145,12 @@ public class OffenseTowerBase : BaseTowerClass
                     float currentDistance;
                     foreach (var option in targets)
                     {
+                        if (option == null)
+                        {
+                            targets.Remove(option);
+                            return;
+                        }
+
                         currentDistance = Vector3.Distance(option.transform.position, this.transform.position);
 
                         if ((nearestDistance == 0) || (currentDistance < nearestDistance))
@@ -147,6 +165,12 @@ public class OffenseTowerBase : BaseTowerClass
                     float currentHP = 0;
                     foreach (var option in targets)
                     {
+                        if (option == null)
+                        {
+                            targets.Remove(option);
+                            return;
+                        }
+
                         if (currentHP < option.currentHealth)
                         {
                             targetedEnemy = option.gameObject;

@@ -23,7 +23,6 @@ public class TimeBody : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.T)) StartRewind();
-        //if(Input.GetKeyUp(KeyCode.T)) StopRewind();
     }
 
     private void FixedUpdate()
@@ -65,7 +64,6 @@ public class TimeBody : MonoBehaviour
         isRewinding = true;
         Debug.Log("Rewinding started");
 
-        rb.isKinematic = true;                                                                                      //Disable physics while rewinding
     }
 
     public void StopRewind()
@@ -73,6 +71,5 @@ public class TimeBody : MonoBehaviour
         isRewinding = false;
         Debug.Log("Rewinding stopped");
 
-        rb.isKinematic = false;                                                                                     //Enable physics when not rewinding
     }
 }
