@@ -6,7 +6,7 @@ public class UIManager : MonoBehaviour
     //UI numbers
     //public int minHealth;
     public int healthCount;
-    private int minMoney = 0;
+    //private int minMoney = 0;
     public int moneyCount;
 
     //Coin count UI
