@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float accelerationFactor = 5f;
     [SerializeField] private float decelerationFactor = 10f;
 
+    //stun ability stuff
+    public float stunRadius = 5f;
+    public LayerMask enemyLayer;
 
     private float currentSpeed;   //speed of player
     public bool hasControl = true;
@@ -71,12 +74,39 @@ public class PlayerMovement : MonoBehaviour
         //PauseMenu();
 
         //manual interaction to activate dialogue
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             Interactable?.Interact(this);        
         }
+
+        //manual stun bubble activation
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StunBubble();
+        }
     }
-    
+
+    void StunBubble()
+    {
+        //find colliders within the AoE that are on the enemy layer
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);
+        
+        foreach (Collider hit in hitColliders)
+        {
+            BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+            if (enemy != null)
+            {
+                enemy.Stun();
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, stunRadius);
+    }
+
     //player movement
     private void Move()
     {

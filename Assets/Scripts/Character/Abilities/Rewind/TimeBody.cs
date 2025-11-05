@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]                                                                               //Ensure that a Rigidbody component is attached to the GameObject
+//[RequireComponent(typeof(Rigidbody))]                                                                               //Ensure that a Rigidbody component is attached to the GameObject
 
 public class TimeBody : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class TimeBody : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T)) StartRewind();
+        if(Input.GetKeyDown(KeyCode.R)) StartRewind();
     }
 
     private void FixedUpdate()

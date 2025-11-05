@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
@@ -10,6 +12,8 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public float speed { get; set; }
     public Transform target { get; set; }
     public int waypointIndex { get; set; } = 1;
+
+    protected bool isStunned = false;
 
     protected float distanceTravelled;
     public float percentageDistance; 
@@ -66,15 +70,29 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        if(!isStunned)
+        {
+            MoveEnemy();
+        }
     }
 
     protected virtual void FixedUpdate()
     {
-        MoveEnemy();
         DistanceTracker();
+    }
+
+    public void Stun()
+    {
+        StartCoroutine(StunRoutine());        
+    }
+
+    private IEnumerator StunRoutine()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(2f);
+        isStunned = false;
     }
 
     protected virtual void DistanceTracker()
