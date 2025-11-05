@@ -8,17 +8,18 @@ public class Removal : MonoBehaviour
     [SerializeField] private float grav;
     private float initialJumpTime;
     private float initialJumpSpeed;
-    public float iJFMin;
-    public float iJFMax;
-    public float rSpeedMin;
-    public float rSpeedMax;
-    public float iJTMin;
-    public float iJTMax;
-    public float mDMin;
-    public float mDMax;
-    public float iJSMin;
-    public float iJSMax;
-    public float decaySpeed;
+    //public float iJFMin;
+    //public float iJFMax;
+    //public float rSpeedMin;
+    //public float rSpeedMax;
+    //public float iJTMin;
+    //public float iJTMax;
+    //public float mDMin;
+    //public float mDMax;
+    //public float iJSMin;
+    //public float iJSMax;
+    //public float decaySpeed;
+    private float decaySpeed = 50f;
     private float initialJumpForce;
     private bool isJumping;
     private float moveDir;
@@ -51,8 +52,9 @@ public class Removal : MonoBehaviour
                 Debug.Log("activate yeet");
                 Throw();
                 isThrown = true;
+
+                Destroy(gameObject, 4f);
             }
-            
         }
     }
 
@@ -60,11 +62,11 @@ public class Removal : MonoBehaviour
     {
         
         //jumpForce = startJumpForce;
-        initialJumpForce = Random.Range(iJFMin, iJFMax);
-        initialJumpTime = Random.Range(iJTMin, iJTMax);
-        initialJumpSpeed = Random.Range(iJSMin, iJSMax);
-        moveDir = Random.Range(mDMin, mDMax);
-        randomSpeed = Random.Range(rSpeedMin, rSpeedMax);
+        initialJumpForce = Random.Range(4f, 6f);
+        initialJumpTime = Random.Range(0.2f, 0.6f);
+        initialJumpSpeed = Random.Range(100f, 130f);
+        moveDir = Random.Range(-7, 7);
+        randomSpeed = Random.Range(25, 75);
         isJumping = true;
         //forceDirection = new Vector3(0, grav, 0);
         //cForce.force = forceDirection;
@@ -75,7 +77,7 @@ public class Removal : MonoBehaviour
         if (isJumping)
         {
             //rb.velocity = new Vector2(gI.valueX * speed, jumpForce);
-            Debug.Log("jumping");
+            //Debug.Log("jumping");
             forceDirection = new Vector3(moveDir * randomSpeed, initialJumpForce * initialJumpSpeed, 0);
             //ForceMode.
             cForce.force = forceDirection;
@@ -85,7 +87,7 @@ public class Removal : MonoBehaviour
     {
         if (isJumping == true)
         {
-            Debug.Log("jump t decreasing");
+            //Debug.Log("jump t decreasing");
             initialJumpTime -= Time.deltaTime;
             if(initialJumpSpeed >= 0)
             {
@@ -95,7 +97,7 @@ public class Removal : MonoBehaviour
         }
         if (initialJumpTime <= 0 && timesTapped >= 5)
         {
-            Debug.Log("down");
+            //Debug.Log("down");
             isJumping = false;
             forceDirection = new Vector3(0, grav, 0);
             cForce.force = forceDirection;
