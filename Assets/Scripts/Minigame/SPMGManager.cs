@@ -4,11 +4,26 @@ using System.Collections.Generic;
 
 public class SPMGManager : MonoBehaviour
 {
+    //for managing open and closing of minigame window
     private bool mgOpen = false;
     private bool canOpenMG = true;
     public bool minigameComplete = false;
+    public int completion = 0;
+    public int numberToCompleteMinigame;
 
+    //progress check is a lie it actually helps count to the numberToCompleteMinigame
+    public void ProgressCheck()
+    {
+        completion++;
+        //if enough screws are replaced, minigame is cmplete and minigame close func is activated
+        if (completion == numberToCompleteMinigame) { minigameComplete = true; }
+        if (minigameComplete)
+        {
+            StartCoroutine(CloseMinigame());
+        }
+    }
 
+    //use to activate open minigame func
     public void MinigamePopup()
     {
         if (mgOpen == false)
@@ -18,19 +33,9 @@ public class SPMGManager : MonoBehaviour
                 StartCoroutine(OpenMinigame());
             }
         }
-        else
-        {
-            if (canOpenMG == true)
-            {
-                if (minigameComplete)
-                {
-                    StartCoroutine(CloseMinigame());
-                }
-                
-            }
-        }
     }
 
+    //Opening and closing minigame
     private IEnumerator OpenMinigame()
     {
         transform.LeanMoveLocal(new Vector2(0, 0), 0.5f).setEaseOutCirc();

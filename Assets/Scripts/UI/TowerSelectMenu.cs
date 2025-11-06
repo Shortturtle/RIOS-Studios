@@ -7,7 +7,7 @@ public class TowerSelectMenu : MonoBehaviour
     private bool menuOpen = false;
     private bool canOpenMenu = true;
 
-
+    //checks for conditions so menu open/close isnt wacko
     public void TowerSelectMenuPopup()
     {
         if (menuOpen == false)
@@ -26,6 +26,7 @@ public class TowerSelectMenu : MonoBehaviour
         }
     }
 
+    //to open/close tower select menu
     private IEnumerator OpenTowerSelectMenu()
     {
         transform.LeanMoveLocal(new Vector2(290, 0), 0.5f).setEaseOutCirc();
