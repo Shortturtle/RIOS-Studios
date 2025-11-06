@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 
     //Coin count UI
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI energyText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         HealthHandler();
-        MoneyHandler();
+        EnergyHandler();
     }
 
     private void HealthHandler()
@@ -35,9 +35,9 @@ public class UIManager : MonoBehaviour
         //update ui for health
         healthText.text = "Health: " + healthCount;
     }
-    private void MoneyHandler()
+    private void EnergyHandler()
     {
         //update ui for money
-        moneyText.text = "Money: " + moneyCount;
+        energyText.text = "Energy: " + moneyCount;
     }
 }
