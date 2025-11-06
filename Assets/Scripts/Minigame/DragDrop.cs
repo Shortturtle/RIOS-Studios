@@ -14,7 +14,7 @@ public class DragDrop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        objectInitialPos = objectDragToPos.transform.position;
+        objectInitialPos = objectToDrag.transform.position;
     }
 
     public void DragObject()
@@ -28,7 +28,7 @@ public class DragDrop : MonoBehaviour
     public void DropObject()
     {
         float Distance = Vector3.Distance(objectToDrag.transform.position, objectDragToPos.transform.position);
-        if (Distance > dropDistance) 
+        if (Distance < dropDistance) 
         {
             isLocked = true;
             objectToDrag.transform.position = objectDragToPos.transform.position;
