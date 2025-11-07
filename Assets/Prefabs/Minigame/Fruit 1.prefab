@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 368426990746620047, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3315347027612752960, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -92,12 +96,80 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fruit 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5733816343147773630, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7522390344898247204}
+    - target: {fileID: 5733816343147773630, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TouchedAppropriately
+      objectReference: {fileID: 0}
     - target: {fileID: 7370385534388158465, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7370385534388158465, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370385534388158465, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: mDMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: mDMin
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: iJFMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: iJFMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: iJSMax
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: iJSMin
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: iJTMax
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: iJTMin
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: rSpeedMax
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+      propertyPath: rSpeedMin
+      value: 70
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5695227075082855460, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+--- !u!114 &7522390344898247204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9021740680472367105, guid: 18e63d6fe28f99344bb3f27d9fbdbf4c, type: 3}
+  m_PrefabInstance: {fileID: 1537785141605427749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b89e89ba11c0744c9b785d82f136219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

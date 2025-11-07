@@ -61,6 +61,7 @@ public class Removal : MonoBehaviour
 
     private void Throw()
     {
+        Debug.Log("times thrown");
         initialJumpForce = Random.Range(4f, 6f);
         initialJumpTime = Random.Range(0.2f, 0.6f);
         initialJumpSpeed = Random.Range(100f, 130f);
