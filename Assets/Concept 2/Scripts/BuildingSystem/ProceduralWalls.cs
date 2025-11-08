@@ -7,13 +7,20 @@ namespace Concept2
     public class ProceduralWalls : MonoBehaviour
     {
         public GameObject wall;
+        public LayerMask wallLayerMask;
         public Grid grid;
+
+        private List<Vector3> allDirections = new List<Vector3>
+        {
+            Vector3.forward, Vector3.back, Vector3.left, Vector3.right
+        };
 
         private Vector3 currentPosition;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             currentPosition = transform.position;
+            CheckNeighbors();
         }
 
         private void Awake()
@@ -27,14 +34,29 @@ namespace Concept2
 
         }
 
-        //List<Vector3> CheckNeighbours()
-        //{
-        //    List<Vector3> allNeighbours = new List<Vector3>();
+        void CheckNeighbors()
+        {
+            List<Vector3> allNeighbors = new List<Vector3>();
 
-        //    if (Physics.Raycast(currentPosition, Vector3.forward, 2f, out RaycastHit hit))
-        //    {
+           foreach (var direction in allDirections)
+            {
+                if(Physics.Raycast(currentPosition, direction, out RaycastHit hit, grid.cellSize.x, wallLayerMask))
+                {
+                    allNeighbors.Add(grid.GetCellCenterWorld(grid.WorldToCell(hit.point)));
+                }
 
-        //    }
-        //}
+                Debug.Log(allNeighbors);
+            }
+
+           foreach (var neighbor in allNeighbors)
+            {
+                AddWall(currentPosition, neighbor);
+            }
+        }
+
+        void AddWall(Vector3 originalPost, Vector3 newPost)
+        {
+            Instantiate(wall,  ((originalPost + newPost)/2) , newPost.z - originalPost.z != 0 ? Quaternion.Euler(0,90,0) : Quaternion.identity);
+        }
     }
 }

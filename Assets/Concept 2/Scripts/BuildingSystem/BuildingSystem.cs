@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.InputSystem.Users;
 using UnityEngine.Rendering;
 
 namespace Concept2
@@ -12,8 +14,8 @@ namespace Concept2
         public GameObject wall;
         public GameObject tower;
         public LayerMask groundLayerMask;
+        public LayerMask wallLayerMask;
         private GameObject ghostObject;
-        private HashSet<Vector3> occupiedWallPositions = new HashSet<Vector3>();
         private HashSet<Vector3> occupiedTowerPositions = new HashSet<Vector3>();
         private HashSet<Vector3> occupiedPositions = new HashSet<Vector3>();
 
@@ -49,21 +51,21 @@ namespace Concept2
                 }
             }
 
-            if (Input.GetButtonDown("1"))
+            if (Input.GetKey("1"))
             {
                 state = BuildingStates.None;
                 UpdateObjectToPlace();
 
             }
 
-            if (Input.GetButtonDown("2"))
+            if (Input.GetKey("2"))
             {
                 state = BuildingStates.Walls;
                 UpdateObjectToPlace();
 
             }
 
-            if (Input.GetButtonDown("3"))
+            if (Input.GetKey("3"))
             {
                 state = BuildingStates.Towers;
                 UpdateObjectToPlace();
@@ -73,10 +75,18 @@ namespace Concept2
 
         void CreateGhostObject()
         {
-            ghostObject = Instantiate(objectToPlace);
-            ghostObject.GetComponent<Collider>().enabled = false;
+            ghostObject = Instantiate(objectToPlace, new Vector3(99,99,99), Quaternion.identity);
+            if (ghostObject.GetComponent<Collider>() != null)
+            {
+                ghostObject.GetComponent<Collider>().enabled = false;
+            }
 
-            Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
+            else
+            {
+                ghostObject.transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = false;
+            }
+
+                Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
 
             foreach (Renderer r in renderers)
             {
@@ -96,26 +106,20 @@ namespace Concept2
 
         void UpdatePosition()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = Camera.main.nearClipPlane;
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            
             Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow);
 
-            if(Physics.Raycast(ray, out RaycastHit hit, 100, groundLayerMask))
-            {
-                Vector3 point = hit.point;
-
-                Vector3Int snappedPosition = grid.WorldToCell(point);
-
-                hoveredPosition = grid.GetCellCenterWorld(snappedPosition);
-
-                Debug.Log(point);
-            }
+            RaycastCheck(ray);
         }
 
         void UpdateGhostObject()
         {
             ghostObject.transform.position = hoveredPosition;
 
-            if (occupiedPositions.Contains(hoveredPosition))
+            if (occupiedPositions.Contains(hoveredPosition) || occupiedTowerPositions.Contains(hoveredPosition))
             {
                 SetGhostColor(Color.red);
             }
@@ -139,6 +143,20 @@ namespace Concept2
 
         void PlaceObject()
         {
+            switch (state)
+            {
+                case BuildingStates.Walls:
+                    WallPlacement();
+                    break;
+
+                case BuildingStates.Towers:
+                    TowerPlacement();
+                    break;
+            }
+        }
+
+        void WallPlacement()
+        {
             Vector3 placementPosition = ghostObject.transform.position;
 
             if (!occupiedPositions.Contains(placementPosition))
@@ -146,6 +164,66 @@ namespace Concept2
                 Instantiate(objectToPlace, placementPosition, Quaternion.identity);
 
                 occupiedPositions.Add(placementPosition);
+            }
+        }
+
+        void RaycastCheck(Ray ray)
+        {
+            switch (state)
+            {
+                case BuildingStates.Walls:
+
+                    if (Physics.Raycast(ray, out RaycastHit hit, 100, groundLayerMask))
+                    {
+                        Vector3 point = hit.point;
+
+                        Vector3Int snappedPosition = grid.WorldToCell(point);
+
+                        Vector3 fixedPosition = grid.GetCellCenterWorld(snappedPosition);
+
+                        hoveredPosition = new Vector3(fixedPosition.x, point.y, fixedPosition.z);
+                    }
+
+                    else
+                    {
+                        hoveredPosition = new Vector3(999, 999, 999);
+                    }
+
+                        break;
+
+                case BuildingStates.Towers:
+
+                    if (Physics.Raycast(ray, out RaycastHit wall, 100, wallLayerMask))
+                    {
+                        GameObject wallObject = wall.collider.gameObject;
+
+                        Vector3 point = wall.point;
+
+                        Vector3Int snappedPosition = grid.WorldToCell(point);
+
+                        Vector3 fixedPosition = grid.GetCellCenterWorld(snappedPosition);
+
+                        hoveredPosition = new Vector3(fixedPosition.x, wall.transform.localScale.y, fixedPosition.z);
+                    }
+                    else
+                    {
+                        hoveredPosition = new Vector3(999, 999, 999);
+                    }
+
+
+                    break;
+            }
+        }
+
+        void TowerPlacement()
+        {
+            Vector3 placementPosition = ghostObject.transform.position;
+
+            if (!occupiedTowerPositions.Contains(placementPosition))
+            {
+                Instantiate(objectToPlace, placementPosition, Quaternion.identity);
+
+                occupiedTowerPositions.Add(placementPosition);
             }
         }
 
