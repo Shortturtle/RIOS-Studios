@@ -44,8 +44,6 @@ namespace Concept2
                 {
                     allNeighbors.Add(grid.GetCellCenterWorld(grid.WorldToCell(hit.point)));
                 }
-
-                Debug.Log(allNeighbors);
             }
 
            foreach (var neighbor in allNeighbors)

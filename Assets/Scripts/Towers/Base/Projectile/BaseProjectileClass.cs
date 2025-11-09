@@ -18,6 +18,11 @@ public class BaseProjectileClass : MonoBehaviour
         {
             ToTarget();
         }
+
+        if (target == null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void InitializeProjectile(float projectileDamage, GameObject projectileTarget)

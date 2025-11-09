@@ -17,11 +17,11 @@ public class OffenseTowerBase : BaseTowerClass
     protected List<BaseEnemyClass> targets = new List<BaseEnemyClass>();
     public GameObject currentTarget;
 
-    protected enum TargettingModes
+    public enum TargettingModes
     {
         First, Last, Close, Strong
     }
-    protected TargettingModes targettingMode = TargettingModes.First;
+    public TargettingModes targettingMode = TargettingModes.First;
     protected int targetModeNum = 0;
 
     protected enum ChangeDirection
@@ -30,8 +30,8 @@ public class OffenseTowerBase : BaseTowerClass
     }
 
     // Damage variables
-    protected float damageValue;
-    protected float timeBetweenAttacks;
+    [HideInInspector] public float damageValue;
+    [HideInInspector] public float timeBetweenAttacks;
     protected float attackTimer;
 
     // Projectile variables
@@ -123,7 +123,7 @@ public class OffenseTowerBase : BaseTowerClass
                     break;
 
                 case TargettingModes.Last:
-                    float lowestPercentage = 100;
+                    float lowestPercentage = 999;
                     foreach (var option in targets)
                     {
                         if (option == null)

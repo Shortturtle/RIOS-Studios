@@ -62,7 +62,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public virtual void Start()
+    protected virtual void Start()
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
