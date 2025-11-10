@@ -133,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 20697277}
+  - component: {fileID: 20697278}
   m_Layer: 0
   m_Name: BuildingSystem
   m_TagString: Untagged
@@ -155,6 +156,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &20697278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20697276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8712a9c923ac848b4090da2ff33b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 6590060429733126036, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1001 &25976166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6815,6 +6832,10 @@ PrefabInstance:
     - target: {fileID: 5768371717191585642, guid: 65e05b29ca383534c834c6e265c49c94, type: 3}
       propertyPath: m_Name
       value: U_Terrain_A_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5768371717191585642, guid: 65e05b29ca383534c834c6e265c49c94, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
