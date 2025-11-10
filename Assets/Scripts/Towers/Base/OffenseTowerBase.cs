@@ -54,6 +54,7 @@ public class OffenseTowerBase : BaseTowerClass
         GetTargetEnemy();
         TrackEnemy();
         AttackTimer();
+        GeneralTimer();
     }
 
     protected virtual void FixedUpdate()
@@ -225,5 +226,36 @@ public class OffenseTowerBase : BaseTowerClass
     {
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget);
+    }
+
+    protected override void Degrade()
+    {
+        timeBetweenAttacks = stats.TimeBetweenAttacks * (2 * (degradeRank/maxDegradeRank));
+        Debug.Log(timeBetweenAttacks);
+        ResetDegradeTimer();
+    }
+
+    protected override void DegradeTimer()
+    {
+        base.DegradeTimer();
+    }
+
+    protected override void ResetDegradeTimer()
+    {
+        base.ResetDegradeTimer();
+    }
+
+    public override void UndoDegrade()
+    {
+        OverDrive();
+        degradeRank = 0;
+        isDegraded = false;
+        isOverdrive = true;
+    }
+
+    protected override void OverDrive()
+    {
+        timeBetweenAttacks = stats.TimeBetweenAttacks / 2;
+        overdriveCountdownTimer = overdriveTimerDuration;
     }
 }

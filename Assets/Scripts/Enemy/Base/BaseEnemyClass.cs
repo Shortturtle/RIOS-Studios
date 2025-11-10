@@ -11,7 +11,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public float currentHealth { get; set; }
     public float speed { get; set; }
     public Transform target { get; set; }
-    public int waypointIndex { get; set; } = 1;
+    public int waypointIndex { get; set; } = 0;
 
     protected bool isStunned = false;
 

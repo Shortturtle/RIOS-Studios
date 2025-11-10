@@ -15,4 +15,10 @@ public class OffenseTowerStats : ScriptableObject
 
     [Header("Projectile")]
     public GameObject Projectile;
+    [Space(10)]
+
+    [Header("Degrade/Overdrive")]
+    public float DegradeTimerDuration;
+    public float OverdriveTimerDuration;
+    public int MaxDegradeRank;
 }
