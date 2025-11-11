@@ -4,6 +4,7 @@ using UnityEngine;
 public class MinigameActivater : MonoBehaviour
 {
     private List<BaseTowerClass> availableMinigames = new List<BaseTowerClass>();
+    public bool isMinigamePlaying;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,9 +17,10 @@ public class MinigameActivater : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            if (availableMinigames != null)
+            if (availableMinigames != null && !isMinigamePlaying)
             {
                 availableMinigames[0].StartMicrogame();
+                isMinigamePlaying = true;
                 availableMinigames.RemoveAt(0);
             }
         }

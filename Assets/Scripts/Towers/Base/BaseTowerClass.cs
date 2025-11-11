@@ -84,7 +84,8 @@ public class BaseTowerClass: MonoBehaviour
     #region Microgame Functions
     public void StartMicrogame()
     {
-        Instantiate(microgame, microgameCanvas.transform);
+        GameObject microgameInstance = Instantiate(microgame, microgameCanvas.transform);
+        microgameInstance.transform.GetChild(0).GetComponent<FNMGManager>().InitalizeTower(this);
     }
     #endregion
 }

@@ -261,7 +261,8 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void OverDrive()
     {
-        timeBetweenAttacks = stats.TimeBetweenAttacks / 2;
+        timeBetweenAttacks = stats.TimeBetweenAttacks / 4;
         overdriveCountdownTimer = overdriveTimerDuration;
+        ResetDegradeTimer();
     }
 }

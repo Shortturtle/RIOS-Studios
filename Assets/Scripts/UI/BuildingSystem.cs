@@ -3,6 +3,7 @@ using UnityEngine;
 public class BuildingSystem : MonoBehaviour
 {
     public GameObject tower;
+    public MinigameActivater minigameActivater;
     public LayerMask groundLayerMask;
     private Vector3 currentPlacement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,7 +17,7 @@ public class BuildingSystem : MonoBehaviour
     {
         Raycast();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !minigameActivater.isMinigamePlaying)
         {
             PlaceObject();
         }

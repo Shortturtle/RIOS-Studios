@@ -11,6 +11,7 @@ public class FNMGManager : MonoBehaviour
     public int completion = 0;
     public int numberToCompleteMinigame;
 
+    public BaseTowerClass tower;
     //public FruitSpawner spawner;
 
     //progress check is a lie it actually helps count to the numberToCompleteMinigame
@@ -55,5 +56,11 @@ public class FNMGManager : MonoBehaviour
         canOpenMG = false;
         yield return new WaitForSeconds(0.6f);
         canOpenMG = true;
+        tower.UndoDegrade();
+    }
+
+    public void InitalizeTower(BaseTowerClass towerToInitialize)
+    {
+        tower = towerToInitialize;
     }
 }
