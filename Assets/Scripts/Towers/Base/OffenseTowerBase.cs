@@ -209,6 +209,11 @@ public class OffenseTowerBase : BaseTowerClass
         timeBetweenAttacks = stats.TimeBetweenAttacks;
 
         projectile = stats.Projectile;
+
+        degradeTimerDuration = stats.DegradeTimerDuration;
+        degradeCountdownTimer = degradeTimerDuration;
+        overdriveTimerDuration = stats.OverdriveTimerDuration;  
+        maxDegradeRank = stats.MaxDegradeRank;
     }
 
     protected virtual void AttackTimer()
@@ -230,8 +235,8 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void Degrade()
     {
-        timeBetweenAttacks = stats.TimeBetweenAttacks * (2 * (degradeRank/maxDegradeRank));
-        Debug.Log(timeBetweenAttacks);
+        timeBetweenAttacks = stats.TimeBetweenAttacks * (1 + (degradeRank/maxDegradeRank));
+        degradeRank++;
         ResetDegradeTimer();
     }
 
@@ -248,7 +253,7 @@ public class OffenseTowerBase : BaseTowerClass
     public override void UndoDegrade()
     {
         OverDrive();
-        degradeRank = 0;
+        degradeRank = 1;
         isDegraded = false;
         isOverdrive = true;
     }

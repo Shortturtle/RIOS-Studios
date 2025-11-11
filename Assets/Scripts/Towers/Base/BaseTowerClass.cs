@@ -5,13 +5,13 @@ public class BaseTowerClass: MonoBehaviour
 {
     protected float degradeTimerDuration;
     protected float degradeCountdownTimer;
-    public bool isDegraded;
+    public bool isDegraded = false;
     public int degradeRank;
     protected int maxDegradeRank;
 
     protected float overdriveTimerDuration;
     protected float overdriveCountdownTimer;
-    public bool isOverdrive;
+    public bool isOverdrive = false;
 
     //Tower Cost System (TBD)
 
@@ -48,12 +48,12 @@ public class BaseTowerClass: MonoBehaviour
 
     protected virtual void DegradeTimer() // Literally just a timer (can also be overridden)
     {
-        if (degradeCountdownTimer > 0)
+        if (degradeCountdownTimer >= 0)
         {
             degradeCountdownTimer -= Time.deltaTime;
         }
 
-        if (degradeCountdownTimer < 0 && degradeRank < maxDegradeRank)
+        if (degradeCountdownTimer < 0 && degradeRank <= maxDegradeRank)
         {
             Degrade();
         }
