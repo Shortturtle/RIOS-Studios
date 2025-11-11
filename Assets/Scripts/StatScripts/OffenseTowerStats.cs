@@ -20,5 +20,6 @@ public class OffenseTowerStats : ScriptableObject
     [Header("Degrade/Overdrive")]
     public float DegradeTimerDuration;
     public float OverdriveTimerDuration;
+    public float BufferTimerDuration;
     public int MaxDegradeRank;
 }

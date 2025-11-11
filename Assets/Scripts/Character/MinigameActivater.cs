@@ -4,7 +4,7 @@ using UnityEngine;
 public class MinigameActivater : MonoBehaviour
 {
     private List<BaseTowerClass> availableMinigames = new List<BaseTowerClass>();
-    public bool isMinigamePlaying;
+    public bool isMinigamePlaying = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,9 +19,9 @@ public class MinigameActivater : MonoBehaviour
         {
             if (availableMinigames != null && !isMinigamePlaying)
             {
+                Debug.Log(availableMinigames[0]);
                 availableMinigames[0].StartMicrogame();
                 isMinigamePlaying = true;
-                availableMinigames.RemoveAt(0);
             }
         }
     }
@@ -31,10 +31,16 @@ public class MinigameActivater : MonoBehaviour
         if(other.isTrigger == false)
         {
             BaseTowerClass tower = other.GetComponent<BaseTowerClass>();
-            if (tower != null && tower.degradeRank == tower.maxDegradeRank)
+            if ((tower != null) && (tower.degradeRank == tower.maxDegradeRank))
             {
                 availableMinigames.Add(tower);
             }
         }
+    }
+
+    public void RemoveTowerFromList(BaseTowerClass tower)
+    {
+        availableMinigames.Remove(tower);
+        isMinigamePlaying = false;
     }
 }

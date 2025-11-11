@@ -54,6 +54,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        transform.LookAt(target.position);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.3f)
         {

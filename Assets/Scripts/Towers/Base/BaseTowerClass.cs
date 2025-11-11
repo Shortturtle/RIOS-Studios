@@ -1,4 +1,6 @@
+using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent (typeof(Rigidbody))]
 public class BaseTowerClass: MonoBehaviour
@@ -12,6 +14,9 @@ public class BaseTowerClass: MonoBehaviour
     protected float overdriveTimerDuration;
     protected float overdriveCountdownTimer;
     public bool isOverdrive = false;
+    protected float bufferTimerDuration;
+    protected float bufferCountdownTimer;
+    public bool isBuffer = false;
 
     public GameObject microgameCanvas;
     public GameObject microgame;
@@ -38,14 +43,19 @@ public class BaseTowerClass: MonoBehaviour
 
     protected virtual void GeneralTimer()
     {
-        if (!isOverdrive)
+        if (isOverdrive)
         {
-            DegradeTimer();
+            OverDriveTimer();
+        }
+
+        else if (isBuffer)
+        {
+            BufferTimer();
         }
 
         else
         {
-            OverDriveTimer();
+            DegradeTimer();
         }
     }
 
@@ -56,7 +66,7 @@ public class BaseTowerClass: MonoBehaviour
             degradeCountdownTimer -= Time.deltaTime;
         }
 
-        if (degradeCountdownTimer < 0 && degradeRank < maxDegradeRank)
+        else if (degradeCountdownTimer < 0 && degradeRank < maxDegradeRank)
         {
             Degrade();
         }
@@ -69,10 +79,37 @@ public class BaseTowerClass: MonoBehaviour
             overdriveCountdownTimer -= Time.deltaTime;
         }
 
-        if (overdriveCountdownTimer < 0)
+        else if (overdriveCountdownTimer < 0)
         {
-            isOverdrive = false;
+            OverDriveEnd();
         }
+    }
+
+    protected virtual void BufferTimer()
+    {
+        if (bufferCountdownTimer > 0)
+        {
+            bufferCountdownTimer -= Time.deltaTime;
+        }
+
+        else if (bufferCountdownTimer < 0)
+        {
+            BufferEnd();
+        }
+    }
+
+    protected virtual void OverDriveEnd()
+    {
+        isOverdrive = false;
+        isBuffer = true;
+        bufferCountdownTimer = bufferTimerDuration;
+    }
+
+    protected virtual void BufferEnd()
+    {
+        ResetDegradeTimer();
+        isBuffer = false;
+        Debug.Log("BufferEnd");
     }
 
     protected virtual void ResetDegradeTimer() // resets timer, call usually after Degrade() (can also be overridden)
@@ -85,7 +122,7 @@ public class BaseTowerClass: MonoBehaviour
     public void StartMicrogame()
     {
         GameObject microgameInstance = Instantiate(microgame, microgameCanvas.transform);
-        microgameInstance.transform.GetChild(0).GetComponent<FNMGManager>().InitalizeTower(this);
+        microgameInstance.transform.GetChild(0).GetComponent<SPMGManager>().InitalizeTower(this);
     }
     #endregion
 }

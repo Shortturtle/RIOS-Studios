@@ -59,7 +59,7 @@ namespace Concept2
 
         void DamageBuff()
         {
-            tower.damageValue = tower.damageValue + (tower.timeBetweenAttacks * multiplier);
+            tower.damageValue = tower.damageValue + (tower.damageValue * multiplier);
         }
     }
 }
