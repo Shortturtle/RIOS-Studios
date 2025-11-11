@@ -9,7 +9,7 @@ public class AttackSpeedTracker : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        text.text = $"Time Between Attacks: {tower.timeBetweenAttacks}s";
+        text.text = $"Time Between Attacks: {tower.timeBetweenAttacks.ToString()}s";
     }
 
     private void Awake()
@@ -20,6 +20,6 @@ public class AttackSpeedTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = $"Time Between Attacks: {tower.timeBetweenAttacks}s";
+        text.text = $"Time Between Attacks: " + tower.timeBetweenAttacks.ToString();
     }
 }

@@ -6,12 +6,15 @@ public class BaseTowerClass: MonoBehaviour
     protected float degradeTimerDuration;
     protected float degradeCountdownTimer;
     public bool isDegraded = false;
-    public int degradeRank;
-    protected int maxDegradeRank;
+    public int degradeRank = 0;
+    public int maxDegradeRank;
 
     protected float overdriveTimerDuration;
     protected float overdriveCountdownTimer;
     public bool isOverdrive = false;
+
+    public GameObject microgameCanvas;
+    public GameObject microgame;
 
     //Tower Cost System (TBD)
 
@@ -53,7 +56,7 @@ public class BaseTowerClass: MonoBehaviour
             degradeCountdownTimer -= Time.deltaTime;
         }
 
-        if (degradeCountdownTimer < 0 && degradeRank <= maxDegradeRank)
+        if (degradeCountdownTimer < 0 && degradeRank < maxDegradeRank)
         {
             Degrade();
         }
@@ -75,6 +78,13 @@ public class BaseTowerClass: MonoBehaviour
     protected virtual void ResetDegradeTimer() // resets timer, call usually after Degrade() (can also be overridden)
     {
         degradeCountdownTimer = degradeTimerDuration;
+    }
+    #endregion
+
+    #region Microgame Functions
+    public void StartMicrogame()
+    {
+        Instantiate(microgame, microgameCanvas.transform);
     }
     #endregion
 }

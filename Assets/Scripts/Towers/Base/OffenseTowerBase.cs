@@ -59,14 +59,12 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void FixedUpdate()
     {
-
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.GetComponent<BaseEnemyClass>())
         {
-            Debug.Log(other.gameObject.name);
             targets.Add(other.GetComponent<BaseEnemyClass>());
         }
     }
@@ -210,9 +208,11 @@ public class OffenseTowerBase : BaseTowerClass
 
         projectile = stats.Projectile;
 
+        microgameCanvas = GameObject.FindGameObjectWithTag("MicrogameCanvas");
         degradeTimerDuration = stats.DegradeTimerDuration;
         degradeCountdownTimer = degradeTimerDuration;
-        overdriveTimerDuration = stats.OverdriveTimerDuration;  
+        overdriveTimerDuration = stats.OverdriveTimerDuration;
+        degradeRank = 0;
         maxDegradeRank = stats.MaxDegradeRank;
     }
 
@@ -235,8 +235,9 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void Degrade()
     {
-        timeBetweenAttacks = stats.TimeBetweenAttacks * (1 + (degradeRank/maxDegradeRank));
+        timeBetweenAttacks = stats.TimeBetweenAttacks * (1 + ((float)(degradeRank + 1f)/(float)maxDegradeRank));
         degradeRank++;
+        Debug.Log($"DegradeRank: {degradeRank.ToString()}");
         ResetDegradeTimer();
     }
 
@@ -253,7 +254,7 @@ public class OffenseTowerBase : BaseTowerClass
     public override void UndoDegrade()
     {
         OverDrive();
-        degradeRank = 1;
+        degradeRank = 0;
         isDegraded = false;
         isOverdrive = true;
     }
