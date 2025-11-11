@@ -37,16 +37,23 @@ namespace Concept2
                 }
                 towerBuff = true;
             }
+
+            else if (towerBuff && tower == null)
+            {
+                towerBuff = true;
+            }
         }
 
         private void OnTriggerStay(Collider other)
         {
-            if (!towerBuff)
+            if (other.gameObject.GetComponent<OffenseTowerBase>() != null)
             {
-                if (other.gameObject.GetComponent<OffenseTowerBase>() != null)
-                {
-                    tower = other.gameObject.GetComponent<OffenseTowerBase>();
-                }
+                tower = other.gameObject.GetComponent<OffenseTowerBase>();
+            }
+
+            else if (other == null)
+            {
+                tower = null;
             }
         }
 
