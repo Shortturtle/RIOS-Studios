@@ -81,6 +81,11 @@ namespace Concept2
                 ghostObject.GetComponent<Collider>().enabled = false;
             }
 
+            if( ghostObject.transform.GetChild(0).GetComponent<OffenseTowerBase>() != null)
+            {
+                Destroy(ghostObject.transform.GetChild(0).GetComponent<OffenseTowerBase>());
+            }
+
             else
             {
                 ghostObject.transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = false;

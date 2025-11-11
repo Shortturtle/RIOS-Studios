@@ -40,7 +40,7 @@ namespace Concept2
 
             else if (towerBuff && tower == null)
             {
-                towerBuff = true;
+                towerBuff = false;
             }
         }
 
@@ -49,11 +49,6 @@ namespace Concept2
             if (other.gameObject.GetComponent<OffenseTowerBase>() != null)
             {
                 tower = other.gameObject.GetComponent<OffenseTowerBase>();
-            }
-
-            else if (other == null)
-            {
-                tower = null;
             }
         }
 

@@ -9,7 +9,7 @@ namespace Concept2
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            spawnTimer = Random.Range(1f, 1f);
+            spawnTimer = Random.Range(2f, 3.5f);
         }
 
         // Update is called once per frame
@@ -20,7 +20,7 @@ namespace Concept2
             if (spawnTimer < 0)
             {
                 Instantiate(enemy, transform.position, Quaternion.identity);
-                spawnTimer = Random.Range(1f, 1f);
+                spawnTimer = Random.Range(2f, 3.5f);
             }
         }
     }
