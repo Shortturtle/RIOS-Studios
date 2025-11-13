@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float accelerationFactor = 5f;
     [SerializeField] private float decelerationFactor = 10f;
 
+    [SerializeField] private float gravity = -9.8f;
+    private Vector3 velocity;
+
     //stun ability stuff
     public float stunRadius = 5f;
     public LayerMask enemyLayer;
@@ -61,7 +64,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if(hasControl == true)
+        bool isGrounded = characterController.isGrounded;
+
+        if (isGrounded && velocity.y < 0) { velocity.y = -2; }
+        if (!isGrounded) { velocity.y = gravity * Time.deltaTime; }
+
+        if (hasControl == true)
         {
             GatherInput();
 
@@ -110,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     //player movement
     private void Move()
     {
-        Vector3 moveDirection = transform.forward * currentSpeed * Time.deltaTime * playerInput.magnitude;
+        Vector3 moveDirection = transform.forward * currentSpeed * Time.deltaTime/* * playerInput.magnitude*/ + velocity;
         characterController.Move(moveDirection);
     }
 
@@ -123,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 multipliedMatrix = isometricMatrix.MultiplyPoint3x4(playerInput);
 
         Quaternion rotation = Quaternion.LookRotation(multipliedMatrix, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed/* * Time.deltaTime*/);
     }
 
     //for movement smoothing
