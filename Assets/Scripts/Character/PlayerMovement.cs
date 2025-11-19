@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     public bool hasControl = true;
     private bool towerSelectOpen;
 
-    private InputSystem_Actions myControls;   //input system
     private Vector3 playerInput;   //player input vector number
     private bool pauseInput;
 
@@ -38,8 +37,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        //For input system
-        myControls = new InputSystem_Actions();
 
         //refs
         characterController = GetComponent<CharacterController>();
@@ -47,19 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     //For input system, enable & disable
     private void OnEnable()
-    {
-        myControls.Player.Pause.performed += PauseMenu;
-        myControls.Player.Select.performed += SelectMenu;
-        myControls.Player.Enable();
-
-        
+    {    
     }
     private void OnDisable()
     {
-        myControls.Player.Pause.performed -= PauseMenu;
-        myControls.Player.Select.performed -= SelectMenu;
-        myControls.Player.Disable();
-
     }
 
     private void Update()
@@ -71,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (hasControl == true)
         {
-            GatherInput();
 
             Look();
             CalculateSpeed();
@@ -86,15 +73,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Interactable?.Interact(this);        
         }
-
-        //manual stun bubble activation
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StunBubble();
-        }
     }
 
-    void StunBubble()
+    public void StunBubble(InputAction.CallbackContext ctx)
     {
         //find colliders within the AoE that are on the enemy layer
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);
@@ -150,11 +131,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //gather player input
-    private void GatherInput()
+    private void GatherInput(Vector2 input)
     {
-        Vector2 input = myControls.Player.Move.ReadValue<Vector2>();
         playerInput = new Vector3(input.x, 0, input.y);
     }
+
+    public void GatherInput(InputAction.CallbackContext ctx) { GatherInput(ctx.ReadValue<Vector2>()); }
 
     private void PauseMenu(InputAction.CallbackContext ctx)
     {
