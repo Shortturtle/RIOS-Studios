@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class TestQuestQuestStep : QuestStep
 {
-    private int numberOfThingDone;
+    private int numberOfThingDone = 0;
 
-    private int numberNeededToComplete;
+    private int numberNeededToComplete = 5;
 
 
     private void OnEnable()
     {
-        GameEventManager.instance.miscEvents.testAction += TestActionDone;
+        GameEventManager.instance.miscEvents.onCollectKanade += TestActionDone;
     }
     private void OnDisable()
     {
-        GameEventManager.instance.miscEvents.testAction -= TestActionDone;
+        GameEventManager.instance.miscEvents.onCollectKanade -= TestActionDone;
     }
 
     private void TestActionDone()
@@ -23,7 +23,7 @@ public class TestQuestQuestStep : QuestStep
             numberOfThingDone++;
         }
 
-        if(numberOfThingDone > numberNeededToComplete)
+        if(numberOfThingDone >= numberNeededToComplete)
         {
             FinishedQuestStep();
         }

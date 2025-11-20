@@ -1,15 +1,15 @@
 using UnityEngine;
 using System;
 
-public class MiscEvents : MonoBehaviour
+public class MiscEvents
 {
-    public event Action testAction;
+    public event Action onCollectKanade;
 
-    public void TestActionFunction()
+    public void KanadeCollected()
     {
-        if(testAction != null)
+        if(onCollectKanade != null)
         {
-            testAction();
+            onCollectKanade();
         }
     }
 }
