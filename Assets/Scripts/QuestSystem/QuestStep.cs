@@ -6,6 +6,7 @@ public abstract class QuestStep : MonoBehaviour
 {
     private bool isFinished = false;
 
+    //the function for finishing quests, should be available in all the quest scripts
     protected void FinishedQuestStep()
     {
         if (!isFinished)

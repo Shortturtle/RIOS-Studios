@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class TestQuestQuestStep : QuestStep
 {
+    //numbers for quest functionality
     private int numberOfThingDone = 0;
-
     private int numberNeededToComplete = 5;
 
 
@@ -16,6 +16,7 @@ public class TestQuestQuestStep : QuestStep
         GameEventManager.instance.miscEvents.onCollectKanade -= TestActionDone;
     }
 
+    //record of the number of kanades collected to progress the quest
     private void TestActionDone()
     {
         if(numberOfThingDone < numberNeededToComplete)

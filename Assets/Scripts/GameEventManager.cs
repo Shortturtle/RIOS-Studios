@@ -15,7 +15,7 @@ public class GameEventManager : MonoBehaviour
         }
         instance = this;
 
-        //initialise all events
+        //initialise all events (for scripts relating to events n actions)
         miscEvents = new MiscEvents();
     }
 }
