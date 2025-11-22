@@ -3,9 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public SwitchScene switchScenes;
+
     public void Play()
     {
-        SceneManager.LoadScene("Medieval Lobby");
+        switchScenes.FadeOutAndLoad("Medieval Lobby");
+    }
+
+    public void Options()
+    {
+        switchScenes.FadeOutAndLoad("");
     }
 
     public void Quit()

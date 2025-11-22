@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SwitchScene : MonoBehaviour
 {
     public Animator PanelAnim;
+    public GameObject FadePanel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,25 +13,27 @@ public class SwitchScene : MonoBehaviour
         PanelAnim.SetTrigger("Fade");
     }
 
-    public void FadeIntoNewScene(string sceneName)
-    {
-        PanelAnim.SetTrigger("Idle");
-        StartCoroutine(switchScene(sceneName));
-    }
-
-    IEnumerator switchScene(string sceneName)
-    {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(sceneName);
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //For testing purposes: Switch scenes with arrow keys
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        //Literally any input to switch scenes
+        if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
         {
-            FadeIntoNewScene("Danish Scene"); //this is the main line of code to switch scenes
+            FadePanel.SetActive(false);
         }
+    }
+
+    public void FadeOutAndLoad(string sceneName)
+    {
+        //FadePanel.SetActive(true);
+        //PanelAnim.SetTrigger("Idle");
+
+        StartCoroutine(FadeAndLoad(sceneName));
+    }
+
+    private IEnumerator FadeAndLoad(string sceneName)
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneName);
     }
 }
