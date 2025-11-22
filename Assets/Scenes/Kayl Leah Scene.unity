@@ -228,15 +228,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eab354e6b36ec24d8eec69958b70c1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.17
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eab354e6b36ec24d8eec69958b70c1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eab354e6b36ec24d8eec69958b70c1d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.96
+      value: -6.81
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eab354e6b36ec24d8eec69958b70c1d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1139,6 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: 7cab1904c7eacf14b93e988d644eaf5a, type: 2}
+  isRewinding: 0
   percentageDistance: 0
 --- !u!135 &534517107
 SphereCollider:
@@ -2083,6 +2084,7 @@ MonoBehaviour:
   rotationSpeed: 360
   accelerationFactor: 5
   decelerationFactor: 10
+  gravity: -9.8
   stunRadius: 5
   enemyLayer:
     serializedVersion: 2
@@ -2344,6 +2346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelAnim: {fileID: 958655176}
+  FadePanel: {fileID: 958655174}
 --- !u!1 &1205304066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,6 +2422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: fa04b5da4febc6b4aa3def16c8007050, type: 2}
+  isRewinding: 0
   percentageDistance: 0
 --- !u!135 &1205304070
 SphereCollider:
