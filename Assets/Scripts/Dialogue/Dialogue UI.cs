@@ -27,6 +27,11 @@ public class DialogueUI : MonoBehaviour
         StartCoroutine(RunDialogue(dialogueObject));
     }
 
+    public void AddResponseEvents(ResponseEvent[] responseEvents)
+    {
+        responseHandler.AddResponseEvents(responseEvents);
+    }
+
     private IEnumerator RunDialogue(DialogueObject dialogueObject)
     {
         for (int i = 0/*while*/; i < dialogueObject.Dialogue.Length; i++)
@@ -69,7 +74,7 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    private void CloseDialogueBox()
+    public void CloseDialogueBox()
     {
         IsOpen = false;
         dialogueBox.SetActive(false);

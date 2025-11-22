@@ -3308,6 +3308,7 @@ GameObject:
   - component: {fileID: 1932002665}
   - component: {fileID: 1932002664}
   - component: {fileID: 1932002663}
+  - component: {fileID: 1932002668}
   m_Layer: 0
   m_Name: Dialogue tester
   m_TagString: Untagged
@@ -3417,6 +3418,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1932002668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932002662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c1a7a961de45d4aa047918e191df2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: fc6229c0a9076a04d88b70dc9024b747, type: 2}
+  events:
+  - name: Yessirr
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1932002663}
+          m_TargetAssemblyTypeName: DialogueActivator, Assembly-CSharp
+          m_MethodName: UpdateDialogueObject
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 87fee73ce2575df428fa476fd9ce869e, type: 2}
+            m_ObjectArgumentAssemblyTypeName: DialogueObject, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Nah
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1977035941
 GameObject:
   m_ObjectHideFlags: 0
