@@ -6,6 +6,14 @@ public abstract class QuestStep : MonoBehaviour
 {
     private bool isFinished = false;
 
+    private string questId;
+
+    //so it knows what quest it is
+    public void InitializeQuestStep(string questId)
+    {
+        this.questId = questId;
+    }
+
     //the function for finishing quests, should be available in all the quest scripts
     protected void FinishedQuestStep()
     {
@@ -13,7 +21,8 @@ public abstract class QuestStep : MonoBehaviour
         {
             isFinished = true;
 
-            // todo - advance quest forward now that step is finished
+            //next step of quest
+            GameEventManager.instance.questEvents.AdvanceQuest(questId);
 
             Destroy(this.gameObject);
         }

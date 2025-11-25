@@ -32,20 +32,86 @@ public class QuestManager : MonoBehaviour
             GameEventManager.instance.questEvents.QuestStateChange(quest);
         }
     }
+
+    //call this func to update a quest state
+    private void ChangeQuestState(string id, QuestState state)
+    {
+        Quest quest = GetQuestByID(id);
+        quest.state = state;
+        GameEventManager.instance.questEvents.QuestStateChange(quest);
+    }
+
+
+    private bool CheckRequirementsMet(Quest quest)
+    {
+        bool meetsRequirements = true;
+        //we dont have lvl requirements so i skipped a part
+
+        //check quest prerequisites for completion
+        foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
+        {
+            if(GetQuestByID(prerequisiteQuestInfo.id).state != QuestState.FINISHED)  //i think is to check if quest is finished or not, then disallow quest to be restarted
+            {
+                meetsRequirements = false;
+            }
+        }
+
+        return meetsRequirements;
+    }
+
+    private void Update()
+    {
+        //check through all the quests
+        foreach(Quest quest in questMap.Values)
+        {
+            //if player meets all the requirements & quest is not started, switch quest over to the CAN_START state
+            if(quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest))
+            {
+                ChangeQuestState(quest.info.id, QuestState.CAN_START);
+            }
+                
+            
+        }
+    }
+
     private void StartQuest(string id)
     {
-        //TODO - start the quest
-        Debug.Log("Start Quest: " + id);
+        //get quest, instantiate current quest step under this object, and set quest to be in progress
+        Quest quest = GetQuestByID(id);
+        quest.InstantiateCurrentQuestStep(this.transform);
+        ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
     }
     private void AdvanceQuest(string id)
     {
-        //TODO - advance the quest
-        Debug.Log("Advance Quest: " + id);
+        Quest quest = GetQuestByID(id);
+
+        //move on to the next step
+        quest.MoveToNextStep();
+
+        //if there are more steps, instantiate next one
+        if (quest.CurrentStepExists())
+        {
+            quest.InstantiateCurrentQuestStep(this.transform);
+        }
+        //if there are no more steps, then finished all of them for this quest
+        else
+        {
+            ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
+        }
     }
     private void FinishQuest(string id)
     {
-        //TODO - finish the quest
-        Debug.Log("Finish Quest: " + id);
+        Quest quest = GetQuestByID(id);
+        ClaimRewards(quest);
+        ChangeQuestState(quest.info.id, QuestState.FINISHED);
+    }
+
+    private void ClaimRewards(Quest quest)
+    {
+        // imma fix this
+        //fuck this shit got hands (translation -- i suck at this help)
+
+        GameEventManager.instance.towerRewardEvents.TowerRewards(quest.info.towerReward);
     }
 
     private Dictionary<string, Quest> CreateQuestMap()

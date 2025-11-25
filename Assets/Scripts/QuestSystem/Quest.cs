@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +22,7 @@ public class Quest
     }
 
     //move to next part of quest
-    public void MoveToNestStep()
+    public void MoveToNextStep()
     {
         currentQuestStepIndex++;
     }
@@ -38,7 +38,9 @@ public class Quest
         GameObject questStepPrefab = GetCurrentQuestStepPrefab();
         if(questStepPrefab != null)
         {
-            UnityEngine.Object.Instantiate<GameObject>(questStepPrefab, parentTransform);
+            QuestStep questStep = Object.Instantiate<GameObject>(questStepPrefab, parentTransform)
+                .GetComponent<QuestStep>();
+            questStep.InitializeQuestStep(info.id);
         }
     }
 
