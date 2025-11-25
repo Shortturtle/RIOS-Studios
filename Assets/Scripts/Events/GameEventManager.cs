@@ -6,6 +6,7 @@ public class GameEventManager : MonoBehaviour
 
     public MiscEvents miscEvents;
 
+    public QuestEvents questEvents;
 
     private void Awake()
     {
@@ -17,5 +18,6 @@ public class GameEventManager : MonoBehaviour
 
         //initialise all events (for scripts relating to events n actions)
         miscEvents = new MiscEvents();
+        questEvents = new QuestEvents();
     }
 }
