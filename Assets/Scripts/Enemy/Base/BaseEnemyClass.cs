@@ -149,6 +149,16 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
     protected void Rewind()
     {
+        Transform tempTarget;
+
+        if (waypointIndex != 0)
+        {
+            tempTarget = WaypointManager.points[waypointIndex - 1];
+        }
+
+        else {
+            tempTarget = target;
+        }
         if (pointsInTime.Count > 0)
         {
             PointInTime pointInTime = pointsInTime[0];                                                              //Get the first element in the list
@@ -158,7 +168,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
             pointsInTime.RemoveAt(0);                                                                               //Remove the first element in the list
 
-            if (Vector3.Distance(transform.position, target.position) <= 0.3f)
+            if (Vector3.Distance(transform.position, tempTarget.position) <= 0.3f)
             {
                 GetPreviousWaypoint();
             }
@@ -174,10 +184,6 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         isRewinding = true;
         Debug.Log("Rewinding started");
         directionTravelling = direction.Backward;
-        if (waypointIndex > 0)
-        {
-            target = WaypointManager.points[waypointIndex - 1];
-        }
     }
 
     public void StopRewind()
@@ -185,24 +191,21 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         isRewinding = false;
         Debug.Log("Rewinding stopped");
         directionTravelling = direction.Forward;
-        if (waypointIndex < WaypointManager.points.Length - 1)
-        {
-            target = WaypointManager.points[waypointIndex + 1];
-        }
     }
 
     protected virtual void DistanceTracker()
     {
-        if (directionTravelling == direction.Forward)
+        switch (directionTravelling)
         {
-            distanceTravelled += speed * Time.deltaTime;
-        }
+            case direction.Forward:
+                distanceTravelled += speed * Time.deltaTime;
+                percentageDistance = (distanceTravelled / WaypointManager.totalDistance) * 100;
+                return;
 
-        else if (directionTravelling == direction.Backward)
-        {
-            distanceTravelled -= speed * Time.deltaTime;
+            case direction.Backward:
+                distanceTravelled -= speed * Time.deltaTime;
+                percentageDistance = (distanceTravelled / WaypointManager.totalDistance) * 100;
+                return;
         }
-
-        percentageDistance = (distanceTravelled / WaypointManager.totalDistance) * 100;
     }
 }

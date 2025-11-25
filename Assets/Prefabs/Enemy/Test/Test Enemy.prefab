@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6890017175266993945}
   - component: {fileID: 4000557946634666756}
   - component: {fileID: 2136308914579391713}
-  - component: {fileID: 3541721009172026365}
   m_Layer: 10
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -70,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: fa04b5da4febc6b4aa3def16c8007050, type: 2}
+  isRewinding: 0
   percentageDistance: 0
 --- !u!54 &2136308914579391713
 Rigidbody:
@@ -98,19 +98,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3541721009172026365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7824975152940048812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 252ddcde09ba6814bb8e09935ab34562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recordTime: 5
 --- !u!1001 &8837063357017664696
 PrefabInstance:
   m_ObjectHideFlags: 0

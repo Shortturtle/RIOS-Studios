@@ -1,25 +1,33 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnemyWaveSpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public EnemyWaves waveHolder;
 
-    private float spawnTimer;
+    private int currentWave;
+    private int maxWaves;
+
+    private List<GameObject> enemiesInCurrentWave = new List<GameObject>();
+
+    public float TimeBetweenSpawns;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnTimer = Random.Range(2f, 4f);
+        currentWave = 1;
+        enemiesInCurrentWave = waveHolder.enemyWaves[currentWave -1].wave;
+    }
+
+    private void Awake()
+    {
+        maxWaves = waveHolder.enemyWaves.Count;     
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnTimer -= Time.deltaTime;
-
-        if (spawnTimer < 0)
-        {
-            Instantiate(enemy, transform.position, Quaternion.identity);
-            spawnTimer = Random.Range(2f, 4f);
-        }
+       
+        
     }
 }

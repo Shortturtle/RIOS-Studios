@@ -90,6 +90,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void RewindEnemies(InputAction.CallbackContext ctx)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+
+        foreach (Collider hit in hitColliders)
+        {
+            BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+            if (enemy != null)
+            {
+                enemy.StartRewind();
+            }
+        }
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
