@@ -44,11 +44,11 @@ public class BaseProjectileClass : MonoBehaviour
 
     protected virtual void ProjectileEffect()
     {
-        BaseEnemyClass fuckThisGuy = target.GetComponent<BaseEnemyClass>();
+        BaseEnemyClass frickThisGuy = target.GetComponent<BaseEnemyClass>();
 
-        if (fuckThisGuy != null)
+        if (frickThisGuy != null)
         {
-            fuckThisGuy.Damage(damage);
+            frickThisGuy.Damage(damage);
             Destroy(gameObject);
         }
     }
