@@ -34,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     //refs
     private CharacterController characterController;
     public GameObject pauseScreen;
-
     private void Awake()
     {
 
@@ -44,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     //For input system, enable & disable
     private void OnEnable()
-    {    
+    {
     }
     private void OnDisable()
     {
