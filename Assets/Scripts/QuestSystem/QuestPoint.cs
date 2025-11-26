@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class QuestPoint : MonoBehaviour
 {
+    //i think we can copy the the Header("Quest") and questinfoforpoint stuff into the end of the dialogue stuff
+
     [Header("Quest")]
 
     //put the quest SO into this part in inspector
@@ -23,6 +25,8 @@ public class QuestPoint : MonoBehaviour
     private void Awake()
     {
         questId = questInfoForPoint.id;
+
+        //for quest icon, so if not using probably dont need to bring over
         questIcon = GetComponentInChildren<QuestIcon>();
     }
 
@@ -54,6 +58,8 @@ public class QuestPoint : MonoBehaviour
         if (quest.info.id.Equals(questId))
         {
             currentQuestState = quest.state;
+
+            //for quest icons too
             questIcon.SetState(currentQuestState, questStartPoint, questFinishPoint);
         }
     }
