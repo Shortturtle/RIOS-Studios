@@ -8,10 +8,17 @@ public abstract class QuestStep : MonoBehaviour
 
     private string questId;
 
+    private int stepIndex;
+
     //so it knows what quest it is
-    public void InitializeQuestStep(string questId)
+    public void InitializeQuestStep(string questId, int stepIndex, string questStepState)
     {
         this.questId = questId;
+        this.stepIndex = stepIndex;
+        if(questStepState != null && questStepState != "")
+        {
+            SetQuestStepState(questStepState);
+        }
     }
 
     //the function for finishing quests, should be available in all the quest scripts
@@ -27,4 +34,11 @@ public abstract class QuestStep : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    protected void ChangeState(string newState)
+    {
+        GameEventManager.instance.questEvents.QuestStepStateChange(questId, stepIndex, new QuestStepState(newState));
+    }
+
+    protected abstract void SetQuestStepState(string state);
 }

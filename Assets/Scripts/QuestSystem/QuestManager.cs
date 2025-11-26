@@ -15,6 +15,8 @@ public class QuestManager : MonoBehaviour
         GameEventManager.instance.questEvents.onStartQuest += StartQuest;
         GameEventManager.instance.questEvents.onAdvanceQuest += AdvanceQuest;
         GameEventManager.instance.questEvents.onFinishQuest += FinishQuest;
+
+        GameEventManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;
     }
 
     private void OnDisable()
@@ -22,13 +24,21 @@ public class QuestManager : MonoBehaviour
         GameEventManager.instance.questEvents.onStartQuest -= StartQuest;
         GameEventManager.instance.questEvents.onAdvanceQuest -= AdvanceQuest;
         GameEventManager.instance.questEvents.onFinishQuest -= FinishQuest;
+
+        GameEventManager.instance.questEvents.onQuestStepStateChange -= QuestStepStateChange;
     }
 
     private void Start()
     {
-        //broadcast initial state of all quests on startup
         foreach(Quest quest in questMap.Values)
         {
+            //initialize any loaded quest steps
+            if (quest.state == QuestState.IN_PROGRESS)
+            {
+                quest.InstantiateCurrentQuestStep(this.transform);
+            }
+
+            //broadcast initial state of all quests on startup
             GameEventManager.instance.questEvents.QuestStateChange(quest);
         }
     }
@@ -114,6 +124,13 @@ public class QuestManager : MonoBehaviour
         GameEventManager.instance.towerRewardEvents.TowerRewards(quest.info.towerReward);
     }
 
+    private void QuestStepStateChange(string id, int stepIndex, QuestStepState questStepState)
+    {
+        Quest quest = GetQuestByID(id);
+        quest.StoreQuestStepState(questStepState, stepIndex);
+        ChangeQuestState(id, quest.state);
+    }
+
     private Dictionary<string, Quest> CreateQuestMap()
     {
         //Loads all QuestInfoSO Scriptable Objects under Assts/Resources/Quests folder
@@ -126,7 +143,7 @@ public class QuestManager : MonoBehaviour
             {
                 Debug.LogWarning("Duplicate ID found when creating quest map" + questInfo.id);
             }
-            idToQuestMap.Add(questInfo.id, new Quest(questInfo));
+            idToQuestMap.Add(questInfo.id, LoadQuest(questInfo));
         }
         return idToQuestMap;
     }
@@ -138,6 +155,57 @@ public class QuestManager : MonoBehaviour
         if(quest == null)
         {
             Debug.LogError("ID not found in the Quest Map" + id);
+        }
+        return quest;
+    }
+
+    private void OnApplicationQuit()
+    {
+        foreach (Quest quest in questMap.Values)
+        {
+            SaveQuest(quest);
+        }
+    }
+
+    private void SaveQuest(Quest quest)
+    {
+        try
+        {
+            QuestData questData = quest.GetQuestData();
+            //serialize using JsonUtility
+            string serializedData = JsonUtility.ToJson(questData);
+            PlayerPrefs.SetString(quest.info.id, serializedData);
+
+            //test
+            //Debug.Log(serializedData);
+        }
+        catch(System.Exception e)
+        {
+            Debug.LogError("Failed to save quest with id " + quest.info.id + ": " + e);
+        }
+    }
+
+    private Quest LoadQuest(QuestInfoSO questInfo)
+    {
+        Quest quest = null;
+        try
+        {
+            //load quest from saved data
+            if (PlayerPrefs.HasKey(questInfo.id))
+            {
+                string serializedData = PlayerPrefs.GetString(questInfo.id);
+                QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
+                quest = new Quest(questInfo, questData.state, questData.questStepIndex, questData.questStepStates);
+            }
+            //else, initialize new quest
+            else
+            {
+                quest = new Quest(questInfo);
+            }
+        }
+        catch(System.Exception e)
+        {
+            Debug.LogError("Failed to load quest with id " + quest.info.id + ": " + e);
         }
         return quest;
     }

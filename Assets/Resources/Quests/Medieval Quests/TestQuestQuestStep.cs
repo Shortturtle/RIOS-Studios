@@ -22,11 +22,27 @@ public class TestQuestQuestStep : QuestStep
         if(numberOfThingDone < numberNeededToComplete)
         {
             numberOfThingDone++;
+            UpdateState();
         }
 
         if(numberOfThingDone >= numberNeededToComplete)
         {
             FinishedQuestStep();
         }
+    }
+
+    //call to update the state of the quest
+    private void UpdateState()
+    {
+        //idk what this
+        string state = numberOfThingDone.ToString();
+        ChangeState(state);
+    }
+
+    //i have no clue what this is either fuccc
+    protected override void SetQuestStepState(string state)
+    {
+        this.numberOfThingDone = System.Int32.Parse(state);
+        UpdateState();
     }
 }
