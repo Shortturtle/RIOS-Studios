@@ -25,7 +25,7 @@ public class TowerRewardManager : MonoBehaviour
     //this for the tower reward
     private void TowerNumberRewardedToPlayer(int towerRewardNumber)
     {
-        PlayerPrefs.SetInt("towerReward", towerRewardNumber);
+        PlayerPrefs.SetInt(towerReward, towerRewardNumber);
         //GameEventManager.instance.towerRewardEvents.TowerRewardChange(towerRewardNumber);
     }
 
