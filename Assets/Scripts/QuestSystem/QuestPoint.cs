@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class QuestPoint : MonoBehaviour
 {
-    //i think we can copy the the Header("Quest") and questinfoforpoint stuff into the end of the dialogue stuff
+    //just place this in a child of the dialogue object or smth and ref this
 
     [Header("Quest")]
 

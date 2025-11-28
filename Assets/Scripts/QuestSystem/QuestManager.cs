@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    //untick from inspector if u dont want quests to be loaded
+    [Header("Config")]
+    [SerializeField] private bool loadQuestState = true;
+
+
     private Dictionary<string, Quest> questMap;
 
     private void Awake()
@@ -118,8 +123,7 @@ public class QuestManager : MonoBehaviour
 
     private void ClaimRewards(Quest quest)
     {
-        // imma fix this
-        //fuck this shit got hands (translation -- i suck at this help)
+        // this will change after finalising how to store towerRewards
 
         GameEventManager.instance.towerRewardEvents.TowerRewards(quest.info.towerReward);
     }
@@ -191,7 +195,7 @@ public class QuestManager : MonoBehaviour
         try
         {
             //load quest from saved data
-            if (PlayerPrefs.HasKey(questInfo.id))
+            if (PlayerPrefs.HasKey(questInfo.id) && loadQuestState)
             {
                 string serializedData = PlayerPrefs.GetString(questInfo.id);
                 QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
