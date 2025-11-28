@@ -37,6 +37,9 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     #endregion
 
     #region Distance Variables
+    protected WaypointManager waypointManager;
+    protected Transform[] waypointList;
+    protected float totalDistance;
     protected float distanceTravelled;
     public float percentageDistance; 
     protected enum direction
@@ -51,12 +54,20 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
-        target = WaypointManager.points[waypointIndex];
+    }
+
+    public void InitializeEnemy(WaypointManager wM)
+    {
+        waypointManager = wM;
+        waypointList = waypointManager.points;
+        totalDistance = waypointManager.totalDistance;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        DistanceTracker();
+
         if (isRewinding)
         {
             Rewind();
@@ -71,7 +82,6 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
     protected virtual void FixedUpdate()
     {
-        DistanceTracker();
     }
 
     public virtual void Damage(float damageAmount) // Script to damage enemies (can be overridden)
@@ -91,14 +101,14 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
     public void GetNextWaypoint() // waypoint tracking
     {
-        if (waypointIndex >= WaypointManager.points.Length - 1)
+        if (waypointIndex >= waypointList.Length - 1)
         { 
             Die();
             return;
         }
 
         waypointIndex++;
-        target = WaypointManager.points[waypointIndex];
+        target = waypointList[waypointIndex];
     }
 
     public void GetPreviousWaypoint()
@@ -109,7 +119,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         }
 
         waypointIndex--;
-        target = WaypointManager.points[waypointIndex];
+        target = waypointList[waypointIndex];
     }
 
     virtual public void MoveEnemy() // enemy movement script
@@ -153,7 +163,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
         if (waypointIndex != 0)
         {
-            tempTarget = WaypointManager.points[waypointIndex - 1];
+            tempTarget = waypointList[waypointIndex - 1];
         }
 
         else {
@@ -199,12 +209,12 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         {
             case direction.Forward:
                 distanceTravelled += speed * Time.deltaTime;
-                percentageDistance = (distanceTravelled / WaypointManager.totalDistance) * 100;
+                percentageDistance = (distanceTravelled / totalDistance) * 100;
                 return;
 
             case direction.Backward:
                 distanceTravelled -= speed * Time.deltaTime;
-                percentageDistance = (distanceTravelled / WaypointManager.totalDistance) * 100;
+                percentageDistance = (distanceTravelled / totalDistance) * 100;
                 return;
         }
     }

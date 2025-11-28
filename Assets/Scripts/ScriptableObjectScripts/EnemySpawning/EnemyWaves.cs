@@ -6,9 +6,16 @@ using UnityEngine;
 public class EnemyWaves : ScriptableObject
 {
     [Serializable]
+    public class EnemyClump
+    {
+        public GameObject EnemyToSpawn;
+        public int NumberToSpawn;
+    }
+
+    [Serializable]
     public class Wave
     {
-        public List<GameObject> wave = new List<GameObject>();
+        public List<EnemyClump> wave = new List<EnemyClump>();
     }
 
     [SerializeField] public List<Wave> enemyWaves = new List<Wave>();
@@ -16,14 +23,19 @@ public class EnemyWaves : ScriptableObject
     private void OnValidate()
     {
         foreach (var Wave in enemyWaves)
-        { List<GameObject> tempWave = Wave.wave;
-            foreach (var enemy in tempWave)
+        { 
+           if (Wave != null)
             {
-                if (enemy.GetComponent<BaseEnemyClass>() == null)
+                List<EnemyClump> tempWave = Wave.wave;
+                foreach (var enemy in tempWave)
                 {
-                    tempWave.Remove(enemy);
+                    if (enemy.EnemyToSpawn.GetComponent<BaseEnemyClass>() == null)
+                    {
+                        tempWave.Remove(enemy);
+                    }
                 }
             }
         }
     }
+
 }

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class WaypointManager : MonoBehaviour
 {
-    public static Transform[] points;
-    public static float totalDistance = 0;
+    public Transform[] points;
+    public float totalDistance = 0;
 
     private void Awake()
     {
