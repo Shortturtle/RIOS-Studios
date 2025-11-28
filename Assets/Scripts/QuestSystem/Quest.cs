@@ -40,7 +40,7 @@ public class Quest
         if(this.questStepStates.Length != this.info.questStepPrefabs.Length)
         {
             Debug.LogWarning("Quest Step Prefabs and Quest Step States are of different lengths. This indicates something "
-                + "has changed with the QuestInfo and the saved data is now out of sync."
+                + "has changed with the QuestInfo and the saved data is now out of sync. "
                 + "Reset your data - as this might cause issues. QuestId: " + this.info.id);
         }
     }
