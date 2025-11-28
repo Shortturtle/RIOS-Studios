@@ -18,6 +18,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     public float waveBufferTime;
     private float waveBufferTimer;
+    private bool bufferActive;
     public float timeBetweenSpawns;
     private float spawnTimer;
     private bool currentWavePlaying;
@@ -36,6 +37,7 @@ public class EnemyWaveManager : MonoBehaviour
         currentWave = 0;
         InitializeWave(waveHolder.enemyWaves[currentWave].wave);
         listCleanTimer = listCleanDelay;
+        StartBuffer();
     }
 
     // Update is called once per frame
@@ -43,9 +45,16 @@ public class EnemyWaveManager : MonoBehaviour
     {
         ListCleaning();
 
+        WaveEndCheck();
+
         if (currentWavePlaying && enemiesToSpawn.Count != 0)
         {
             SpawnTimer();
+        }
+
+        else if (bufferActive)
+        {
+            BufferTimer();
         }
     }
 
@@ -58,7 +67,7 @@ public class EnemyWaveManager : MonoBehaviour
     void EndWave()
     {
         currentWavePlaying = false;
-        waveBufferTimer = waveBufferTime;
+        StartBuffer();  
     }
 
     void PrepNextWave()
@@ -67,6 +76,33 @@ public class EnemyWaveManager : MonoBehaviour
         enemiesToSpawn.Clear();
         enemiesCurrentlyAlive.Clear();
         InitializeWave(waveHolder.enemyWaves[currentWave].wave);    
+    }
+
+    void StartBuffer()
+    {
+        PrepNextWave();
+        bufferActive = true;
+        waveBufferTimer = waveBufferTime;
+    }
+
+    void EndBuffer()
+    {
+        StartWave();
+        bufferActive = false;
+        spawnTimer = timeBetweenSpawns;
+    }
+
+    void BufferTimer()
+    {
+        if (waveBufferTimer > 0)
+        {
+            waveBufferTimer -= Time.deltaTime;
+        }
+
+        if (waveBufferTimer <= 0)
+        {
+            EndBuffer();
+        }
     }
 
     void InitializeWave(List<EnemyWaves.EnemyClump> temp)
@@ -87,25 +123,47 @@ public class EnemyWaveManager : MonoBehaviour
         if(listCleanTimer < 0)
         {
             CleanLists();
+            listCleanTimer = listCleanDelay;
         }
     }
 
     void CleanLists()
     {
-        foreach(var enemy in enemiesToSpawn)
+        List<GameObject> toRemove1 = new List<GameObject>();
+        List<GameObject> toRemove2 = new List<GameObject>();
+
+        if (enemiesToSpawn != null)
         {
-            if(enemy == null)
+            foreach (var enemy in enemiesToSpawn)
             {
-                enemiesToSpawn.Remove(enemy);
+                var tempEnemy = enemy;
+                if (tempEnemy == null)
+                {
+                    toRemove1.Add(tempEnemy);
+                }
             }
         }
 
-        foreach (var enemy in enemiesCurrentlyAlive)
+        if (enemiesCurrentlyAlive != null)
         {
-            if(enemy == null)
+            foreach (var enemy in enemiesCurrentlyAlive)
             {
-                enemiesCurrentlyAlive.Remove(enemy);
+                var tempEnemy = enemy;
+                if (tempEnemy == null)
+                {
+                    toRemove2.Add(tempEnemy);
+                }
             }
+        }
+
+        foreach (var enemy in toRemove1)
+        {
+            enemiesToSpawn.Remove(enemy);
+        }
+
+        foreach(var enemy in toRemove2)
+        {
+            enemiesCurrentlyAlive.Remove(enemy);
         }
     }
 
@@ -128,10 +186,11 @@ public class EnemyWaveManager : MonoBehaviour
         {
             GameObject tempEnemy = Instantiate(enemiesToSpawn[0], spawnLocations[currentSpawnLocation].transform.position, Quaternion.identity);
             tempEnemy.GetComponent<BaseEnemyClass>().InitializeEnemy(spawnLocations[currentSpawnLocation]);
-            enemiesToSpawn.Remove(tempEnemy);
+            enemiesToSpawn.RemoveAt(0);
             enemiesCurrentlyAlive.Add(tempEnemy);
             currentSpawnLocation++;
             ClampSpawnLocation();
+            spawnTimer = timeBetweenSpawns;
         }
     }
 
@@ -140,6 +199,14 @@ public class EnemyWaveManager : MonoBehaviour
         if (currentSpawnLocation > spawnLocations.Count - 1)
         {
             currentSpawnLocation = 0;
+        }
+    }
+
+    void WaveEndCheck()
+    {
+        if (enemiesCurrentlyAlive.Count == 0 && enemiesToSpawn.Count == 0)
+        {
+            EndWave();
         }
     }
 }

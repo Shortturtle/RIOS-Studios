@@ -61,6 +61,8 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         waypointManager = wM;
         waypointList = waypointManager.points;
         totalDistance = waypointManager.totalDistance;
+        waypointIndex = 0;
+        target = waypointManager.points[waypointIndex];
     }
 
     // Update is called once per frame
