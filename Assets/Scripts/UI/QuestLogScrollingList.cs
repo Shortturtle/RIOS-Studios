@@ -16,7 +16,7 @@ public class QuestLogScrollingList : MonoBehaviour
 
     private Dictionary<string, QuestLogButton> idToButtonMap = new Dictionary<string, QuestLogButton>();
 
-    private QuestLogButton CreateButtonIfNotExists(Quest quest, UnityAction selectAction)
+    public QuestLogButton CreateButtonIfNotExists(Quest quest, UnityAction selectAction)
     {
         QuestLogButton questLogButton = null;
 

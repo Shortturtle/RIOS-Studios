@@ -6,6 +6,12 @@ public class TestQuestQuestStep : QuestStep
     private int numberOfThingDone = 0;
     private int numberNeededToComplete = 5;
 
+    
+    private void Start()
+    {
+        //IMPORTANT FOR QUEST LOG
+        UpdateState();
+    }
 
     private void OnEnable()
     {
@@ -36,7 +42,8 @@ public class TestQuestQuestStep : QuestStep
     {
         //idk what this
         string state = numberOfThingDone.ToString();
-        ChangeState(state);
+        string status = "Collected " + numberOfThingDone + " / " + numberNeededToComplete + " Kanades.";
+        ChangeState(state, status);
     }
 
     //i have no clue what this is either fuccc

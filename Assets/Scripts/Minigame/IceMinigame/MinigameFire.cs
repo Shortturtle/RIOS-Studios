@@ -14,6 +14,7 @@ public class MinigameFire : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        FindFirstObjectByType<IceMGManager>().IceMelted();
         Destroy(other.gameObject);
     }
 }
