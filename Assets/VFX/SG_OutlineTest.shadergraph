@@ -41,6 +41,9 @@
         },
         {
             "m_Id": "0a56eb27660d4c83a97ae2464434b475"
+        },
+        {
+            "m_Id": "783a9def772d4a51a210b83f9cda0fc7"
         }
     ],
     "m_GroupDatas": [],
@@ -128,6 +131,9 @@
         "m_Blocks": [
             {
                 "m_Id": "83bc2deab6054741aae9190cec35372b"
+            },
+            {
+                "m_Id": "783a9def772d4a51a210b83f9cda0fc7"
             }
         ]
     },
@@ -359,7 +365,7 @@
         "m_Id": "f99c2d1b12ec4305958ae11b1437afa1"
     },
     "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 0,
+    "m_SurfaceType": 1,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
@@ -457,6 +463,40 @@
         "b": 0.5,
         "a": 1.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "783a9def772d4a51a210b83f9cda0fc7",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.Alpha",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "e46f90e470a14aecab1e895dc41aa560"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.Alpha"
 }
 
 {
@@ -845,6 +885,21 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "VertexDescription.Tangent"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "e46f90e470a14aecab1e895dc41aa560",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Alpha",
+    "m_StageCapability": 2,
+    "m_Value": 0.7099999785423279,
+    "m_DefaultValue": 1.0,
+    "m_Labels": []
 }
 
 {
