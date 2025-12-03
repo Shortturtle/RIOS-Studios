@@ -7,6 +7,8 @@ public class EnemyStats : ScriptableObject
 
     public float speed;
 
+    public int energyOnDeath;
+
     public bool isCamo;
 
 }

@@ -54,12 +54,14 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        currentHealth = enemyStats.maxHealth;
-        speed = enemyStats.speed;
+
     }
 
     public void InitializeEnemy(WaypointManager wM)
     {
+        currentHealth = enemyStats.maxHealth;
+        speed = enemyStats.speed;
+        energyOnDeath = enemyStats.energyOnDeath;
         waypointManager = wM;
         waypointList = waypointManager.points;
         totalDistance = waypointManager.totalDistance;

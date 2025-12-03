@@ -84,25 +84,35 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceTower(InputAction.CallbackContext ctx)
     {
-        if (!canPlace)
+       if (isPlacing)
         {
-            Debug.Log("Invalid Position to place");
-        }
+            if (!canPlace)
+            {
+                Debug.Log("Invalid Position to place");
+            }
 
-        else if (towerClass.cost > ResourceManager.instance.currentEnergy)
-        {
-            Debug.Log("Not Enough Money");
-        }
+            else if (towerClass.cost > ResourceManager.instance.currentEnergy)
+            {
+                Debug.Log("Not Enough Money");
+            }
 
-        else
-        {
-            ResourceManager.instance.RemoveEnergy(towerClass.cost);
-            Instantiate(towerToPlace, currentPlacement, Quaternion.identity);
-            StopPlacement();
+            else
+            {
+                ResourceManager.instance.RemoveEnergy(towerClass.cost);
+                Instantiate(towerToPlace, currentPlacement, Quaternion.identity);
+                StopPlacement();
+            }
         }
     }
 
-    void InputTracker()
+    public void MenuClose(InputAction.CallbackContext ctx)
+    {
+        if (isPlacing)
+        {
+            StopPlacement();
+        }
+    }
+        void InputTracker()
     {
         if (isPlacing)
         {
@@ -121,8 +131,15 @@ public class BuildingManager : MonoBehaviour
     {
        if (tower.GetComponent<BaseTowerClass>() != null)
         {
-            InitializeTowerIndicator(tower);
-            isPlacing = true;
+            if (towerToPlace != tower || towerToPlace == null)
+            {
+                InitializeTowerIndicator(tower);
+            }
+
+            else if (towerToPlace == tower)
+            {
+                StopPlacement();
+            }
         }
     }
 
@@ -137,6 +154,7 @@ public class BuildingManager : MonoBehaviour
             renderers.Clear();
         }
 
+        isPlacing = true;
         towerToPlace = tower;
         ghostTowerIndicator = Instantiate(towerToPlace);
         towerClass = ghostTowerIndicator.GetComponent<BaseTowerClass>();
@@ -195,6 +213,14 @@ public class BuildingManager : MonoBehaviour
 
     void StopPlacement()
     {
-
+        isPlacing = false;
+        towerToPlace = null;
+        if(ghostTowerIndicator != null)
+        {
+            Destroy(ghostTowerIndicator);
+        }
+        ghostTowerIndicator = null;
+        towerClass = null;
+        renderers.Clear();
     }
 }

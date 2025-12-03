@@ -20,6 +20,8 @@ public class BaseTowerClass: MonoBehaviour
 
     public int cost;
 
+    public GameObject Microgame;
+
     //Tower Cost System (TBD)
 
     //Placement System working with UI (also TBD)
@@ -126,6 +128,14 @@ public class BaseTowerClass: MonoBehaviour
     public void StartMicrogame()
     {
         
+    }
+
+    private void OnValidate()
+    {
+        if (Microgame != null && Microgame.GetComponent<BaseMinigameClass>() == null)
+        {
+            Microgame = null;
+        }
     }
     #endregion
 }
