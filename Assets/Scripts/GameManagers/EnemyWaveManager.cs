@@ -5,6 +5,12 @@ public class EnemyWaveManager : MonoBehaviour
 {
     public static EnemyWaveManager instance;
 
+    private void Awake()
+    {
+        instance = this;
+        maxWaves = waveHolder.enemyWaves.Count;
+    }
+
     public EnemyWaves waveHolder;
 
     private int currentWave;
@@ -25,11 +31,6 @@ public class EnemyWaveManager : MonoBehaviour
 
     private float listCleanDelay = 0.2f;
     private float listCleanTimer;
-
-    private void Awake()
-    {
-        maxWaves = waveHolder.enemyWaves.Count;
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -7,9 +7,9 @@ public class ResourceManager : MonoBehaviour
     public float maxHealth;
     public int startingEnergy;
 
-    public float currentBaseHealth;
-    public int currentEnergy;
-    public int currentAbilityPoint;
+    [HideInInspector] public float currentBaseHealth;
+    [HideInInspector] public int currentEnergy;
+    [HideInInspector] public int currentAbilityPoint;
 
     private void Awake()
     {
@@ -17,12 +17,12 @@ public class ResourceManager : MonoBehaviour
         {
             Debug.LogError($"Resource Manager instance already exists! Remove one of the instances!");
             Destroy( instance );
-            instance = new ResourceManager();
+            instance = this;
         }
 
         else
         {
-            instance = new ResourceManager();
+            instance = this;
         }
 
         currentBaseHealth = maxHealth;

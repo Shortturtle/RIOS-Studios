@@ -107,8 +107,8 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public void GetNextWaypoint() // waypoint tracking
     {
         if (waypointIndex >= waypointList.Length - 1)
-        { 
-            Die();
+        {
+            BaseReached();
             return;
         }
 
@@ -222,5 +222,11 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
                 percentageDistance = (distanceTravelled / totalDistance) * 100;
                 return;
         }
+    }
+
+    protected virtual void BaseReached()
+    {
+        ResourceManager.instance.ReduceHealth(currentHealth);
+        Destroy(this.gameObject);
     }
 }

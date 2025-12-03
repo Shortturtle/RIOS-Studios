@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1570631491604028972}
   - component: {fileID: 7269175162586080563}
   - component: {fileID: 412314792049430651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CannonModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4835880728059713542}
   - component: {fileID: 5185925754073465702}
   - component: {fileID: 5050503938684532782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackSpeedTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,9 +324,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4736973727324858059}
   - component: {fileID: 3525919904725140758}
-  - component: {fileID: 1957618674767416886}
   - component: {fileID: 124537438189142876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,27 +371,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &1957618674767416886
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3525846978482622419}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.0000001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &124537438189142876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -429,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5439688014560315730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -463,7 +441,7 @@ GameObject:
   - component: {fileID: 8677536415109731033}
   - component: {fileID: 8341572127472427782}
   - component: {fileID: 1752702100916627343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +552,7 @@ GameObject:
   - component: {fileID: 7713235988818575760}
   - component: {fileID: 4546256019675010710}
   - component: {fileID: 8816216216485225962}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Concept1Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

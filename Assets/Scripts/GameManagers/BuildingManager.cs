@@ -1,17 +1,25 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
+using UnityEditor.Rendering;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager instance;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public GameObject towerToPlace;
     public BaseTowerClass towerClass;
     public GameObject ghostTowerIndicator;
-    private List<Renderer> renderers;
+    private List<Renderer> renderers = new List<Renderer>();
     public bool isPlacing;
     private bool canPlace;
 
@@ -19,8 +27,10 @@ public class BuildingManager : MonoBehaviour
     public Material cannotPlaceMaterial;
 
     public float topSafePercent = 12f;
-    public LayerMask placementLayerMask, obstacleLayerMask;
+    public LayerMask placeableLayerMask, obstacleLayerMask;
     private Vector3 currentPlacement;
+
+    public InputActionAsset inputMap;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +40,8 @@ public class BuildingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        InputTracker();
+
         if (isPlacing && towerToPlace != null)
         {
             Raycast();
@@ -40,44 +52,92 @@ public class BuildingManager : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = Camera.main.nearClipPlane;
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.yellow);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100))
+        if (Input.mousePosition.y > Screen.height * (1f - (topSafePercent / 100f)))
         {
-            currentPlacement = hitInfo.point;
+            ghostTowerIndicator.SetActive(false);
         }
 
         else
         {
-            
+            ghostTowerIndicator.SetActive(true);
+        }
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, obstacleLayerMask))
+        {
+            currentPlacement = hitInfo.point;
+            ghostTowerIndicator.transform.position = currentPlacement;
+            canPlace = false;
+            SetGhostObjectMaterial(cannotPlaceMaterial);
+        }
+
+        else if (Physics.Raycast(ray, out RaycastHit hitInfo2, 100, placeableLayerMask))
+        {
+            currentPlacement = hitInfo2.point;
+            ghostTowerIndicator.transform.position = currentPlacement;
+            canPlace = true;
+            SetGhostObjectMaterial(placeableMaterial);
+        }
+
+    }
+
+    public void PlaceTower(InputAction.CallbackContext ctx)
+    {
+        if (!canPlace)
+        {
+            Debug.Log("Invalid Position to place");
+        }
+
+        else if (towerClass.cost > ResourceManager.instance.currentEnergy)
+        {
+            Debug.Log("Not Enough Money");
+        }
+
+        else
+        {
+            ResourceManager.instance.RemoveEnergy(towerClass.cost);
+            Instantiate(towerToPlace, currentPlacement, Quaternion.identity);
+            StopPlacement();
         }
     }
 
-    void PlaceObject()
+    void InputTracker()
     {
-        
+        if (isPlacing)
+        {
+            inputMap.FindActionMap("BuildingSystem").Enable();
+            inputMap.FindActionMap("DISABLE").Disable();
+        }
+
+        else
+        {
+            inputMap.FindActionMap("DISABLE").Enable();
+            inputMap.FindActionMap("BuildingSystem").Disable();
+        }
     }
 
-    public void TowerPlacementButton(GameObject tower)
+    public void TowerPlacement(GameObject tower)
     {
        if (tower.GetComponent<BaseTowerClass>() != null)
         {
-            towerToPlace = tower;
-            InitializeTowerIndicator();
+            InitializeTowerIndicator(tower);
             isPlacing = true;
-            return;
         }
     }
 
-    void InitializeTowerIndicator()
+    void InitializeTowerIndicator(GameObject tower)
     {
         if (ghostTowerIndicator != null)
         {
             Destroy(ghostTowerIndicator);
+            towerToPlace = null;
             ghostTowerIndicator = null;
             towerClass = null;
             renderers.Clear();
         }
 
+        towerToPlace = tower;
         ghostTowerIndicator = Instantiate(towerToPlace);
         towerClass = ghostTowerIndicator.GetComponent<BaseTowerClass>();
         towerClass.InitializeTower();
@@ -103,16 +163,38 @@ public class BuildingManager : MonoBehaviour
 
         if(ghostTowerIndicator.GetComponentsInChildren<Renderer>() != null)
         {
-            foreach(var renderer in ghostTowerIndicator.GetComponentsInChildren<Renderer>())
+            foreach(var r in ghostTowerIndicator.GetComponentsInChildren<Renderer>())
             {
-                renderers.Add(renderer);
+                renderers.Add(r);
             }
         }
 
+        foreach (var renderer in renderers)
+        {
+            Material[] materials = renderer.materials;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = placeableMaterial;
+            }
+            renderer.materials = materials; 
+        }
+    }
+
+    void SetGhostObjectMaterial(Material mat)
+    {
         foreach(var renderer in renderers)
         {
-            Material material = renderer.material;
-            material = placeableMaterial;
+            Material[] materials = renderer.materials;
+             for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = mat;
+            }
+            renderer.materials = materials;
         }
+    }
+
+    void StopPlacement()
+    {
+
     }
 }
