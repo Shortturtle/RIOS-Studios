@@ -17,9 +17,8 @@ public class IceMGManager : BaseMinigameClass
 
         if(numberOfIceToMelt == 0)
         {
-            //call end to minigame
-            //Debug.Log("end minigame");
             EndMinigame();
+            Destroy(this.gameObject);
         }
     }
 }
