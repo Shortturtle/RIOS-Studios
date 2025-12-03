@@ -174,4 +174,8 @@ public class PlayerMovement : MonoBehaviour
     {
         FindAnyObjectByType<TowerSelectMenu>().TowerSelectMenuPopup();
     }
+    public void QuestLog(InputAction.CallbackContext ctx)
+    {
+        FindAnyObjectByType<QuestLogUI>().QuestLogTogglePressed();
+    }
 }

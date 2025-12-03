@@ -30,7 +30,7 @@ public class QuestLogUI : MonoBehaviour
     }
 
     // ref this with the player input to toggle quest log on and off
-    private void QuestLogTogglePressed()
+    public void QuestLogTogglePressed()
     {
         if (contentParent.activeInHierarchy)
         {

@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6985dc248a9ebc4e88f5858711af079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: []
+  totalDistance: 0
 --- !u!4 &6980800
 Transform:
   m_ObjectHideFlags: 0
@@ -3329,6 +3331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: fc6229c0a9076a04d88b70dc9024b747, type: 2}
+  questPoint: {fileID: 0}
 --- !u!65 &1932002664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3432,7 +3435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: fc6229c0a9076a04d88b70dc9024b747, type: 2}
   events:
-  - name: Yessirr
+  - name: Nah
     onPickedResponse:
       m_PersistentCalls:
         m_Calls:
@@ -3448,7 +3451,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - name: Nah
+  - name: Idk
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: si
     onPickedResponse:
       m_PersistentCalls:
         m_Calls: []

@@ -4,6 +4,14 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueObject dialogueObject;
 
+    //test for quest
+    public QuestPoint questPoint;
+    private void Start()
+    {
+        questPoint = GetComponentInChildren<QuestPoint>();
+    }
+    //test for quest
+
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
         this.dialogueObject = dialogueObject;
@@ -42,5 +50,10 @@ public class DialogueActivator : MonoBehaviour, IInteractable
             }
         }
         player.DialogueUI.ShowDialogue(dialogueObject);
+
+        if(questPoint != null)
+        {
+            questPoint.ActivateQuest();
+        }
     }
 }
