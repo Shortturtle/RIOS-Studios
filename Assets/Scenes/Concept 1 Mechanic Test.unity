@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerToPlace: {fileID: 0}
+  towerClass: {fileID: 0}
+  ghostTowerIndicator: {fileID: 0}
   isPlacing: 0
   topSafePercent: 15
   placementLayerMask:
@@ -577,9 +579,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 815970909990189161, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 979608811436766016, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525846978482622419, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4546256019675010710, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790800665437212984, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -625,6 +643,10 @@ PrefabInstance:
       propertyPath: tower
       value: 
       objectReference: {fileID: 828513249}
+    - target: {fileID: 5425810279518941513, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6590060429733126036, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
       propertyPath: m_Name
       value: Concept1Tower

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,7 +11,12 @@ public class BuildingManager : MonoBehaviour
     public GameObject towerToPlace;
     public BaseTowerClass towerClass;
     public GameObject ghostTowerIndicator;
+    private List<Renderer> renderers;
     public bool isPlacing;
+    private bool canPlace;
+
+    public Material placeableMaterial;
+    public Material cannotPlaceMaterial;
 
     public float topSafePercent = 12f;
     public LayerMask placementLayerMask, obstacleLayerMask;
@@ -23,9 +30,9 @@ public class BuildingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlacing)
+        if (isPlacing && towerToPlace != null)
         {
-
+            Raycast();
         }
     }
     void Raycast()
@@ -41,7 +48,7 @@ public class BuildingManager : MonoBehaviour
 
         else
         {
-            currentPlacement = new Vector3(999,999,999);
+            
         }
     }
 
@@ -50,16 +57,62 @@ public class BuildingManager : MonoBehaviour
         
     }
 
-    public void StartTowerPlacement(GameObject tower)
+    public void TowerPlacementButton(GameObject tower)
     {
        if (tower.GetComponent<BaseTowerClass>() != null)
         {
             towerToPlace = tower;
-            ghostTowerIndicator = Instantiate(towerToPlace);
-            towerClass = ghostTowerIndicator.GetComponent<BaseTowerClass>();
-            towerClass.InitializeTower();
-            towerClass.enabled = false;
+            InitializeTowerIndicator();
+            isPlacing = true;
+            return;
         }
     }
 
+    void InitializeTowerIndicator()
+    {
+        if (ghostTowerIndicator != null)
+        {
+            Destroy(ghostTowerIndicator);
+            ghostTowerIndicator = null;
+            towerClass = null;
+            renderers.Clear();
+        }
+
+        ghostTowerIndicator = Instantiate(towerToPlace);
+        towerClass = ghostTowerIndicator.GetComponent<BaseTowerClass>();
+        towerClass.InitializeTower();
+        towerClass.enabled = false;
+        
+        if(ghostTowerIndicator.GetComponent<Collider>() != null)
+        {
+            ghostTowerIndicator.GetComponent<Collider>().enabled = false;
+        }
+
+        if(ghostTowerIndicator.GetComponentsInChildren<Collider>() != null)
+        {
+            foreach (var collider in ghostTowerIndicator.GetComponentsInChildren<Collider>())
+            {
+                collider.enabled = false;
+            }
+        }
+
+        if(ghostTowerIndicator.GetComponent<Renderer>() != null)
+        {
+            renderers.Add(ghostTowerIndicator.GetComponent<Renderer>());
+        }
+
+        if(ghostTowerIndicator.GetComponentsInChildren<Renderer>() != null)
+        {
+            foreach(var renderer in ghostTowerIndicator.GetComponentsInChildren<Renderer>())
+            {
+                renderers.Add(renderer);
+            }
+        }
+
+        foreach(var renderer in renderers)
+        {
+            Material material = renderer.material;
+            material = placeableMaterial;
+        }
+    }
 }
