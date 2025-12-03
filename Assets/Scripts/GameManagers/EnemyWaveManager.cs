@@ -23,7 +23,7 @@ public class EnemyWaveManager : MonoBehaviour
     private float spawnTimer;
     private bool currentWavePlaying;
 
-    private float listCleanDelay = 0.1f;
+    private float listCleanDelay = 0.2f;
     private float listCleanTimer;
 
     private void Awake()
@@ -35,7 +35,6 @@ public class EnemyWaveManager : MonoBehaviour
     void Start()
     {
         currentWave = 0;
-        InitializeWave(waveHolder.enemyWaves[currentWave].wave);
         listCleanTimer = listCleanDelay;
         StartBuffer();
     }
@@ -67,12 +66,12 @@ public class EnemyWaveManager : MonoBehaviour
     void EndWave()
     {
         currentWavePlaying = false;
-        StartBuffer();  
+        StartBuffer();
+        currentWave++;
     }
 
     void PrepNextWave()
     {
-        currentWave++;
         enemiesToSpawn.Clear();
         enemiesCurrentlyAlive.Clear();
         InitializeWave(waveHolder.enemyWaves[currentWave].wave);    
@@ -107,6 +106,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     void InitializeWave(List<EnemyWaves.EnemyClump> temp)
     {
+        Debug.Log(temp.Count);
         foreach (var enemyClump in temp)
         {
             for (int i = 0; i < enemyClump.NumberToSpawn; i++)

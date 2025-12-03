@@ -18,12 +18,16 @@ public class BaseTowerClass: MonoBehaviour
     protected float bufferCountdownTimer;
     public bool isBuffer = false;
 
-    public GameObject microgameCanvas;
-    public GameObject microgame;
+    public int cost;
 
     //Tower Cost System (TBD)
 
     //Placement System working with UI (also TBD)
+
+    public virtual void InitializeTower()
+    {
+
+    }
 
     #region Degrade Functions
     protected virtual void Degrade() // call public override void Degrade() to add custom degrade code for new towers
@@ -121,8 +125,7 @@ public class BaseTowerClass: MonoBehaviour
     #region Microgame Functions
     public void StartMicrogame()
     {
-        GameObject microgameInstance = Instantiate(microgame, microgameCanvas.transform);
-        microgameInstance.transform.GetChild(0).GetComponent<SPMGManager>().InitalizeTower(this);
+        
     }
     #endregion
 }

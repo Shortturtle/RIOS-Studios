@@ -4,7 +4,7 @@ using UnityEngine;
 public class OffenseTowerStats : ScriptableObject 
 {
     [Header("Cost")]
-    public float Cost;
+    public int Cost;
     [Space(10)]
 
     [Header("Damage Stats")]

@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-    static ResourceManager instance;
+    public static ResourceManager instance;
 
     public float maxHealth;
-    public float startingEnergy;
+    public int startingEnergy;
 
-    protected float currentBaseHealth;
-    protected float currentEnergy;
-    protected int currentAbilityPoint;
+    public float currentBaseHealth;
+    public int currentEnergy;
+    public int currentAbilityPoint;
 
     private void Awake()
     {
@@ -59,12 +59,12 @@ public class ResourceManager : MonoBehaviour
         currentBaseHealth = Mathf.Clamp( currentBaseHealth, 0, maxHealth);
     }
 
-    public void AddEnergy(float amount)
+    public void AddEnergy(int amount)
     {
         currentEnergy += amount;
     }
 
-    public void RemoveEnergy(float amount)
+    public void RemoveEnergy(int amount)
     {
         currentEnergy -= amount;
     }

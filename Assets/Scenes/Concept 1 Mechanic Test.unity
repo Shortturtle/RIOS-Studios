@@ -168,11 +168,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8712a9c923ac848b4090da2ff33b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 6590060429733126036, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
-  minigameActivater: {fileID: 875449276}
-  groundLayerMask:
+  towerToPlace: {fileID: 0}
+  isPlacing: 0
+  topSafePercent: 15
+  placementLayerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 0
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &25976166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,6 +569,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277939241}
   m_CullTransparentMesh: 1
+--- !u!1001 &309495487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4546256019675010710, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.34484
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993666602742130442, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050503938684532782, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: tower
+      value: 
+      objectReference: {fileID: 828513249}
+    - target: {fileID: 6590060429733126036, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      propertyPath: m_Name
+      value: Concept1Tower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 979608811436766016, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
 --- !u!1001 &320825443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1937,6 +2009,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5baf594775d35874daf89192f6aaa633, type: 3}
+--- !u!114 &828513249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8816216216485225962, guid: 64fd59f9bc909db4fb0d69bd6ea92e21, type: 3}
+  m_PrefabInstance: {fileID: 309495487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6cccb55c091ea4b9246affd0d5987a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &840872317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6660,3 +6743,4 @@ SceneRoots:
   - {fileID: 512954682}
   - {fileID: 20697277}
   - {fileID: 1196098519}
+  - {fileID: 309495487}

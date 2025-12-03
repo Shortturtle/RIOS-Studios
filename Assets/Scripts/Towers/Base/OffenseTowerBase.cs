@@ -24,6 +24,8 @@ public class OffenseTowerBase : BaseTowerClass
     public TargettingModes targettingMode = TargettingModes.First;
     protected int targetModeNum = 0;
 
+    public GameObject MoveableTarget;
+
     protected enum ChangeDirection
     {
         Next, Prev
@@ -40,7 +42,7 @@ public class OffenseTowerBase : BaseTowerClass
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        Initialize();
+        InitializeTower();
     }
 
     private void Awake()
@@ -192,12 +194,12 @@ public class OffenseTowerBase : BaseTowerClass
     {
         if (currentTarget != null)
         {
-            Vector3 lookAtDir = new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z);
-            transform.LookAt(lookAtDir);
+            Vector3 lookAtDir = new Vector3(currentTarget.transform.position.x, MoveableTarget.transform.position.y, currentTarget.transform.position.z);
+            MoveableTarget.transform.LookAt(lookAtDir);
         }
     }
 
-    protected virtual void Initialize()
+    public override void InitializeTower()
     {
         rangeSphere.isTrigger = true;
         rangeSphere.radius = stats.Range;
@@ -208,7 +210,8 @@ public class OffenseTowerBase : BaseTowerClass
 
         projectile = stats.Projectile;
 
-        microgameCanvas = GameObject.FindGameObjectWithTag("MicrogameCanvas");
+        cost = stats.Cost;
+
         degradeTimerDuration = stats.DegradeTimerDuration;
         degradeCountdownTimer = degradeTimerDuration;
         overdriveTimerDuration = stats.OverdriveTimerDuration;
