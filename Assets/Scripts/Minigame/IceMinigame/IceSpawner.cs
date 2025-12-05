@@ -25,7 +25,13 @@ public class IceSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ////test
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    selected = possibleSpawns[UnityEngine.Random.Range(0, possibleSpawns.Count)];
+        //    iceMGManager.numberOfIceToMelt = selected.icePositions.Count;
+        //    SpawnIce();
+        //}
     }
 
     void SpawnIce()
@@ -36,4 +42,6 @@ public class IceSpawner : MonoBehaviour
             tempIce.GetComponent<RectTransform>().localPosition = position;
         }
     }
+
+
 }
