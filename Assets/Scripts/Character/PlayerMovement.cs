@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         //PauseMenu();
 
         //manual interaction to activate dialogue
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             Interactable?.Interact(this);        
         }
