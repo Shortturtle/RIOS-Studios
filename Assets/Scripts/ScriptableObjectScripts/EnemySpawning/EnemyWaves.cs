@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WaveHolder", menuName = "Waves/EnemyWaves")]
@@ -19,6 +20,7 @@ public class EnemyWaves : ScriptableObject
     }
 
     [SerializeField] public List<Wave> enemyWaves = new List<Wave>();
+    [SerializeField] public int waveEndEnergyReward;
 
     private void OnValidate()
     {

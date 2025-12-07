@@ -51,7 +51,7 @@ public class SPMGManager : MonoBehaviour
         transform.LeanMoveLocal(new Vector2(0, -1075), 0.5f).setEaseOutCirc();
         mgOpen = false;
         canOpenMG = false;
-        tower.UndoDegrade();
+        tower.RepairTower();
         minigameActivater.RemoveTowerFromList(tower);
         yield return new WaitForSeconds(0.6f);
         canOpenMG = true;

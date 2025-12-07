@@ -57,7 +57,7 @@ public class FNMGManager : MonoBehaviour
         canOpenMG = false;
         yield return new WaitForSeconds(0.6f);
         canOpenMG = true;
-        tower.UndoDegrade();
+        tower.RepairTower();
         minigameActivater.RemoveTowerFromList(tower);
         Destroy(transform.parent.gameObject);
     }

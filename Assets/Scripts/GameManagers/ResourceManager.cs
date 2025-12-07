@@ -48,6 +48,7 @@ public class ResourceManager : MonoBehaviour
 
         if (currentBaseHealth <= 0)
         {
+            GameManager.instance.LoseGame();
             return;
         }
     }

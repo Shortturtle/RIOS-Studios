@@ -13,7 +13,17 @@ public class BuildingManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null)
+        {
+            Debug.LogError($"Building Manager instance already exists! Remove one of the instances!");
+            Destroy(instance);
+            instance = this;
+        }
+
+        else
+        {
+            instance = this;
+        }
     }
 
     public GameObject towerToPlace;
@@ -64,7 +74,7 @@ public class BuildingManager : MonoBehaviour
             ghostTowerIndicator.SetActive(true);
         }
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, obstacleLayerMask))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, obstacleLayerMask, QueryTriggerInteraction.Ignore))
         {
             currentPlacement = hitInfo.point;
             ghostTowerIndicator.transform.position = currentPlacement;
@@ -72,7 +82,7 @@ public class BuildingManager : MonoBehaviour
             SetGhostObjectMaterial(cannotPlaceMaterial);
         }
 
-        else if (Physics.Raycast(ray, out RaycastHit hitInfo2, 100, placeableLayerMask))
+        else if (Physics.Raycast(ray, out RaycastHit hitInfo2, 100, placeableLayerMask, QueryTriggerInteraction.Ignore))
         {
             currentPlacement = hitInfo2.point;
             ghostTowerIndicator.transform.position = currentPlacement;

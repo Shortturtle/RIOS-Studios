@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent (typeof(SphereCollider))]
 public class OffenseTowerBase : BaseTowerClass
@@ -34,11 +36,20 @@ public class OffenseTowerBase : BaseTowerClass
     // Damage variables
     [HideInInspector] public float damageValue;
     [HideInInspector] public float timeBetweenAttacks;
+    [HideInInspector] public float rangeValue;
     protected float attackTimer;
 
     // Projectile variables
     public GameObject bulletExitPoint;
     protected GameObject projectile;
+
+    //UI Variables
+    public GameObject hoverUI;
+    protected GameObject hoverUIInstance;
+    public GameObject hoverUIPosition;
+    public GameObject statsUI;
+    protected bool clickable;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
@@ -57,6 +68,11 @@ public class OffenseTowerBase : BaseTowerClass
         TrackEnemy();
         AttackTimer();
         GeneralTimer();
+
+        if (hoverUIInstance != null)
+        {
+            FixHoverUIPosition();
+        }
     }
 
     protected virtual void FixedUpdate()
@@ -201,12 +217,14 @@ public class OffenseTowerBase : BaseTowerClass
 
     public override void InitializeTower()
     {
-        rangeSphere.isTrigger = true;
-        rangeSphere.radius = stats.Range;
 
         damageValue = stats.Damage;
 
         timeBetweenAttacks = stats.TimeBetweenAttacks;
+
+        rangeValue = stats.Range;
+        rangeSphere.isTrigger = true;
+        rangeSphere.radius = rangeValue;
 
         projectile = stats.Projectile;
 
@@ -254,7 +272,7 @@ public class OffenseTowerBase : BaseTowerClass
         base.ResetDegradeTimer();
     }
 
-    public override void UndoDegrade()
+    public override void RepairTower()
     {
         OverDrive();
         degradeRank = 0;
@@ -273,5 +291,27 @@ public class OffenseTowerBase : BaseTowerClass
     {
         base.OverDriveEnd();
         timeBetweenAttacks = stats.TimeBetweenAttacks;
+    }
+
+    public override void InitializeHoverUI()
+    {
+        hoverUIInstance = Instantiate(hoverUI, GameObject.FindGameObjectWithTag("HoverCanvas"). transform);
+        hoverUIInstance.transform.position = Camera.main.WorldToScreenPoint(hoverUIPosition.transform.position);
+        var offenseHoverUI = hoverUIInstance.GetComponent<OffenseTowerHoverUI>();
+
+        if (offenseHoverUI != null)
+        {
+            offenseHoverUI.SetValues(this);
+        }
+    }
+
+    public override void DeleteHoverUI()
+    {
+        Destroy(hoverUIInstance);
+    }
+
+    protected void FixHoverUIPosition()
+    {
+        hoverUIInstance.transform.position = Camera.main.WorldToScreenPoint(hoverUIPosition.transform.position);
     }
 }

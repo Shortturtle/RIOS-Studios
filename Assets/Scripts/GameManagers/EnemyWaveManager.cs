@@ -7,7 +7,18 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null)
+        {
+            Debug.LogError($"Enemy Wave Manager instance already exists! Remove one of the instances!");
+            Destroy(instance);
+            instance = this;
+        }
+
+        else
+        {
+            instance = this;
+        }
+
         maxWaves = waveHolder.enemyWaves.Count;
     }
 
@@ -28,6 +39,8 @@ public class EnemyWaveManager : MonoBehaviour
     public float timeBetweenSpawns;
     private float spawnTimer;
     private bool currentWavePlaying;
+    private int waveEndEnergyReward;
+    private bool winYes = false;
 
     private float listCleanDelay = 0.2f;
     private float listCleanTimer;
@@ -37,6 +50,7 @@ public class EnemyWaveManager : MonoBehaviour
     {
         currentWave = 0;
         listCleanTimer = listCleanDelay;
+        waveEndEnergyReward = waveHolder.waveEndEnergyReward;
         StartBuffer();
     }
 
@@ -67,6 +81,7 @@ public class EnemyWaveManager : MonoBehaviour
     void EndWave()
     {
         currentWavePlaying = false;
+        ResourceManager.instance.AddEnergy(waveEndEnergyReward);
         StartBuffer();
         currentWave++;
     }
@@ -115,6 +130,13 @@ public class EnemyWaveManager : MonoBehaviour
                 enemiesToSpawn.Add(enemyClump.EnemyToSpawn);
             }
         }
+    }
+
+    void EndGame()
+    {
+        currentWavePlaying = false;
+        winYes = true;
+        GameManager.instance.WinGame();
     }
 
     void ListCleaning()
@@ -207,7 +229,42 @@ public class EnemyWaveManager : MonoBehaviour
     {
         if (enemiesCurrentlyAlive.Count == 0 && enemiesToSpawn.Count == 0)
         {
-            EndWave();
+            if (currentWave == maxWaves && !winYes)
+            {
+                EndGame();
+            }
+
+            else
+            {
+                EndWave();
+            }
+        }
+    }
+
+    public void LoseWaveClear()
+    {
+        if (!currentWavePlaying)
+        {
+            this.enabled = false;
+        }
+
+        else if (currentWavePlaying)
+        {
+            if (enemiesCurrentlyAlive.Count > 0)
+            {
+                foreach(var enemy in enemiesCurrentlyAlive)
+                {
+                    Destroy(enemy);
+                }
+                enemiesCurrentlyAlive.Clear();
+            }
+
+            if (enemiesToSpawn.Count > 0)
+            {
+                enemiesToSpawn.Clear();
+            }
+
+            this.enabled = false;
         }
     }
 }

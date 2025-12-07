@@ -6,9 +6,9 @@ public class IceMGManager : BaseMinigameClass
     public int numberOfIceToMelt;
     //private int numberOfIceMelted;
 
-    public override void StartMinigame()
+    public override void StartMinigame(BaseTowerClass tower)
     {
-        base.StartMinigame();
+        base.StartMinigame(tower);
     }
 
     public void IceMelted()

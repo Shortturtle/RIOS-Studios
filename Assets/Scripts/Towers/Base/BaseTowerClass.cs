@@ -1,6 +1,4 @@
-using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [RequireComponent (typeof(Rigidbody))]
 public class BaseTowerClass: MonoBehaviour
@@ -20,7 +18,7 @@ public class BaseTowerClass: MonoBehaviour
 
     public int cost;
 
-    public GameObject Microgame;
+    public GameObject microgame;
 
     //Tower Cost System (TBD)
 
@@ -37,7 +35,7 @@ public class BaseTowerClass: MonoBehaviour
 
     }
 
-    public virtual void UndoDegrade() // call public override void UndoDegrade() to add custom degrade code for new towers
+    public virtual void RepairTower() // call public override void UndoDegrade() to add custom degrade code for new towers
     {
 
     }
@@ -127,15 +125,29 @@ public class BaseTowerClass: MonoBehaviour
     #region Microgame Functions
     public void StartMicrogame()
     {
-        
+        var microgameInstance = Instantiate(microgame, GameObject.FindGameObjectWithTag("MicrogameCanvas").transform);
+        microgameInstance.GetComponent<BaseMinigameClass>().StartMinigame(this);
     }
 
     private void OnValidate()
     {
-        if (Microgame != null && Microgame.GetComponent<BaseMinigameClass>() == null)
+        if (microgame != null && microgame.GetComponent<BaseMinigameClass>() == null)
         {
-            Microgame = null;
+            microgame = null;
         }
+    }
+    #endregion
+
+    #region UI Functions
+
+    public virtual void InitializeHoverUI()
+    {
+
+    }
+
+    public virtual void DeleteHoverUI()
+    {
+
     }
     #endregion
 }
