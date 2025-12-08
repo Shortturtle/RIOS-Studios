@@ -930,7 +930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 331671931}
         m_TargetAssemblyTypeName: TowerInteractionManager, Assembly-CSharp
-        m_MethodName: ActivateMinigame
+        m_MethodName: ActivateMicrogame
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2570,6 +2570,8 @@ MonoBehaviour:
   accelerationFactor: 10
   decelerationFactor: 100
   gravity: -9.8
+  stunAbilityCost: 0
+  rewindAbilityCost: 0
   stunRadius: 5
   enemyLayer:
     serializedVersion: 2
@@ -3762,6 +3764,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104821951}
   m_CullTransparentMesh: 1
+--- !u!1 &1113334553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113334554}
+  - component: {fileID: 1113334555}
+  m_Layer: 0
+  m_Name: MicrogameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1113334554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113334553}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1530054973}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1113334555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113334553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab231e85636e6a42b3023bb76f7488a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyPlayingMinigame: 0
+  targettedTower: {fileID: 0}
+  chosenMicrogame: {fileID: 0}
 --- !u!1 &1130933623
 GameObject:
   m_ObjectHideFlags: 0
@@ -5224,6 +5273,7 @@ Transform:
   - {fileID: 911324016}
   - {fileID: 1875092540}
   - {fileID: 331671930}
+  - {fileID: 1113334554}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1538161390
