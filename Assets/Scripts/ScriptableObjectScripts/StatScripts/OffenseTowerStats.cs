@@ -22,4 +22,19 @@ public class OffenseTowerStats : ScriptableObject
     public float OverdriveTimerDuration;
     public float BufferTimerDuration;
     public int MaxDegradeRank;
+    [Space(10)]
+
+    [Header("Microgame")]
+    public GameObject Microgame;
+
+    private void OnValidate()
+    {
+        if(Microgame != null)
+        {
+            if(Microgame.GetComponent<BaseMicrogameClass>() == null)
+            {
+                Microgame = null;
+            }
+        }
+    }
 }

@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
 
     //stun ability stuff
+    public int stunAbilityCost;
+    public int rewindAbilityCost;
     public float stunRadius = 5f;
     public LayerMask enemyLayer;
 
@@ -76,30 +78,48 @@ public class PlayerMovement : MonoBehaviour
 
     public void StunBubble(InputAction.CallbackContext ctx)
     {
-        //find colliders within the AoE that are on the enemy layer
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);
-        
-        foreach (Collider hit in hitColliders)
+        if (ResourceManager.instance.currentAbilityPoint > stunAbilityCost)
         {
-            BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
-            if (enemy != null)
+            ResourceManager.instance.RemoveAbilityPoint(stunAbilityCost);
+            //find colliders within the AoE that are on the enemy layer
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);
+
+            foreach (Collider hit in hitColliders)
             {
-                enemy.Stun();
+                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+                if (enemy != null)
+                {
+                    enemy.Stun();
+                }
             }
+        }
+
+        else
+        {
+            return;
         }
     }
 
     public void RewindEnemies(InputAction.CallbackContext ctx)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
-
-        foreach (Collider hit in hitColliders)
+        if (ResourceManager.instance.currentAbilityPoint > rewindAbilityCost)
         {
-            BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
-            if (enemy != null)
+            ResourceManager.instance.RemoveAbilityPoint(rewindAbilityCost);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+
+            foreach (Collider hit in hitColliders)
             {
-                enemy.StartRewind();
+                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+                if (enemy != null)
+                {
+                    enemy.StartRewind();
+                }
             }
+        }
+
+        else
+        {
+            return;
         }
     }
     private void OnDrawGizmosSelected()
@@ -150,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void GatherInput(InputAction.CallbackContext ctx) { GatherInput(ctx.ReadValue<Vector2>()); }
 
-    private void PauseMenu(InputAction.CallbackContext ctx)
+    public void PauseMenu(InputAction.CallbackContext ctx)
     {
         if (Time.timeScale == 0) { ResumeGame(); }
         else { PauseGame(); }        

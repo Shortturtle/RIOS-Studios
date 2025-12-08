@@ -16,6 +16,6 @@ public class Billboard2D : MonoBehaviour
 
     void LookAtCamera()
     {
-        transform.LookAt(Camera.main.transform);
+        transform.forward = Camera.main.transform.forward;
     }
 }

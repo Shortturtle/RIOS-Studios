@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class IceMGManager : BaseMinigameClass
+public class IceMGManager : BaseMicrogameClass
 {
     public int numberOfIceToMelt;
     //private int numberOfIceMelted;
 
-    public override void StartMinigame(BaseTowerClass tower)
+    public override void StartMicrogame()
     {
-        base.StartMinigame(tower);
+        base.StartMicrogame();
     }
 
     public void IceMelted()
@@ -17,7 +17,7 @@ public class IceMGManager : BaseMinigameClass
 
         if(numberOfIceToMelt == 0)
         {
-            EndMinigame();
+            EndMicrogame();
             Destroy(this.gameObject);
         }
     }

@@ -20,7 +20,6 @@ public class MinigameActivater : MonoBehaviour
             if (availableMinigames != null && !isMinigamePlaying)
             {
                 Debug.Log(availableMinigames[0]);
-                availableMinigames[0].StartMicrogame();
                 isMinigamePlaying = true;
             }
         }

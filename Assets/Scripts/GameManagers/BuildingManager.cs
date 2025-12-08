@@ -25,6 +25,7 @@ public class BuildingManager : MonoBehaviour
             instance = this;
         }
     }
+    private bool isMicrogamePlaying = false;
 
     public GameObject towerToPlace;
     public BaseTowerClass towerClass;
@@ -50,12 +51,18 @@ public class BuildingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetMinigameBool();
         InputTracker();
 
         if (isPlacing && towerToPlace != null)
         {
             Raycast();
         }
+    }
+
+    private void SetMinigameBool()
+    {
+        isMicrogamePlaying = MicrogameManager.instance.currentlyPlayingMinigame;
     }
     void Raycast()
     {
@@ -124,7 +131,7 @@ public class BuildingManager : MonoBehaviour
     }
         void InputTracker()
     {
-        if (isPlacing)
+        if (isPlacing && !isMicrogamePlaying)
         {
             inputMap.FindActionMap("BuildingSystem").Enable();
             inputMap.FindActionMap("DISABLE").Disable();
@@ -139,16 +146,19 @@ public class BuildingManager : MonoBehaviour
 
     public void TowerPlacement(GameObject tower)
     {
-       if (tower.GetComponent<BaseTowerClass>() != null)
+        if (!isMicrogamePlaying)
         {
-            if (towerToPlace != tower || towerToPlace == null)
+            if (tower.GetComponent<BaseTowerClass>() != null)
             {
-                InitializeTowerIndicator(tower);
-            }
+                if (towerToPlace != tower || towerToPlace == null)
+                {
+                    InitializeTowerIndicator(tower);
+                }
 
-            else if (towerToPlace == tower)
-            {
-                StopPlacement();
+                else if (towerToPlace == tower)
+                {
+                    StopPlacement();
+                }
             }
         }
     }

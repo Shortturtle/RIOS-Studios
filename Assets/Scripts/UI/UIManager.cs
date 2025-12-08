@@ -8,12 +8,13 @@ public class UIManager : MonoBehaviour
     private int healthCount;
     private int maxHealth;
     private int energyCount;
-    private int abilityPowerCount;
+    private int abilityPointCount;
 
     //Coin count UI
     public TextMeshProUGUI healthText;
     public Slider healthSlider;
     public TextMeshProUGUI energyText;
+    public TextMeshProUGUI abilityPointText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         HealthHandler();
         EnergyHandler();
+        APHandler();
     }
 
     private void HealthHandler()
@@ -42,6 +44,13 @@ public class UIManager : MonoBehaviour
     {
         energyCount = ResourceManager.instance.currentEnergy;
         //update ui for money
-        energyText.text = "Energy: " + energyCount;
+        energyText.text = energyCount.ToString();
+    }
+
+    private void APHandler()
+    {
+        abilityPointCount = ResourceManager.instance.currentAbilityPoint;
+        //update ui for ability points
+        abilityPointText.text = abilityPointCount.ToString();
     }
 }

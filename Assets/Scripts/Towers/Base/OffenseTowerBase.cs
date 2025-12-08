@@ -67,12 +67,8 @@ public class OffenseTowerBase : BaseTowerClass
         GetTargetEnemy();
         TrackEnemy();
         AttackTimer();
-        GeneralTimer();
-
-        if (hoverUIInstance != null)
-        {
-            FixHoverUIPosition();
-        }
+        GeneralDegradeTracker();
+        HoverUIHandler();
     }
 
     protected virtual void FixedUpdate()
@@ -236,6 +232,8 @@ public class OffenseTowerBase : BaseTowerClass
         bufferTimerDuration = stats.BufferTimerDuration;
         degradeRank = 0;
         maxDegradeRank = stats.MaxDegradeRank;
+
+        microgame = stats.Microgame;
     }
 
     protected virtual void AttackTimer()
@@ -291,6 +289,24 @@ public class OffenseTowerBase : BaseTowerClass
     {
         base.OverDriveEnd();
         timeBetweenAttacks = stats.TimeBetweenAttacks;
+    }
+
+    public override void HoverUIHandler()
+    {
+        if (hoverUIInstance  != null)
+        {
+            FixHoverUIPosition();
+        }
+
+        if (isHovered && hoverUIInstance == null)
+        {
+            InitializeHoverUI();
+        }
+
+        else if (!isHovered && hoverUIInstance != null)
+        {
+            DeleteHoverUI();
+        }
     }
 
     public override void InitializeHoverUI()

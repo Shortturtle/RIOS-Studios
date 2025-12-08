@@ -175,34 +175,6 @@
             ]
         },
         {
-            "name": "Test",
-            "id": "f30f5366-960a-441a-8a53-65af948caac5",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "46a6e7d7-322b-4df5-8c37-fcba9f0306fa",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "57e28988-766d-41cf-8dd8-98aa84b6b9cd",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "BuildingSystem",
             "id": "f8042f5b-e4fd-439d-93fa-1a3a1839aa18",
             "actions": [
@@ -265,6 +237,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "StopPlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TowerInteractionSystem",
+            "id": "b65bdaaf-55d1-4b95-9c50-ff3ffed80aff",
+            "actions": [
+                {
+                    "name": "ToggleStatsMenu",
+                    "type": "Button",
+                    "id": "409dee79-1843-4b6a-9593-321a9c8ecaaf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayMinigame",
+                    "type": "Button",
+                    "id": "41221308-9dfb-4ff0-bf0d-44707bbaa0ba",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "907e0430-15ce-4d23-9fdf-a0fd0ce9596d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleStatsMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27a8fe18-8755-49d1-802e-377a496c504b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayMinigame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

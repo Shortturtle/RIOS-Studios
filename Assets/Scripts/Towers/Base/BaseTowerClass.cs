@@ -8,6 +8,7 @@ public class BaseTowerClass: MonoBehaviour
     public bool isDegraded = false;
     public int degradeRank = 0;
     public int maxDegradeRank;
+    public GameObject degradeSign;
 
     protected float overdriveTimerDuration;
     protected float overdriveCountdownTimer;
@@ -15,6 +16,8 @@ public class BaseTowerClass: MonoBehaviour
     protected float bufferTimerDuration;
     protected float bufferCountdownTimer;
     public bool isBuffer = false;
+
+    public bool isHovered;
 
     public int cost;
 
@@ -45,7 +48,7 @@ public class BaseTowerClass: MonoBehaviour
 
     }
 
-    protected virtual void GeneralTimer()
+    protected virtual void GeneralDegradeTracker()
     {
         if (isOverdrive)
         {
@@ -60,6 +63,16 @@ public class BaseTowerClass: MonoBehaviour
         else
         {
             DegradeTimer();
+        }
+
+        if (degradeRank == maxDegradeRank)
+        {
+            degradeSign.SetActive(true);
+        }
+
+        else
+        {
+            degradeSign.SetActive(false);
         }
     }
 
@@ -122,24 +135,12 @@ public class BaseTowerClass: MonoBehaviour
     }
     #endregion
 
-    #region Microgame Functions
-    public void StartMicrogame()
-    {
-        var microgameInstance = Instantiate(microgame, GameObject.FindGameObjectWithTag("MicrogameCanvas").transform);
-        microgameInstance.GetComponent<BaseMinigameClass>().StartMinigame(this);
-    }
-
-    private void OnValidate()
-    {
-        if (microgame != null && microgame.GetComponent<BaseMinigameClass>() == null)
-        {
-            microgame = null;
-        }
-    }
-    #endregion
-
     #region UI Functions
 
+    public virtual void HoverUIHandler()
+    {
+        
+    }
     public virtual void InitializeHoverUI()
     {
 
