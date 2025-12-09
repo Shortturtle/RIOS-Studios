@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class RailGunnerLaser : BaseProjectileClass
 {
-    public float lifetime = 0.5f;
+    public float lifetime = 1f;
+    public GameObject laser;
 
     protected override void Update()
     {
         lifetime -= Time.deltaTime;
 
-        if ( lifetime >= 0)
+        if ( lifetime <= 0)
         {
             Destroy(gameObject);
         }
@@ -21,16 +22,16 @@ public class RailGunnerLaser : BaseProjectileClass
 
         Vector3 midpointBetweenVectors = new Vector3
             (
-            (projectileTarget.transform.position.x - transform.position.x)/2,
-            (projectileTarget.transform.position.y - transform.position.y)/2,
-            (projectileTarget.transform.position.z - transform.position.z)/2
+            (target.transform.position.x + transform.position.x)/2,
+            (target.transform.position.y + transform.position.y)/2,
+            (target.transform.position.z + transform.position.z)/2
             );
 
         transform.position = midpointBetweenVectors;
 
-        float distanceBetweenTargets = Vector3.Distance(projectileTarget.transform.position, target.transform.position);
+        float distanceBetweenTargets = Vector3.Distance(projectileTarget.transform.position, transform.position);
 
-        transform.localScale = new Vector3(distanceBetweenTargets / 2, transform.localScale.y, transform.localScale.z);
+        laser.transform.localScale = new Vector3(laser.transform.localScale.x, distanceBetweenTargets, laser.transform.localScale.z);
         transform.LookAt(projectileTarget.transform);
         ProjectileEffect();
     }

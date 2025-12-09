@@ -78,11 +78,14 @@ public class OffenseTowerBase : BaseTowerClass
     {
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.GetComponent<BaseEnemyClass>())
         {
-            targets.Add(other.GetComponent<BaseEnemyClass>());
+            if (!targets.Contains(other.GetComponent<BaseEnemyClass>()))
+            {
+                targets.Add(other.GetComponent<BaseEnemyClass>());
+            }
         }
     }
 
@@ -264,16 +267,6 @@ public class OffenseTowerBase : BaseTowerClass
         timeBetweenAttackValue = timeBetweenAttacksBase * (1 + ((float)(degradeRank + 1f)/(float)maxDegradeRank));
         degradeRank++;
         ResetDegradeTimer();
-    }
-
-    protected override void DegradeTimer()
-    {
-        base.DegradeTimer();
-    }
-
-    protected override void ResetDegradeTimer()
-    {
-        base.ResetDegradeTimer();
     }
 
     public override void RepairTower()

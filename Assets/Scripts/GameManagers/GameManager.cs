@@ -26,11 +26,13 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         EnemyWaveManager.instance.LoseWaveClear();
+        loseUI.SetActive(true);
         Debug.Log("YOU LOST");
     }
 
     public void WinGame()
-    {
+    { 
+        winUI.SetActive(true);
         Debug.Log("YOU WIN");
     }
 }
