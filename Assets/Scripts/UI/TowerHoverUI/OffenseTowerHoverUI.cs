@@ -13,7 +13,7 @@ public class OffenseTowerHoverUI : MonoBehaviour
     {
         damageValue.text = $"Damage: {tower.damageValue}";
         rangeValue.text = $"Range: {tower.rangeValue}";
-        timeBetweenAttackValue.text = $"TBA: {tower.timeBetweenAttacks}";
+        timeBetweenAttackValue.text = $"TBA: {tower.timeBetweenAttackValue}";
         targettingMode.text = $"Targetting: {tower.targettingMode.ToString()}";
     }
 }

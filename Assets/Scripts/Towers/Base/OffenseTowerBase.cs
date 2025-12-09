@@ -34,8 +34,11 @@ public class OffenseTowerBase : BaseTowerClass
     }
 
     // Damage variables
+    [HideInInspector] public float damageBase;
+    [HideInInspector] public float timeBetweenAttacksBase;
+    [HideInInspector] public float rangeBase;
     [HideInInspector] public float damageValue;
-    [HideInInspector] public float timeBetweenAttacks;
+    [HideInInspector] public float timeBetweenAttackValue;
     [HideInInspector] public float rangeValue;
     protected float attackTimer;
 
@@ -214,11 +217,14 @@ public class OffenseTowerBase : BaseTowerClass
     public override void InitializeTower()
     {
 
-        damageValue = stats.Damage;
+        damageBase = stats.Damage;
+        damageValue = damageBase;
 
-        timeBetweenAttacks = stats.TimeBetweenAttacks;
+        timeBetweenAttacksBase = stats.TimeBetweenAttacks;
+        timeBetweenAttackValue = timeBetweenAttacksBase;
 
-        rangeValue = stats.Range;
+        rangeBase = stats.Range;
+        rangeValue = rangeBase;
         rangeSphere.isTrigger = true;
         rangeSphere.radius = rangeValue;
 
@@ -243,7 +249,7 @@ public class OffenseTowerBase : BaseTowerClass
         if (currentTarget != null && attackTimer <= 0)
             {
                 Attack();
-            attackTimer = timeBetweenAttacks;
+            attackTimer = timeBetweenAttackValue;
             }
     }
 
@@ -255,7 +261,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void Degrade()
     {
-        timeBetweenAttacks = stats.TimeBetweenAttacks * (1 + ((float)(degradeRank + 1f)/(float)maxDegradeRank));
+        timeBetweenAttackValue = timeBetweenAttacksBase * (1 + ((float)(degradeRank + 1f)/(float)maxDegradeRank));
         degradeRank++;
         ResetDegradeTimer();
     }
@@ -280,7 +286,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void OverDrive()
     {
-        timeBetweenAttacks = stats.TimeBetweenAttacks / 4;
+        timeBetweenAttackValue = timeBetweenAttacksBase / 4;
         attackTimer = 0;
         overdriveCountdownTimer = overdriveTimerDuration;
     }
@@ -288,7 +294,7 @@ public class OffenseTowerBase : BaseTowerClass
     protected override void OverDriveEnd()
     {
         base.OverDriveEnd();
-        timeBetweenAttacks = stats.TimeBetweenAttacks;
+        timeBetweenAttackValue = timeBetweenAttacksBase;
     }
 
     public override void HoverUIHandler()

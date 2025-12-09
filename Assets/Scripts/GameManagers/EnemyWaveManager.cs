@@ -48,7 +48,7 @@ public class EnemyWaveManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentWave = 0;
+        currentWave = 1;
         listCleanTimer = listCleanDelay;
         waveEndEnergyReward = waveHolder.waveEndEnergyReward;
         StartBuffer();
@@ -85,15 +85,15 @@ public class EnemyWaveManager : MonoBehaviour
     {
         currentWavePlaying = false;
         ResourceManager.instance.AddEnergy(waveEndEnergyReward);
-        StartBuffer();
         currentWave++;
+        StartBuffer();
     }
 
     void PrepNextWave()
     {
         enemiesToSpawn.Clear();
         enemiesCurrentlyAlive.Clear();
-        InitializeWave(waveHolder.enemyWaves[currentWave].wave);    
+        InitializeWave(waveHolder.enemyWaves[currentWave - 1].wave);    
     }
 
     void StartBuffer()
