@@ -12,7 +12,8 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
-        switchScenes.FadeOutAndLoad("Medieval Lobby");
+        StopAllMusic.Post(gameObject);
+        switchScenes.FadeOutAndLoad("TutorialLevel");
     }
 
     public void Options()
