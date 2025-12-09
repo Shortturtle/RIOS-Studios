@@ -4,13 +4,14 @@ using UnityEngine;
 public class KanadeCollect : MonoBehaviour
 {
     public GameObject objectRenderer;
-    private bool collectable = true;
+    public BoxCollider hitBox;
+    //private bool collectable = true;
     //test for the quest functionality
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && collectable == true)
+        if (other.CompareTag("Player") /*&& collectable == true*/)
         {
-            collectable = false;
+            hitBox.enabled = false;
             CollectKanade();
         }
     }
@@ -23,12 +24,12 @@ public class KanadeCollect : MonoBehaviour
         StartCoroutine(AfterCollected());
     }
 
-    private IEnumerator AfterCollected()
+    public IEnumerator AfterCollected()
     {
         objectRenderer.SetActive(false);
-
+        
         yield return new WaitForSeconds(5);
-        collectable = true;
+        hitBox.enabled = true;
         objectRenderer.SetActive(true);
     }
 }

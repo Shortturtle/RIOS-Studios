@@ -60,7 +60,7 @@ public class QuestPoint : MonoBehaviour
             currentQuestState = quest.state;
 
             //for quest icons too
-            questIcon.SetState(currentQuestState, questStartPoint, questFinishPoint);
+            //questIcon.SetState(currentQuestState, questStartPoint, questFinishPoint);
         }
     }
 }
