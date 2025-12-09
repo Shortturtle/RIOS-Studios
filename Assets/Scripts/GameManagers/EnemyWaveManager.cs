@@ -24,8 +24,8 @@ public class EnemyWaveManager : MonoBehaviour
 
     public EnemyWaves waveHolder;
 
-    private int currentWave;
-    private int maxWaves;
+    public int currentWave;
+    public int maxWaves;
 
     public List<WaypointManager> spawnLocations = new List<WaypointManager>();
     private int currentSpawnLocation;
@@ -57,18 +57,21 @@ public class EnemyWaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ListCleaning();
-
-        WaveEndCheck();
-
-        if (currentWavePlaying && enemiesToSpawn.Count != 0)
+        if (!winYes)
         {
-            SpawnTimer();
-        }
+            ListCleaning();
 
-        else if (bufferActive)
-        {
-            BufferTimer();
+            WaveEndCheck();
+
+            if (currentWavePlaying && enemiesToSpawn.Count != 0)
+            {
+                SpawnTimer();
+            }
+
+            else if (bufferActive)
+            {
+                BufferTimer();
+            }
         }
     }
 

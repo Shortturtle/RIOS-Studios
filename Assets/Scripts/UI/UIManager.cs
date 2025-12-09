@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
@@ -9,17 +10,21 @@ public class UIManager : MonoBehaviour
     private int maxHealth;
     private int energyCount;
     private int abilityPointCount;
+    private int waveCount;
+    private int maxWaveCount;
 
     //Coin count UI
     public TextMeshProUGUI healthText;
     public Slider healthSlider;
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI abilityPointText;
+    public TextMeshProUGUI waveText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthSlider.maxValue = ResourceManager.instance.maxHealth;
+        maxWaveCount = EnemyWaveManager.instance.maxWaves;
     }
 
     // Update is called once per frame
@@ -28,6 +33,7 @@ public class UIManager : MonoBehaviour
         HealthHandler();
         EnergyHandler();
         APHandler();
+        WaveHandler();
     }
 
     private void HealthHandler()
@@ -52,5 +58,13 @@ public class UIManager : MonoBehaviour
         abilityPointCount = ResourceManager.instance.currentAbilityPoint;
         //update ui for ability points
         abilityPointText.text = abilityPointCount.ToString();
+    }
+
+    private void WaveHandler()
+    {
+        waveCount = EnemyWaveManager.instance.currentWave;
+
+        //update ui for wave count
+        waveText.text = $"Wave: {waveCount}/{maxWaveCount}";
     }
 }

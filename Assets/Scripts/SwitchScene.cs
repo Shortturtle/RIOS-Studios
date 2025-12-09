@@ -25,6 +25,10 @@ public class SwitchScene : MonoBehaviour
 
     public void FadeOutAndLoad(string sceneName)
     {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
         //FadePanel.SetActive(true);
         //PanelAnim.SetTrigger("Idle");
 
