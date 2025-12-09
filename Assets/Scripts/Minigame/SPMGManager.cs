@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SPMGManager : MonoBehaviour
+public class SPMGManager : BaseMicrogameClass
 {
     //for managing open and closing of minigame window
     private bool mgOpen = false;
@@ -10,9 +10,6 @@ public class SPMGManager : MonoBehaviour
     public bool minigameComplete = false;
     public int completion = 0;
     public int numberToCompleteMinigame;
-
-    public BaseTowerClass tower;
-    public MinigameActivater minigameActivater;
     //progress check is a lie it actually helps count to the numberToCompleteMinigame
     public void ProgressCheck()
     {
@@ -51,16 +48,9 @@ public class SPMGManager : MonoBehaviour
         transform.LeanMoveLocal(new Vector2(0, -1075), 0.5f).setEaseOutCirc();
         mgOpen = false;
         canOpenMG = false;
-        tower.RepairTower();
-        minigameActivater.RemoveTowerFromList(tower);
+        MicrogameManager.instance.MicrogameEnd();
         yield return new WaitForSeconds(0.6f);
         canOpenMG = true;
-        Destroy(transform.parent.gameObject);
-    }
-
-    public void InitalizeTower(BaseTowerClass towerToInitialize)
-    {
-        tower = towerToInitialize;
-        minigameActivater = GameObject.FindGameObjectWithTag("Player").GetComponent<MinigameActivater>();
+        Destroy(transform.gameObject);
     }
 }

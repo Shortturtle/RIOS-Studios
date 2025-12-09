@@ -47,7 +47,7 @@ public class Removal : MonoBehaviour
     public void Tapped()
     {
         timesTapped++;
-        if(timesTapped == 5)
+        if(timesTapped == 3)
         {
             if (isThrown == false)
             {

@@ -6,6 +6,7 @@ public class SwitchScene : MonoBehaviour
 {
     public Animator PanelAnim;
     public GameObject FadePanel;
+    public AK.Wwise.Event StopAllAudio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,6 +39,7 @@ public class SwitchScene : MonoBehaviour
     private IEnumerator FadeAndLoad(string sceneName)
     {
         yield return new WaitForSeconds(1f);
+        StopAllAudio.Post(this.gameObject);
         SceneManager.LoadScene(sceneName);
     }
 }

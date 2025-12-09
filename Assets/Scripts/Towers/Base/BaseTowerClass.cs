@@ -76,7 +76,7 @@ public class BaseTowerClass: MonoBehaviour
             degradeSign.SetActive(true);
         }
 
-        else
+        else if (!isMaxDegraded)
         {
             degradeSign.SetActive(false);
         }
