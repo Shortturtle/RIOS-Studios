@@ -5,7 +5,7 @@ public class BaseTowerClass: MonoBehaviour
 {
     protected float degradeTimerDuration;
     protected float degradeCountdownTimer;
-    public bool isDegraded = false;
+    public bool isMaxDegraded = false;
     public int degradeRank = 0;
     public int maxDegradeRank;
     public GameObject degradeSign;
@@ -65,8 +65,14 @@ public class BaseTowerClass: MonoBehaviour
             DegradeTimer();
         }
 
-        if (degradeRank == maxDegradeRank)
+        MaxDegradeTracker();
+    }
+
+    protected virtual void MaxDegradeTracker()
+    {
+        if (degradeRank == maxDegradeRank && !isMaxDegraded)
         {
+            isMaxDegraded = true;
             degradeSign.SetActive(true);
         }
 

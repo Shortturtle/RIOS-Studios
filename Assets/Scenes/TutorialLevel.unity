@@ -10683,6 +10683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AllManagers
       objectReference: {fileID: 0}
+    - target: {fileID: 3658623045953637133, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
+      propertyPath: LevelMusic.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cbfbb8f9b0e2004ea95e03d7eef7b4d, type: 2}
     - target: {fileID: 3924108909055017986, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.460009
@@ -19574,6 +19578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1997016018}
   - component: {fileID: 1997016017}
+  - component: {fileID: 1997016019}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -19621,6 +19626,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1997016019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997016016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94988f44f648dc8419355d6d2865a921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 552df916468f4394f8aa35ad47810d56, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &1997708747
 GameObject:
   m_ObjectHideFlags: 0

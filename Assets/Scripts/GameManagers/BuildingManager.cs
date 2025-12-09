@@ -42,6 +42,7 @@ public class BuildingManager : MonoBehaviour
     private Vector3 currentPlacement;
 
     public InputActionAsset inputMap;
+    public AK.Wwise.Event towerBuilding;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -115,6 +116,7 @@ public class BuildingManager : MonoBehaviour
 
             else
             {
+                towerBuilding.Post(this.gameObject);
                 ResourceManager.instance.RemoveEnergy(towerClass.cost);
                 Instantiate(towerToPlace, currentPlacement, Quaternion.identity);
                 StopPlacement();

@@ -1,0 +1,229 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "534561221",
+    "Type": "User",
+    "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
+    "Language": "SFX",
+    "Hash": "{8CC3D900-BAC0-A87E-9885-88429E6F115B}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
+    "ShortName": "MainSoundbank",
+    "Path": "MainSoundbank.bnk",
+    "Media": [
+     {
+      "Id": "109339202",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "laser-312360.wav",
+      "CachePath": "0F/{0F452088-AD50-AE42-178A-B6294E673813}.wem"
+     },
+     {
+      "Id": "385443128",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "anvil-mini_r5U59X4.wav",
+      "CachePath": "47/{479174BC-8FC7-A865-7DE2-7DBD599CA1D8}.wem"
+     },
+     {
+      "Id": "498538846",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "glass-breaking-386153.wav",
+      "CachePath": "CE/{CEF88B44-5DFC-5AC0-1F65-315336A9B187}.wem"
+     },
+     {
+      "Id": "539444830",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "defeat-154915.wav",
+      "CachePath": "FF/{FF5AD786-BE42-AD90-9A55-E4D6A13B9E20}.wem"
+     },
+     {
+      "Id": "541083360",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "IceLevelMusic.wav",
+      "CachePath": "33/{33D76C9A-AC9E-2B15-B25F-B2E1F6CA8B9A}.wem"
+     },
+     {
+      "Id": "547858882",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "warning-sound-6686.wav",
+      "CachePath": "BA/{BA353857-CC4D-4EB3-5D28-849D70AA2CC4}.wem"
+     },
+     {
+      "Id": "675324120",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "11l-victory-1749704552668-358772.wav",
+      "CachePath": "B4/{B4C9E197-B5C5-FC19-5B0D-C47B98555658}.wem"
+     },
+     {
+      "Id": "703770534",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "swing-whoosh-5-198498.wav",
+      "CachePath": "2E/{2EBB5BAA-42D3-FBA7-30BC-2DDF244F8CA7}.wem"
+     },
+     {
+      "Id": "992073420",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Main_Menu_OST (1).wav",
+      "CachePath": "27/{274AA44D-E379-2BF5-9A66-B68A86A00C83}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "980765601",
+      "Name": "IceLevelMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\IceLevelMusic",
+      "GUID": "{CAABE62B-A762-44E6-ACBA-C1CA32DDEAC8}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "541083360"
+       }
+      ]
+     },
+     {
+      "Id": "221232726",
+      "Name": "Lose",
+      "ObjectPath": "\\Events\\Default Work Unit\\Lose",
+      "GUID": "{61C820DD-16DC-4A74-88DD-F9461A4A0853}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.012086",
+      "DurationMax": "3.012086",
+      "MediaRefs": [
+       {
+        "Id": "539444830"
+       }
+      ]
+     },
+     {
+      "Id": "1991862712",
+      "Name": "MainMenuMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\MainMenuMusic",
+      "GUID": "{31590BDC-6B5C-4E9B-B6A1-3AA322125818}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "992073420"
+       }
+      ]
+     },
+     {
+      "Id": "1007541237",
+      "Name": "PotionThrowerAttack",
+      "ObjectPath": "\\Events\\Default Work Unit\\PotionThrowerAttack",
+      "GUID": "{32A501FB-0C0E-4A9E-846B-75F5D1579B47}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.24",
+      "DurationMax": "0.24",
+      "MediaRefs": [
+       {
+        "Id": "703770534"
+       }
+      ]
+     },
+     {
+      "Id": "2412449086",
+      "Name": "PotionThrowerBreak",
+      "ObjectPath": "\\Events\\Default Work Unit\\PotionThrowerBreak",
+      "GUID": "{BCD32890-CAFE-4801-A332-F4EAFDEA702A}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.6797576",
+      "DurationMax": "0.6797576",
+      "MediaRefs": [
+       {
+        "Id": "498538846"
+       }
+      ]
+     },
+     {
+      "Id": "417816648",
+      "Name": "RailgunnerAttack",
+      "ObjectPath": "\\Events\\Default Work Unit\\RailgunnerAttack",
+      "GUID": "{5788368C-5DB7-424B-8864-B83DEA139BF1}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.72781813",
+      "DurationMax": "0.72781813",
+      "MediaRefs": [
+       {
+        "Id": "109339202"
+       }
+      ]
+     },
+     {
+      "Id": "14541412",
+      "Name": "StopAllAudio",
+      "ObjectPath": "\\Events\\Default Work Unit\\StopAllAudio",
+      "GUID": "{9BBD4C37-502F-4993-B91D-D148051B4B52}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1843285636",
+      "Name": "TowerBuild",
+      "ObjectPath": "\\Events\\Default Work Unit\\TowerBuild",
+      "GUID": "{15E5C340-1C2B-4843-A830-3728F2E1EB0A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.2178952",
+      "DurationMax": "1.2178952",
+      "MediaRefs": [
+       {
+        "Id": "385443128"
+       }
+      ]
+     },
+     {
+      "Id": "2642738694",
+      "Name": "TowerDegrade",
+      "ObjectPath": "\\Events\\Default Work Unit\\TowerDegrade",
+      "GUID": "{A89E6B44-80B8-46E1-B2A5-FA596C5540A9}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.75316393",
+      "DurationMax": "0.75316393",
+      "MediaRefs": [
+       {
+        "Id": "547858882"
+       }
+      ]
+     },
+     {
+      "Id": "2716678721",
+      "Name": "Victory",
+      "ObjectPath": "\\Events\\Default Work Unit\\Victory",
+      "GUID": "{85F512A1-8C63-4485-BEB1-E7D9F22C86AD}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.9744534",
+      "DurationMax": "2.9744534",
+      "MediaRefs": [
+       {
+        "Id": "675324120"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{891D5034-B3FB-6A87-AFFB-0091066C10D4}"
+ }
+}

@@ -1,6 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" SchemaVersion="133">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Victory" ID="{85F512A1-8C63-4485-BEB1-E7D9F22C86AD}">
+					<ChildrenList>
+						<Action Name="" ID="{C0AE02D9-778F-451A-B41B-9BCDE64580F9}" ShortID="649120264">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VictorySound" ID="{2D51E066-E6E8-4E9F-A5D7-C2153354781E}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Lose" ID="{61C820DD-16DC-4A74-88DD-F9461A4A0853}">
+					<ChildrenList>
+						<Action Name="" ID="{11CC6073-B172-4577-B7DB-EEDF21964E7A}" ShortID="117301499">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LoseSound" ID="{58594691-4EBD-4E98-9DB3-056F46EDC999}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MainMenuMusic" ID="{31590BDC-6B5C-4E9B-B6A1-3AA322125818}">
+					<ChildrenList>
+						<Action Name="" ID="{4A15FB6C-0B9F-49ED-9905-BC11B1BACBD0}" ShortID="603202177">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Main_Menu_OST" ID="{AE8C43C6-124E-4143-B2AE-501EB9CFC151}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="IceLevelMusic" ID="{CAABE62B-A762-44E6-ACBA-C1CA32DDEAC8}">
+					<ChildrenList>
+						<Action Name="" ID="{AE3832A3-7D77-4682-B3B2-AE5DFEA6D593}" ShortID="261743145">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="IceLevelMusic" ID="{47F167FE-2958-48CB-AF6E-FEBEC7118594}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PotionThrowerAttack" ID="{32A501FB-0C0E-4A9E-846B-75F5D1579B47}">
+					<ChildrenList>
+						<Action Name="" ID="{F7F12B2D-FA2C-4C46-B1AE-5AD66034B9B9}" ShortID="530112149">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PotionThrowerAttack" ID="{1019D950-A445-43FE-8F3D-09EF501D8345}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PotionThrowerBreak" ID="{BCD32890-CAFE-4801-A332-F4EAFDEA702A}">
+					<ChildrenList>
+						<Action Name="" ID="{8E92217D-0340-44BA-BE2C-9C82314D6694}" ShortID="108476070">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PotionThrowerBreak" ID="{8162D31D-3521-44FF-A295-33BD0675DB30}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RailgunnerAttack" ID="{5788368C-5DB7-424B-8864-B83DEA139BF1}">
+					<ChildrenList>
+						<Action Name="" ID="{7678E035-D86C-4722-A001-6987AA9FF583}" ShortID="927271472">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RailgunnerAttack" ID="{8D9A84DB-0FE5-41EF-B2AC-E82657CCAF62}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TowerBuild" ID="{15E5C340-1C2B-4843-A830-3728F2E1EB0A}">
+					<ChildrenList>
+						<Action Name="" ID="{DDFCBFFD-195C-4D13-B45F-7E70AFA5D7F0}" ShortID="249434165">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TowerBuild" ID="{825FF54B-0B85-4D23-8AA7-904334C8190E}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TowerDegrade" ID="{A89E6B44-80B8-46E1-B2A5-FA596C5540A9}">
+					<ChildrenList>
+						<Action Name="" ID="{F28D3EE7-415C-4722-9CB7-23A45DC032E1}" ShortID="901754107">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TowerDegrade" ID="{95156A54-34CF-4E70-AE0B-EFC8AEF1A7DA}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopAllAudio" ID="{9BBD4C37-502F-4993-B91D-D148051B4B52}">
+					<ChildrenList>
+						<Action Name="" ID="{108D257A-2874-4C61-A0D1-172FC4FA2A00}" ShortID="500875167">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

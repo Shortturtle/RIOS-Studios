@@ -26,6 +26,11 @@ public class OffenseTowerStats : ScriptableObject
 
     [Header("Microgame")]
     public GameObject Microgame;
+    [Space(10)]
+
+    [Header("Audio Events")]
+    public AK.Wwise.Event AttackEvent;
+    public AK.Wwise.Event DegradeEvent;
 
     private void OnValidate()
     {

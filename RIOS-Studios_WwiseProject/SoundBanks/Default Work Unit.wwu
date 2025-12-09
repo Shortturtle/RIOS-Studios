@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B3C7BF3F-826C-492D-9D80-90604653FFDE}" SchemaVersion="133">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{B3C7BF3F-826C-492D-9D80-90604653FFDE}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{B3C7BF3F-826C-492D-9D80-90604653FFDE}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="MainSoundbank" ID="{75719218-6F9A-4C4D-81A9-7B80C65E76F2}">
+					<ObjectInclusionList>
+						<ObjectRef Name="RailgunnerAttack" ID="{5788368C-5DB7-424B-8864-B83DEA139BF1}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Victory" ID="{85F512A1-8C63-4485-BEB1-E7D9F22C86AD}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="IceLevelMusic" ID="{CAABE62B-A762-44E6-ACBA-C1CA32DDEAC8}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="TowerDegrade" ID="{A89E6B44-80B8-46E1-B2A5-FA596C5540A9}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PotionThrowerBreak" ID="{BCD32890-CAFE-4801-A332-F4EAFDEA702A}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="TowerBuild" ID="{15E5C340-1C2B-4843-A830-3728F2E1EB0A}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopAllAudio" ID="{9BBD4C37-502F-4993-B91D-D148051B4B52}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Lose" ID="{61C820DD-16DC-4A74-88DD-F9461A4A0853}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PotionThrowerAttack" ID="{32A501FB-0C0E-4A9E-846B-75F5D1579B47}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MainMenuMusic" ID="{31590BDC-6B5C-4E9B-B6A1-3AA322125818}" WorkUnitID="{AFE62CCD-F62D-4962-8D0D-ED1EBBB77012}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>

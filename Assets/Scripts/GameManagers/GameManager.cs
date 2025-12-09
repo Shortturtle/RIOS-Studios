@@ -21,18 +21,30 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject loseUI;
+    public AK.Wwise.Event loseSFX;
     public GameObject winUI;
+    public AK.Wwise.Event winSFX;
+    public AK.Wwise.Event LevelMusic;
+    public AK.Wwise.Event StopAudio;
 
+    private void Start()
+    {
+        LevelMusic.Post(gameObject);
+    }
     public void LoseGame()
     {
         EnemyWaveManager.instance.LoseWaveClear();
         loseUI.SetActive(true);
+        StopAudio.Post(gameObject);
+        loseSFX.Post(gameObject);
         Debug.Log("YOU LOST");
     }
 
     public void WinGame()
     { 
         winUI.SetActive(true);
+        StopAudio.Post(gameObject);
+        winSFX.Post(gameObject);
         Debug.Log("YOU WIN");
     }
 }

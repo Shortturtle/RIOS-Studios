@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditorInternal;
@@ -52,6 +53,10 @@ public class OffenseTowerBase : BaseTowerClass
     public GameObject hoverUIPosition;
     public GameObject statsUI;
     protected bool clickable;
+
+    //Audio events
+    protected AK.Wwise.Event attackEvent;
+    protected AK.Wwise.Event degradeEvent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
@@ -243,6 +248,9 @@ public class OffenseTowerBase : BaseTowerClass
         maxDegradeRank = stats.MaxDegradeRank;
 
         microgame = stats.Microgame;
+
+        attackEvent = stats.AttackEvent;
+        degradeEvent = stats.DegradeEvent;
     }
 
     protected virtual void AttackTimer()
@@ -258,8 +266,24 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void Attack()
     {
+        attackEvent.Post(this.gameObject);
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget);
+    }
+
+    protected override void MaxDegradeTracker()
+    {
+        if (degradeRank == maxDegradeRank && !isMaxDegraded)
+        {
+            isMaxDegraded = true;
+            degradeEvent.Post(this.gameObject);
+            degradeSign.SetActive(true);
+        }
+
+        else
+        {
+            degradeSign.SetActive(false);
+        }
     }
 
     protected override void Degrade()
@@ -273,7 +297,7 @@ public class OffenseTowerBase : BaseTowerClass
     {
         OverDrive();
         degradeRank = 0;
-        isDegraded = false;
+        isMaxDegraded = false;
         isOverdrive = true;
     }
 

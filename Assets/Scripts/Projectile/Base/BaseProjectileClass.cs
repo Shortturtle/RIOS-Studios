@@ -3,6 +3,7 @@ using UnityEngine;
 public class BaseProjectileClass : MonoBehaviour
 {
     [SerializeField] public float speed;
+    [SerializeField] public AK.Wwise.Event projectileEvent;
     protected float damage;
     protected GameObject target;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +49,7 @@ public class BaseProjectileClass : MonoBehaviour
 
         if (frickThisGuy != null)
         {
+            projectileEvent.Post(this.gameObject);
             frickThisGuy.Damage(damage);
             Destroy(gameObject);
         }

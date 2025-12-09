@@ -108,6 +108,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4352
   inputMap: {fileID: -944628639613478452, guid: 17c8f2974120f4e40a8fd49587a36d3b, type: 3}
+  towerBuilding:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 25be923f07f3b934eae4cb6a1e380dfb, type: 2}
 --- !u!114 &335331291048797218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +304,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseUI: {fileID: 0}
+  loseSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f5ebe024f4b7b3d4e9ac3328d70a912e, type: 2}
   winUI: {fileID: 0}
+  winSFX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fa850d1b51f576849a89eec14d6f0fa8, type: 2}
+  LevelMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  StopAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 75c2eca8b7224ae46a49bfdc35563864, type: 2}
 --- !u!1 &3371718519042332631
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveHolder: {fileID: 0}
+  currentWave: 0
+  maxWaves: 0
   spawnLocations:
   - {fileID: 0}
   enemiesCurrentlyAlive: []
