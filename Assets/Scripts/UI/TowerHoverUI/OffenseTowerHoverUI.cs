@@ -1,4 +1,3 @@
-using Concept2;
 using TMPro;
 using UnityEngine;
 
