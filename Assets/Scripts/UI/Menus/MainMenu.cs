@@ -18,11 +18,16 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
-        switchScenes.FadeOutAndLoad("");
+        switchScenes.FadeOutAndLoad("Options Menu");
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void BackToMenu()
+    {
+        switchScenes.FadeOutAndLoad("Main Menu");
     }
 }
