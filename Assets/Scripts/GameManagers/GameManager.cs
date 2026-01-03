@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         EnemyWaveManager.instance.LoseWaveClear();
+        if (MicrogameManager.instance.currentlyPlayingMinigame)
+        {
+            MicrogameManager.instance.MicrogameEnd();
+        }
         loseUI.SetActive(true);
         StopAudio.Post(gameObject);
         loseSFX.Post(gameObject);
@@ -41,7 +45,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void WinGame()
-    { 
+    {
+        if (MicrogameManager.instance.currentlyPlayingMinigame)
+        {
+            MicrogameManager.instance.MicrogameEnd();
+        }
         winUI.SetActive(true);
         StopAudio.Post(gameObject);
         winSFX.Post(gameObject);
