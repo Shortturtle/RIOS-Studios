@@ -6,6 +6,7 @@ public class BaseProjectileClass : MonoBehaviour
     [SerializeField] public AK.Wwise.Event projectileEvent;
     protected float damage;
     protected GameObject target;
+    protected Vector3 targetPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,18 +27,19 @@ public class BaseProjectileClass : MonoBehaviour
         }
     }
 
-    public virtual void InitializeProjectile(float projectileDamage, GameObject projectileTarget)
+    public virtual void InitializeProjectile(float projectileDamage, GameObject projectileTarget, Vector3 projectileTargetPosition)
     {
         damage = projectileDamage;
         target = projectileTarget;
+        targetPosition = projectileTargetPosition;
     }
 
     protected virtual void ToTarget()
     {
-        Vector3 dir = target.transform.position - transform.position;
+        Vector3 dir = targetPosition - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 0.3f)
+        if (Vector3.Distance(transform.position, targetPosition) <= 0.3f)
         {
             ProjectileEffect();
         }

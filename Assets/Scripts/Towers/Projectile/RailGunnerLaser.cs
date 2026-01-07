@@ -15,10 +15,11 @@ public class RailGunnerLaser : BaseProjectileClass
         }
     }
 
-    public override void InitializeProjectile(float projectileDamage, GameObject projectileTarget)
+    public override void InitializeProjectile(float projectileDamage, GameObject projectileTarget, Vector3 projectileTowerPosition)
     {
         damage = projectileDamage;
         target = projectileTarget;
+        targetPosition = projectileTowerPosition;
 
         Vector3 midpointBetweenVectors = new Vector3
             (

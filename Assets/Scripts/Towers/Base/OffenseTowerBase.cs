@@ -265,7 +265,7 @@ public class OffenseTowerBase : BaseTowerClass
     {
         attackEvent.Post(this.gameObject);
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
-        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget);
+        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
     }
 
     protected override void MaxDegradeTracker()
