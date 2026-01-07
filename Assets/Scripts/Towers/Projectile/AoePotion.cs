@@ -3,39 +3,31 @@ using UnityEngine.EventSystems;
 
 public class AoEPotion : BaseProjectileClass
 {
-    public Transform pivot, model;
     public float AoERange;
     public GameObject potion;
 
+    [Header("Bezier Curve Points")]
     public Vector3 start;
     public Vector3 crtl1;
     public Vector3 crtl2;
     public Vector3 end;
 
     private float t = 0;
-    public float arcHeight = 5f;
+    public float arcHeight = 1f;
 
     private void Start()
     {
-        //Vector3 startPosition = transform.position;
-
-        //Vector3 centerPosition = (transform.position + targetPosition) * 2f;
-        //transform.position = centerPosition;
-
-        //transform.forward = targetPosition - transform.position;
-
-        //model.transform.position = startPosition;
-
-        start = model.transform.position;
+        start = transform.position;
         end = targetPosition;
 
+        //Calculate control points for the Bezier curve
         crtl1 = start + (Vector3.up * arcHeight);
         crtl2 = end + (Vector3.up * arcHeight);
     }
 
     Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
     {
-        // Clamp t between 0 and 1
+        //Clamp t between 0 and 1
         t = Mathf.Clamp01(t);
         float u = 1 - t;
         float u2 = u * u;
@@ -52,11 +44,8 @@ public class AoEPotion : BaseProjectileClass
         return result;
     }
 
-    protected override void ToTarget() //put the lob
+    protected override void ToTarget() //Lobbing motion using Bezier curve
     {
-        //pivot.localRotation = Quaternion.RotateTowards(pivot.localRotation, Quaternion.Euler(0f, 0f, 180f), speed * Time.deltaTime);
-        //model.rotation = Quaternion.identity;
-
         t += Time.deltaTime * speed;
 
         transform.position = CalculateBezierPoint(t, start, crtl1, crtl2, end);
@@ -67,9 +56,9 @@ public class AoEPotion : BaseProjectileClass
         }
     }
 
-    protected override void ProjectileEffect() //aoe
+    protected override void ProjectileEffect() //AoE damage
     {
-        Collider[] collidersInRange = Physics.OverlapSphere(model.transform.position, AoERange);
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, AoERange);
 
         foreach (Collider col in collidersInRange)
         {

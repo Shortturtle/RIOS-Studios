@@ -35,7 +35,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     }
     protected float recordTime = 5f;
 
-    protected bool isStunned = false;
+    public bool isStunned = false;
     #endregion
 
     #region Distance Variables
