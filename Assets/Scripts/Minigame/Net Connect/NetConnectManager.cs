@@ -52,14 +52,16 @@ public class NetConnectManager : BaseMicrogameClass
             availableLeftRopesIndex.Count > 0 &&
             availableRightRopesIndex.Count > 0)
         {
-            Color pickedColor = availableColors[Random.Range(0, availableColors.Count)];
+            Color pickedColor = availableColors[Random.Range(0, availableColors.Count)]; //picks random color
 
+            //picks random wires
             int pickedLeftRope = Random.Range(0, availableLeftRopesIndex.Count);
             int pickedRightRope = Random.Range(0, availableRightRopesIndex.Count);
 
             leftSideRopes[availableLeftRopesIndex[pickedLeftRope]].SetRopeColor(pickedColor);
             rightSideRopes[availableRightRopesIndex[pickedRightRope]].SetRopeColor(pickedColor);
 
+            // removes all selected
             availableColors.Remove(pickedColor);
             availableLeftRopesIndex.RemoveAt(pickedLeftRope);
             availableRightRopesIndex.RemoveAt(pickedRightRope);

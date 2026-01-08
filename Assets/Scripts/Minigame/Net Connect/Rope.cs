@@ -76,8 +76,8 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(!isLeftRope) { return; }
-        if(isSuccess) { return; }
+        if(!isLeftRope) { return; } // ensures only left rope can be dragged
+        if(isSuccess) { return; } // checks if not complete
 
         isDragStarted = true;
         netConnectManager.currentlyDraggedRope = this;
@@ -88,7 +88,7 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         if (netConnectManager.currentlyHoveredRope != null)
         {
             if (netConnectManager.currentlyHoveredRope.ropeColor == ropeColor &&
-                !netConnectManager.currentlyHoveredRope.isLeftRope)
+                !netConnectManager.currentlyHoveredRope.isLeftRope) // if hovering on right rope of same color
             {
                 isSuccess = true;
                 netConnectManager.currentlyHoveredRope.isSuccess = true;
