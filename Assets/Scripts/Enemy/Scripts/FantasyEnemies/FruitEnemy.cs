@@ -8,6 +8,16 @@ public class FruitEnemy : BaseEnemyClass
     public float healthGain;
     public float timeBetweenRegen;
 
+    protected override void Update()
+    {
+        if(currentHealth < enemyStats.maxHealth)
+        {
+            StartCoroutine(RegenerateHealth());
+        }
+
+        base.Update();
+    }
+
     public override void Damage(float damageAmount)
     {
         canRegen = false;
@@ -28,7 +38,7 @@ public class FruitEnemy : BaseEnemyClass
     //might have to put in fixed update or smth
     private IEnumerator RegenerateHealth()
     {
-        while (canRegen || currentHealth < enemyStats.maxHealth)
+        while (canRegen)
         {
             currentHealth += healthGain;
 

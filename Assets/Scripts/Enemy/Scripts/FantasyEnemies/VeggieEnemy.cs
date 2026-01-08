@@ -10,6 +10,7 @@ public class VeggieEnemy : BaseEnemyClass
         if (other.CompareTag("CapShield"))
         {
             shieldCurrentAmount = shieldGainAmount;
+            Destroy(other.gameObject);
         }
     }
 
