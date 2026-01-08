@@ -55,6 +55,8 @@ MonoBehaviour:
   minigameComplete: 0
   completion: 0
   numberToCompleteMinigame: 5
+  tower: {fileID: 0}
+  minigameActivater: {fileID: 0}
 --- !u!114 &4239993295701359453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +101,8 @@ RectTransform:
   m_GameObject: {fileID: 696400228242342252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4821479209518345020}
   - {fileID: 4491483378234982703}
