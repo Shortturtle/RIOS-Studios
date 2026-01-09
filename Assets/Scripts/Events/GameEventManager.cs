@@ -6,6 +6,8 @@ public class GameEventManager : MonoBehaviour
 
     public MiscEvents miscEvents;
 
+    public KillEvents killEvents;
+
     public QuestEvents questEvents;
 
     public TowerRewardEvents towerRewardEvents;
@@ -20,6 +22,7 @@ public class GameEventManager : MonoBehaviour
 
         //initialise all events (for scripts relating to events n actions)
         miscEvents = new MiscEvents();
+        killEvents = new KillEvents();
         questEvents = new QuestEvents();
         towerRewardEvents = new TowerRewardEvents();
     }
