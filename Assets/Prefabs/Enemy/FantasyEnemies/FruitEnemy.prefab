@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 6685323096733433458}
   - component: {fileID: 1336535873651612186}
   - component: {fileID: 6845177687607058517}
+  - component: {fileID: 8984213700490208516}
   m_Layer: 10
   m_Name: FruitEnemy
   m_TagString: Untagged
@@ -189,3 +190,16 @@ MonoBehaviour:
   regenCountdown: 3
   healthGain: 5
   timeBetweenRegen: 0.3
+--- !u!114 &8984213700490208516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4529605782005102741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b266cd8bbfb2fd4ba6aa3b377532774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfoForKill: {fileID: 11400000, guid: 1cb05f6c098c1844a915fb2d0db0509a, type: 2}

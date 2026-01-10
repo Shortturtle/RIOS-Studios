@@ -5,7 +5,7 @@ public class KillEvents
 {
     public event Action onKillFruit;
 
-    public void KanadeCollected()
+    public void FruitKilled()
     {
         if (onKillFruit != null)
         {

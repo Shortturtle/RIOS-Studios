@@ -8,6 +8,14 @@ public class FruitEnemy : BaseEnemyClass
     public float healthGain;
     public float timeBetweenRegen;
 
+    private KillFruits killFruit;
+
+    protected override void Start()
+    {
+        killFruit = GetComponent<KillFruits>();
+        base.Start();
+    }
+
     protected override void Update()
     {
         if(currentHealth < enemyStats.maxHealth)
@@ -27,6 +35,12 @@ public class FruitEnemy : BaseEnemyClass
         StartCoroutine(Regenerate());
     }
 
+    public override void Die()
+    {
+        if(killFruit != null) { killFruit.KilledFruit(); }
+
+        base.Die();
+    }
 
     private IEnumerator Regenerate()
     {
