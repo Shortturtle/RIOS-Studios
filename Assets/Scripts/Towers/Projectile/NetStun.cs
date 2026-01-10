@@ -10,6 +10,7 @@ public class NetStun : BaseProjectileClass
     public float tickDamage;
 
     public float AoERange;
+    public float stunDuration = 2f;
     public GameObject Net;
 
     private void Start()
@@ -48,7 +49,7 @@ public class NetStun : BaseProjectileClass
             BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
             if (enemy != null)
             {
-                enemy.Stun();
+                enemy.Stun(stunDuration);
             }
         }
 

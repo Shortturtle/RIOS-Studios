@@ -141,15 +141,15 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         }
     }
 
-    public void Stun()
+    public void Stun(float duration)
     {
-        StartCoroutine(StunRoutine());        
+        StartCoroutine(StunRoutine(duration));        
     }
 
-    private IEnumerator StunRoutine()
+    private IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(duration);
         isStunned = false;
     }
 

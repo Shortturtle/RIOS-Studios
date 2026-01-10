@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -69,11 +70,26 @@ public class OffenseTowerBase : BaseTowerClass
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (isStunned)
+        {
+            return;
+        }
         GetTargetEnemy();
         TrackEnemy();
         AttackTimer();
         GeneralDegradeTracker();
         HoverUIHandler();
+    }
+    public void Stun(float duration)
+    {
+        StartCoroutine(StunRoutine(duration));
+    }
+
+    private IEnumerator StunRoutine(float duration)
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(duration);
+        isStunned = false;
     }
 
     protected virtual void FixedUpdate()

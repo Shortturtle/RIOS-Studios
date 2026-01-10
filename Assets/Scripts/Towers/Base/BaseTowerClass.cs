@@ -18,14 +18,11 @@ public class BaseTowerClass: MonoBehaviour
     public bool isBuffer = false;
 
     public bool isHovered;
+    protected bool isStunned;
 
     public int cost;
 
     public GameObject microgame;
-
-    //Tower Cost System (TBD)
-
-    //Placement System working with UI (also TBD)
 
     public virtual void InitializeTower()
     {

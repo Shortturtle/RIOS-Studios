@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public int stunAbilityCost;
     public int rewindAbilityCost;
     public float stunRadius = 5f;
+    public float stunDuration = 5f;
     public LayerMask enemyLayer;
 
     private float currentSpeed;   //speed of player
@@ -89,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
                 if (enemy != null)
                 {
-                    enemy.Stun();
+                    enemy.Stun(stunDuration);
                 }
             }
         }
