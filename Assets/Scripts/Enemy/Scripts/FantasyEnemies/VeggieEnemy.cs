@@ -20,6 +20,7 @@ public class VeggieEnemy : BaseEnemyClass
         {
             //add shield decrease when hit
             shieldCurrentAmount--;
+            Debug.Log("shielded");
             return;
         }
 

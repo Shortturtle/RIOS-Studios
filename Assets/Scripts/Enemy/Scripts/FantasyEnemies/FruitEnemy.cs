@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class FruitEnemy : BaseEnemyClass
 {
-    private bool canRegen = true;
+    private bool healthMaxed = true;
+    private bool wasHit = false;
+    private bool regenerating;
     public float regenCountdown;
     public float healthGain;
     public float timeBetweenRegen;
@@ -20,7 +22,16 @@ public class FruitEnemy : BaseEnemyClass
     {
         if(currentHealth < enemyStats.maxHealth)
         {
-            StartCoroutine(RegenerateHealth());
+            healthMaxed = false;
+        }
+        if(currentHealth >= enemyStats.maxHealth)
+        {
+            currentHealth = enemyStats.maxHealth;
+            healthMaxed = true;
+        }
+        if(!regenerating && !healthMaxed && !wasHit)
+        {
+            StartCoroutine("RegenerateHealth");
         }
 
         base.Update();
@@ -28,11 +39,13 @@ public class FruitEnemy : BaseEnemyClass
 
     public override void Damage(float damageAmount)
     {
-        canRegen = false;
+        wasHit = true;
+        StopCoroutine("RegenerateHealth");
+        regenerating = false;
+        StopCoroutine("OnHitCooldown");
+        StartCoroutine("OnHitCooldown");
 
         base.Damage(damageAmount);
-
-        StartCoroutine(Regenerate());
     }
 
     public override void Die()
@@ -42,21 +55,17 @@ public class FruitEnemy : BaseEnemyClass
         base.Die();
     }
 
-    private IEnumerator Regenerate()
+    private IEnumerator OnHitCooldown()
     {
         yield return new WaitForSeconds(regenCountdown);
-
-        canRegen = true;
+        wasHit = false;
     }
 
-    //might have to put in fixed update or smth
     private IEnumerator RegenerateHealth()
     {
-        while (canRegen)
-        {
-            currentHealth += healthGain;
-
-            yield return new WaitForSeconds(timeBetweenRegen);
-        }
+        regenerating = true;
+        currentHealth += healthGain;
+        yield return new WaitForSeconds(timeBetweenRegen);
+        regenerating = false;
     }
 }
