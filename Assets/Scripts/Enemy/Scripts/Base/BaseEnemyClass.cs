@@ -57,7 +57,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
     }
 
-    public void InitializeEnemy(WaypointManager wM)
+    public void InitializeEnemy_Start(WaypointManager wM)
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
@@ -66,6 +66,18 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         waypointList = waypointManager.points;
         totalDistance = waypointManager.totalDistance;
         waypointIndex = 0;
+        target = waypointManager.points[waypointIndex];
+    }
+
+    public void InitializeEnemy_OnTrack(WaypointManager wM, int wayPointIndex)
+    {
+        currentHealth = enemyStats.maxHealth;
+        speed = enemyStats.speed;
+        energyOnDeath = enemyStats.energyOnDeath;
+        waypointManager = wM;
+        waypointList = waypointManager.points;
+        totalDistance = waypointManager.totalDistance;
+        waypointIndex = wayPointIndex;
         target = waypointManager.points[waypointIndex];
     }
 
