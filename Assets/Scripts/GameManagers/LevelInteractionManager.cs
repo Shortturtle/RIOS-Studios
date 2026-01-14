@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class TowerInteractionManager : MonoBehaviour
+public class LevelInteractionManager : MonoBehaviour
 {
-    public static TowerInteractionManager instance;
+    public static LevelInteractionManager instance;
 
     private void Awake()
     {

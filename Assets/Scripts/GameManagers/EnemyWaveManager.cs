@@ -211,7 +211,7 @@ public class EnemyWaveManager : MonoBehaviour
         if (enemiesToSpawn[0] != null)
         {
             GameObject tempEnemy = Instantiate(enemiesToSpawn[0], spawnLocations[currentSpawnLocation].transform.position, Quaternion.identity);
-            tempEnemy.GetComponent<BaseEnemyClass>().InitializeEnemy(spawnLocations[currentSpawnLocation]);
+            tempEnemy.GetComponent<BaseEnemyClass>().InitializeEnemy_Start(spawnLocations[currentSpawnLocation]);
             enemiesToSpawn.RemoveAt(0);
             enemiesCurrentlyAlive.Add(tempEnemy);
             currentSpawnLocation++;
