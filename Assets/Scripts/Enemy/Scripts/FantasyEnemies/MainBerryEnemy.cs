@@ -6,23 +6,21 @@ public class MainBerryEnemy : BaseEnemyClass
 {
     public GameObject subBerry;
     public int berrySpawns;
-    public int currentMainIndex;
 
 
-    //i give up
     public override void Die()
     {
-        currentMainIndex = waypointIndex;
-
-
+        Vector3 dirToNextWaypoint = (waypointList[waypointIndex].position - transform.position);
+        dirToNextWaypoint.Normalize();
+        float splitNumber = -1f;
         while (berrySpawns > 0)
         {
-            Instantiate(subBerry, this.transform.position, Quaternion.identity);
+            splitNumber += 1;
+            GameObject tempEnemy = Instantiate(subBerry, transform.position + (dirToNextWaypoint *( speed * splitNumber)), Quaternion.identity);
+            tempEnemy.GetComponent<BaseEnemyClass>().InitializeEnemy_OnTrack(waypointManager,waypointIndex, distanceTravelled + (speed * splitNumber));
             berrySpawns--;
         }
 
         base.Die();
     }
-
-    
 }

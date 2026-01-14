@@ -270,4 +270,9 @@ public class EnemyWaveManager : MonoBehaviour
             this.enabled = false;
         }
     }
+
+    public void AddEnemyDuringWave(GameObject enemy)
+    {
+        enemiesCurrentlyAlive.Add(enemy);
+    }
 }

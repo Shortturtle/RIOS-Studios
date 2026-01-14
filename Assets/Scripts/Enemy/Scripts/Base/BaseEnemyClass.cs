@@ -69,7 +69,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         target = waypointManager.points[waypointIndex];
     }
 
-    public void InitializeEnemy_OnTrack(WaypointManager wM, int wayPointIndex)
+    public void InitializeEnemy_OnTrack(WaypointManager wM, int wayPointIndex, float _distanceTravelled)
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
@@ -77,8 +77,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         waypointManager = wM;
         waypointList = waypointManager.points;
         totalDistance = waypointManager.totalDistance;
+        distanceTravelled = _distanceTravelled;
         waypointIndex = wayPointIndex;
         target = waypointManager.points[waypointIndex];
+        EnemyWaveManager.instance.AddEnemyDuringWave(gameObject);
     }
 
     // Update is called once per frame
