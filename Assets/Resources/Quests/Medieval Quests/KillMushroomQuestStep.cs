@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class KillFruitQuestStep : QuestStep
+public class KillMushroomQuestStep : QuestStep
 {
     //numbers for quest functionality
-    private int numberOfFruitsKilled = 0;
-    private int numberOfFruitsToKill = 10;
+    private int numberOfMushroomsKilled = 0;
+    private int numberOfMushroomsToKill = 10;
 
 
     private void Start()
@@ -15,23 +15,23 @@ public class KillFruitQuestStep : QuestStep
 
     private void OnEnable()
     {
-        GameEventManager.instance.killEvents.onKillFruit += FruitKillActionDone;
+        GameEventManager.instance.killEvents.onKillMushroom += FruitKillActionDone;
     }
     private void OnDisable()
     {
-        GameEventManager.instance.killEvents.onKillFruit -= FruitKillActionDone;
+        GameEventManager.instance.killEvents.onKillMushroom -= FruitKillActionDone;
     }
 
     //record of the number of kanades collected to progress the quest
     private void FruitKillActionDone()
     {
-        if (numberOfFruitsKilled < numberOfFruitsToKill)
+        if (numberOfMushroomsKilled < numberOfMushroomsToKill)
         {
-            numberOfFruitsKilled++;
+            numberOfMushroomsKilled++;
             UpdateState();
         }
 
-        if (numberOfFruitsKilled >= numberOfFruitsToKill)
+        if (numberOfMushroomsKilled >= numberOfMushroomsToKill)
         {
             FinishedQuestStep();
         }
@@ -41,15 +41,15 @@ public class KillFruitQuestStep : QuestStep
     private void UpdateState()
     {
         //idk what this
-        string state = numberOfFruitsKilled.ToString();
+        string state = numberOfMushroomsKilled.ToString();
         //shows text in the qLog UI
-        string status = "Killed " + numberOfFruitsKilled + " / " + numberOfFruitsToKill + " Enemies.";
+        string status = "Killed " + numberOfMushroomsKilled + " / " + numberOfMushroomsToKill + " Enemies.";
         ChangeState(state, status);
     }
 
     protected override void SetQuestStepState(string state)
     {
-        this.numberOfFruitsKilled = System.Int32.Parse(state);
+        this.numberOfMushroomsKilled = System.Int32.Parse(state);
         UpdateState();
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KillFruits : MonoBehaviour
+public class KillMushrooms : MonoBehaviour
 {
     [Header("Quest")]
     //put the quest SO into this part in inspector
@@ -32,12 +32,12 @@ public class KillFruits : MonoBehaviour
         }
     }
 
-    public void KilledFruit()
+    public void KilledMushroom()
     {
         if (currentQuestState.Equals(QuestState.IN_PROGRESS))
         {
             //ref action in killevent script through GameEventManager
-            GameEventManager.instance.killEvents.FruitKilled();
+            GameEventManager.instance.killEvents.MushroomsKilled();
         }
     }
 }

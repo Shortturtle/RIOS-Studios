@@ -10,11 +10,11 @@ public class FruitEnemy : BaseEnemyClass
     public float healthGain;
     public float timeBetweenRegen;
 
-    private KillFruits killFruit;
+    //private KillFruits killFruit;
 
     protected override void Start()
     {
-        killFruit = GetComponent<KillFruits>();
+        //killFruit = GetComponent<KillFruits>();
         base.Start();
     }
 
@@ -50,7 +50,7 @@ public class FruitEnemy : BaseEnemyClass
 
     public override void Die()
     {
-        if(killFruit != null) { killFruit.KilledFruit(); }
+        //if(killFruit != null) { killFruit.KilledFruit(); }
 
         base.Die();
     }

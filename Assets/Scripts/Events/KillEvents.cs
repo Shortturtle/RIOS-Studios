@@ -3,13 +3,13 @@ using System;
 
 public class KillEvents
 {
-    public event Action onKillFruit;
+    public event Action onKillMushroom;
 
-    public void FruitKilled()
+    public void MushroomsKilled()
     {
-        if (onKillFruit != null)
+        if (onKillMushroom != null)
         {
-            onKillFruit();
+            onKillMushroom();
         }
     }
 }

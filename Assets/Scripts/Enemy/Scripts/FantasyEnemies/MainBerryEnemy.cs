@@ -7,7 +7,7 @@ public class MainBerryEnemy : BaseEnemyClass
     public GameObject subBerry;
     public int berrySpawns;
 
-
+    
     public override void Die()
     {
         Vector3 dirToNextWaypoint = (waypointList[waypointIndex].position - transform.position);
@@ -15,7 +15,7 @@ public class MainBerryEnemy : BaseEnemyClass
         float splitNumber = -1f;
         while (berrySpawns > 0)
         {
-            splitNumber += 1;
+            splitNumber += 0.75f;
             GameObject tempEnemy = Instantiate(subBerry, transform.position + (dirToNextWaypoint *( speed * splitNumber)), Quaternion.identity);
             tempEnemy.GetComponent<BaseEnemyClass>().InitializeEnemy_OnTrack(waypointManager,waypointIndex, distanceTravelled + (speed * splitNumber));
             berrySpawns--;
