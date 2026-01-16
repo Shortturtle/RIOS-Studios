@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -80,9 +81,9 @@ public class LevelInteractionManager : MonoBehaviour
             }
         }
 
-        else if(Physics.Raycast(ray, out RaycastHit hitInfo2, 100, enemyLayerMask, QueryTriggerInteraction.Ignore))
+        else if(Physics.Raycast(ray, out RaycastHit hitInfo2, 100, enemyLayerMask, QueryTriggerInteraction.Collide))
         {
-            if(hitInfo.collider.gameObject.GetComponent<BaseEnemyClass>() != null)
+            if(hitInfo2.collider.gameObject.GetComponent<BaseEnemyClass>() != null)
             {
                 Debug.Log("EnemyHit");
             }
