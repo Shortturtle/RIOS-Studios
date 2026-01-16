@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2114823113146199069}
   - component: {fileID: 3112632165495992358}
   - component: {fileID: 6609691997291242804}
+  - component: {fileID: -7877345218813208844}
   m_Layer: 0
   m_Name: Stun Field
   m_TagString: Untagged
@@ -106,5 +107,19 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7877345218813208844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535785738875344851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1420df872d02943856b0fba224344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunDuration: 2
+  stunRange: 5
