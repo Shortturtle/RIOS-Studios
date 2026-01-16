@@ -25,9 +25,14 @@ public class AxeSwing : BaseProjectileClass
         foreach (Collider col in collidersInRange)
         {
             BaseEnemyClass frickThisGuy = col.GetComponent<BaseEnemyClass>();
+            DeathStunEnemy deathStunner = col.GetComponent<DeathStunEnemy>();
 
             if (frickThisGuy != null)
             {
+                if(deathStunner != null)
+                {
+                    deathStunner.DamageMelee();
+                }
                 projectileEvent.Post(this.gameObject);
                 frickThisGuy.Damage(damage);
             }

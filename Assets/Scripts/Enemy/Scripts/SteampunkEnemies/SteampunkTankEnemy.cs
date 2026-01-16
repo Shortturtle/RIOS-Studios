@@ -1,7 +1,7 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
-public class FruitEnemy : BaseEnemyClass
+public class SteampunkTankEnemy : BaseEnemyClass
 {
     private bool healthMaxed = true;
     private bool wasHit = false;
@@ -10,26 +10,18 @@ public class FruitEnemy : BaseEnemyClass
     public float healthGain;
     public float timeBetweenRegen;
 
-    //private KillFruits killFruit;
-
-    protected override void Start()
-    {
-        //killFruit = GetComponent<KillFruits>();
-        base.Start();
-    }
-
     protected override void Update()
     {
-        if(currentHealth < enemyStats.maxHealth)
+        if (currentHealth < enemyStats.maxHealth)
         {
             healthMaxed = false;
         }
-        if(currentHealth >= enemyStats.maxHealth)
+        if (currentHealth >= enemyStats.maxHealth)
         {
-            currentHealth = enemyStats.maxHealth;
             healthMaxed = true;
+            currentHealth = enemyStats.maxHealth;
         }
-        if(!regenerating && !healthMaxed && !wasHit)
+        if (!regenerating && !healthMaxed && !wasHit)
         {
             StartCoroutine("RegenerateHealth");
         }
@@ -46,13 +38,6 @@ public class FruitEnemy : BaseEnemyClass
         StartCoroutine("OnHitCooldown");
 
         base.Damage(damageAmount);
-    }
-
-    public override void Die()
-    {
-        //if(killFruit != null) { killFruit.KilledFruit(); }
-
-        base.Die();
     }
 
     private IEnumerator OnHitCooldown()
