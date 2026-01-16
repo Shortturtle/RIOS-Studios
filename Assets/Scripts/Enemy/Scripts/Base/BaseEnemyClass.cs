@@ -51,6 +51,13 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     protected direction directionTravelling = direction.Forward;
     #endregion
 
+    #region Ui Variables
+    public bool isHovered;
+    public GameObject healthBar;
+    public GameObject healthBarPosition;
+    private GameObject healthBarInstance;
+    #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
@@ -245,4 +252,45 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         ResourceManager.instance.ReduceHealth(currentHealth);
         Destroy(this.gameObject);
     }
+
+    public virtual void HealthBarHandler()
+    {
+        if (healthBarInstance != null)
+        {
+            FixHealthBarPosition();
+        }
+
+        if (isHovered && healthBarInstance == null)
+        {
+            InitializeHoverUI();
+        }
+
+        else if (!isHovered && healthBarInstance != null)
+        {
+            DeleteHealthBarUI();
+        }
+    }
+
+    public virtual void InitializeHoverUI()
+    {
+        healthBarInstance = Instantiate(healthBar, GameObject.FindGameObjectWithTag("HoverCanvas").transform);
+        healthBarInstance.transform.position = Camera.main.WorldToScreenPoint(healthBarPosition.transform.position);
+        var healthBarHandler = healthBarInstance.GetComponent<EnemyHealthBar>();
+
+        if (healthBarHandler != null)
+        {
+            healthBarHandler.SetTarget(this);
+        }
+    }
+
+    public virtual void DeleteHealthBarUI()
+    {
+        Destroy(healthBarInstance);
+    }
+
+    protected virtual void FixHealthBarPosition()
+    {
+        healthBarInstance.transform.position = Camera.main.WorldToScreenPoint(healthBarPosition.transform.position);
+    }
+
 }

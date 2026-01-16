@@ -26,6 +26,7 @@ public class LevelInteractionManager : MonoBehaviour
     private bool isBuilding = false;
     private bool isPlayingMicrogame = false;
     public LayerMask towerLayerMask;
+    public LayerMask enemyLayerMask;
 
     private BaseTowerClass prevHoveredTower;
     private BaseTowerClass currentHoveredTower;
@@ -76,6 +77,14 @@ public class LevelInteractionManager : MonoBehaviour
             {
                 currentHoveredTower = hitInfo.collider.gameObject.GetComponent<BaseTowerClass>();
                 currentHoveredTower.isHovered = true;
+            }
+        }
+
+        else if(Physics.Raycast(ray, out RaycastHit hitInfo2, 100, enemyLayerMask, QueryTriggerInteraction.Ignore))
+        {
+            if(hitInfo.collider.gameObject.GetComponent<BaseEnemyClass>() != null)
+            {
+                Debug.Log("EnemyHit");
             }
         }
 
