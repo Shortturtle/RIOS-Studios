@@ -786,7 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 6400851962763968431}
-  healthSlider: {fileID: 5272497362003081962}
+  healthBarMaterial: {fileID: 2100000, guid: 9f4226b6f7b355c4cadf3c697122eb89, type: 2}
   energyText: {fileID: 1979532360701861284}
   abilityPointText: {fileID: 2038263990976377517}
   waveText: {fileID: 1301882380457872642}
@@ -1787,7 +1787,7 @@ GameObject:
   - component: {fileID: 9035620713085020533}
   - component: {fileID: 936279975038442463}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1805,12 +1805,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5580903496928835923}
+  m_Father: {fileID: 6746154001828518502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 1.9000244, y: 1.5}
+  m_SizeDelta: {x: -18, y: -17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9035620713085020533
 CanvasRenderer:
@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 9f4226b6f7b355c4cadf3c697122eb89, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2423,8 +2423,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6746154001828518502}
-  - {fileID: 5580903496928835923}
   - {fileID: 3441438801632583903}
+  - {fileID: 5580903496928835923}
   m_Father: {fileID: 1230433837224901705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -5546,7 +5546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5580903496928835923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5558,8 +5558,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 549281529094225232}
+  m_Children: []
   m_Father: {fileID: 3968152086619120269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5647,7 +5646,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 549281529094225232}
   m_Father: {fileID: 3968152086619120269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

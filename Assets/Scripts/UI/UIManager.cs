@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Serialization;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
@@ -8,14 +9,16 @@ public class UIManager : MonoBehaviour
 {
     private int healthCount;
     private int maxHealth;
+    [Range(0f, 1f)]
+    private float healthPercentage;
     private int energyCount;
     private int abilityPointCount;
     private int waveCount;
     private int maxWaveCount;
 
-    //Coin count UI
+   
     public TextMeshProUGUI healthText;
-    public Slider healthSlider;
+    public Material healthBarMaterial;
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI abilityPointText;
     public TextMeshProUGUI waveText;
@@ -23,7 +26,7 @@ public class UIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        healthSlider.maxValue = ResourceManager.instance.maxHealth;
+        maxHealth = (int)ResourceManager.instance.maxHealth;
         maxWaveCount = EnemyWaveManager.instance.maxWaves;
     }
 
@@ -39,9 +42,9 @@ public class UIManager : MonoBehaviour
     private void HealthHandler()
     {
         healthCount = (int) ResourceManager.instance.currentBaseHealth;
-        healthSlider.value = healthCount;
-        maxHealth = (int) ResourceManager.instance.maxHealth;
         healthCount = Mathf.Clamp(healthCount, 0, maxHealth);
+        healthPercentage = (float)Math.Round(((float)healthCount/(float)maxHealth), 2);
+        healthBarMaterial.SetFloat("_Percentage", healthPercentage);
 
         //update ui for health
         healthText.text = $"{healthCount}/{maxHealth}";
