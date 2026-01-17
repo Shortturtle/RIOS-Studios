@@ -28,9 +28,14 @@ public class LevelInteractionManager : MonoBehaviour
     private bool isPlayingMicrogame = false;
     public LayerMask towerLayerMask;
     public LayerMask enemyLayerMask;
+    public GameObject enemyHealthBar;
+    private EnemyHealthBar enemyHealthBarInstance;
 
     private BaseTowerClass prevHoveredTower;
     private BaseTowerClass currentHoveredTower;
+
+    private BaseEnemyClass prevHoveredEnemy;
+    private BaseEnemyClass currentHoveredEnemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +48,7 @@ public class LevelInteractionManager : MonoBehaviour
         SetBuildingBool();
         SetMinigameBool();
         InputTracker();
+        HealthBarPositioner();
 
         if (!isBuilding && !isPlayingMicrogame)
         {
@@ -81,17 +87,33 @@ public class LevelInteractionManager : MonoBehaviour
             }
         }
 
-        else if(Physics.Raycast(ray, out RaycastHit hitInfo2, 100, enemyLayerMask, QueryTriggerInteraction.Collide))
+        else
+        {
+            currentHoveredTower = null;
+        }
+
+        if(Physics.Raycast(ray, out RaycastHit hitInfo2, 100, enemyLayerMask, QueryTriggerInteraction.Collide))
         {
             if(hitInfo2.collider.gameObject.GetComponent<BaseEnemyClass>() != null)
             {
-                Debug.Log("EnemyHit");
+                currentHoveredEnemy = hitInfo2.collider.gameObject.GetComponent<BaseEnemyClass>();
+                if(enemyHealthBarInstance == null)
+                {
+                    enemyHealthBarInstance = Instantiate(enemyHealthBar, GameObject.FindGameObjectWithTag("HoverCanvas").transform).GetComponent<EnemyHealthBar>();
+                    enemyHealthBarInstance.gameObject.transform.position = Camera.main.WorldToScreenPoint(currentHoveredEnemy.healthBarPosition.transform.position);
+                    enemyHealthBarInstance.SetTarget(currentHoveredEnemy);
+                }
             }
         }
 
         else
         {
-            currentHoveredTower = null;
+            currentHoveredEnemy = null;
+            if  (enemyHealthBarInstance != null)
+            {
+                Destroy(enemyHealthBarInstance.gameObject);
+                enemyHealthBarInstance = null;
+            }
         }
 
         if (currentHoveredTower != prevHoveredTower)
@@ -103,7 +125,6 @@ public class LevelInteractionManager : MonoBehaviour
 
             prevHoveredTower = currentHoveredTower;
         }
-
     }
 
     void InputTracker()
@@ -118,6 +139,14 @@ public class LevelInteractionManager : MonoBehaviour
         {
             inputMap.FindActionMap("TowerInteractionSystem").Enable();
             inputMap.FindActionMap("DISABLE").Disable();
+        }
+    }
+
+    void HealthBarPositioner()
+    {
+        if (enemyHealthBarInstance != null && currentHoveredEnemy != null)
+        {
+            enemyHealthBarInstance.gameObject.transform.position = Camera.main.WorldToScreenPoint(currentHoveredEnemy.healthBarPosition.transform.position);
         }
     }
 
