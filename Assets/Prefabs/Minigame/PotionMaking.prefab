@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 5477616479089286684}
   - component: {fileID: 7077517850815404368}
   - component: {fileID: 1378160534447275052}
+  - component: {fileID: 627001962710248918}
   m_Layer: 5
   m_Name: Cauldron
   m_TagString: Untagged
@@ -429,7 +430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -555866445, guid: 97de1087172b62d4ab9de42d5dfbea8a, type: 3}
+  m_Sprite: {fileID: -13110448, guid: 3f502f8b11fc90240998650170af363c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -476,6 +477,28 @@ CapsuleCollider2D:
   m_Offset: {x: -20.1, y: 0}
   m_Size: {x: 800, y: 200}
   m_Direction: 1
+--- !u!95 &627001962710248918
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7523814960836377132}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd191a3a458fa2d4280760431861d8b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8536567727017570557
 GameObject:
   m_ObjectHideFlags: 0
