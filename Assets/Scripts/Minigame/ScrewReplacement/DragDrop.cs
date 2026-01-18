@@ -37,13 +37,20 @@ public class DragDrop : MonoBehaviour
         //check distance between obj and placement
         float Distance = Vector3.Distance(objectToDrag.transform.position, objectDragToPos.transform.position);
         //if placement pos blocked by old screw, no placy new one
-        if(isBlocked == true) { return; }
+
+        if (isBlocked == true)
+        {
+            objectToDrag.transform.position = objectInitialPos;
+            return;
+        }
+
         if (Distance < dropDistance) 
         {
+            
             //complete minigame part
             isLocked = true;
             objectToDrag.transform.position = objectDragToPos.transform.position;
-            FindAnyObjectByType<SPMGManager>().ProgressCheck();
+            //FindAnyObjectByType<SPMGManager>().ProgressCheck();
         }
         else
         {
