@@ -11,6 +11,7 @@ public class OffenseTowerStats : ScriptableObject
     public float Damage;
     public float TimeBetweenAttacks;
     public float Range;
+    public bool canAttackFlying;
     [Space(10)]
 
     [Header("Projectile")]

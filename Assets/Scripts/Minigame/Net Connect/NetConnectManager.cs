@@ -20,7 +20,6 @@ public class NetConnectManager : BaseMicrogameClass
 
     private void Start()
     {
-        StartMicrogame();
     }
 
     private void InitializeWires()
@@ -84,6 +83,7 @@ public class NetConnectManager : BaseMicrogameClass
             {
                 Debug.Log("TASK COMPLETED");
                 EndMicrogame();
+                Destroy(gameObject);
                 break;
             }
             else

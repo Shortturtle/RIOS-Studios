@@ -13,6 +13,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public EnemyStats enemyStats;
     public float currentHealth { get; set; }
     public float speed { get; set; }
+    public bool isFlying { get; set; }
     public Transform target { get; set; }
     public int waypointIndex { get; set; } = 0;
 
@@ -65,6 +66,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
+        isFlying = enemyStats.isFlying;
         energyOnDeath = enemyStats.energyOnDeath;
         waypointManager = wM;
         waypointList = waypointManager.points;

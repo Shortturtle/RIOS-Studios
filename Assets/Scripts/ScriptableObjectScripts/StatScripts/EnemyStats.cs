@@ -9,6 +9,6 @@ public class EnemyStats : ScriptableObject
 
     public int energyOnDeath;
 
-    public bool isCamo;
+    public bool isFlying;
 
 }

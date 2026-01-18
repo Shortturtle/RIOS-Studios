@@ -39,6 +39,7 @@ public class OffenseTowerBase : BaseTowerClass
     [HideInInspector] public float damageValue;
     [HideInInspector] public float timeBetweenAttackValue;
     [HideInInspector] public float rangeValue;
+    [HideInInspector] public bool canAttackFlying;
     protected float attackTimer;
 
     // Projectile variables
@@ -100,6 +101,13 @@ public class OffenseTowerBase : BaseTowerClass
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.GetComponent<BaseEnemyClass>())
         {
+            BaseEnemyClass tempEnemy = other.gameObject.GetComponent<BaseEnemyClass>();
+
+            if(tempEnemy.isFlying && !canAttackFlying)
+            {
+                return;
+            }
+
             if (!targets.Contains(other.GetComponent<BaseEnemyClass>()))
             {
                 targets.Add(other.GetComponent<BaseEnemyClass>());

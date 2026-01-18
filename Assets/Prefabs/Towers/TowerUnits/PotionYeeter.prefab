@@ -264,7 +264,6 @@ GameObject:
   - component: {fileID: 4993666602742130442}
   - component: {fileID: 7713235988818575760}
   - component: {fileID: 4546256019675010710}
-  - component: {fileID: 8816216216485225962}
   - component: {fileID: 3719240437637869913}
   - component: {fileID: 6960196048640580729}
   m_Layer: 8
@@ -340,41 +339,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8816216216485225962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590060429733126036}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f6cccb55c091ea4b9246affd0d5987a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMaxDegraded: 0
-  degradeRank: 0
-  maxDegradeRank: 0
-  degradeSign: {fileID: 424428460831399431}
-  isOverdrive: 0
-  isBuffer: 0
-  isHovered: 0
-  cost: 0
-  microgame: {fileID: 0}
-  stats: {fileID: 11400000, guid: a7c6acbfd89cc4443accd9324511ecb9, type: 2}
-  currentTarget: {fileID: 0}
-  targettingMode: 0
-  MoveableTarget: {fileID: 7610007147114449004}
-  damageBase: 0
-  timeBetweenAttacksBase: 0
-  rangeBase: 0
-  damageValue: 0
-  timeBetweenAttackValue: 0
-  rangeValue: 0
-  bulletExitPoint: {fileID: 4790800665437212984}
-  hoverUI: {fileID: 25020122461886052, guid: 2fe2f888b6e101e43b9987a2f1541fdb, type: 3}
-  hoverUIPosition: {fileID: 5311474754537666163}
-  statsUI: {fileID: 0}
 --- !u!114 &3719240437637869913
 MonoBehaviour:
   m_ObjectHideFlags: 0
