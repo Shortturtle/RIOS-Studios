@@ -16,16 +16,18 @@ public class RustyScrew : MonoBehaviour
 
     public GameObject objectBelow;
     private Rigidbody2D rb;
+    private CircleCollider2D cCollider;
 
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
 
+        cCollider = GetComponentInParent<CircleCollider2D>();
+
         //set initial pos to object's current pos
         objectInitialPos = objectBelow.transform.position;
-        Debug.Log(objectInitialPos);
+        cCollider.enabled = false;
     }
 
     public void DragObject()
@@ -45,8 +47,8 @@ public class RustyScrew : MonoBehaviour
         {
             dropped = true;
             rb.gravityScale = grav;
-            objectBelow.GetComponent<DragDrop>().isBlocked = false;
-            Destroy(gameObject, 4f);
+            cCollider.enabled = true;
+            Destroy(gameObject, 5f);
         }
     }
 }

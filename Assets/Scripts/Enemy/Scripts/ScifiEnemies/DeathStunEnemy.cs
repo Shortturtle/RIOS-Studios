@@ -19,7 +19,8 @@ public class DeathStunEnemy : BaseEnemyClass
     }
     public override void Die()
     {
-        if (rangedAttack)
+        int chance = Random.Range(0, 2);
+        if (rangedAttack && chance == 1)
         {
             Instantiate(stunField, transform.position, Quaternion.identity);
         }
