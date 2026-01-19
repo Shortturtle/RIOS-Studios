@@ -6,6 +6,7 @@ public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private TMP_Text textName;
 
     public bool IsOpen { get; private set; }
 
@@ -37,6 +38,7 @@ public class DialogueUI : MonoBehaviour
         for (int i = 0/*while*/; i < dialogueObject.Dialogue.Length; i++)
         {
             string dialogue = dialogueObject.Dialogue[i];
+            string characterName = dialogueObject.characterName;
 
             yield return RunTypingEffect(dialogue);
 

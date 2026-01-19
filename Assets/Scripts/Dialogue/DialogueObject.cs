@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueObject : ScriptableObject
 {
+    [SerializeField] public string characterName;
     [SerializeField] [TextArea] private string[] dialogue;
     [SerializeField] private Response[] responses;
 
