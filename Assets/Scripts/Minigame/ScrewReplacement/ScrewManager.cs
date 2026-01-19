@@ -49,11 +49,10 @@ public class ScrewManager : BaseMicrogameClass
             {
                 SpawnNormalScrews(number);
             }
-
         }
     }
 
-    //progress check is a lie it actually helps count to the numberToCompleteMinigame
+    //count to the numberToCompleteMinigame
     public void ProgressCheck()
     {
         completion++;
