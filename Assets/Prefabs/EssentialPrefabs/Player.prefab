@@ -133,13 +133,13 @@ MonoBehaviour:
     m_ActionName: 'PlayerAction/Ability2[/Keyboard/r]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7821637766708554384}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1046236937337777715}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: PauseMenu
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -164,7 +164,19 @@ MonoBehaviour:
     m_ActionId: 69be1228-306a-4324-9401-16c9534c40ca
     m_ActionName: 'PlayerAction/TowerMenu[/Keyboard/t]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1046236937337777715}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: QuestLog
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 943b0d66-f2e5-4455-bf01-e1995accaf26
     m_ActionName: 'PlayerAction/QuestLog[/Keyboard/q]'
   - m_PersistentCalls:
@@ -213,6 +225,7 @@ MonoBehaviour:
   stunAbilityCost: 3
   rewindAbilityCost: 5
   stunRadius: 5
+  stunDuration: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -256,7 +269,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
