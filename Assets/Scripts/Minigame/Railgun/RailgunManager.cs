@@ -16,7 +16,9 @@ public class RailgunManager : BaseMicrogameClass
     public Slider slider3;
 
     public float maxDifference;
-    private bool isFinished = false;
+    private bool isFinishedOne = false;
+    private bool isFinishedTwo = false;
+    private bool isFinishedThree = false;
 
     public int completion = 0;
     public int numberToCompleteMinigame;
@@ -66,27 +68,27 @@ public class RailgunManager : BaseMicrogameClass
 
     public void CheckBarOneProgress()
     {
-        if(Mathf.Abs(slider1.value - barOneTarget) <= maxDifference && !isFinished) 
+        if(Mathf.Abs(slider1.value - barOneTarget) <= maxDifference && !isFinishedOne) 
         {
-            isFinished = true;
+            isFinishedOne = true;
             slider1.interactable = false;
             completion++; 
         }
     }
     public void CheckBarTwoProgress()
     {
-        if(Mathf.Abs(slider2.value - barTwoTarget) <= maxDifference && !isFinished) 
+        if(Mathf.Abs(slider2.value - barTwoTarget) <= maxDifference && !isFinishedTwo) 
         {
-            isFinished = true;
+            isFinishedTwo = true;
             slider2.interactable = false;
             completion++; 
         }
     }
     public void CheckBarThreeProgress()
     {
-        if(Mathf.Abs(slider3.value - barThreeTarget) <= maxDifference && !isFinished) 
+        if(Mathf.Abs(slider3.value - barThreeTarget) <= maxDifference && !isFinishedThree) 
         { 
-            isFinished = true;
+            isFinishedThree = true;
             slider3.interactable = false;
             completion++; 
         }
