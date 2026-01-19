@@ -11,6 +11,15 @@ public class RailgunManager : BaseMicrogameClass
     public float barTwoInitial;
     public float barThreeInitial;
 
+    public Material sliderBarBGMat;
+    public Image barOneBGImage;
+    public Image barTwoBGImage;
+    public Image barThreeBGImage;
+
+    private Material barOneMaterial;
+    private Material barTwoMaterial;
+    private Material barThreeMaterial;
+
     public Slider slider1;
     public Slider slider2;
     public Slider slider3;
@@ -51,8 +60,22 @@ public class RailgunManager : BaseMicrogameClass
     private void CreateBarTargets()
     {
         barOneTarget = Random.Range(1, 101);
+        barOneMaterial = new Material(sliderBarBGMat);
+        barOneBGImage.material = barOneMaterial;
+        barOneMaterial.SetFloat("_MinValue", Mathf.Clamp(((barOneTarget - maxDifference) / 100), 0f, 1f));
+        barOneMaterial.SetFloat("_MaxValue", Mathf.Clamp(((barOneTarget + maxDifference) / 100), 0f, 1f));
+
         barTwoTarget = Random.Range(1, 101);
+        barTwoMaterial = new Material(sliderBarBGMat);
+        barTwoBGImage.material = barTwoMaterial;
+        barTwoMaterial.SetFloat("_MinValue", Mathf.Clamp(((barTwoTarget - maxDifference) / 100), 0f, 1f));
+        barTwoMaterial.SetFloat("_MaxValue", Mathf.Clamp(((barTwoTarget + maxDifference) / 100), 0f, 1f));
+
         barThreeTarget = Random.Range(1, 101);
+        barThreeMaterial = new Material(sliderBarBGMat);
+        barThreeBGImage.material = barThreeMaterial;
+        barThreeMaterial.SetFloat("_MinValue", Mathf.Clamp(((barThreeTarget - maxDifference) / 100), 0f, 1f));
+        barThreeMaterial.SetFloat("_MaxValue", Mathf.Clamp(((barThreeTarget + maxDifference) / 100), 0f, 1f));
     }
 
     private void CreateBarInitial()
