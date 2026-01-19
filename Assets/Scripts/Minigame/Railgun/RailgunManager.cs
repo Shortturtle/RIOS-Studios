@@ -50,16 +50,16 @@ public class RailgunManager : BaseMicrogameClass
 
     private void CreateBarTargets()
     {
-        barOneTarget = Random.Range(0, 101);
-        barTwoTarget = Random.Range(0, 101);
-        barThreeTarget = Random.Range(0, 101);
+        barOneTarget = Random.Range(1, 101);
+        barTwoTarget = Random.Range(1, 101);
+        barThreeTarget = Random.Range(1, 101);
     }
 
     private void CreateBarInitial()
     {
-        barOneInitial = Random.Range(0, 101);
-        barTwoInitial = Random.Range(0, 101);
-        barThreeInitial = Random.Range(0, 101);
+        barOneInitial = Random.Range(1, 101);
+        barTwoInitial = Random.Range(1, 101);
+        barThreeInitial = Random.Range(1, 101);
 
         slider1.value = barOneInitial;
         slider2.value = barTwoInitial;

@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class Ingredient : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    //gameplay variables
     public PotionMakingManager potionMakingManager;
     public Canvas canvas;
-    private bool isDragStarted;
     public bool isInPot;
+
+    //variables for movement
+    private bool isDragStarted;
     private Vector2 ogPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ogPos = transform.position;
+        ogPos = transform.position; // stores original position
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class Ingredient : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     {
         if (isDragStarted)
         {
+            //moves the object to mouse position if dragged
             Vector2 movePos;
 
             // gets moves object to mouse position
@@ -36,6 +40,7 @@ public class Ingredient : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
         else
         {
+            //else keep it in original position
             transform.position = ogPos;
         }
     }
@@ -54,8 +59,10 @@ public class Ingredient : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     {
         if (isInPot)
         {
+            //if one of the correct ingredients
             if (potionMakingManager.selectedIngredientSprites.Contains(gameObject.GetComponent<Image>().sprite))
             {
+                //plays animation and increases win variable
                 int index = potionMakingManager.selectedIngredientSprites.IndexOf(gameObject.GetComponent<Image>().sprite);
                 potionMakingManager.selectedIngredientSprites.RemoveAt(index);
                 potionMakingManager.ingredientsMixed++;
