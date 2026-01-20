@@ -190,7 +190,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
         if (waypointIndex != 0)
         {
-            tempTarget = waypointList[waypointIndex - 1];
+            tempTarget = waypointList[waypointIndex - 1];                                                           //Reset the target waypoint to the previous one IF the enemy rewinds past it
         }
 
         else {
