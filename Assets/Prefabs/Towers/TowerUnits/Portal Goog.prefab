@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6138398901478433628}
   - component: {fileID: 7761729399217899383}
   - component: {fileID: 5321565445240879671}
-  - component: {fileID: 7857033596875942457}
+  - component: {fileID: 7851543040157180554}
   m_Layer: 8
-  m_Name: SlowDiver
+  m_Name: Portal Goog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ CapsuleCollider:
   m_Height: 5.7
   m_Direction: 1
   m_Center: {x: -0.26, y: 1.62, z: 0}
---- !u!114 &7857033596875942457
+--- !u!114 &7851543040157180554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1589823585358756717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6050ff611b9d03845835adc4d4d3b00d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3500547f0cd97ca4a8507214161b2978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isMaxDegraded: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   isHovered: 0
   cost: 0
   microgame: {fileID: 0}
-  stats: {fileID: 11400000, guid: c084e2f2ac6d95a4094274985b525512, type: 2}
+  stats: {fileID: 11400000, guid: 2b5e828dc4d3d7343990dd69a3bd1c2f, type: 2}
   currentTarget: {fileID: 0}
   targettingMode: 0
   MoveableTarget: {fileID: 886040041233997910}
@@ -145,7 +145,6 @@ MonoBehaviour:
   hoverUI: {fileID: 25020122461886052, guid: 2fe2f888b6e101e43b9987a2f1541fdb, type: 3}
   hoverUIPosition: {fileID: 2974243254138377513}
   statsUI: {fileID: 0}
-  overdriveProjectile: {fileID: 518112336618132754, guid: 2ae8bf97a9818c346a7441933fb26eff, type: 3}
 --- !u!1 &2085383780320559525
 GameObject:
   m_ObjectHideFlags: 0

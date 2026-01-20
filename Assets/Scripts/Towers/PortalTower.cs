@@ -3,6 +3,8 @@ using System;
 
 public class PortalTower : OffenseTowerBase
 {
+    public GameObject overdriveProjectile;
+
     protected override void Attack()
     {
         base.Attack();
@@ -10,7 +12,8 @@ public class PortalTower : OffenseTowerBase
 
     protected override void OverDrive()
     {
-        damageValue = (float)Math.Round(damageBase * 1.5, 2);
+        stats.Projectile = overdriveProjectile;
+        damageValue = (20);
         overdriveCountdownTimer = overdriveTimerDuration;
     }
 

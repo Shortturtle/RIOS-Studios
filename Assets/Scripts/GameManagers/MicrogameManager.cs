@@ -46,10 +46,10 @@ public class MicrogameManager : MonoBehaviour
     {
         targettedTower.RepairTower();
         ResourceManager.instance.AddAbilityPoint(1);
-        if(chosenMicrogame != null)
-        {
-            Destroy(chosenMicrogame);
-        }
+        //if(chosenMicrogame != null)
+        //{
+        //    Destroy(chosenMicrogame);
+        //}
         currentlyPlayingMinigame = false;
         targettedTower = null;
         chosenMicrogame = null;

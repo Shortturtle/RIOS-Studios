@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d439fd9e6afaf7649a5378732363949c, type: 3}
-  m_Name: SlowDiver
+  m_Name: Portal
   m_EditorClassIdentifier: 
-  Cost: 50
-  Damage: 20
-  TimeBetweenAttacks: 3
-  Range: 8
+  Cost: 100
+  Damage: 0
+  TimeBetweenAttacks: 10
+  Range: 10
   canAttackFlying: 0
-  Projectile: {fileID: 518112336618132754, guid: 691bcffacb63b7048aa444624b6c037b, type: 3}
-  DegradeTimerDuration: 3
-  OverdriveTimerDuration: 5
-  BufferTimerDuration: 3
+  Projectile: {fileID: 3352627344900949102, guid: a7f0876ade4484f429a6c043bd7f2abb, type: 3}
+  DegradeTimerDuration: 5
+  OverdriveTimerDuration: 2
+  BufferTimerDuration: 10
   MaxDegradeRank: 4
-  Microgame: {fileID: 3463463065288939516, guid: d9028fd6438c6bd4fa951d596823b230, type: 3}
+  Microgame: {fileID: 8654101538631628735, guid: 3503de4bff31975469f69456789c7eeb, type: 3}
   AttackEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: e6d75286cd011e4408e58475f2fd87e5, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 241d2dc6f2468ee4caf602d1d0d06c7c, type: 2}
   DegradeEvent:
     idInternal: 0
     valueGuidInternal: 
