@@ -26,13 +26,12 @@ public class AxeSwing : BaseProjectileClass
         {
             BaseEnemyClass frickThisGuy = col.GetComponent<BaseEnemyClass>();
             DeathStunEnemy deathStunner = col.GetComponent<DeathStunEnemy>();
+            SteampunkNormalEnemy speedGiver = col.GetComponent<SteampunkNormalEnemy>();
 
             if (frickThisGuy != null)
             {
-                if(deathStunner != null)
-                {
-                    deathStunner.DamageMelee();
-                }
+                if(deathStunner != null) { deathStunner.DamageMelee(); }
+                if(speedGiver != null) { speedGiver.DamageMelee(); }
                 projectileEvent.Post(this.gameObject);
                 frickThisGuy.Damage(damage);
             }
