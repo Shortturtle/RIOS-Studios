@@ -8,11 +8,9 @@ public class ScifiFlyingEnemy : BaseEnemyClass
     public float boostSpeed;
     public float boostDuration;
 
-    public int minBoostTime;
-    public int maxBoostTime1;
-    public int maxBoostTime2;
-    public int maxBoostTime3;
-
+    public int boostGrp1;
+    public int boostGrp2;
+    public int boostGrp3;
 
     protected override void Start()
     {
@@ -28,20 +26,20 @@ public class ScifiFlyingEnemy : BaseEnemyClass
         int boostGroup = Random.Range(1, 4);
         if (boostGroup == 1)
         {
-            int beforeBoost = Random.Range(minBoostTime, maxBoostTime1);
-            yield return new WaitForSeconds(beforeBoost);
+            yield return new WaitForSeconds(boostGrp1);
+            Debug.Log("bg1");
             StartCoroutine("BoostMode");
         }
         else if (boostGroup == 2)
         {
-            int beforeBoost = Random.Range(maxBoostTime1, maxBoostTime2);
-            yield return new WaitForSeconds(beforeBoost);
+            yield return new WaitForSeconds(boostGrp2);
+            Debug.Log("bg2");
             StartCoroutine("BoostMode");
         }
         else if (boostGroup == 3)
         {
-            int beforeBoost = Random.Range(maxBoostTime2, maxBoostTime3);
-            yield return new WaitForSeconds(beforeBoost);
+            yield return new WaitForSeconds(boostGrp3);
+            Debug.Log("bg3");
             StartCoroutine("BoostMode");
         }
     }

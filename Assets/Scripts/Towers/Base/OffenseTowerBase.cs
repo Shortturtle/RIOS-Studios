@@ -259,6 +259,8 @@ public class OffenseTowerBase : BaseTowerClass
 
         projectile = stats.Projectile;
 
+        canAttackFlying = stats.canAttackFlying;
+
         cost = stats.Cost;
 
         degradeTimerDuration = stats.DegradeTimerDuration;
