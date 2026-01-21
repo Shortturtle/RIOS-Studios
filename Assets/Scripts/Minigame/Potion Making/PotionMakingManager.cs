@@ -76,7 +76,6 @@ public class PotionMakingManager : BaseMicrogameClass
         if (ingredientsMixed == ingredientSlots.Count)
         {
             EndMicrogame();
-            Destroy(gameObject);
         }
     }
 }

@@ -44,49 +44,6 @@ public class SeasonsManager : MonoBehaviour
         terrainRenderer = terrainMesh.GetComponent<Renderer>();
     }
 
-    private void Update()
-    {
-        ChangeSeasonTest();
-        //Test();
-    }
-
-    public void Test()
-    {
-        //if (Input.GetKeyDown(KeyCode.B))
-        //{
-        //    Destroy(thang);
-        //    Instantiate(springThing);
-        //    thang = springThing;
-        //}
-        //if (Input.GetKeyDown(KeyCode.N))
-        //{
-        //    Destroy(thang);
-        //    Instantiate(summerThing);
-        //    thang = summerThing;
-        //}
-        
-    }
-
-    public void ChangeSeasonTest()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            ToSpring();
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            ToSummer();
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            ToAutumn();
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ToWinter();
-        }
-    }
-    
     //change to seasons
     public void ToSpring()
     {
@@ -98,7 +55,7 @@ public class SeasonsManager : MonoBehaviour
         winterObject.SetActive(false);
 
         riverRenderer.material = waterRiver;
-        //terrainRenderer.material = springMaterial;
+        terrainRenderer.material = springMaterial;
     }
     public void ToSummer()
     {
@@ -110,7 +67,7 @@ public class SeasonsManager : MonoBehaviour
         winterObject.SetActive(false);
 
         riverRenderer.material = waterRiver;
-        //terrainRenderer.material = summerMaterial;
+        terrainRenderer.material = summerMaterial;
     }
     public void ToAutumn()
     {
@@ -122,7 +79,7 @@ public class SeasonsManager : MonoBehaviour
         winterObject.SetActive(false);
 
         riverRenderer.material = waterRiver;
-        //terrainRenderer.material = autumnMaterial;
+        terrainRenderer.material = autumnMaterial;
     }
     public void ToWinter()
     {
@@ -134,6 +91,6 @@ public class SeasonsManager : MonoBehaviour
         winterObject.SetActive(true);
 
         riverRenderer.material = iceRiver;
-        //terrainRenderer.material = winterMaterial;
+        terrainRenderer.material = winterMaterial;
     }
 }

@@ -5,6 +5,12 @@ public class PortalTower : OffenseTowerBase
 {
     public GameObject overdriveProjectile;
 
+    protected override void Degrade()
+    {
+        PortalProjectile.portalDuration = ((float)PortalProjectile.portalDuration - (0.5f * ((float)degradeRank / (float)maxDegradeRank)));
+        ResetDegradeTimer();
+    }
+
     protected override void Attack()
     {
         base.Attack();

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputManagerEntry;
 
 public class EnemyWaveManager : MonoBehaviour
 {
@@ -45,6 +46,9 @@ public class EnemyWaveManager : MonoBehaviour
     private float listCleanDelay = 0.2f;
     private float listCleanTimer;
 
+    //medieval season gimmick
+    private SeasonsManager seasons;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,6 +56,8 @@ public class EnemyWaveManager : MonoBehaviour
         listCleanTimer = listCleanDelay;
         waveEndEnergyReward = waveHolder.waveEndEnergyReward;
         StartBuffer();
+
+        seasons = FindFirstObjectByType<SeasonsManager>();
     }
 
     // Update is called once per frame
@@ -271,6 +277,13 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
+    private void SeasonChange()
+    {
+        if(seasons != null)
+        {
+
+        }
+    }
     public void AddEnemyDuringWave(GameObject enemy)
     {
         enemiesCurrentlyAlive.Add(enemy);
