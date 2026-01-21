@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SharpenManager : BaseMicrogameClass
 {
+    public GameObject bladeEdge;
+    private Image image;
+    private float currentAlpha = 1f;
+
     public int completion = 0;
     public int numberToCompleteMinigame;
 
@@ -22,7 +27,7 @@ public class SharpenManager : BaseMicrogameClass
         //initializes variables
         Canvas canvas = transform.parent.GetComponent<Canvas>();
 
-        
+        image = bladeEdge.GetComponent<Image>();
     }
 
 
@@ -31,6 +36,11 @@ public class SharpenManager : BaseMicrogameClass
     public void ProgressCheck()
     {
         completion++;
+
+        var tempColor = image.color;
+        tempColor.a = currentAlpha - 0.125f;
+        image.color = tempColor;
+        currentAlpha = tempColor.a;
 
         if (completion == numberToCompleteMinigame)
         {
