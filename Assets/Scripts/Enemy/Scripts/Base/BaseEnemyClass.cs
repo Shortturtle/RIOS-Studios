@@ -23,7 +23,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     #region Skill Variables
     public bool isRewinding = false;
     protected List<PointInTime> pointsInTime = new List<PointInTime>();
-    protected class PointInTime
+    public class PointInTime
     {
         public Vector3 position;
         public Quaternion rotation;
