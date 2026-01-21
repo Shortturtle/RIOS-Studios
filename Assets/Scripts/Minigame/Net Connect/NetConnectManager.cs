@@ -5,6 +5,7 @@ using UnityEngine;
 public class NetConnectManager : BaseMicrogameClass
 {
     public List<Color> ropeColors = new List<Color>();
+    public List<Sprite> ropeSprites = new List<Sprite>();
     public List<Rope> leftSideRopes = new List<Rope>();
     public List<Rope> rightSideRopes = new List<Rope>();
 
@@ -20,6 +21,12 @@ public class NetConnectManager : BaseMicrogameClass
 
     private void Start()
     {
+        StartMicrogame();
+    }
+
+    private void Update()
+    {
+        HoverCheck();
     }
 
     private void InitializeWires()
@@ -29,6 +36,7 @@ public class NetConnectManager : BaseMicrogameClass
 
         // sets the needed lists to prepare for random color selection
         List<Color> availableColors = ropeColors;
+        List<Sprite> availableSprites = ropeSprites;
         List<int> availableLeftRopesIndex = new List<int>();
         List<int> availableRightRopesIndex = new List<int>();
 
@@ -48,17 +56,19 @@ public class NetConnectManager : BaseMicrogameClass
 
         // random color selection
         while (availableColors.Count > 0 &&
+            availableSprites.Count > 0 &&
             availableLeftRopesIndex.Count > 0 &&
             availableRightRopesIndex.Count > 0)
         {
             Color pickedColor = availableColors[Random.Range(0, availableColors.Count)]; //picks random color
+            Sprite pickedSprite = availableSprites[Random.Range(0, availableSprites.Count)]; //picks a random sprite
 
             //picks random wires
             int pickedLeftRope = Random.Range(0, availableLeftRopesIndex.Count);
             int pickedRightRope = Random.Range(0, availableRightRopesIndex.Count);
 
-            leftSideRopes[availableLeftRopesIndex[pickedLeftRope]].SetRopeColor(pickedColor);
-            rightSideRopes[availableRightRopesIndex[pickedRightRope]].SetRopeColor(pickedColor);
+            leftSideRopes[availableLeftRopesIndex[pickedLeftRope]].SetRopeColorAndSprite(pickedColor, pickedSprite);
+            rightSideRopes[availableRightRopesIndex[pickedRightRope]].SetRopeColorAndSprite(pickedColor, pickedSprite);
 
             // removes all selected
             availableColors.Remove(pickedColor);
@@ -92,6 +102,31 @@ public class NetConnectManager : BaseMicrogameClass
             }
 
             yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private void HoverCheck()
+    {
+        int unHovered = 0;
+        for (int i = 0; i < leftSideRopes.Count; i++)
+        {
+            if (!leftSideRopes[i].isHovered)
+            {
+                unHovered++;
+            }
+        }
+
+        for (int i = 0; i < rightSideRopes.Count; i++)
+        {
+            if (!rightSideRopes[i].isHovered)
+            {
+                unHovered++;
+            }
+        }
+
+        if(unHovered ==  leftSideRopes.Count + rightSideRopes.Count)
+        {
+            currentlyHoveredRope = null;
         }
     }
 }

@@ -2,12 +2,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public bool isLeftRope;
     public bool isSuccess;
+    public bool isHovered;
     public Color ropeColor;
+    public Material ropeMaterial;
+    public Material lineRendererMaterial;
     private Image ropeImage;
 
     private bool isDragStarted;
@@ -23,6 +27,7 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private void Update()
     {
         lineRenderer.SetAllDirty();
+        lineRenderer.SetMaterialDirty();
         if (isDragStarted)
         {
             Vector2 movePos;
@@ -34,8 +39,8 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                      canvas.worldCamera,
                      out movePos);
 
-            lineRenderer.points[0] = Vector3.zero;
-            lineRenderer.points[1] = movePos;
+            lineRenderer.Points[0] = Vector3.zero;
+            lineRenderer.Points[1] = movePos;
         }
 
         else
@@ -43,13 +48,13 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             if (!isSuccess)
             {
                 // hides line renderer if not dragging and not completed
-                lineRenderer.points[0] = Vector3.zero;
-                lineRenderer.points[1] = Vector3.zero;
+                lineRenderer.Points[0] = Vector3.zero;
+                lineRenderer.Points[1] = Vector3.zero;
             }
         }
 
         // checks if rope is hovered
-        bool isHovered =
+        isHovered =
         RectTransformUtility.RectangleContainsScreenPoint(
             transform as RectTransform, Input.mousePosition,
                                     canvas.worldCamera);
@@ -62,11 +67,15 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     }
 
-    public void SetRopeColor(Color color)
+    public void SetRopeColorAndSprite(Color color, Sprite sprite)
     {
-            ropeImage.color = color;
-            lineRenderer.color = color;
-            ropeColor = color;
+        ropeImage.color = color;
+        Material tempMat =  new Material(ropeMaterial);
+        tempMat.mainTexture = sprite.texture;
+        ropeImage.material = tempMat;
+        lineRenderer.sprite = sprite;
+        lineRenderer.color = color;
+        ropeColor = color;
     }
 
     public void OnDrag(PointerEventData eventData)
