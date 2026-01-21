@@ -22,6 +22,7 @@ public class MicrogameManager : MonoBehaviour
     public bool currentlyPlayingMinigame;
     public BaseTowerClass targettedTower;
     public GameObject chosenMicrogame;
+    public GameObject microgameInstance;
 
     public void MicrogameStart( BaseTowerClass tower,  GameObject microgame)
     {
@@ -30,7 +31,7 @@ public class MicrogameManager : MonoBehaviour
             targettedTower = tower;
             chosenMicrogame = microgame;
 
-            var microgameInstance = Instantiate(microgame, GameObject.FindGameObjectWithTag("MicrogameCanvas").transform);
+            microgameInstance = Instantiate(microgame, GameObject.FindGameObjectWithTag("MicrogameCanvas").transform);
             microgameInstance.GetComponent<BaseMicrogameClass>().StartMicrogame();
 
             currentlyPlayingMinigame = true;
@@ -46,9 +47,9 @@ public class MicrogameManager : MonoBehaviour
     {
         targettedTower.RepairTower();
         ResourceManager.instance.AddAbilityPoint(1);
-        if (chosenMicrogame != null)
+        if (microgameInstance != null)
         {
-            Destroy(chosenMicrogame);
+            Destroy(microgameInstance);
         }
         currentlyPlayingMinigame = false;
         targettedTower = null;
