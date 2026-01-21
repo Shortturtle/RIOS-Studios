@@ -22,7 +22,8 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
     #region Skill Variables
     public bool isRewinding = false;
-    protected List<PointInTime> pointsInTime = new List<PointInTime>();
+    public List<PointInTime> pointsInTime = new List<PointInTime>();
+
     public class PointInTime
     {
         public Vector3 position;
@@ -181,7 +182,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
             pointsInTime.RemoveAt(pointsInTime.Count - 1);                                                          //Remove the oldest point in time (elements at the BOTTOM of the list)
         }
 
-        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));                            //Add values(current position) to the START/TOP of the list so
+        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));                            //Add values(current position) to the START/TOP of the list
     }
 
     protected void Rewind()

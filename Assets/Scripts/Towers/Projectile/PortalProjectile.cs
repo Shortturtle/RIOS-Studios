@@ -1,6 +1,8 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static BaseEnemyClass;
 
 public class PortalProjectile : BaseProjectileClass
 {
@@ -42,8 +44,11 @@ public class PortalProjectile : BaseProjectileClass
             BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
             if (enemy != null)
             {
-                PointInTime pointInTime = pointsInTime[0];
-                enemy.pointsInTime
+                //Get the last point in time and teleport the enemy theres
+                BaseEnemyClass.PointInTime pointInTime = enemy.pointsInTime[enemy.pointsInTime.Count - 1];
+                enemy.transform.position = pointInTime.position;
+
+                enemy.pointsInTime.Clear();                                                                         //Clear the rewinding points to prevent issues(teleporting all over the place)
             }
         }
 
