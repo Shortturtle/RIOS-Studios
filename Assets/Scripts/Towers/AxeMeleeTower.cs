@@ -17,7 +17,7 @@ public class AxeMeleeTower : OffenseTowerBase
 
     protected override void OverDrive()
     {
-        damageValue = (float)Math.Round(damageBase * 1.5, 2);
+        timeBetweenAttackValue = (float)Math.Round(timeBetweenAttacksBase * 1.5, 2);
         overdriveCountdownTimer = overdriveTimerDuration;
     }
 

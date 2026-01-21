@@ -44,8 +44,18 @@ public class SeasonsManager : MonoBehaviour
         terrainRenderer = terrainMesh.GetComponent<Renderer>();
     }
 
+    public void SeasonsChanger()
+    {
+        int seasonChanger = Random.Range(1, 5);
+
+        if(seasonChanger == 1) { ToSpring(); }
+        if(seasonChanger == 2) { ToSummer(); }
+        if(seasonChanger == 3) { ToAutumn(); }
+        if(seasonChanger == 4) { ToWinter(); }
+    }
+
     //change to seasons
-    public void ToSpring()
+    private void ToSpring()
     {
         seasonDefault.SetActive(false);
         seasonNumber = 1;
@@ -57,7 +67,7 @@ public class SeasonsManager : MonoBehaviour
         riverRenderer.material = waterRiver;
         terrainRenderer.material = springMaterial;
     }
-    public void ToSummer()
+    private void ToSummer()
     {
         seasonDefault.SetActive(false);
         seasonNumber = 2;
@@ -69,7 +79,7 @@ public class SeasonsManager : MonoBehaviour
         riverRenderer.material = waterRiver;
         terrainRenderer.material = summerMaterial;
     }
-    public void ToAutumn()
+    private void ToAutumn()
     {
         seasonDefault.SetActive(false);
         seasonNumber = 3;
@@ -81,7 +91,7 @@ public class SeasonsManager : MonoBehaviour
         riverRenderer.material = waterRiver;
         terrainRenderer.material = autumnMaterial;
     }
-    public void ToWinter()
+    private void ToWinter()
     {
         seasonDefault.SetActive(false);
         seasonNumber = 4;

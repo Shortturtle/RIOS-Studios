@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class Whetstone : MonoBehaviour
 {
-    private bool onAxe = false;
-    private bool movingUp = true;
-    private bool movingDown = false;
+    [SerializeField] private bool onAxe = false;
+    [SerializeField] private bool movingUp = true;
+    [SerializeField] private bool movingDown = false;
 
-    private bool sharpeningUp = false;
-    private bool sharpeningDown = false;
+    [SerializeField]private bool sharpeningUp = false;
+    [SerializeField] private bool sharpeningDown = false;
 
-    [SerializeField] private float stoneOriSize;
-    [SerializeField] private float stoneNewSize;
-    [SerializeField] private float timeTakenToDown;
+    private float stoneOriSize = 1f;
+    private float stoneNewSize = 0.8f;
+    private float timeTakenToDown = 1f;
 
     private SharpenManager sharpenManager;
     private void Start()
@@ -25,8 +25,8 @@ public class Whetstone : MonoBehaviour
 
         if (!onAxe)
         {
-            //if player stops being on the blade, tell player they failed
-            transform.LeanScale(new Vector3(stoneOriSize, stoneOriSize), timeTakenToDown).setEaseInOutCirc();
+            //if player stops being on the blade, show player they failed
+            transform.localScale = new Vector3(stoneOriSize, stoneOriSize, stoneOriSize);
             sharpeningDown = false;
             sharpeningUp = false;
         }
@@ -37,28 +37,33 @@ public class Whetstone : MonoBehaviour
     {
         if (other.CompareTag("AxeBottom"))
         {
-            transform.LeanScale(new Vector3(stoneNewSize, stoneNewSize), timeTakenToDown).setEaseInOutCirc();
+            transform.localScale = new Vector3(stoneNewSize, stoneNewSize, stoneNewSize);
+            
             if (sharpeningDown)
             {
+                sharpeningDown = false;
                 movingDown = false;
                 movingUp = true;
-                Debug.Log("axebottom");
                 sharpenManager.ProgressCheck();
             }
         }
 
         if (other.CompareTag("AxeTop"))
         {
-            transform.LeanScale(new Vector3(stoneNewSize, stoneNewSize), timeTakenToDown).setEaseInOutCirc();
+            transform.localScale = new Vector3(stoneNewSize, stoneNewSize, stoneNewSize);
             if (sharpeningUp)
             {
+                sharpeningUp = false;
                 movingUp = false;
                 movingDown = true;
-                Debug.Log("axeup");
                 sharpenManager.ProgressCheck();
             }
         }
-        
+
+        if (other.CompareTag("AxeBlade"))
+        {
+            onAxe = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -67,7 +72,6 @@ public class Whetstone : MonoBehaviour
         {
             if (movingDown)
             {
-                Debug.Log("sharpeningdown");
                 sharpeningDown = true;
             }
         }
@@ -75,9 +79,13 @@ public class Whetstone : MonoBehaviour
         {
             if (movingUp)
             {
-                Debug.Log("sharpeningup");
                 sharpeningUp = true;
             }
+        }
+
+        if(other.CompareTag("AxeBlade"))
+        {
+            onAxe = false;
         }
     }
 

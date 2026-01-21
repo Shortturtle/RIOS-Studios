@@ -1024,10 +1024,11 @@ RectTransform:
   - {fileID: 1208619371}
   - {fileID: 356572169}
   - {fileID: 1078520090}
-  - {fileID: 1675089923}
+  - {fileID: 841758961}
   - {fileID: 1285102975}
   - {fileID: 767137582}
   - {fileID: 336820743}
+  - {fileID: 1675089923}
   m_Father: {fileID: 81404156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1047,8 +1048,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ddd5ec52d36f4bb686c8e097a24b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bladeEdge: {fileID: 841758960}
   completion: 0
-  numberToCompleteMinigame: 0
+  numberToCompleteMinigame: 8
 --- !u!1 &283549010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1632,7 @@ GameObject:
   - component: {fileID: 336820744}
   m_Layer: 5
   m_Name: BladeCollider
-  m_TagString: AxeBottom
+  m_TagString: AxeBlade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1700,13 +1702,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 240.439, y: -465.5392}
-      - {x: 263.4464, y: -346.74377}
-      - {x: -55.328224, y: 266.63855}
-      - {x: -203.76138, y: 268.01843}
-      - {x: -217.20227, y: 3.0575576}
-      - {x: -157.62857, y: -231.54547}
-      - {x: 126.96421, y: -461.16815}
+    - - {x: 268.27014, y: -499.02832}
+      - {x: 400.85052, y: -361.28668}
+      - {x: -8.373863, y: 340.28534}
+      - {x: -224.63712, y: 320.8147}
+      - {x: -340.7018, y: 130.02702}
+      - {x: -246.32965, y: -255.83746}
+      - {x: 106.09516, y: -489.2135}
   m_UseDelaunayMesh: 0
 --- !u!1 &356572168
 GameObject:
@@ -1767,7 +1769,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Instructions:
 
-    Sharpen axe'
+    Sharpen axe by moving whetstone up and down'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5354,6 +5356,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &841758960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841758961}
+  - component: {fileID: 841758963}
+  - component: {fileID: 841758962}
+  m_Layer: 5
+  m_Name: AxeEdge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &841758961
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841758960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 198012603}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6, y: -110}
+  m_SizeDelta: {x: 500, y: 750}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &841758962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841758960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &841758963
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841758960}
+  m_CullTransparentMesh: 1
 --- !u!1 &841883044
 GameObject:
   m_ObjectHideFlags: 0
@@ -10026,7 +10103,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.00018982225, y: 599.9999}
-  m_SizeDelta: {x: 68.2, y: 95.332466}
+  m_SizeDelta: {x: 140, y: 194}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &1675089924
 Rigidbody2D:
@@ -10141,9 +10218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f439f8466381e49b4b138c8fddb6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneOriSize: 1
-  stoneNewSize: 0.5
-  timeTakenToDown: 0.5
+  onAxe: 0
+  movingUp: 1
+  movingDown: 0
+  sharpeningUp: 0
+  sharpeningDown: 0
 --- !u!1 &1771416274
 GameObject:
   m_ObjectHideFlags: 0
@@ -12359,6 +12438,10 @@ PrefabInstance:
     - target: {fileID: 3463463065288939516, guid: d9028fd6438c6bd4fa951d596823b230, type: 3}
       propertyPath: m_Name
       value: ScrewMinigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463463065288939516, guid: d9028fd6438c6bd4fa951d596823b230, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

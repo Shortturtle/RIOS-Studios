@@ -4,7 +4,7 @@ using System.Collections;
 
 public class SlowAoE : BaseProjectileClass
 {
-    public float SlowRadius = 10f;
+    static public float SlowRadius = 10f;
     public float slowDuration = 3f;
 
     protected override void Update()
