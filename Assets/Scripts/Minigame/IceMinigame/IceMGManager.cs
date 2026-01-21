@@ -18,7 +18,6 @@ public class IceMGManager : BaseMicrogameClass
         if(numberOfIceToMelt == 0)
         {
             EndMicrogame();
-            Destroy(this.gameObject);
         }
     }
 }

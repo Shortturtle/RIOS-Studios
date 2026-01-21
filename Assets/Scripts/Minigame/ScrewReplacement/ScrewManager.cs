@@ -60,7 +60,6 @@ public class ScrewManager : BaseMicrogameClass
         if (completion == numberToCompleteMinigame)
         {
             EndMicrogame();
-            Destroy(gameObject);
         }
     }
 

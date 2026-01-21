@@ -124,7 +124,6 @@ public class RailgunManager : BaseMicrogameClass
         if (completion == numberToCompleteMinigame)
         {
             EndMicrogame();
-            Destroy(gameObject);
         }
     }
 }

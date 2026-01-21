@@ -93,7 +93,6 @@ public class NetConnectManager : BaseMicrogameClass
             {
                 Debug.Log("TASK COMPLETED");
                 EndMicrogame();
-                Destroy(gameObject);
                 break;
             }
             else

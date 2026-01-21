@@ -35,7 +35,6 @@ public class SharpenManager : BaseMicrogameClass
         if (completion == numberToCompleteMinigame)
         {
             EndMicrogame();
-            Destroy(gameObject);
         }
     }
 }
