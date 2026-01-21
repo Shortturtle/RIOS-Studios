@@ -81,8 +81,8 @@ public class NetStun : BaseProjectileClass
             elapsed += tickInterval;
         }
 
-
         Destroy(gameObject);
+        yield break;
     }
 
     private void OnDrawGizmosSelected()

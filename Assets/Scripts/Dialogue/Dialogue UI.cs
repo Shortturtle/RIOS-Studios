@@ -47,10 +47,10 @@ public class DialogueUI : MonoBehaviour
             //Check: Are we at the end of the dialogue?
             if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
             
-            yield return null;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)); //"||" means "or"
         }
 
+        //If there are responses, show them
         if (dialogueObject.HasResponses)
         {
             responseHandler.ShowResponses(dialogueObject.Responses);

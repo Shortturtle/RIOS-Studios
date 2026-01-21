@@ -10,13 +10,13 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     {
         questPoint = GetComponentInChildren<QuestPoint>();
     }
-    //test for quest
 
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
         this.dialogueObject = dialogueObject;
     }
 
+    //Essentially, when the player enters the trigger collider, set the player's Interactable to THIS SPECIFIC (game)OBJECT with the DialogueActivator script(e.g. a book, an NPC, etc)
     private void OnTriggerEnter(Collider other)
     {
         //Check: Does it have the Player tag and a PlayerMovement component?
