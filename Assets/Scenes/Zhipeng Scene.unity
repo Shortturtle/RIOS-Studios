@@ -1008,7 +1008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &198012603
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10218,11 +10218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f439f8466381e49b4b138c8fddb6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAxe: 0
-  movingUp: 1
-  movingDown: 0
-  sharpeningUp: 0
-  sharpeningDown: 0
 --- !u!1 &1771416274
 GameObject:
   m_ObjectHideFlags: 0
@@ -11780,6 +11775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd907b2a163d0348ba959599e057444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mgOpen: 0
+  canOpenMG: 1
   minigameComplete: 0
   completion: 0
   numberToCompleteMinigame: 5
@@ -11797,6 +11794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4df53792dec334b94c6d2ca484ce5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnArea: {fileID: 0}
   parentGameObject: {fileID: 564263049}
   fruitPrefabs:
   - {fileID: 2922904766237040342, guid: 0a7385e12c81273429e557caa633755d, type: 3}
