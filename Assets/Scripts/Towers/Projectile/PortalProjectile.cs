@@ -7,7 +7,7 @@ using static BaseEnemyClass;
 public class PortalProjectile : BaseProjectileClass
 {
     public float AoERange = 1f;
-    public float portalDuration = 5f;
+    public static float portalDuration = 5f;
     public GameObject Portal;
 
     private void Start()
