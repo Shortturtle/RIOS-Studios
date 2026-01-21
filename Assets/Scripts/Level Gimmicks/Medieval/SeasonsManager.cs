@@ -2,33 +2,138 @@ using UnityEngine;
 
 public class SeasonsManager : MonoBehaviour
 {
+    //enable disable gameobjects and particles on camera, change material for main mesh and water, disable grass and flower in winter
+
     //seasons manager
     //spring = 1, summer = 2, autumn = 3, winter = 4
     public int seasonNumber;
 
+    //main gameobjects to enable and disable
+    public GameObject seasonDefault;
+    public GameObject springObject;
+    public GameObject summerObject;
+    public GameObject autumnObject;
+    public GameObject winterObject;
+
+    //misc to enable n disable
+    public GameObject foliage;
+    public GameObject winterParticles;
+
+    //materials
+    public Material springMaterial;
+    public Material summerMaterial;
+    public Material autumnMaterial;
+    public Material winterMaterial;
+
+    public Material waterRiver;
+    public Material iceRiver;
+
+
+    public GameObject terrainMesh;
+    public GameObject riverMesh;
+
+    private Renderer terrainRenderer;
+    private Renderer riverRenderer;
 
     void Start()
     {
-        //default
-        seasonNumber = 1;
+        //default season
+        seasonNumber = 0;
+
+        riverRenderer = riverMesh.GetComponent<Renderer>();
+        terrainRenderer = terrainMesh.GetComponent<Renderer>();
     }
 
+    private void Update()
+    {
+        ChangeSeasonTest();
+        //Test();
+    }
+
+    public void Test()
+    {
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    Destroy(thang);
+        //    Instantiate(springThing);
+        //    thang = springThing;
+        //}
+        //if (Input.GetKeyDown(KeyCode.N))
+        //{
+        //    Destroy(thang);
+        //    Instantiate(summerThing);
+        //    thang = summerThing;
+        //}
+        
+    }
+
+    public void ChangeSeasonTest()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ToSpring();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            ToSummer();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToAutumn();
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ToWinter();
+        }
+    }
     
     //change to seasons
     public void ToSpring()
     {
+        seasonDefault.SetActive(false);
         seasonNumber = 1;
+        springObject.SetActive(true);
+        summerObject.SetActive(false);
+        autumnObject.SetActive(false);
+        winterObject.SetActive(false);
+
+        riverRenderer.material = waterRiver;
+        //terrainRenderer.material = springMaterial;
     }
     public void ToSummer()
     {
+        seasonDefault.SetActive(false);
         seasonNumber = 2;
+        springObject.SetActive(false);
+        summerObject.SetActive(true);
+        autumnObject.SetActive(false);
+        winterObject.SetActive(false);
+
+        riverRenderer.material = waterRiver;
+        //terrainRenderer.material = summerMaterial;
     }
     public void ToAutumn()
     {
+        seasonDefault.SetActive(false);
         seasonNumber = 3;
+        springObject.SetActive(false);
+        summerObject.SetActive(false);
+        autumnObject.SetActive(true);
+        winterObject.SetActive(false);
+
+        riverRenderer.material = waterRiver;
+        //terrainRenderer.material = autumnMaterial;
     }
     public void ToWinter()
     {
+        seasonDefault.SetActive(false);
         seasonNumber = 4;
+        springObject.SetActive(false);
+        summerObject.SetActive(false);
+        autumnObject.SetActive(false);
+        winterObject.SetActive(true);
+
+        riverRenderer.material = iceRiver;
+        //terrainRenderer.material = winterMaterial;
     }
 }
