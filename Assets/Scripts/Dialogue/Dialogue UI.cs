@@ -35,10 +35,12 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator RunDialogue(DialogueObject dialogueObject)
     {
+        string characterName = dialogueObject.characterName;
+        textName.text = characterName;
+
         for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
             string dialogue = dialogueObject.Dialogue[i];
-            string characterName = dialogueObject.characterName;
 
             yield return RunTypingEffect(dialogue);
 
