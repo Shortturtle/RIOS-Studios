@@ -73,4 +73,10 @@ public class AoEPotion : BaseProjectileClass
 
         Destroy(gameObject);
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, AoERange);
+    }
 }

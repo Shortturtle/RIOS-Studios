@@ -32,10 +32,10 @@ public class PortalProjectile : BaseProjectileClass
 
     protected override void ProjectileEffect() //Start Coroutine for the AoE and StunDoT
     {
-        StartCoroutine(portal());
+        StartCoroutine(frickYouRyanTohJunAn());
     }
 
-    IEnumerator portal()
+    IEnumerator frickYouRyanTohJunAn()
     {
         Collider[] collidersInRange = Physics.OverlapSphere(transform.position, AoERange);
 
@@ -58,7 +58,7 @@ public class PortalProjectile : BaseProjectileClass
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, AoERange);
     }
 }

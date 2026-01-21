@@ -1,11 +1,19 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
+using System.Collections;
 
 public class JackInBoxTower : OffenseTowerBase
 {
     protected override void Attack()
     {
         base.Attack();
+        StartCoroutine(ViolentlyMolestingRyan());
+    }
+
+    IEnumerator ViolentlyMolestingRyan()
+    {
+        return null;
     }
 
     protected override void Degrade()

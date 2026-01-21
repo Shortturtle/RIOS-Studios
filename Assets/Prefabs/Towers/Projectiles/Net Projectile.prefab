@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518112336618132754}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.23313358, y: 0.24056484, z: 0.05964263, w: 0.9403298}
-  m_LocalPosition: {x: -2.585819, y: 4.812914, z: -7.118177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 11.174652, y: 11.174652, z: 11.174652}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45,15 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6eb6288a0a7bee4f91cd03cb0c4db37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 10
   projectileEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  dotDuration: 2
+  dotDuration: 3
   tickInterval: 1
   tickDamage: 1
-  AoERange: 3
+  AoERange: 4
   stunDuration: 2
   Net: {fileID: 518112336618132754}
 --- !u!1 &1513279110801821957

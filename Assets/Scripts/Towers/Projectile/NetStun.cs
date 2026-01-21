@@ -55,6 +55,8 @@ public class NetStun : BaseProjectileClass
 
         while (elapsed < dotDuration)
         {
+            yield return new WaitForSeconds(tickInterval);
+
             foreach (Collider col in collidersInRange)
             {
                 if (col == null) continue;
@@ -68,7 +70,6 @@ public class NetStun : BaseProjectileClass
             }
 
             elapsed += tickInterval;
-            yield return new WaitForSeconds(tickInterval);
         }
 
         Destroy(gameObject);

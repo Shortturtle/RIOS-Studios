@@ -11,11 +11,6 @@ public class PortalTower : OffenseTowerBase
         ResetDegradeTimer();
     }
 
-    protected override void Attack()
-    {
-        base.Attack();
-    }
-
     protected override void OverDrive()
     {
         stats.Projectile = overdriveProjectile;
