@@ -281,7 +281,7 @@ public class EnemyWaveManager : MonoBehaviour
     {
         if(seasons != null)
         {
-
+            seasons.SeasonsChanger();
         }
     }
     public void AddEnemyDuringWave(GameObject enemy)
