@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -40,9 +40,10 @@ public class TypewriterEffect : MonoBehaviour
 
         while (charIndex < textToType.Length)                                   //while typing is in progress
         {
-            int lastCharIndex = charIndex - 1;                                  //get the last character index we typed
-
+            //Old Typerwriter Effect Code
+            /*int lastCharIndex = charIndex - 1;                                //get the last character index we typed
             t += Time.deltaTime * typeSpeed;                                    //shows each letter based on the typing speed (and time passsed)
+
             charIndex = Mathf.FloorToInt(t);                                    //get the integer value of t (e.g. 5.9 = 5, 2.3 = 2, etc)
             charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);           //clamp charIndex to be within the bounds of the string length
 
@@ -59,8 +60,41 @@ public class TypewriterEffect : MonoBehaviour
                 }
             }
 
-            textLabel.text = textToType.Substring(0, charIndex);                //set the text label to the substring of the text we want to type
-            
+            textLabel.text = textToType.Substring(0, charIndex);                //set the text label to the substring of the text we want to type*/
+
+            //New Typewriter Effect Code
+            t += Time.deltaTime * typeSpeed;
+            int targetIndex = Mathf.FloorToInt(t);
+
+            while (charIndex < targetIndex && charIndex < textToType.Length)
+            {
+                //Ignore the stuff inbetween "<" and ">" (this is for the rich text tags/when u wanna change the font mid sentence)
+                if (textToType[charIndex] == '<')
+                {
+                    int tagEnd = textToType.IndexOf('>', charIndex);
+                    if (tagEnd != -1)
+                    {
+                        textLabel.text += textToType.Substring(charIndex, tagEnd - charIndex + 1);
+                        charIndex = tagEnd + 1;
+                        continue;
+                    }
+                }
+
+                char currentChar = textToType[charIndex];
+                textLabel.text += currentChar;
+
+                bool isLast = charIndex >= textToType.Length - 1;
+
+                if (IsPunctuation(currentChar, out float waitTime)
+                    && !isLast
+                    && !IsPunctuation(textToType[charIndex + 1], out _))
+                {
+                    yield return new WaitForSeconds(waitTime);
+                }
+                
+                charIndex++;
+            }
+
             yield return null;                                                  //wait for the next frame
         }
 
