@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class SteampunkNormalEnemy : BaseEnemyClass
 {
+    //fro spawn speed field
     public GameObject speedField;
 
+    //pretty much the same exact code as the scifi deathstun enemy
     public bool rangedAttack = true;
 
     public void DamageMelee()

@@ -57,6 +57,7 @@ public class RailgunManager : BaseMicrogameClass
         CheckBarThreeProgress();
     }
 
+    //set bar target and green indicator
     private void CreateBarTargets()
     {
         barOneTarget = Random.Range(1, 101);
@@ -78,6 +79,7 @@ public class RailgunManager : BaseMicrogameClass
         barThreeMaterial.SetFloat("_MaxValue", Mathf.Clamp(((barThreeTarget + maxDifference) / 100), 0f, 1f));
     }
 
+    //set sliders at random value
     private void CreateBarInitial()
     {
         barOneInitial = Random.Range(1, 101);
@@ -89,6 +91,7 @@ public class RailgunManager : BaseMicrogameClass
         slider3.value = barThreeInitial;
     }
 
+    //check bar progress, called on end drag in the inspector
     public void CheckBarOneProgress()
     {
         if(Mathf.Abs(slider1.value - barOneTarget) <= maxDifference && !isFinishedOne) 
@@ -117,6 +120,7 @@ public class RailgunManager : BaseMicrogameClass
         }
     }
 
+    //increase completion once bar target is reached
     public void BarTargetReached()
     {
         completion++;

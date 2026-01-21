@@ -8,12 +8,14 @@ public class ScifiFlyingEnemy : BaseEnemyClass
     public float boostSpeed;
     public float boostDuration;
 
+    //choose which part of the track to boost at
     public int boostGrp1;
     public int boostGrp2;
     public int boostGrp3;
 
     protected override void Start()
     {
+        //set a initial speed so they can return to original speed
         initialSpeed = speed;
 
         StartCoroutine("BoostStart");
@@ -21,9 +23,13 @@ public class ScifiFlyingEnemy : BaseEnemyClass
         base.Start();
     }
 
+    //coroutine for boosting
     private IEnumerator BoostStart()
     {
+        //randomly choose which boost group it will be in
         int boostGroup = Random.Range(1, 4);
+
+        //based on boost grp chosen, wait for a certain amt of time before boosting
         if (boostGroup == 1)
         {
             yield return new WaitForSeconds(boostGrp1);
@@ -44,6 +50,7 @@ public class ScifiFlyingEnemy : BaseEnemyClass
         }
     }
 
+    //boost enemy speed for a while, then bring it back to initial speed
     private IEnumerator BoostMode()
     {
         speed = boostSpeed;
