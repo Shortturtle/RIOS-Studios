@@ -49,23 +49,25 @@ public class NetStun : BaseProjectileClass
     {
         float elapsed = 0f;
 
+        //Initial stun
         Collider[] initialHits = Physics.OverlapSphere(transform.position, AoERange);
 
-        //Stun the enemy
         foreach (Collider hit in initialHits)
         {
             BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
             if (enemy != null)
             {
                 enemy.Stun(stunDuration);
+                enemy.Damage(tickDamage); //impact damage
             }
         }
 
-        //DoT effect
+        //Wait before first DoT tick
+        yield return new WaitForSeconds(tickInterval);
+        elapsed += tickInterval;
+
         while (elapsed < dotDuration)
         {
-            //yield return new WaitForSeconds(tickInterval); //Wait for the tick interval then start damage
-
             Collider[] hits = Physics.OverlapSphere(transform.position, AoERange);
 
             foreach (Collider col in hits)
@@ -78,11 +80,12 @@ public class NetStun : BaseProjectileClass
             }
 
             projectileEvent.Post(gameObject);
+
+            yield return new WaitForSeconds(tickInterval);
             elapsed += tickInterval;
         }
 
         Destroy(gameObject);
-        yield break;
     }
 
     private void OnDrawGizmosSelected()
