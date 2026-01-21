@@ -35,16 +35,18 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator RunDialogue(DialogueObject dialogueObject)
     {
-        string characterName = dialogueObject.characterName;
-        textName.text = characterName;
+        //string characterName = dialogueObject.characterName;
+        //textName.text = characterName;
 
         for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
-            string dialogue = dialogueObject.Dialogue[i];
+            DialogueLine dialogue = dialogueObject.Dialogue[i];
 
-            yield return RunTypingEffect(dialogue);
+            //Change speaker name per line
+            textName.text = dialogue.speakerName;
 
-            textLabel.text = dialogue;
+            yield return RunTypingEffect(dialogue.text);
+            textLabel.text = dialogue.text;
 
             //Check: Are we at the end of the dialogue?
             if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;

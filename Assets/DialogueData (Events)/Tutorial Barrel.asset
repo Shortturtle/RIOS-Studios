@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e11ba7534ba6c14fa8773a9171a3791, type: 3}
   m_Name: Tutorial Barrel
   m_EditorClassIdentifier: 
-  characterName: 
   dialogue:
-  - You found a note inside the barrel.
-  - '"Expedition Log #33"'
-  - '"To whoever finds this...To those who come after..."'
-  - '"It''s been 67 long days in this frozen wasteland."'
-  - '"The owlbears are relentless. Every now and then, I can see them in the distance,
-    waiting for us to let our guard down."'
-  - '"If anyone finds this letter,"'
-  - ' "I''m sorry."'
+  - speakerName: 
+    text: <i>You found a note in the barrel.</i>
+  - speakerName: Expedition Log #33
+    text: Its been 33 days since we've been stranded in this frozen wasteland...
+  - speakerName: Expedition Log #33
+    text: 'My partner...gave up...
+
+      I''ve been walking this lonely road for
+      so long...'
+  - speakerName: Expedition Log #33
+    text: This obscure arctic has given me nothing to work with. Every now and then
+      I can see the owlbears in the distance.
+  - speakerName: Expedition Log #33
+    text: I can tell theyre waiting for me to let my guard down...
+  - speakerName: Expedition Log #33
+    text: To whoever finds this, to whoever's left out there,
+  - speakerName: Expedition Log #33
+    text: I'm sorry.
   responses: []
