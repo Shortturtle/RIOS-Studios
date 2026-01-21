@@ -26,7 +26,7 @@ public class Whetstone : MonoBehaviour
         if (!onAxe)
         {
             //if player stops being on the blade, show player they failed
-            transform.LeanScale(new Vector3(stoneOriSize, stoneOriSize), timeTakenToDown).setEaseInOutCirc();
+            transform.localScale = new Vector3(stoneOriSize, stoneOriSize, stoneOriSize);
             sharpeningDown = false;
             sharpeningUp = false;
         }
@@ -37,7 +37,8 @@ public class Whetstone : MonoBehaviour
     {
         if (other.CompareTag("AxeBottom"))
         {
-            transform.LeanScale(new Vector3(stoneNewSize, stoneNewSize), timeTakenToDown).setEaseInOutCirc();
+            transform.localScale = new Vector3(stoneNewSize, stoneNewSize, stoneNewSize);
+            
             if (sharpeningDown)
             {
                 sharpeningDown = false;
@@ -49,7 +50,7 @@ public class Whetstone : MonoBehaviour
 
         if (other.CompareTag("AxeTop"))
         {
-            transform.LeanScale(new Vector3(stoneNewSize, stoneNewSize), timeTakenToDown).setEaseInOutCirc();
+            transform.localScale = new Vector3(stoneNewSize, stoneNewSize, stoneNewSize);
             if (sharpeningUp)
             {
                 sharpeningUp = false;
@@ -80,6 +81,11 @@ public class Whetstone : MonoBehaviour
             {
                 sharpeningUp = true;
             }
+        }
+
+        if(other.CompareTag("AxeBlade"))
+        {
+            onAxe = false;
         }
     }
 
