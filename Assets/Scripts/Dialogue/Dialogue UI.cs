@@ -35,7 +35,7 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator RunDialogue(DialogueObject dialogueObject)
     {
-        for (int i = 0/*while*/; i < dialogueObject.Dialogue.Length; i++)
+        for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
             string dialogue = dialogueObject.Dialogue[i];
             string characterName = dialogueObject.characterName;
