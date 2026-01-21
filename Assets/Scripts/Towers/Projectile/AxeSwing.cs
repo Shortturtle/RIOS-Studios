@@ -42,7 +42,7 @@ public class AxeSwing : BaseProjectileClass
 
     protected override void ToTarget()
     {
-        // AxeSwing does not need to move towards a target
+        //AxeSwing doesnt need to move towards a target
     }
 
     private void OnDrawGizmos()

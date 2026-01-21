@@ -13,6 +13,8 @@ public class NetStun : BaseProjectileClass
     public float stunDuration = 2f;
     public GameObject Net;
 
+    private bool hasHit = false;
+
     private void Start()
     {
         Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hitInfo, 5f, LayerMask.GetMask("Path"));
@@ -24,17 +26,22 @@ public class NetStun : BaseProjectileClass
 
     protected override void ToTarget()
     {
+        if (hasHit) return;
+
         Vector3 dir = targetPosition - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, targetPosition) <= 0.3f)
         {
+            hasHit = true;
             ProjectileEffect();
         }
     }
 
+
     protected override void ProjectileEffect() //Start Coroutine for the AoE and StunDoT
     {
+        speed = 0f; //Stop moving
         StartCoroutine(StunDoT());
     }
 
@@ -42,9 +49,10 @@ public class NetStun : BaseProjectileClass
     {
         float elapsed = 0f;
 
-        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, AoERange);
+        Collider[] initialHits = Physics.OverlapSphere(transform.position, AoERange);
 
-        foreach (Collider hit in collidersInRange)
+        //Stun the enemy
+        foreach (Collider hit in initialHits)
         {
             BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
             if (enemy != null)
@@ -53,24 +61,26 @@ public class NetStun : BaseProjectileClass
             }
         }
 
+        //DoT effect
         while (elapsed < dotDuration)
         {
-            yield return new WaitForSeconds(tickInterval);
+            //yield return new WaitForSeconds(tickInterval); //Wait for the tick interval then start damage
 
-            foreach (Collider col in collidersInRange)
+            Collider[] hits = Physics.OverlapSphere(transform.position, AoERange);
+
+            foreach (Collider col in hits)
             {
-                if (col == null) continue;
-
                 BaseEnemyClass enemy = col.GetComponent<BaseEnemyClass>();
                 if (enemy != null)
                 {
-                    projectileEvent.Post(gameObject);
                     enemy.Damage(tickDamage);
                 }
             }
 
+            projectileEvent.Post(gameObject);
             elapsed += tickInterval;
         }
+
 
         Destroy(gameObject);
     }

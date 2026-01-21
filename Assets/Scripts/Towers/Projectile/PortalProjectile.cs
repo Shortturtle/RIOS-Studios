@@ -19,17 +19,6 @@ public class PortalProjectile : BaseProjectileClass
         }
     }
 
-    protected override void ToTarget()
-    {
-        Vector3 dir = targetPosition - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        if (Vector3.Distance(transform.position, targetPosition) <= 0.3f)
-        {
-            ProjectileEffect();
-        }
-    }
-
     protected override void ProjectileEffect() //Start Coroutine for the AoE and StunDoT
     {
         StartCoroutine(frickYouRyanTohJunAn());
