@@ -1024,10 +1024,10 @@ RectTransform:
   - {fileID: 1208619371}
   - {fileID: 356572169}
   - {fileID: 1078520090}
-  - {fileID: 1675089923}
   - {fileID: 1285102975}
   - {fileID: 767137582}
   - {fileID: 336820743}
+  - {fileID: 1675089923}
   m_Father: {fileID: 81404156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 336820744}
   m_Layer: 5
   m_Name: BladeCollider
-  m_TagString: AxeBottom
+  m_TagString: AxeBlade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1700,13 +1700,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 240.439, y: -465.5392}
-      - {x: 263.4464, y: -346.74377}
-      - {x: -55.328224, y: 266.63855}
-      - {x: -203.76138, y: 268.01843}
-      - {x: -217.20227, y: 3.0575576}
-      - {x: -157.62857, y: -231.54547}
-      - {x: 126.96421, y: -461.16815}
+    - - {x: 268.27014, y: -499.02832}
+      - {x: 400.85052, y: -361.28668}
+      - {x: -8.373863, y: 340.28534}
+      - {x: -224.63712, y: 320.8147}
+      - {x: -340.7018, y: 130.02702}
+      - {x: -246.32965, y: -255.83746}
+      - {x: 106.09516, y: -489.2135}
   m_UseDelaunayMesh: 0
 --- !u!1 &356572168
 GameObject:
@@ -1767,7 +1767,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Instructions:
 
-    Sharpen axe'
+    Sharpen axe by moving whetstone up and down'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10141,9 +10141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f439f8466381e49b4b138c8fddb6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneOriSize: 1
-  stoneNewSize: 0.5
-  timeTakenToDown: 0.5
+  onAxe: 0
+  movingUp: 1
+  movingDown: 0
+  sharpeningUp: 0
+  sharpeningDown: 0
 --- !u!1 &1771416274
 GameObject:
   m_ObjectHideFlags: 0
