@@ -66,7 +66,8 @@ public class ResponseHandler : MonoBehaviour
 
         responseEvents = null;
 
-        if(response.DialogueObject)
+        //Show next dialogue if it exists, otherwise close the dialogue box
+        if (response.DialogueObject)
         {
             dialogueUI.ShowDialogue(response.DialogueObject);
         }
