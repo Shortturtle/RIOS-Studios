@@ -25,13 +25,15 @@ public class SeasonsManager : MonoBehaviour
     public Material autumnMaterial;
     public Material winterMaterial;
 
+    //material for rivers in lvl
     public Material waterRiver;
     public Material iceRiver;
 
-
+    //gameobject for terrain and river, mostly to reference for renderer
     public GameObject terrainMesh;
     public GameObject riverMesh;
 
+    //the thing to change
     private Renderer terrainRenderer;
     private Renderer riverRenderer;
 
@@ -40,10 +42,12 @@ public class SeasonsManager : MonoBehaviour
         //default season
         seasonNumber = 0;
 
+        //reference renderer
         riverRenderer = riverMesh.GetComponent<Renderer>();
         terrainRenderer = terrainMesh.GetComponent<Renderer>();
     }
 
+    //randomise the seasons
     public void SeasonsChanger()
     {
         int seasonChanger = Random.Range(1, 5);
@@ -54,7 +58,7 @@ public class SeasonsManager : MonoBehaviour
         if(seasonChanger == 4) { ToWinter(); }
     }
 
-    //change to seasons
+    //func to changing to each season, mainly enabling and disabling GObjects
     private void ToSpring()
     {
         seasonDefault.SetActive(false);

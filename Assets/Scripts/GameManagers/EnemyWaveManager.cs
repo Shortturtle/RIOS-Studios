@@ -277,13 +277,8 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    private void SeasonChange()
-    {
-        if(seasons != null)
-        {
-            seasons.SeasonsChanger();
-        }
-    }
+    //to call season changer if there is, to change the season
+    private void SeasonChange() { if (seasons != null) { seasons.SeasonsChanger(); } }
     public void AddEnemyDuringWave(GameObject enemy)
     {
         enemiesCurrentlyAlive.Add(enemy);

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpeedField : MonoBehaviour
 {
+    //basically same as stun field except it affects specific enemy instead of tower
     public float speedIncrease;
     public float speedFieldRange;
     private void Start()
@@ -19,7 +20,6 @@ public class SpeedField : MonoBehaviour
 
             if (flyingGuys != null)
             {
-                //projectileEvent.Post(this.gameObject);
                 flyingGuys.speed += speedIncrease;
             }
         }

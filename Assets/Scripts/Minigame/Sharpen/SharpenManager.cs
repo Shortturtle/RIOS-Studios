@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SharpenManager : BaseMicrogameClass
 {
+    //to decrease opacity of blade edge so blade becomes cleaner
     public GameObject bladeEdge;
     private Image image;
     private float currentAlpha = 1f;
@@ -27,6 +28,7 @@ public class SharpenManager : BaseMicrogameClass
         //initializes variables
         Canvas canvas = transform.parent.GetComponent<Canvas>();
 
+        //ref for image of blade edge
         image = bladeEdge.GetComponent<Image>();
     }
 
@@ -37,6 +39,7 @@ public class SharpenManager : BaseMicrogameClass
     {
         completion++;
 
+        //decrease opacity of image everytime sharpens calls this
         var tempColor = image.color;
         tempColor.a = currentAlpha - 0.125f;
         image.color = tempColor;

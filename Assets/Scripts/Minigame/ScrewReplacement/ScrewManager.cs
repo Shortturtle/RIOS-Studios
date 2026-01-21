@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ScrewManager : BaseMicrogameClass
 {
+    //all locations on canvas for screws to spawn
     public Transform screwLocation1;
     public Transform screwLocation2;
     public Transform screwLocation3;
@@ -12,9 +13,11 @@ public class ScrewManager : BaseMicrogameClass
     public Transform screwLocation5;
     public Transform screwLocation6;
 
+    //types of screws
     public GameObject screwNormal;
     public GameObject screwRusty;
 
+    //how many rusted screws will spawn
     private int willSpawnRusted = 3;
 
     private Canvas canvas;
@@ -29,15 +32,18 @@ public class ScrewManager : BaseMicrogameClass
 
     public void Start()
     {
+        StartMicrogame();
     }
     private void InitializeScrews()
     {
         //initializes variables
         Canvas canvas = transform.parent.GetComponent<Canvas>();
 
+        //creates list from 1-6 and shuffles it
         List<int> possibleNumbers = Enumerable.Range(1, 7 - 1).ToList();
         List<int> shuffledNumbers = possibleNumbers.OrderBy(x => UnityEngine.Random.value).ToList();
 
+        //for each number first spawn rusty screws, then once 3 are spawned it spawns normal screws for the rest
         foreach (int number in shuffledNumbers)
         {
             if(willSpawnRusted > 0)
@@ -63,6 +69,7 @@ public class ScrewManager : BaseMicrogameClass
         }
     }
 
+    //spawns screws at location based on the number randomised
     private void SpawnRustyScrews(int number)
     {
         if(number == 1) { Instantiate(screwRusty, screwLocation1); }

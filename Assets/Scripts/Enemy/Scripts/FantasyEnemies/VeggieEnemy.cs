@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class VeggieEnemy : BaseEnemyClass
 {
+    //max shield amount and current shield enemy has
     public int shieldGainAmount;
     private int shieldCurrentAmount = 0;
 
@@ -9,6 +10,7 @@ public class VeggieEnemy : BaseEnemyClass
     {
         if (other.CompareTag("CapShield"))
         {
+            //when touch cap shield, gain shield by max amount and destroy the cap shield touched
             shieldCurrentAmount = shieldGainAmount;
             Destroy(other.gameObject);
         }
@@ -18,9 +20,8 @@ public class VeggieEnemy : BaseEnemyClass
     {
         if (shieldCurrentAmount > 0)
         {
-            //add shield decrease when hit
+            //when enemy is hit while it has shield, decrease shield, only when shield is 0, will the enemy take dmg normally
             shieldCurrentAmount--;
-            Debug.Log("shielded");
             return;
         }
 
