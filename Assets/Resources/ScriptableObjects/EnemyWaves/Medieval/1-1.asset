@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4762f55505f1aa4aa538cf3b1abb5ec, type: 3}
+  m_Name: 1-1
+  m_EditorClassIdentifier: 
+  enemyWaves:
+  - wave:
+    - EnemyToSpawn: {fileID: 7414901018228439845, guid: 4bb3a968414a1eb459307c7f4aac885b, type: 3}
+      NumberToSpawn: 5
+  - wave:
+    - EnemyToSpawn: {fileID: 7414901018228439845, guid: 4bb3a968414a1eb459307c7f4aac885b, type: 3}
+      NumberToSpawn: 10
+  - wave:
+    - EnemyToSpawn: {fileID: 7414901018228439845, guid: 4bb3a968414a1eb459307c7f4aac885b, type: 3}
+      NumberToSpawn: 7
+    - EnemyToSpawn: {fileID: 365992486123129261, guid: dbb5cfbafbcf62a448bc084a1ade9f5f, type: 3}
+      NumberToSpawn: 5
+  - wave:
+    - EnemyToSpawn: {fileID: 365992486123129261, guid: dbb5cfbafbcf62a448bc084a1ade9f5f, type: 3}
+      NumberToSpawn: 7
+    - EnemyToSpawn: {fileID: 7414901018228439845, guid: 4bb3a968414a1eb459307c7f4aac885b, type: 3}
+      NumberToSpawn: 3
+    - EnemyToSpawn: {fileID: 365992486123129261, guid: dbb5cfbafbcf62a448bc084a1ade9f5f, type: 3}
+      NumberToSpawn: 7
+  - wave:
+    - EnemyToSpawn: {fileID: 8070748936374062218, guid: f03d085cc1133da42a5a44615fbaf18a, type: 3}
+      NumberToSpawn: 3
+    - EnemyToSpawn: {fileID: 365992486123129261, guid: dbb5cfbafbcf62a448bc084a1ade9f5f, type: 3}
+      NumberToSpawn: 9
+    - EnemyToSpawn: {fileID: 7414901018228439845, guid: 4bb3a968414a1eb459307c7f4aac885b, type: 3}
+      NumberToSpawn: 7
+  - wave:
+    - EnemyToSpawn: {fileID: 365992486123129261, guid: dbb5cfbafbcf62a448bc084a1ade9f5f, type: 3}
+      NumberToSpawn: 3
+    - EnemyToSpawn: {fileID: 8070748936374062218, guid: f03d085cc1133da42a5a44615fbaf18a, type: 3}
+      NumberToSpawn: 10
+    - EnemyToSpawn: {fileID: 365992486123129261, guid: dbb5cfbafbcf62a448bc084a1ade9f5f, type: 3}
+      NumberToSpawn: 5
+    - EnemyToSpawn: {fileID: 7414901018228439845, guid: 4bb3a968414a1eb459307c7f4aac885b, type: 3}
+      NumberToSpawn: 10
+  waveEndEnergyReward: 50
