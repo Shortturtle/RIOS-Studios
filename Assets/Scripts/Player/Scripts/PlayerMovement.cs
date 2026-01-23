@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(CharacterController))]
@@ -37,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     //refs
     private CharacterController characterController;
     public GameObject pauseScreen;
+
+    public VisualEffect vfxRenderer;
     private void Awake()
     {
 
@@ -55,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         bool isGrounded = characterController.isGrounded;
+
+        if(vfxRenderer != null ) { vfxRenderer.SetVector3("ColliderPos", transform.position); }
+        
 
         if (isGrounded && velocity.y < 0) { velocity.y = -2; }
         if (!isGrounded) { velocity.y = gravity * Time.deltaTime; }
@@ -134,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveDirection = transform.forward * currentSpeed * Time.deltaTime + velocity;
         characterController.Move(moveDirection);
+
     }
 
     //player rotation
