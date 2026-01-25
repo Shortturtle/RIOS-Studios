@@ -10,8 +10,8 @@ public class Crank : MonoBehaviour
     private float radius;
     private float rotationPercentage;
 
-    private float lastAngle;
     private float currentAngle;
+    private float totalAngle;
 
     public bool isDragStarted;
     public Canvas canvas;
@@ -56,6 +56,8 @@ public class Crank : MonoBehaviour
             transform.Rotate(new Vector3 (0, 0, currentAngle));
         }
 
-        lastAngle = currentAngle;
+        totalAngle += currentAngle;
+        rotationPercentage = totalAngle / 360;
+        jackBoxCrankManager.currentRotations = rotationPercentage;
     }
 }

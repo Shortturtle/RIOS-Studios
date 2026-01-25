@@ -5,7 +5,7 @@ public class JackBoxCrankManager : BaseMicrogameClass
 {
     public float rotationsToComplete;
     public Crank crank;
-    private float currentRotations;
+    public float currentRotations;
     private Canvas canvas;
 
 
@@ -31,12 +31,12 @@ public class JackBoxCrankManager : BaseMicrogameClass
     // Update is called once per frame
     void Update()
     {
-        
+        ProgressCheck();
     }
 
     private void ProgressCheck()
     {
-        if (currentRotations >= rotationsToComplete)
+        if (Mathf.Abs(currentRotations) >= rotationsToComplete)
         {
             EndMicrogame();
         }
