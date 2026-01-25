@@ -52,7 +52,7 @@ public class BaseProjectileClass : MonoBehaviour
 
         if (frickThisGuy != null)
         {
-            projectileEvent.Post(this.gameObject);
+            AudioManager.instance.PlayAudioEvent(projectileEvent);
             frickThisGuy.Damage(damage);
             Destroy(gameObject);
         }
