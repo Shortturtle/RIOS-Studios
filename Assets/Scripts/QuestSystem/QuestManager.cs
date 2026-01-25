@@ -15,6 +15,7 @@ public class QuestManager : MonoBehaviour
     private void Awake()
     {
         questMap = CreateQuestMap();
+        PlayerPrefs.SetInt(worldPlayerUnlocked, 0);
     }
 
     private void OnEnable()
@@ -62,7 +63,6 @@ public class QuestManager : MonoBehaviour
     private bool CheckRequirementsMet(Quest quest)
     {
         bool meetsRequirements = true;
-        
         if(PlayerPrefs.GetInt(worldPlayerUnlocked) < quest.info.worldUnlockRequirement)
         {
             meetsRequirements = false;
@@ -88,6 +88,7 @@ public class QuestManager : MonoBehaviour
             //if player meets all the requirements & quest is not started, switch quest over to the CAN_START state
             if(quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest))
             {
+                Debug.Log("change");
                 ChangeQuestState(quest.info.id, QuestState.CAN_START);
             }
                 

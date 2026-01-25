@@ -12,6 +12,7 @@ public class QuestInfoSO : ScriptableObject
     //the values and stuff for the quest
     [Header("General")]
     public string displayName;
+    public int displayNumber;
 
     //if there are any requirements the player has to have beforehand like lvls or coins alr gained idk
     [Header("Requirements")]

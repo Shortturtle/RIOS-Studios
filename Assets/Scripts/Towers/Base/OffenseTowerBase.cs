@@ -289,7 +289,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void Attack()
     {
-        attackEvent.Post(this.gameObject);
+        AudioManager.instance.PlayAudioEvent(attackEvent);
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
     }
@@ -299,7 +299,7 @@ public class OffenseTowerBase : BaseTowerClass
         if (degradeRank == maxDegradeRank && !isMaxDegraded)
         {
             isMaxDegraded = true;
-            degradeEvent.Post(this.gameObject);
+            AudioManager.instance.PlayAudioEvent(degradeEvent);
             degradeSign.SetActive(true);
         }
 
