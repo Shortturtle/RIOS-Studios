@@ -20,6 +20,8 @@ public class QuestLogUI : MonoBehaviour
 
     private Button firstSelectedButton;
 
+    
+
     private void OnEnable()
     {
         GameEventManager.instance.questEvents.onQuestStateChange += QuestStateChange;
@@ -70,7 +72,7 @@ public class QuestLogUI : MonoBehaviour
         });
 
         //initialize first selected button if not already so it is always the top button
-        if(firstSelectedButton == null)
+        if (firstSelectedButton == null)
         {
             firstSelectedButton = questLogButton.button;
         }
@@ -82,7 +84,7 @@ public class QuestLogUI : MonoBehaviour
     private void SetQuestLogInfo(Quest quest)
     {
         //display name
-        questDisplayNameText.text = quest.info.displayName;
+        questDisplayNameText.text = quest.DisplayedName();
 
         //quest status
         questStatusText.text = quest.GetFullStatusText();

@@ -101,6 +101,31 @@ public class Quest
         return new QuestData(state, currentQuestStepIndex, questStepStates);
     }
 
+    public string QuestLogName()
+    {
+        string nameStatus = "";
+
+        nameStatus = "Quest " + info.displayNumber;
+
+        return nameStatus;
+    }
+
+    public string DisplayedName()
+    {
+        string nameStatus = "";
+
+        if (state == QuestState.REQUIREMENTS_NOT_MET /*|| state == QuestState.CAN_START*/)
+        {
+            nameStatus = "???";
+        }
+        else if (state == QuestState.CAN_START || state == QuestState.IN_PROGRESS || state == QuestState.CAN_FINISH || state == QuestState.FINISHED)
+        {
+            nameStatus = info.displayName;
+        }
+
+        return nameStatus;
+    }
+
     public string GetFullStatusText()
     {
         string fullStatus = "";

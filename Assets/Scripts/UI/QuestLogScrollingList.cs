@@ -33,17 +33,17 @@ public class QuestLogScrollingList : MonoBehaviour
             questLogButton = idToButtonMap[quest.info.id];
         }
 
-        //remove quest from ui if its state isnt started or can finish
-        if (currentQuestState.Equals(QuestState.REQUIREMENTS_NOT_MET) || currentQuestState.Equals(QuestState.CAN_START) || currentQuestState.Equals(QuestState.FINISHED))
-        {
-            questLogButton = null;
-        }
+        Debug.Log("create");
 
         return questLogButton;
     }
 
     private QuestLogButton InstantiateQuestLogButton(Quest quest, UnityAction selectAction)
     {
+        if (currentQuestState.Equals(QuestState.CAN_START) || currentQuestState.Equals(QuestState.FINISHED))
+        {
+
+        }
         //create button
         QuestLogButton questLogButton = Instantiate(questLogButtonPrefab, contentParent.transform).GetComponent<QuestLogButton>();
 
@@ -52,10 +52,11 @@ public class QuestLogScrollingList : MonoBehaviour
 
         //initialize and set up function when button is selected
         RectTransform buttonRectTransform = questLogButton.GetComponent<RectTransform>();
-        questLogButton.Initialize(quest.info.displayName, () => { selectAction(); UpdateScrolling(buttonRectTransform); });
+        questLogButton.Initialize(quest.QuestLogName(), () => { selectAction(); UpdateScrolling(buttonRectTransform); });
         
         //add to map to keep track of button
         idToButtonMap[quest.info.id] = questLogButton;
+
         return questLogButton;
     }
 

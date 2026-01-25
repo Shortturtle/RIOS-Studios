@@ -37,6 +37,8 @@ public class QuestLogButton : MonoBehaviour, ISelectHandler
         switch(state)
         {
             case QuestState.REQUIREMENTS_NOT_MET:
+                buttonText.color = Color.grey;
+                break;
             case QuestState.CAN_START:
                 buttonText.color = Color.red;
                 break;
