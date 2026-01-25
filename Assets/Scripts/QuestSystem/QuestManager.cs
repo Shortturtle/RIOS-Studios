@@ -7,6 +7,8 @@ public class QuestManager : MonoBehaviour
     [Header("Config")]
     [SerializeField] private bool loadQuestState = true;
 
+    //world unlocked requirements
+    private string worldPlayerUnlocked;
 
     private Dictionary<string, Quest> questMap;
 
@@ -60,7 +62,11 @@ public class QuestManager : MonoBehaviour
     private bool CheckRequirementsMet(Quest quest)
     {
         bool meetsRequirements = true;
-        //we dont have lvl requirements so i skipped a part
+        
+        if(PlayerPrefs.GetInt(worldPlayerUnlocked) < quest.info.worldUnlockRequirement)
+        {
+            meetsRequirements = false;
+        }
 
         //check quest prerequisites for completion
         foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)

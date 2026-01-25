@@ -16,6 +16,9 @@ public class QuestLogScrollingList : MonoBehaviour
 
     private Dictionary<string, QuestLogButton> idToButtonMap = new Dictionary<string, QuestLogButton>();
 
+    //to check quest state and choose to initialize the button
+    private QuestState currentQuestState;
+
     public QuestLogButton CreateButtonIfNotExists(Quest quest, UnityAction selectAction)
     {
         QuestLogButton questLogButton = null;
@@ -29,6 +32,13 @@ public class QuestLogScrollingList : MonoBehaviour
         {
             questLogButton = idToButtonMap[quest.info.id];
         }
+
+        //remove quest from ui if its state isnt started or can finish
+        if (currentQuestState.Equals(QuestState.REQUIREMENTS_NOT_MET) || currentQuestState.Equals(QuestState.CAN_START) || currentQuestState.Equals(QuestState.FINISHED))
+        {
+            questLogButton = null;
+        }
+
         return questLogButton;
     }
 

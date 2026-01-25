@@ -15,7 +15,7 @@ public class QuestInfoSO : ScriptableObject
 
     //if there are any requirements the player has to have beforehand like lvls or coins alr gained idk
     [Header("Requirements")]
-    //public int levelRequirement;
+    public int worldUnlockRequirement;
     public QuestInfoSO[] questPrerequisites;
 
     //place the prefab with the quest script inside this one in the inspector
@@ -25,6 +25,7 @@ public class QuestInfoSO : ScriptableObject
     //rewards to be gained, just the towers so ill update the (int/bool/float/whatever) later when the gaining towers functionality is ready
     [Header("Rewards")]
     public int towerReward;
+    public string towerRewardName;
 
     //ensure id is always the name of Scriptable Object asset
     private void OnValidate()

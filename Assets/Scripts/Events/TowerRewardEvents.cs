@@ -12,15 +12,4 @@ public class TowerRewardEvents
             onTowerRewarded(towerRewardNumber);
         }
     }
-
-    //delete below of unneeded
-    public event Action<int> onTowerRewardChange;
-
-    public void TowerRewardChange(int towerRewardNumber)
-    {
-        if (onTowerRewardChange != null)
-        {
-            onTowerRewardChange(towerRewardNumber);
-        }
-    }
 }

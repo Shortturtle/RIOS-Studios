@@ -94,7 +94,7 @@ public class QuestLogUI : MonoBehaviour
             questRequirementsText.text += prerequisiteQuestInfo.displayName + "\n";
         }
 
-        //rewards (HAVE TO CHANGE THIS LATER WHEN GET ACTUAL TOWER REWARD GAIN)
-        towerRewardsText.text = quest.info.towerReward + "Yes";
+        //rewards text
+        towerRewardsText.text = quest.info.towerRewardName;
     }
 }
