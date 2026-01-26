@@ -36,7 +36,6 @@ public class RailgunManager : BaseMicrogameClass
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartMicrogame();
     }
 
     public override void StartMicrogame()
