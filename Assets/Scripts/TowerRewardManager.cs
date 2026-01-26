@@ -4,14 +4,14 @@ public class TowerRewardManager : MonoBehaviour
 {
     //strings to record the towers unlocked in playerprefs
     //to use this - if(PlayerPrefs.GetInt(tower_???) == 1) { CanUseTower or smth}
-    private string tower_Portal;
-    private string tower_Jinb;
-    private string tower_Potion;
-    private string tower_Net;
-    private string tower_Diver;
-    private string tower_Axe;
-    private string tower_Railgun;
-    private string tower_Drone;
+    private string tower_Portal = "tower_Portal";
+    private string tower_Jinb = "tower_Jinb";
+    private string tower_Potion = "tower_Potion";
+    private string tower_Net = "tower_Net";
+    private string tower_Diver = "tower_Diver";
+    private string tower_Axe = "tower_Axe";
+    private string tower_Railgun = "tower_Railgun";
+    private string tower_Drone = "tower_Drone";
 
     private void OnEnable()
     {
