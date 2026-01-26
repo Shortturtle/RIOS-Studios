@@ -20,8 +20,6 @@ public class QuestLogUI : MonoBehaviour
 
     private Button firstSelectedButton;
 
-    //to check quest state and choose to initialize the button
-    private QuestState currentQuestState;
 
     private void OnEnable()
     {
