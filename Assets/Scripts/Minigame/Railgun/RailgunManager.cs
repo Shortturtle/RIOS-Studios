@@ -97,7 +97,7 @@ public class RailgunManager : BaseMicrogameClass
         {
             isFinishedOne = true;
             slider1.interactable = false;
-            completion++; 
+            BarTargetReached();
         }
     }
     public void CheckBarTwoProgress()
@@ -106,7 +106,7 @@ public class RailgunManager : BaseMicrogameClass
         {
             isFinishedTwo = true;
             slider2.interactable = false;
-            completion++; 
+            BarTargetReached();
         }
     }
     public void CheckBarThreeProgress()
@@ -115,7 +115,7 @@ public class RailgunManager : BaseMicrogameClass
         { 
             isFinishedThree = true;
             slider3.interactable = false;
-            completion++; 
+            BarTargetReached();
         }
     }
 
