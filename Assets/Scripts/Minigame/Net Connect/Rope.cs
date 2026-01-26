@@ -18,6 +18,7 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public UILineRenderer lineRenderer;
     public Canvas canvas;
     public NetConnectManager netConnectManager;
+    public AK.Wwise.Event ropeConnect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -101,6 +102,7 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             {
                 isSuccess = true;
                 netConnectManager.currentlyHoveredRope.isSuccess = true;
+                AudioManager.instance.PlayAudioEvent(ropeConnect, gameObject);
             }
         }
 

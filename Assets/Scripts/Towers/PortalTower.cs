@@ -8,13 +8,14 @@ public class PortalTower : OffenseTowerBase
     protected override void Degrade()
     {
         PortalProjectile.portalDuration = ((float)PortalProjectile.portalDuration - (0.5f * ((float)degradeRank / (float)maxDegradeRank)));
+        degradeRank++;
         ResetDegradeTimer();
     }
 
     protected override void OverDrive()
     {
-        stats.Projectile = overdriveProjectile;
-        damageValue = (20);
+        //stats.Projectile = overdriveProjectile;
+        damageValue = (30);
         overdriveCountdownTimer = overdriveTimerDuration;
     }
 

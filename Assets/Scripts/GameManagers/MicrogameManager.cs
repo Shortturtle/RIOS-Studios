@@ -23,6 +23,7 @@ public class MicrogameManager : MonoBehaviour
     public BaseTowerClass targettedTower;
     public GameObject chosenMicrogame;
     public GameObject microgameInstance;
+    public AK.Wwise.Event microgameWin;
 
     public void MicrogameStart( BaseTowerClass tower,  GameObject microgame)
     {
@@ -54,5 +55,6 @@ public class MicrogameManager : MonoBehaviour
         currentlyPlayingMinigame = false;
         targettedTower = null;
         chosenMicrogame = null;
+        AudioManager.instance.PlayAudioEvent(microgameWin, gameObject);
     }
 }

@@ -13,16 +13,28 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID AXESHARPEN = 1479422892U;
+        static const AkUniqueID AXESWING = 2157426783U;
         static const AkUniqueID ICELEVELMUSIC = 980765601U;
         static const AkUniqueID LOSE = 221232726U;
         static const AkUniqueID MAINMENUMUSIC = 1991862712U;
+        static const AkUniqueID MINIGAMECOMPLETE = 4226718115U;
+        static const AkUniqueID NETTHROW = 2913537494U;
+        static const AkUniqueID NETTRAP = 2262216515U;
         static const AkUniqueID POTIONTHROWERATTACK = 1007541237U;
         static const AkUniqueID POTIONTHROWERBREAK = 2412449086U;
         static const AkUniqueID RAILGUNNERATTACK = 417816648U;
+        static const AkUniqueID RIGHTINGREDIENT = 394147468U;
+        static const AkUniqueID ROPETIE = 3692382261U;
+        static const AkUniqueID SCIFISLIDERRIGHT = 3145432090U;
+        static const AkUniqueID SCIFISLIDERWRONG = 967495643U;
+        static const AkUniqueID SCREWIN = 2811182890U;
+        static const AkUniqueID SCREWOUT = 192683013U;
         static const AkUniqueID STOPALLAUDIO = 14541412U;
         static const AkUniqueID TOWERBUILD = 1843285636U;
         static const AkUniqueID TOWERDEGRADE = 2642738694U;
         static const AkUniqueID VICTORY = 2716678721U;
+        static const AkUniqueID WRONGINGREDIENT = 857058117U;
     } // namespace EVENTS
 
     namespace BANKS

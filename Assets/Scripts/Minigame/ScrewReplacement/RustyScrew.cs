@@ -8,6 +8,7 @@ public class RustyScrew : MonoBehaviour
     //distance between object dragged and object place position before it can be placed into position
     public float dropDistance;
     public float grav;
+    public AK.Wwise.Event unscrewSound;
     [SerializeField] private bool dropped = false;
 
     //initial position
@@ -28,6 +29,10 @@ public class RustyScrew : MonoBehaviour
         //set initial pos to object's current pos
         objectInitialPos = objectBelow.transform.position;
         cCollider.enabled = false;
+    }
+    public void StartDrag()
+    {
+        AudioManager.instance.PlayAudioEvent(unscrewSound, gameObject);
     }
 
     public void DragObject()
