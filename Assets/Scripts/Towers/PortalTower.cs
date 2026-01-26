@@ -13,8 +13,8 @@ public class PortalTower : OffenseTowerBase
 
     protected override void OverDrive()
     {
-        stats.Projectile = overdriveProjectile;
-        damageValue = (20);
+        //stats.Projectile = overdriveProjectile;
+        damageValue = (30);
         overdriveCountdownTimer = overdriveTimerDuration;
     }
 
