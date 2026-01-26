@@ -20,18 +20,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayAudioEvent(AK.Wwise.Event audioEvent)
+    public void PlayAudioEvent(AK.Wwise.Event audioEvent, GameObject gO)
     {
-        audioEvent.Post(gameObject);
+        audioEvent.Post(gO);
     }
 
-    public void StopAudioEvent(AK.Wwise.Event audioEvent)
+    public void StopAudioEvent(AK.Wwise.Event audioEvent, GameObject gO)
     {
-        audioEvent.Stop(gameObject);
+        audioEvent.Stop(gO);
     }
 
-    public void StopAllAudioEvents()
+    public void StopAllAudioEvents(GameObject gO)
     {
-        stopAllAudio.Post(gameObject);
+        stopAllAudio.Post(gO);
     }
 }
