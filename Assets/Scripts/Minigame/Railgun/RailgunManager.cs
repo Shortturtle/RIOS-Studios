@@ -32,6 +32,9 @@ public class RailgunManager : BaseMicrogameClass
     public int completion = 0;
     public int numberToCompleteMinigame;
 
+    public AK.Wwise.Event sliderRight;
+    public AK.Wwise.Event sliderWrong;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,10 +53,6 @@ public class RailgunManager : BaseMicrogameClass
 
         CreateBarTargets();
         CreateBarInitial();
-
-        CheckBarOneProgress();
-        CheckBarTwoProgress();
-        CheckBarThreeProgress();
     }
 
     //set bar target and green indicator
@@ -99,6 +98,11 @@ public class RailgunManager : BaseMicrogameClass
             slider1.interactable = false;
             BarTargetReached();
         }
+
+        else
+        {
+            AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject);
+        }
     }
     public void CheckBarTwoProgress()
     {
@@ -107,6 +111,11 @@ public class RailgunManager : BaseMicrogameClass
             isFinishedTwo = true;
             slider2.interactable = false;
             BarTargetReached();
+        }
+
+        else
+        {
+            AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject);
         }
     }
     public void CheckBarThreeProgress()
@@ -117,11 +126,17 @@ public class RailgunManager : BaseMicrogameClass
             slider3.interactable = false;
             BarTargetReached();
         }
+
+        else
+        {
+            AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject);
+        }
     }
 
     //increase completion once bar target is reached
     public void BarTargetReached()
     {
+        AudioManager.instance.PlayAudioEvent(sliderRight, gameObject);
         completion++;
         //if all sliders at target, minigame is complete and minigame close func is activated
         if (completion == numberToCompleteMinigame)

@@ -14,6 +14,9 @@ public class Ingredient : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     private bool isDragStarted;
     private Vector2 ogPos;
 
+    public AK.Wwise.Event ingredientWrong;
+    public AK.Wwise.Event ingredientRight;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,7 +70,13 @@ public class Ingredient : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
                 potionMakingManager.selectedIngredientSprites.RemoveAt(index);
                 potionMakingManager.ingredientsMixed++;
                 potionMakingManager.IngredientAdded();
+                AudioManager.instance.PlayAudioEvent(ingredientRight, gameObject);
                 Destroy(gameObject);
+            }
+
+            else
+            {
+                AudioManager.instance.PlayAudioEvent(ingredientWrong, gameObject);
             }
         }
         isDragStarted = false;

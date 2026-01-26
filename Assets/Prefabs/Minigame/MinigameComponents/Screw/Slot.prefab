@@ -234,6 +234,10 @@ MonoBehaviour:
   objectToDrag: {fileID: 7967361331280132719}
   dropDistance: 50
   grav: 25
+  unscrewSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6944a2603198f9d4686bd9b298f48ab8, type: 2}
   dropped: 0
   objectBelow: {fileID: 7081677473712634903}
 --- !u!114 &39223304292635739
@@ -272,6 +276,22 @@ MonoBehaviour:
         - m_Target: {fileID: 7629622934274723799}
           m_TargetAssemblyTypeName: RustyScrew, Assembly-CSharp
           m_MethodName: DropObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7629622934274723799}
+          m_TargetAssemblyTypeName: RustyScrew, Assembly-CSharp
+          m_MethodName: StartDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

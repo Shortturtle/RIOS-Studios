@@ -10,6 +10,8 @@ public class DragDrop : MonoBehaviour
     public bool isLocked;
     private bool canSlot;
 
+    public AK.Wwise.Event screwIn;
+
     //new screw's initial position
     Vector2 objectInitialPos;
     //the position of the collided slot
@@ -52,6 +54,7 @@ public class DragDrop : MonoBehaviour
         {
             //complete minigame part
             isLocked = true;
+            AudioManager.instance.PlayAudioEvent(screwIn, gameObject);
             objectToDrag.transform.position = objectFinalPos;
             Collider2D slotCollider = objectSlot.GetComponent<CircleCollider2D>();
             slotCollider.enabled = false;
