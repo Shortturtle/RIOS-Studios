@@ -20,7 +20,8 @@ public class QuestLogUI : MonoBehaviour
 
     private Button firstSelectedButton;
 
-    
+    //to check quest state and choose to initialize the button
+    private QuestState currentQuestState;
 
     private void OnEnable()
     {
@@ -65,26 +66,48 @@ public class QuestLogUI : MonoBehaviour
 
     private void QuestStateChange(Quest quest)
     {
-        //add the button to the scrolling list if not already added
-        QuestLogButton questLogButton = scrollingList.CreateButtonIfNotExists(quest, () =>
+        if (quest.state.Equals(QuestState.IN_PROGRESS) || quest.state.Equals(QuestState.CAN_FINISH))
         {
-            SetQuestLogInfo(quest);
-        });
+            //add the button to the scrolling list if not already added
+            QuestLogButton questLogButton = scrollingList.CreateButtonIfNotExists(quest, () =>
+            {
+                SetQuestLogInfo(quest);
+            });
 
-        //initialize first selected button if not already so it is always the top button
-        if (firstSelectedButton == null)
-        {
-            firstSelectedButton = questLogButton.button;
+            //initialize first selected button if not already so it is always the top button
+            if (firstSelectedButton == null)
+            {
+                firstSelectedButton = questLogButton.button;
+            }
+
+            //set button colour based on quest state
+            questLogButton.SetState(quest.state);
         }
+        
+        if(firstSelectedButton == null)
+        {
+            //display name
+            questDisplayNameText.text = "";
 
-        //set button colour based on quest state
-        questLogButton.SetState(quest.state);
+            //quest status
+            questStatusText.text = "No quests have been started";
+
+            //requirements (so add world requirements here if needed)
+            questRequirementsText.text = "";
+            foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
+            {
+                questRequirementsText.text += prerequisiteQuestInfo.displayName + "\n";
+            }
+
+            //rewards text
+            towerRewardsText.text = "";
+        }
     }
 
     private void SetQuestLogInfo(Quest quest)
     {
         //display name
-        questDisplayNameText.text = quest.DisplayedName();
+        questDisplayNameText.text = quest.info.displayName;
 
         //quest status
         questStatusText.text = quest.GetFullStatusText();

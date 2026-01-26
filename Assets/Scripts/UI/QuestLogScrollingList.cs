@@ -16,9 +16,6 @@ public class QuestLogScrollingList : MonoBehaviour
 
     private Dictionary<string, QuestLogButton> idToButtonMap = new Dictionary<string, QuestLogButton>();
 
-    //to check quest state and choose to initialize the button
-    private QuestState currentQuestState;
-
     public QuestLogButton CreateButtonIfNotExists(Quest quest, UnityAction selectAction)
     {
         QuestLogButton questLogButton = null;
@@ -40,10 +37,6 @@ public class QuestLogScrollingList : MonoBehaviour
 
     private QuestLogButton InstantiateQuestLogButton(Quest quest, UnityAction selectAction)
     {
-        if (currentQuestState.Equals(QuestState.CAN_START) || currentQuestState.Equals(QuestState.FINISHED))
-        {
-
-        }
         //create button
         QuestLogButton questLogButton = Instantiate(questLogButtonPrefab, contentParent.transform).GetComponent<QuestLogButton>();
 
@@ -52,7 +45,7 @@ public class QuestLogScrollingList : MonoBehaviour
 
         //initialize and set up function when button is selected
         RectTransform buttonRectTransform = questLogButton.GetComponent<RectTransform>();
-        questLogButton.Initialize(quest.QuestLogName(), () => { selectAction(); UpdateScrolling(buttonRectTransform); });
+        questLogButton.Initialize(quest.info.displayName, () => { selectAction(); UpdateScrolling(buttonRectTransform); });
         
         //add to map to keep track of button
         idToButtonMap[quest.info.id] = questLogButton;
