@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     //refs
     private CharacterController characterController;
+    private QuestLogUI questUI;
     public GameObject pauseScreen;
 
     public VisualEffect vfxRenderer;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         //refs
         characterController = GetComponent<CharacterController>();
+        questUI = FindFirstObjectByType<QuestLogUI>();
     }
 
     //For input system, enable & disable
@@ -80,6 +82,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Interactable?.Interact(this);        
+        }
+
+        //manual interaction to open quest menu
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            questUI.QuestLogTogglePressed();
         }
     }
 
