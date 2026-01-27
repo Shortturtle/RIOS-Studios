@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -9,6 +10,7 @@ public class BreakingPlatform : MonoBehaviour
     public LayerMask towerLayer;
     public int towerLimit = 3;
     public int towersDetected;
+    public List<GameObject> detectedTowers = new List<GameObject>();
 
     [Header("Shake Settings")]
     public float shakeIntensity = 0.1f;
@@ -26,18 +28,23 @@ public class BreakingPlatform : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Check: is the object entering on the tower layer?
-        if (((1 << other.gameObject.layer) & towerLayer) != 0)
+        if ((((1 << other.gameObject.layer) & towerLayer) != 0) && !other.isTrigger)
         {
             towersDetected++;
+            detectedTowers.Add(other.gameObject);
 
             if (towersDetected == towerLimit - 1)
             {
                 if (shakeRoutine == null) shakeRoutine = StartCoroutine(ShakePlatform());
             }
 
-            //Check: tower limit reached?
+            //Check: tower limit reached? If yes, destroy platform and towers
             if (towersDetected >= towerLimit)
             {
+                foreach(GameObject tower in detectedTowers)
+                {
+                    Destroy(tower); 
+                }
                 Destroy(gameObject);
             }
         }
