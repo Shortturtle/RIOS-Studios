@@ -48,6 +48,10 @@ public class DialogueUI : MonoBehaviour
             yield return RunTypingEffect(dialogue.text);
             textLabel.text = dialogue.text;
 
+            //Wait for input release so it doesn't instantly advance
+            yield return new WaitUntil(() => !Input.GetKey(KeyCode.Space) && !Input.GetMouseButton(0));
+
+
             //Check: Are we at the end of the dialogue?
             if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
             
