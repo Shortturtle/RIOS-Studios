@@ -25,11 +25,10 @@ public class GameManager : MonoBehaviour
     public GameObject winUI;
     public AK.Wwise.Event winSFX;
     public AK.Wwise.Event LevelMusic;
-    public AK.Wwise.Event StopAudio;
 
     private void Start()
     {
-        LevelMusic.Post(gameObject);
+        AudioManager.instance.PlayAudioEvent(LevelMusic, gameObject);
     }
     public void LoseGame()
     {
@@ -39,8 +38,8 @@ public class GameManager : MonoBehaviour
             MicrogameManager.instance.MicrogameEnd();
         }
         loseUI.SetActive(true);
-        StopAudio.Post(gameObject);
-        loseSFX.Post(gameObject);
+        AudioManager.instance.StopAudioEvent(LevelMusic, gameObject);
+        AudioManager.instance.PlayAudioEvent(loseSFX, gameObject);
         Debug.Log("YOU LOST");
     }
 
@@ -51,8 +50,8 @@ public class GameManager : MonoBehaviour
             MicrogameManager.instance.MicrogameEnd();
         }
         winUI.SetActive(true);
-        StopAudio.Post(gameObject);
-        winSFX.Post(gameObject);
+        AudioManager.instance.StopAudioEvent(LevelMusic, gameObject);
+        AudioManager.instance.PlayAudioEvent(winSFX, gameObject);
         Debug.Log("YOU WIN");
     }
 }
