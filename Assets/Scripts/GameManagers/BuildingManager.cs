@@ -80,7 +80,7 @@ public class BuildingManager : MonoBehaviour
             ghostTowerIndicator.SetActive(true);
         }
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, acceptedLayers, QueryTriggerInteraction.Ignore))
+        if ((Physics.Raycast(ray, out RaycastHit hitInfo, 100, acceptedLayers, QueryTriggerInteraction.Ignore)) || towerClass.cost > ResourceManager.instance.currentEnergy)
         {
             if(hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
