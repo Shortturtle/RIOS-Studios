@@ -21,7 +21,6 @@ public class NetConnectManager : BaseMicrogameClass
 
     private void Start()
     {
-        StartMicrogame();
     }
 
     private void Update()
