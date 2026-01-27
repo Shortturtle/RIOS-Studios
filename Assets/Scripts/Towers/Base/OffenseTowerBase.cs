@@ -81,6 +81,15 @@ public class OffenseTowerBase : BaseTowerClass
         GeneralDegradeTracker();
         HoverUIHandler();
     }
+
+    protected void OnDestroy()
+    {
+        if (hoverUIInstance != null)
+        {
+            Destroy(hoverUIInstance);
+        }
+    }
+
     public void Stun(float duration)
     {
         StartCoroutine(StunRoutine(duration));
