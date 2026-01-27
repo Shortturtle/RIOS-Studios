@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RustyScrew : MonoBehaviour
 {
@@ -53,7 +54,8 @@ public class RustyScrew : MonoBehaviour
             dropped = true;
             rb.gravityScale = grav;
             cCollider.enabled = true;
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 5);
         }
     }
+
 }
