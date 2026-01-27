@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
 
 public class EnemyWaveManager : MonoBehaviour
 {
