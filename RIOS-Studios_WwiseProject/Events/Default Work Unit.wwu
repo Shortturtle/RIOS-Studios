@@ -461,6 +461,74 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="WoodPlatformCreak" ID="{BA7A9874-6831-4453-818A-379215C85C68}">
+									<ChildrenList>
+										<Action Name="" ID="{47D1AD3F-1C7D-4D4E-8921-45A92953E573}" ShortID="492631058">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="13"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{067F86AC-CA00-46FB-9F42-8202859CDE32}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="500"/>
+																	<Property Name="Min" Type="Real64" Value="-500"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="WoodPlatformCreak" ID="{0638754B-3D23-4AD0-966D-045114B963E5}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{517CA3FF-9BC2-4D77-A1E6-B0C5E187176D}" ShortID="58689300">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="WoodPlatformCreak" ID="{0638754B-3D23-4AD0-966D-045114B963E5}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="WoodPlatformBreaking" ID="{8C1C46D1-5331-4FD5-9056-CC866816937A}">
+									<ChildrenList>
+										<Action Name="" ID="{2CF5DE68-0C20-4B22-9C82-2C601321F7DA}" ShortID="631139853">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="13"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{44D42EC9-D0C9-4673-8CFA-C15728AA5FEA}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="500"/>
+																	<Property Name="Min" Type="Real64" Value="-500"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="WoodPlatformBreaking" ID="{FBF1CF61-0480-405C-91E0-771CA9F3465C}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{093F8CAE-115E-4414-B22E-92F2880D54CD}" ShortID="148092723">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="WoodPlatformBreaking" ID="{FBF1CF61-0480-405C-91E0-771CA9F3465C}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

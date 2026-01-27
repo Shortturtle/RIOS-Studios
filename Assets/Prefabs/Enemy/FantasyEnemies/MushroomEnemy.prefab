@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 7708075468850574744}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.28, z: 0}
+  m_LocalPosition: {x: 0, y: 2.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126,10 +126,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222845317282799443}
-  - component: {fileID: 5801294935286711751}
   - component: {fileID: 8180096169730861508}
   - component: {fileID: 1994821612847468223}
   - component: {fileID: -6263618549634953981}
+  - component: {fileID: 2778047706733796805}
   m_Layer: 10
   m_Name: MushroomEnemy
   m_TagString: Untagged
@@ -155,27 +155,6 @@ Transform:
   - {fileID: 5854704473636491779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5801294935286711751
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8070748936374062218}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8180096169730861508
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -235,6 +214,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questInfoForKill: {fileID: 11400000, guid: 40afb0e86ab9c884a8962295622d5d32, type: 2}
+--- !u!136 &2778047706733796805
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8070748936374062218}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.65
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &6254004338319111656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,15 +295,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77e761929ae091f42b2471d3453ab047, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.064761
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77e761929ae091f42b2471d3453ab047, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3874
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77e761929ae091f42b2471d3453ab047, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.050424
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77e761929ae091f42b2471d3453ab047, type: 3}
       propertyPath: m_LocalRotation.w

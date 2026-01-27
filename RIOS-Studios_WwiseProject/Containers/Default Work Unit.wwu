@@ -757,6 +757,63 @@
 										<ActiveSource Name="NetTrap" ID="{993C8357-4CDD-4821-A9BF-A2B001AED2B5}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="WoodPlatformCreak" ID="{0638754B-3D23-4AD0-966D-045114B963E5}" ShortID="1026641180">
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Physically_Based" ID="{7AF96D5E-B0A7-4524-B96B-04F53DEAEC94}" WorkUnitID="{E312AA2F-7D32-49AE-9B3F-853E8C0370AC}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="WoodPlatformCreak" ID="{7A4ED908-DA3E-40DA-8A27-8BC41897512B}">
+											<Language>SFX</Language>
+											<AudioFile>WoodPlatformCreak.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="317442978"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="WoodPlatformCreak" ID="{7A4ED908-DA3E-40DA-8A27-8BC41897512B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="WoodPlatformBreaking" ID="{FBF1CF61-0480-405C-91E0-771CA9F3465C}" ShortID="580290819">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Physically_Based" ID="{7AF96D5E-B0A7-4524-B96B-04F53DEAEC94}" WorkUnitID="{E312AA2F-7D32-49AE-9B3F-853E8C0370AC}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="WoodPlatformBreaking" ID="{9DE95E23-FAA2-40E2-A5F7-789CF192459F}">
+											<Language>SFX</Language>
+											<AudioFile>WoodPlatformBreaking.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="781433724"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="WoodPlatformBreaking" ID="{9DE95E23-FAA2-40E2-A5F7-789CF192459F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
