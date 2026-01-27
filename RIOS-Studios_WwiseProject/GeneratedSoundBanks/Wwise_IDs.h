@@ -38,6 +38,8 @@ namespace AK
         static const AkUniqueID TOWERBUILD = 1843285636U;
         static const AkUniqueID TOWERDEGRADE = 2642738694U;
         static const AkUniqueID VICTORY = 2716678721U;
+        static const AkUniqueID WOODPLATFORMBREAKING = 87504952U;
+        static const AkUniqueID WOODPLATFORMCREAK = 309297417U;
         static const AkUniqueID WRONGINGREDIENT = 857058117U;
     } // namespace EVENTS
 

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
     "Language": "SFX",
-    "Hash": "{FC2080D7-5693-9D72-30C6-EF93EF15694F}",
+    "Hash": "{699A3EBB-7391-BC9C-C550-2877BA2C88C0}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
     "ShortName": "MainSoundbank",
     "Path": "MainSoundbank.bnk",
@@ -40,6 +40,14 @@
       "CachePath": "DA/{DA18F280-AE6D-DBB9-34D0-EB5BE27D15C3}.wem"
      },
      {
+      "Id": "317442978",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WoodPlatformCreak.wav",
+      "CachePath": "5D/{5D1E9334-F260-5B62-F12F-33B43F77605A}.wem"
+     },
+     {
       "Id": "370408392",
       "Language": "SFX",
       "Streaming": "false",
@@ -61,7 +69,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "TowerPlacement.wav",
-      "CachePath": "CC/{CC335529-7F90-D0D2-F80D-C2D7D5C19FC5}.wem"
+      "CachePath": "80/{80C4EBAD-6546-4E44-F2AF-F979106B6862}.wem"
      },
      {
       "Id": "439503373",
@@ -142,6 +150,14 @@
       "Location": "Memory",
       "ShortName": "Steampunk_Battle_OST.wav",
       "CachePath": "81/{81E4FCF3-217C-F276-8251-B88E00FB832E}.wem"
+     },
+     {
+      "Id": "781433724",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WoodPlatformBreaking.wav",
+      "CachePath": "49/{4909D20A-39AE-9560-7F23-EB3F9D259422}.wem"
      },
      {
       "Id": "812093938",
@@ -558,6 +574,36 @@
       ]
      },
      {
+      "Id": "87504952",
+      "Name": "WoodPlatformBreaking",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\WoodPlatformBreaking",
+      "GUID": "{8C1C46D1-5331-4FD5-9056-CC866816937A}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "0.5835",
+      "DurationMax": "0.5835",
+      "MediaRefs": [
+       {
+        "Id": "781433724"
+       }
+      ]
+     },
+     {
+      "Id": "309297417",
+      "Name": "WoodPlatformCreak",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\WoodPlatformCreak",
+      "GUID": "{BA7A9874-6831-4453-818A-379215C85C68}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "1.1585208",
+      "DurationMax": "1.1585208",
+      "MediaRefs": [
+       {
+        "Id": "317442978"
+       }
+      ]
+     },
+     {
       "Id": "857058117",
       "Name": "WrongIngredient",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\MinigameSFX\\WrongIngredient",
@@ -574,6 +620,6 @@
     ]
    }
   ],
-  "FileHash": "{DAD195EF-7DD0-2FEC-E49B-0DE790A16638}"
+  "FileHash": "{ACF967D2-E278-0707-2EDB-9B2B33392DDD}"
  }
 }
