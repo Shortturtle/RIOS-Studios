@@ -21,6 +21,7 @@ public class PortalProjectile : BaseProjectileClass
 
     protected override void ProjectileEffect() //Start Coroutine for the AoE and StunDoT
     {
+        speed = 0f; //Stop moving
         StartCoroutine(frickYouRyanTohJunAn());
     }
 
@@ -37,7 +38,7 @@ public class PortalProjectile : BaseProjectileClass
                 BaseEnemyClass.PointInTime pointInTime = enemy.pointsInTime[enemy.pointsInTime.Count - 1];
                 enemy.transform.position = pointInTime.position;
 
-                enemy.pointsInTime.Clear();                                                                         //Clear the rewinding points to prevent issues(teleporting all over the place)
+                enemy.pointsInTime.Clear(); //Clear the rewinding points to prevent issues(teleporting all over the place)
             }
         }
 
