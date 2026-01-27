@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 7089297355046206976}
   - component: {fileID: 8150558547801364202}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Screw box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,8 +179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: -390}
-  m_SizeDelta: {x: 650, y: 175}
+  m_AnchoredPosition: {x: -575, y: -398}
+  m_SizeDelta: {x: 650, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7089297355046206976
 CanvasRenderer:
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -965942464, guid: 6d2045e87be84ca48a35ab907a23fb94, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: -390}
+  m_AnchoredPosition: {x: -750, y: -364}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4753238288382442364
@@ -314,6 +314,10 @@ MonoBehaviour:
   objectToDrag: {fileID: 2403783045533240548}
   objectSlot: {fileID: 0}
   isLocked: 0
+  screwIn:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 445f67ffd8a953c48a8e4e2e9fc2ddfb, type: 2}
 --- !u!114 &1391587594292754230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7495053973030935925
 RectTransform:
   m_ObjectHideFlags: 0
@@ -740,7 +744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: -390}
+  m_AnchoredPosition: {x: -400, y: -364}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2762901591975957864
@@ -796,6 +800,10 @@ MonoBehaviour:
   objectToDrag: {fileID: 6254604314986807751}
   objectSlot: {fileID: 0}
   isLocked: 0
+  screwIn:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 445f67ffd8a953c48a8e4e2e9fc2ddfb, type: 2}
 --- !u!114 &3815415395773000439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1162,7 +1170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: -390}
+  m_AnchoredPosition: {x: -575, y: -364}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6966339788406072144
@@ -1218,6 +1226,10 @@ MonoBehaviour:
   objectToDrag: {fileID: 8685423591987975851}
   objectSlot: {fileID: 0}
   isLocked: 0
+  screwIn:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 445f67ffd8a953c48a8e4e2e9fc2ddfb, type: 2}
 --- !u!114 &2147592234549692553
 MonoBehaviour:
   m_ObjectHideFlags: 0
