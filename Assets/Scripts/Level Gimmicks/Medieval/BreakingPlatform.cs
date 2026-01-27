@@ -16,6 +16,9 @@ public class BreakingPlatform : MonoBehaviour
     public float shakeIntensity = 0.1f;
     public float shakeSpeed = 30f;
 
+    public AK.Wwise.Event woodCreak;
+    public AK.Wwise.Event woodBreak;
+
     private Vector3 originalPosition;
     private Coroutine shakeRoutine;
 
@@ -35,7 +38,11 @@ public class BreakingPlatform : MonoBehaviour
 
             if (towersDetected == towerLimit - 1)
             {
-                if (shakeRoutine == null) shakeRoutine = StartCoroutine(ShakePlatform());
+                if (shakeRoutine == null)
+                {
+                    woodCreak.Post(gameObject);
+                    shakeRoutine = StartCoroutine(ShakePlatform());
+                }
             }
 
             //Check: tower limit reached? If yes, destroy platform and towers
@@ -45,6 +52,7 @@ public class BreakingPlatform : MonoBehaviour
                 {
                     Destroy(tower); 
                 }
+                woodBreak.Post(gameObject);
                 Destroy(gameObject);
             }
         }
