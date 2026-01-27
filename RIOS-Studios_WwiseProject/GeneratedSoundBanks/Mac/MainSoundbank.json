@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
     "Language": "SFX",
-    "Hash": "{85C4B4D1-1DB7-68DA-7D79-67BB833A6C62}",
+    "Hash": "{FC2080D7-5693-9D72-30C6-EF93EF15694F}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
     "ShortName": "MainSoundbank",
     "Path": "MainSoundbank.bnk",
@@ -40,6 +40,14 @@
       "CachePath": "DA/{DA18F280-AE6D-DBB9-34D0-EB5BE27D15C3}.wem"
      },
      {
+      "Id": "370408392",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Steampunk_Lobby_Music.wav",
+      "CachePath": "94/{94632283-FC37-7317-9646-280100E02151}.wem"
+     },
+     {
       "Id": "410739340",
       "Language": "SFX",
       "Streaming": "false",
@@ -62,6 +70,14 @@
       "Location": "Memory",
       "ShortName": "WrongIngredient.wav",
       "CachePath": "EB/{EB5530E3-2F2E-3024-7199-0748F57F10D1}.wem"
+     },
+     {
+      "Id": "440627326",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MedievilLobbyMusic2.wav",
+      "CachePath": "90/{90EBC9A0-8064-706D-37D9-C83910243B49}.wem"
      },
      {
       "Id": "498538846",
@@ -120,6 +136,14 @@
       "CachePath": "2E/{2EBB5BAA-42D3-FBA7-30BC-2DDF244F8CA7}.wem"
      },
      {
+      "Id": "757283419",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Steampunk_Battle_OST.wav",
+      "CachePath": "81/{81E4FCF3-217C-F276-8251-B88E00FB832E}.wem"
+     },
+     {
       "Id": "812093938",
       "Language": "SFX",
       "Streaming": "false",
@@ -142,6 +166,14 @@
       "Location": "Memory",
       "ShortName": "RightIngredient.wav",
       "CachePath": "B5/{B55F5589-8FC8-C609-8248-2C67838B5C65}.wem"
+     },
+     {
+      "Id": "874479708",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MedievilBattleMusic.wav",
+      "CachePath": "DF/{DFD02ACD-4A4C-A8BD-4186-7BE3CE30F27F}.wem"
      },
      {
       "Id": "884681261",
@@ -249,6 +281,30 @@
       "MediaRefs": [
        {
         "Id": "992073420"
+       }
+      ]
+     },
+     {
+      "Id": "4108069375",
+      "Name": "MedievilBattleMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\OST\\MedievilBattleMusic",
+      "GUID": "{18698B92-D6F0-4196-9ABF-72BF6AE46E5D}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "874479708"
+       }
+      ]
+     },
+     {
+      "Id": "1339457245",
+      "Name": "MedievilLobbyMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\OST\\MedievilLobbyMusic",
+      "GUID": "{4BA6BF85-5371-4B07-8FF0-824EB780D2B1}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "440627326"
        }
       ]
      },
@@ -426,6 +482,30 @@
       ]
      },
      {
+      "Id": "967088778",
+      "Name": "SteampunkBattleMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\OST\\SteampunkBattleMusic",
+      "GUID": "{C01B18EA-EAB7-421F-8BA7-5A5783A27AB0}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "757283419"
+       }
+      ]
+     },
+     {
+      "Id": "3473566750",
+      "Name": "SteampunkLobbyMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\OST\\SteampunkLobbyMusic",
+      "GUID": "{62866EC4-C022-48A4-890D-8CAC187774D0}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "370408392"
+       }
+      ]
+     },
+     {
       "Id": "14541412",
       "Name": "StopAllAudio",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\StopAllAudio",
@@ -494,6 +574,6 @@
     ]
    }
   ],
-  "FileHash": "{F7DA3910-72B1-7A8A-1260-688E5D19B69F}"
+  "FileHash": "{DAD195EF-7DD0-2FEC-E49B-0DE790A16638}"
  }
 }
