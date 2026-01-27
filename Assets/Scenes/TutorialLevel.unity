@@ -5750,6 +5750,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7072755396930456967, guid: 437b9aae268feab4b970acafefb0baf1, type: 3}
+--- !u!114 &271303896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3658623045953637133, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
+  m_PrefabInstance: {fileID: 254041782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2adb8430f667434e923c3d8e1f0b8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &300846740 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1438427266758449576, guid: 437b9aae268feab4b970acafefb0baf1, type: 3}
@@ -12703,6 +12714,34 @@ PrefabInstance:
     - target: {fileID: 7094148271470535130, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_BlockingMask.m_Bits
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908860494673198211, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908860494673198211, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908860494673198211, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 271303896}
+    - target: {fileID: 7908860494673198211, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908860494673198211, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopLevelMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908860494673198211, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908860494673198211, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8301435580896615077, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
