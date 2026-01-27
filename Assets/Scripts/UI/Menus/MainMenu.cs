@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         StopAllMusic.Post(gameObject);
-        switchScenes.FadeOutAndLoad("TutorialLevel");
+        switchScenes.FadeOutAndLoad("World Menu");
     }
 
     public void Options()

@@ -22,10 +22,10 @@ public class PortalProjectile : BaseProjectileClass
     protected override void ProjectileEffect() //Start Coroutine for the AoE and StunDoT
     {
         speed = 0f; //Stop moving
-        StartCoroutine(frickYouRyanTohJunAn());
+        StartCoroutine(moveThisGuy());
     }
 
-    IEnumerator frickYouRyanTohJunAn()
+    IEnumerator moveThisGuy()
     {
         Collider[] collidersInRange = Physics.OverlapSphere(transform.position, AoERange);
 
