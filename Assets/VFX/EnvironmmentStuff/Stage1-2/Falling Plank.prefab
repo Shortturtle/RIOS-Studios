@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 9221561927317165672}
   - component: {fileID: 2219505026786468083}
   - component: {fileID: 1742175741944586389}
-  m_Layer: 0
+  - component: {fileID: 8352970686883215300}
+  m_Layer: 11
   m_Name: Falling Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,8 +63,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0895401, y: 0.019931173, z: 0.09382667}
-  m_Center: {x: -0.00016486559, y: 0.006680762, z: 0.0013189717}
+  m_Size: {x: 0.0895401, y: 0.020974834, z: 0.09382667}
+  m_Center: {x: -0.00016486645, y: 0.006158925, z: 0.0013189696}
 --- !u!114 &1742175741944586389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +84,27 @@ MonoBehaviour:
   towersDetected: 0
   shakeIntensity: 0.1
   shakeSpeed: 20
+--- !u!65 &8352970686883215300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904607162007062482}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08291511, y: 0.006283256, z: 0.08488094}
+  m_Center: {x: 0.00059990166, y: 0.0016400471, z: 0.00044729232}
 --- !u!1001 &836366800087218909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,9 +161,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.794
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -154,6 +188,10 @@ PrefabInstance:
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -233,9 +271,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.794
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,6 +298,10 @@ PrefabInstance:
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -327,9 +381,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -409,9 +479,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -491,9 +577,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -573,9 +675,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.794
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -588,6 +702,10 @@ PrefabInstance:
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -667,9 +785,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -749,9 +883,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.794
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -764,6 +910,10 @@ PrefabInstance:
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -843,9 +993,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
@@ -925,9 +1091,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.794
       objectReference: {fileID: 0}
+    - target: {fileID: -3588333567886320131, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 55935962824914849, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Name
       value: woodplank (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -940,6 +1118,10 @@ PrefabInstance:
     - target: {fileID: 2287404262341198734, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462103867860418015, guid: 513950451f256f345960de812c1e304d, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108571019045699222, guid: 513950451f256f345960de812c1e304d, type: 3}
       propertyPath: m_Materials.Array.size
