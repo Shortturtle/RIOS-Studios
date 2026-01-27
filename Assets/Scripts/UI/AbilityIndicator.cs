@@ -8,6 +8,7 @@ public class AbilityIndicator : MonoBehaviour
     public int costRequirement;
     public bool isAbleToCast;
     public AK.Wwise.Event ableToCastSFX;
+    public GameObject keybindGameObject;
 
     private Image abilityImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,12 +30,14 @@ public class AbilityIndicator : MonoBehaviour
             if (ResourceManager.instance.currentAbilityPoint >= costRequirement)
             {
                 abilityImage.color = ableToCast;
+                keybindGameObject.SetActive(true);
                 isAbleToCast = true;
                 AudioManager.instance.PlayAudioEvent(ableToCastSFX, gameObject);
             }
 
             else
             {
+                keybindGameObject.SetActive(false);
                 abilityImage.color = unableToCast;
             }
         }
@@ -44,6 +47,7 @@ public class AbilityIndicator : MonoBehaviour
             if (ResourceManager.instance.currentAbilityPoint < costRequirement)
             {
                 abilityImage.color = unableToCast;
+                keybindGameObject.SetActive(true);
                 isAbleToCast = false;
             }
         }

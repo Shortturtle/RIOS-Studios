@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -35,7 +36,7 @@ public class BuildingManager : MonoBehaviour
     public Material cannotPlaceMaterial;
 
     public float topSafePercent = 12f;
-    public LayerMask placeableLayerMask, obstacleLayerMask;
+    public LayerMask acceptedLayers;
     private Vector3 currentPlacement;
 
     public InputActionAsset inputMap;
@@ -79,20 +80,23 @@ public class BuildingManager : MonoBehaviour
             ghostTowerIndicator.SetActive(true);
         }
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, obstacleLayerMask, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, acceptedLayers, QueryTriggerInteraction.Ignore))
         {
-            currentPlacement = hitInfo.point;
-            ghostTowerIndicator.transform.position = currentPlacement;
-            canPlace = false;
-            SetGhostObjectMaterial(cannotPlaceMaterial);
-        }
+            if(hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                currentPlacement = hitInfo.point;
+                ghostTowerIndicator.transform.position = currentPlacement;
+                canPlace = true;
+                SetGhostObjectMaterial(placeableMaterial);
+            }
 
-        else if (Physics.Raycast(ray, out RaycastHit hitInfo2, 100, placeableLayerMask, QueryTriggerInteraction.Ignore))
-        {
-            currentPlacement = hitInfo2.point;
-            ghostTowerIndicator.transform.position = currentPlacement;
-            canPlace = true;
-            SetGhostObjectMaterial(placeableMaterial);
+            else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Path") || hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Tower"))
+            {
+                currentPlacement = hitInfo.point;
+                ghostTowerIndicator.transform.position = currentPlacement;
+                canPlace = false;
+                SetGhostObjectMaterial(cannotPlaceMaterial);
+            }
         }
 
     }
