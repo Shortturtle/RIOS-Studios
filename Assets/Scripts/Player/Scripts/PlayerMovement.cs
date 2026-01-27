@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StunBubble(InputAction.CallbackContext ctx)
     {
-        if (ResourceManager.instance.currentAbilityPoint > stunAbilityCost)
+        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint > stunAbilityCost)
         {
             ResourceManager.instance.RemoveAbilityPoint(stunAbilityCost);
             //find colliders within the AoE that are on the enemy layer
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void RewindEnemies(InputAction.CallbackContext ctx)
     {
-        if (ResourceManager.instance.currentAbilityPoint > rewindAbilityCost)
+        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint > rewindAbilityCost)
         {
             ResourceManager.instance.RemoveAbilityPoint(rewindAbilityCost);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
