@@ -3,28 +3,18 @@ using UnityEngine;
 public class WorldSelectManager : MonoBehaviour
 {
     public SwitchScene switchScenes;
+    public string sceneToLoad;
     //public AK.Wwise.Event MainMenuMusic;
     //public AK.Wwise.Event StopAllMusic;
     private void Start()
     {
         //MainMenuMusic.Post(gameObject);
     }
-    public void ToWorldOne()
+    public void sceneToEnter()
     {
         //StopAllMusic.Post(gameObject);
-        switchScenes.FadeOutAndLoad("FantasyLobby");
+        switchScenes.FadeOutAndLoad(sceneToLoad);
     }
-    public void ToWorldTwo()
-    {
-        //StopAllMusic.Post(gameObject);
-        switchScenes.FadeOutAndLoad("Steampunk Lobby");
-    }
-    public void ToWorldThree()
-    {
-        //StopAllMusic.Post(gameObject);
-        switchScenes.FadeOutAndLoad("Scifi Lobby");
-    }
-
 
     public void BackToMenu()
     {
