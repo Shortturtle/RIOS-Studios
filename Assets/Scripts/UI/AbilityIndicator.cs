@@ -32,7 +32,7 @@ public class AbilityIndicator : MonoBehaviour
                 abilityImage.color = ableToCast;
                 keybindGameObject.SetActive(true);
                 isAbleToCast = true;
-                AudioManager.instance.PlayAudioEvent(ableToCastSFX, gameObject);
+                ableToCastSFX.Post(gameObject);
             }
 
             else

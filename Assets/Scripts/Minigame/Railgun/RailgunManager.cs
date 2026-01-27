@@ -89,7 +89,7 @@ public class RailgunManager : BaseMicrogameClass
             slider1.interactable = false;
             BarTargetReached();
         }
-        else { AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject); }
+        else { sliderWrong.Post(gameObject); }
     }
     public void CheckBarTwoProgress()
     {
@@ -99,7 +99,7 @@ public class RailgunManager : BaseMicrogameClass
             slider2.interactable = false;
             BarTargetReached();
         }
-        else { AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject); }
+        else { sliderWrong.Post(gameObject); }
     }
     public void CheckBarThreeProgress()
     {
@@ -109,13 +109,13 @@ public class RailgunManager : BaseMicrogameClass
             slider3.interactable = false;
             BarTargetReached();
         }
-        else { AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject); }
+        else { sliderWrong.Post(gameObject); }
     }
 
     //increase completion once bar target is reached
     public void BarTargetReached()
     {
-        AudioManager.instance.PlayAudioEvent(sliderRight, gameObject);
+        sliderRight.Post(gameObject);
         completion++;
         //if all sliders at target, minigame is complete and minigame close func is activated
         if (completion == numberToCompleteMinigame)

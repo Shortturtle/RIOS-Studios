@@ -117,7 +117,7 @@ public class BuildingManager : MonoBehaviour
 
             else
             {
-                AudioManager.instance.PlayAudioEvent(towerBuilding, gameObject);
+                towerBuilding.Post(gameObject);
                 ResourceManager.instance.RemoveEnergy(towerClass.cost);
                 Instantiate(towerToPlace, currentPlacement, Quaternion.identity);
                 StopPlacement();

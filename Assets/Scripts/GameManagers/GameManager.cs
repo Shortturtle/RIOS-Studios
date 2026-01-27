@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
         loseUI.SetActive(true);
         StopLevelMusic();
-        AudioManager.instance.PlayAudioEvent(loseSFX, gameObject);
+        loseSFX.Post(gameObject);
         Debug.Log("YOU LOST");
     }
 
@@ -51,17 +51,17 @@ public class GameManager : MonoBehaviour
         }
         winUI.SetActive(true);
         StopLevelMusic();
-        AudioManager.instance.PlayAudioEvent(winSFX, gameObject);
+        winSFX.Post(gameObject);
         Debug.Log("YOU WIN");
     }
 
     public void StopLevelMusic()
     {
-        AudioManager.instance.StopAudioEvent(LevelMusic, gameObject);
+        LevelMusic.Stop(gameObject);
     }
 
     public void PlayLevelMusic()
     {
-        AudioManager.instance.PlayAudioEvent(LevelMusic, gameObject);
+        LevelMusic.Post(gameObject);
     }
 }
