@@ -63,7 +63,28 @@ public class RotatingClockHands : MonoBehaviour
             yield return null;
         }
 
-        /*/ThenPoint
+        //ThenPoint (this will make it turn the shortest way, which can be counter-clockwise)
+        Vector3 direction = target.position - transform.position;   //Get the direction to target(enemy spawn base)
+        direction.y = 0f;                                           //lock the y axis so it doesn't tilt
+
+        Debug.DrawRay(transform.position, direction, Color.red, 10f);
+
+        //Point towards the target
+        Quaternion targetRotation = Quaternion.LookRotation(direction.normalized, Vector3.up) * Quaternion.Euler(modelRotationOffset);
+
+        //Rotate to smoothly point towards the target
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                pointSpeed * Time.deltaTime
+            );
+
+            yield return null;
+        }
+
+        /*/ThenPoint (this forces clockwise rotation only)
         Vector3 direction = target.position - transform.position;   //Get the direction to target(enemy spawn base)
         direction.y = 0f;                                           //lock the y axis so it doesn't tilt
 
@@ -86,27 +107,6 @@ public class RotatingClockHands : MonoBehaviour
 
             yield return null;
         }*/
-
-        //ThenPoint(this will make it turn the shortest way, which can be counter-clockwise)
-        Vector3 direction = target.position - transform.position;   //Get the direction to target(enemy spawn base)
-        direction.y = 0f;                                           //lock the y axis so it doesn't tilt
-
-        Debug.DrawRay(transform.position, direction, Color.red, 10f);
-
-        //Point towards the target
-        Quaternion targetRotation = Quaternion.LookRotation(direction.normalized, Vector3.up) * Quaternion.Euler(modelRotationOffset);
-
-        //Rotate to smoothly point towards the target
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
-        {
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                pointSpeed * Time.deltaTime
-            );
-
-            yield return null;
-        }
 
         //Ensure exact alignment at the end
         transform.rotation = targetRotation;
