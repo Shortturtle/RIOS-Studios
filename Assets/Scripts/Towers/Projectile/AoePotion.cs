@@ -5,6 +5,7 @@ public class AoEPotion : BaseProjectileClass
 {
     public float AoERange;
     public GameObject potion;
+    public GameObject potionVFX;
 
     [Header("Bezier Curve Points")]
     public Vector3 start;
@@ -70,7 +71,7 @@ public class AoEPotion : BaseProjectileClass
                 frickThisGuy.Damage(damage);
             }
         }
-
+        Instantiate(potionVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
