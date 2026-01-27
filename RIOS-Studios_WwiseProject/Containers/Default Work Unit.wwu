@@ -40,7 +40,7 @@
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-10</Value>
+										<Value>-15</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -70,6 +70,126 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Main_Menu_OST (1)" ID="{54664B27-C050-4D77-93E5-666677E78163}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MedievilBattleMusic" ID="{7B0462C7-6A19-4FF4-A9F8-D5ED1292C209}" ShortID="72066722">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-18</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="MedievilBattleMusic" ID="{AD7C5847-E09C-4E59-BB98-29A29DACB824}">
+									<Language>SFX</Language>
+									<AudioFile>MedievilBattleMusic.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="874479708"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="MedievilBattleMusic" ID="{AD7C5847-E09C-4E59-BB98-29A29DACB824}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Steampunk_Battle_OST" ID="{857F9DE6-4843-4F3A-B05B-424F7D4D0DCA}" ShortID="769354718">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-14</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Steampunk_Battle_OST" ID="{613B84F5-0930-4E85-885A-6C1717516CEA}">
+									<Language>SFX</Language>
+									<AudioFile>Steampunk_Battle_OST.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="757283419"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Steampunk_Battle_OST" ID="{613B84F5-0930-4E85-885A-6C1717516CEA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Steampunk_Lobby_Music" ID="{0784A52A-12E7-426F-A2D1-8A85E822BB7D}" ShortID="42340653">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-14</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Steampunk_Lobby_Music" ID="{42FE3EF4-42FF-42CC-ADD1-402C7C249003}">
+									<Language>SFX</Language>
+									<AudioFile>Steampunk_Lobby_Music.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="370408392"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Steampunk_Lobby_Music" ID="{42FE3EF4-42FF-42CC-ADD1-402C7C249003}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MedievilLobbyMusic2" ID="{091C30AD-F405-4EFC-A816-B90B5D2C2ACE}" ShortID="139431290">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="MedievilLobbyMusic2" ID="{FFF93C70-C6B7-4303-A501-811176447A49}">
+									<Language>SFX</Language>
+									<AudioFile>MedievilLobbyMusic2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="440627326"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="MedievilLobbyMusic2" ID="{FFF93C70-C6B7-4303-A501-811176447A49}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -425,6 +545,10 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="TowerPlacement" ID="{EF2F5D03-3F5D-4B2B-AAAE-BDA1C0FF0BE7}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.0948830171180734"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>TowerPlacement.wav</AudioFile>
 									<MediaIDList>

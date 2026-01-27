@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private QuestLogUI questUI;
     public GameObject pauseScreen;
+    public Animator animator;
 
     public VisualEffect vfxRenderer;
     private void Awake()
@@ -72,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
             Look();
             CalculateSpeed();
-
+            AnimatorUpdate();
             Move();
         }
 
@@ -213,5 +215,10 @@ public class PlayerMovement : MonoBehaviour
     public void QuestLog(InputAction.CallbackContext ctx)
     {
         FindAnyObjectByType<QuestLogUI>().QuestLogTogglePressed();
+    }
+
+    public void AnimatorUpdate()
+    {
+        animator.SetFloat("Speed", currentSpeed);
     }
 }

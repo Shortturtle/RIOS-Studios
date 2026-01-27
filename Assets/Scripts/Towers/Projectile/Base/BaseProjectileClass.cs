@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using UnityEngine;
 
 public class BaseProjectileClass : MonoBehaviour
@@ -52,7 +53,7 @@ public class BaseProjectileClass : MonoBehaviour
 
         if (frickThisGuy != null)
         {
-            AudioManager.instance.PlayAudioEvent(projectileEvent, gameObject);
+            projectileEvent.Post(gameObject);
             frickThisGuy.Damage(damage);
             Destroy(gameObject);
         }

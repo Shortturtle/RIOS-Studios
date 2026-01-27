@@ -54,7 +54,7 @@ public class DragDrop : MonoBehaviour
         {
             //complete minigame part
             isLocked = true;
-            AudioManager.instance.PlayAudioEvent(screwIn, gameObject);
+            screwIn.Post(gameObject);
             objectToDrag.transform.position = objectFinalPos;
             Collider2D slotCollider = objectSlot.GetComponent<CircleCollider2D>();
             slotCollider.enabled = false;

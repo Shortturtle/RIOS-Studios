@@ -18,6 +18,8 @@ namespace AK
         static const AkUniqueID ICELEVELMUSIC = 980765601U;
         static const AkUniqueID LOSE = 221232726U;
         static const AkUniqueID MAINMENUMUSIC = 1991862712U;
+        static const AkUniqueID MEDIEVILBATTLEMUSIC = 4108069375U;
+        static const AkUniqueID MEDIEVILLOBBYMUSIC = 1339457245U;
         static const AkUniqueID MINIGAMECOMPLETE = 4226718115U;
         static const AkUniqueID NETTHROW = 2913537494U;
         static const AkUniqueID NETTRAP = 2262216515U;
@@ -30,6 +32,8 @@ namespace AK
         static const AkUniqueID SCIFISLIDERWRONG = 967495643U;
         static const AkUniqueID SCREWIN = 2811182890U;
         static const AkUniqueID SCREWOUT = 192683013U;
+        static const AkUniqueID STEAMPUNKBATTLEMUSIC = 967088778U;
+        static const AkUniqueID STEAMPUNKLOBBYMUSIC = 3473566750U;
         static const AkUniqueID STOPALLAUDIO = 14541412U;
         static const AkUniqueID TOWERBUILD = 1843285636U;
         static const AkUniqueID TOWERDEGRADE = 2642738694U;

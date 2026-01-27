@@ -33,7 +33,7 @@ public class RustyScrew : MonoBehaviour
     }
     public void StartDrag()
     {
-        AudioManager.instance.PlayAudioEvent(unscrewSound, gameObject);
+        unscrewSound.Post(gameObject);
     }
 
     public void DragObject()

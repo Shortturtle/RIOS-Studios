@@ -70,13 +70,13 @@ public class Ingredient : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
                 potionMakingManager.selectedIngredientSprites.RemoveAt(index);
                 potionMakingManager.ingredientsMixed++;
                 potionMakingManager.IngredientAdded();
-                AudioManager.instance.PlayAudioEvent(ingredientRight, gameObject);
+                ingredientRight.Post(gameObject);
                 Destroy(gameObject);
             }
 
             else
             {
-                AudioManager.instance.PlayAudioEvent(ingredientWrong, gameObject);
+                ingredientWrong.Post(gameObject);
             }
         }
         isDragStarted = false;

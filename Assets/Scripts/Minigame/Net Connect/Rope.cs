@@ -102,7 +102,7 @@ public class Rope : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             {
                 isSuccess = true;
                 netConnectManager.currentlyHoveredRope.isSuccess = true;
-                AudioManager.instance.PlayAudioEvent(ropeConnect, gameObject);
+                ropeConnect.Post(gameObject);
             }
         }
 

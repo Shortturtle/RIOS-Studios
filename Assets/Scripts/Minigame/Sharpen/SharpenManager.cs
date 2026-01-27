@@ -39,7 +39,7 @@ public class SharpenManager : BaseMicrogameClass
     public void ProgressCheck()
     {
         completion++;
-        AudioManager.instance.PlayAudioEvent(AxeSharpen, gameObject);
+        AxeSharpen.Post(gameObject);
         //decrease opacity of image everytime sharpens calls this
         var tempColor = image.color;
         tempColor.a = currentAlpha - 0.125f;

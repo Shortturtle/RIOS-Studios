@@ -35,16 +35,7 @@ public class RailgunManager : BaseMicrogameClass
     public AK.Wwise.Event sliderRight;
     public AK.Wwise.Event sliderWrong;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
-
-    public override void StartMicrogame()
-    {
-        InitializeRailgun();
-    }
+    public override void StartMicrogame() { InitializeRailgun(); }
 
     private void InitializeRailgun()
     {
@@ -98,11 +89,7 @@ public class RailgunManager : BaseMicrogameClass
             slider1.interactable = false;
             BarTargetReached();
         }
-
-        else
-        {
-            AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject);
-        }
+        else { sliderWrong.Post(gameObject); }
     }
     public void CheckBarTwoProgress()
     {
@@ -112,11 +99,7 @@ public class RailgunManager : BaseMicrogameClass
             slider2.interactable = false;
             BarTargetReached();
         }
-
-        else
-        {
-            AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject);
-        }
+        else { sliderWrong.Post(gameObject); }
     }
     public void CheckBarThreeProgress()
     {
@@ -126,17 +109,13 @@ public class RailgunManager : BaseMicrogameClass
             slider3.interactable = false;
             BarTargetReached();
         }
-
-        else
-        {
-            AudioManager.instance.PlayAudioEvent(sliderWrong, gameObject);
-        }
+        else { sliderWrong.Post(gameObject); }
     }
 
     //increase completion once bar target is reached
     public void BarTargetReached()
     {
-        AudioManager.instance.PlayAudioEvent(sliderRight, gameObject);
+        sliderRight.Post(gameObject);
         completion++;
         //if all sliders at target, minigame is complete and minigame close func is activated
         if (completion == numberToCompleteMinigame)

@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -29,6 +27,8 @@ public class LevelInteractionManager : MonoBehaviour
     public LayerMask towerLayerMask;
     public LayerMask enemyLayerMask;
     public GameObject enemyHealthBar;
+    public GameObject minigameIndicator;
+    private GameObject minigameIndicatorInstance;
     private EnemyHealthBar enemyHealthBarInstance;
 
     private BaseTowerClass prevHoveredTower;
@@ -84,12 +84,24 @@ public class LevelInteractionManager : MonoBehaviour
             {
                 currentHoveredTower = hitInfo.collider.gameObject.GetComponent<BaseTowerClass>();
                 currentHoveredTower.isHovered = true;
+
+                if(currentHoveredTower.degradeRank == currentHoveredTower.maxDegradeRank && minigameIndicatorInstance == null)
+                {
+                    minigameIndicatorInstance = Instantiate(minigameIndicator, GameObject.FindGameObjectWithTag("HoverCanvas").transform);
+                    minigameIndicatorInstance.transform.position = Camera.main.WorldToScreenPoint(currentHoveredTower.gameObject.transform.position);
+                }
             }
         }
 
         else
         {
             currentHoveredTower = null;
+
+            if (minigameIndicatorInstance != null)
+            {
+                Destroy(minigameIndicatorInstance.gameObject);
+                minigameIndicatorInstance = null;
+            }
         }
 
         if(Physics.Raycast(ray, out RaycastHit hitInfo2, 100, enemyLayerMask, QueryTriggerInteraction.Collide))
@@ -121,6 +133,18 @@ public class LevelInteractionManager : MonoBehaviour
             if (prevHoveredTower != null)
             {
                 prevHoveredTower.isHovered = false;
+
+                if(currentHoveredTower == null) { return;  }
+                if(currentHoveredTower.degradeRank == currentHoveredTower.maxDegradeRank && minigameIndicatorInstance != null)
+                {
+                    minigameIndicatorInstance.transform.position = Camera.main.WorldToScreenPoint(currentHoveredTower.transform.position);
+                }
+
+                else if (currentHoveredTower.degradeRank == currentHoveredTower.maxDegradeRank && minigameIndicatorInstance == null)
+                {
+                    minigameIndicatorInstance = Instantiate(minigameIndicator, GameObject.FindGameObjectWithTag("HoverCanvas").transform);
+                    minigameIndicatorInstance.transform.position = Camera.main.WorldToScreenPoint(currentHoveredTower.gameObject.transform.position);
+                }
             }
 
             prevHoveredTower = currentHoveredTower;
