@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
+        StopAllMusic.Post(gameObject);
         switchScenes.FadeOutAndLoad("Options Menu");
     }
 
@@ -28,6 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMenu()
     {
+        StopAllMusic.Post(gameObject);
         switchScenes.FadeOutAndLoad("Main Menu");
     }
 }

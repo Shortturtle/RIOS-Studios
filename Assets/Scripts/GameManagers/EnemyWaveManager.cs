@@ -92,6 +92,7 @@ public class EnemyWaveManager : MonoBehaviour
         currentWavePlaying = false;
         ResourceManager.instance.AddEnergy(waveEndEnergyReward);
         currentWave++;
+        SeasonChange();
         StartBuffer();
     }
 

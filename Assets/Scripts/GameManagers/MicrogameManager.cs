@@ -55,6 +55,6 @@ public class MicrogameManager : MonoBehaviour
         currentlyPlayingMinigame = false;
         targettedTower = null;
         chosenMicrogame = null;
-        AudioManager.instance.PlayAudioEvent(microgameWin, gameObject);
+        microgameWin.Post(gameObject);
     }
 }
