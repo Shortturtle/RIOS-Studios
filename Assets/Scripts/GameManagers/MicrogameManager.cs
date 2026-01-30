@@ -57,4 +57,15 @@ public class MicrogameManager : MonoBehaviour
         chosenMicrogame = null;
         microgameWin.Post(gameObject);
     }
+
+    public void MicrogameQuit()
+    {
+        if (microgameInstance != null)
+        {
+            Destroy(microgameInstance);
+        }
+        currentlyPlayingMinigame = false;
+        targettedTower = null;
+        chosenMicrogame = null;
+    }
 }

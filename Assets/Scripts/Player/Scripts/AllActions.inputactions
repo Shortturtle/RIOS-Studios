@@ -263,6 +263,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EndMinigame",
+                    "type": "Button",
+                    "id": "4ee3c4c7-5102-4029-9b5c-dee26ead2d1a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -285,6 +294,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PlayMinigame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9fe0d49-e3a6-4f70-9347-6e046add87b4",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EndMinigame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

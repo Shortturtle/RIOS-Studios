@@ -59,6 +59,9 @@ public class LevelInteractionManager : MonoBehaviour
         {
             currentHoveredTower = null;
         }
+
+        //test
+        EndMicrogame();
     }
 
     private void SetBuildingBool()
@@ -186,6 +189,20 @@ public class LevelInteractionManager : MonoBehaviour
     public void ActivateMicrogame(InputAction.CallbackContext ctx)
     {
         ActivateMicrogame();
+    }
+
+    //public void EndMicrogame()
+    //{
+    //    EndMicrogame();
+    //}
+
+    public void EndMicrogame()
+    {
+        //test
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            MicrogameManager.instance.MicrogameQuit();
+        }
     }
 
     public void ActivateMicrogame()
