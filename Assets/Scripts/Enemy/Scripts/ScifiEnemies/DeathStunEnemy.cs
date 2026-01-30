@@ -23,8 +23,9 @@ public class DeathStunEnemy : BaseEnemyClass
     //on death, 50% chance to spawn the stun field if killed by ranged atk
     public override void Die()
     {
-        int chance = Random.Range(0, 2);
-        if (rangedAttack && chance == 1) { Instantiate(stunField, transform.position, Quaternion.identity); }
+        ////disabled mechanic
+        //int chance = Random.Range(0, 2);
+        //if (rangedAttack && chance == 1) { Instantiate(stunField, transform.position, Quaternion.identity); }
         
         base.Die();
     }

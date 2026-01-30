@@ -22,11 +22,12 @@ public class SteampunkNormalEnemy : BaseEnemyClass
     }
     public override void Die()
     {
-        int chance = Random.Range(0, 2);
-        if (rangedAttack && chance == 1)
-        {
-            Instantiate(speedField, transform.position, Quaternion.identity);
-        }
+        ////disabled mechanic
+        //int chance = Random.Range(0, 2);
+        //if (rangedAttack && chance == 1)
+        //{
+        //    Instantiate(speedField, transform.position, Quaternion.identity);
+        //}
 
         base.Die();
     }
