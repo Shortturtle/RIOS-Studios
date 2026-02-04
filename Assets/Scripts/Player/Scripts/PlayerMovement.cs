@@ -22,10 +22,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     private Vector3 velocity;
 
-    //stun ability stuff
+    //Ability stuff
     public int stunAbilityCost;
+    public int transmutateAbilityCost;
     public int rewindAbilityCost;
-    public float stunRadius = 5f;
+    public float effectRadius = 5f;
     public float stunDuration = 5f;
     public LayerMask enemyLayer;
 
@@ -99,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ResourceManager.instance.RemoveAbilityPoint(stunAbilityCost);
             //find colliders within the AoE that are on the enemy layer
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
 
             foreach (Collider hit in hitColliders)
             {
@@ -117,12 +118,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void TransmutateEnemies(InputAction.CallbackContext ctx)
+    {
+        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint > transmutateAbilityCost)
+        {
+            ResourceManager.instance.RemoveAbilityPoint(transmutateAbilityCost);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+
+            foreach (Collider hit in hitColliders)
+            {
+                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+                if (enemy != null)
+                {
+                    enemy.Transmutate();
+                }
+            }
+        }
+    }
+
     public void RewindEnemies(InputAction.CallbackContext ctx)
     {
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint > rewindAbilityCost)
         {
             ResourceManager.instance.RemoveAbilityPoint(rewindAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
 
             foreach (Collider hit in hitColliders)
             {
@@ -142,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, stunRadius);
+        Gizmos.DrawWireSphere(transform.position, effectRadius);
     }
 
     //player movement

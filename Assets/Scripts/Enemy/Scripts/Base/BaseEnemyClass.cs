@@ -174,6 +174,14 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         isStunned = false;
     }
 
+    public IEnumerator Transmutate()
+    {
+        //Insert transmutation vfx here
+        yield return new WaitForSeconds(0.5f); //Put some delay
+
+        //Insert actual code here
+    }
+
     protected void Record()
     {
         //Check: Do we have more points in time than we would get in 5s? If yes, then start overwriting the oldest points
