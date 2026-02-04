@@ -27,6 +27,13 @@ public class TowerRewardManager : MonoBehaviour
 
     private void Start()
     {
+        //to disable portal guy if not unlocked at the end yet
+        if(PlayerPrefs.GetInt(tower_Portal_Permanent) == 0)
+        {
+            PlayerPrefs.SetInt(tower_Portal, 0);
+        }
+
+        //for towers that are gained through going to new era
         if (!(towerRewardSet == 0))
         {
             GameEventManager.instance.towerRewardEvents.TowerRewards(towerRewardSet);
