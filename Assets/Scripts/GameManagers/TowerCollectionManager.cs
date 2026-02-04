@@ -12,8 +12,11 @@ public class TowerCollectionManager : MonoBehaviour
     public GameObject tower_Railgun;
     public GameObject tower_Drone;
 
+    
+
     private void Start()
     {
+        
         Debug.Log(PlayerPrefs.GetInt("tower_Jinb"));
         Debug.Log("test");
 
