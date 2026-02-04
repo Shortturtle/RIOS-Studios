@@ -10,9 +10,12 @@ public class VeggieEnemy : BaseEnemyClass
     {
         if (other.CompareTag("CapShield"))
         {
-            //when touch cap shield, gain shield by max amount and destroy the cap shield touched
-            shieldCurrentAmount = shieldGainAmount;
-            Destroy(other.gameObject);
+            if(shieldGainAmount == 0)
+            {
+                //when touch cap shield, gain shield by max amount and destroy the cap shield touched
+                shieldCurrentAmount = shieldGainAmount;
+                Destroy(other.gameObject);
+            }
         }
     }
 
