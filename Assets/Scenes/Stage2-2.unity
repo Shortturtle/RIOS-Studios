@@ -784,12 +784,12 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 50
     OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 1
+    ModeOverride: 2
     PhysicalProperties:
       GateFit: 2
       SensorSize: {x: 21.946, y: 16.002}
@@ -7134,6 +7134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3294de0db13c8408256e6369e2173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerRewardSet: 0
 --- !u!1 &319848228
 GameObject:
   m_ObjectHideFlags: 0
@@ -7624,7 +7625,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 50
   orthographic: 0
   orthographic size: 8
   m_Depth: -1
