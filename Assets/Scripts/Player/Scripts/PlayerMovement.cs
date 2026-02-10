@@ -209,6 +209,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void PauseMenu(InputAction.CallbackContext ctx)
     {
+        if (MicrogameManager.instance != null && MicrogameManager.instance.currentlyPlayingMinigame == true)
+        {
+            MicrogameManager.instance.MicrogameQuit();
+            return;
+        }
+
         if (Time.timeScale == 0) { ResumeGame(); }
         else { PauseGame(); }        
     }

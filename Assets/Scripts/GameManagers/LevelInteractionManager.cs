@@ -49,6 +49,7 @@ public class LevelInteractionManager : MonoBehaviour
         SetMinigameBool();
         InputTracker();
         HealthBarPositioner();
+        IndicatorPositioner();
 
         if (!isBuilding && !isPlayingMicrogame)
         {
@@ -59,9 +60,6 @@ public class LevelInteractionManager : MonoBehaviour
         {
             currentHoveredTower = null;
         }
-
-        //test
-        EndMicrogame();
     }
 
     private void SetBuildingBool()
@@ -174,6 +172,14 @@ public class LevelInteractionManager : MonoBehaviour
         if (enemyHealthBarInstance != null && currentHoveredEnemy != null)
         {
             enemyHealthBarInstance.gameObject.transform.position = Camera.main.WorldToScreenPoint(currentHoveredEnemy.healthBarPosition.transform.position);
+        }
+    }
+
+    void IndicatorPositioner()
+    {
+        if (minigameIndicatorInstance != null && currentHoveredTower != null)
+        {
+            minigameIndicatorInstance.gameObject.transform.position = Camera.main.WorldToScreenPoint(currentHoveredEnemy.healthBarPosition.transform.position);
         }
     }
 
