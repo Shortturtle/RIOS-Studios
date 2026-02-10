@@ -293,8 +293,8 @@ public class OffenseTowerBase : BaseTowerClass
 
         microgame = stats.Microgame;
 
-        degradeVFX.SetActive(false);
-        overdriveVFX.SetActive(false);
+        if (degradeVFX != null) { degradeVFX.SetActive(false); }
+        if (overdriveVFX != null) { overdriveVFX.SetActive(false); }
 
         attackEvent = stats.AttackEvent;
         degradeEvent = stats.DegradeEvent;
