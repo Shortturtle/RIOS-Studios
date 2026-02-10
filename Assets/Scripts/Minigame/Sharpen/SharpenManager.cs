@@ -21,11 +21,6 @@ public class SharpenManager : BaseMicrogameClass
         InitializeAxe();
     }
 
-    private void Start()
-    {
-        StartMicrogame();
-    }
-
     private void InitializeAxe()
     {
         //initializes variables

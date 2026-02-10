@@ -21,10 +21,6 @@ public class NetConnectManager : BaseMicrogameClass
         InitializeWires();
     }
 
-    private void Start()
-    {
-    }
-
     private void Update()
     {
         HoverCheck();

@@ -10,11 +10,6 @@ public class JackBoxCrankManager : BaseMicrogameClass
 
     public GameObject tickImg;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
-
     public override void StartMicrogame()
     {
         InitializeCrank();

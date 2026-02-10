@@ -32,10 +32,6 @@ public class ScrewManager : BaseMicrogameClass
         InitializeScrews();
     }
 
-    public void Start()
-    {
-        StartMicrogame();
-    }
     private void InitializeScrews()
     {
         //initializes variables
