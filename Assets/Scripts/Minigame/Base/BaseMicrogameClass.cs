@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseMicrogameClass : MonoBehaviour
 {
     protected BaseTowerClass towerClass;
+    protected bool minigameEnd;
     //public GameObject tickImg;
     public virtual void StartMicrogame() //starts microgame
     {
@@ -13,7 +14,9 @@ public class BaseMicrogameClass : MonoBehaviour
 
     public virtual void EndMicrogame(GameObject tickImg) //ends microgame
     {
+        if (minigameEnd) { return; }
         StartCoroutine(TickAfterMinigame(tickImg));
+        minigameEnd = true;
 
         //MicrogameManager.instance.MicrogameEnd();
         //Debug.Log("End");
