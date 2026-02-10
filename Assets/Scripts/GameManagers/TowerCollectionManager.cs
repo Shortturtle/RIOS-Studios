@@ -40,9 +40,6 @@ public class TowerCollectionManager : MonoBehaviour
 
         if(PlayerPrefs.GetInt("tower_Railgun") == 1) { tower_Railgun.SetActive(true); }
         else { tower_Railgun.SetActive(false); }
-
-        if(PlayerPrefs.GetInt("tower_Drone") == 1) { tower_Drone.SetActive(true); }
-        else { tower_Drone.SetActive(false); }
     }
 
 }

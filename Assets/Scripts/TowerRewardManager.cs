@@ -76,9 +76,5 @@ public class TowerRewardManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(tower_Railgun, 1);
         }
-        if(towerRewardNumber == 7)
-        {
-            PlayerPrefs.SetInt(tower_Drone, 1);
-        }
     }
 }
