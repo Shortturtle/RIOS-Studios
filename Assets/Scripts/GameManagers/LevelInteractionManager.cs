@@ -179,7 +179,7 @@ public class LevelInteractionManager : MonoBehaviour
     {
         if (minigameIndicatorInstance != null && currentHoveredTower != null)
         {
-            minigameIndicatorInstance.gameObject.transform.position = Camera.main.WorldToScreenPoint(currentHoveredEnemy.healthBarPosition.transform.position);
+            minigameIndicatorInstance.gameObject.transform.position = Camera.main.WorldToScreenPoint(currentHoveredTower.gameObject.transform.position);
         }
     }
 
