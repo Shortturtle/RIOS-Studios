@@ -16,6 +16,8 @@ public class PotionMakingManager : BaseMicrogameClass
     public int ingredientsMixed; //responsible for ending game
     public Animator animator;
 
+    public GameObject tickImg;
+
     public override void StartMicrogame()
     {
         InitializePotionGame(); //starts game
@@ -76,7 +78,7 @@ public class PotionMakingManager : BaseMicrogameClass
 
         if (ingredientsMixed == ingredientSlots.Count)
         {
-            EndMicrogame();
+            EndMicrogame(tickImg);
         }
     }
 }

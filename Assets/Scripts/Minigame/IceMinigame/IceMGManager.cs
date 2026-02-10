@@ -6,6 +6,8 @@ public class IceMGManager : BaseMicrogameClass
     public int numberOfIceToMelt;
     //private int numberOfIceMelted;
 
+    public GameObject tickImg;
+
     public override void StartMicrogame()
     {
         base.StartMicrogame();
@@ -17,7 +19,7 @@ public class IceMGManager : BaseMicrogameClass
 
         if(numberOfIceToMelt == 0)
         {
-            EndMicrogame();
+            EndMicrogame(tickImg);
         }
     }
 }

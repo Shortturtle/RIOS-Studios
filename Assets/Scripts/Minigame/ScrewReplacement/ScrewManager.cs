@@ -25,6 +25,8 @@ public class ScrewManager : BaseMicrogameClass
     public int completion = 0;
     public int numberToCompleteMinigame;
 
+    public GameObject tickImg;
+
     public override void StartMicrogame()
     {
         InitializeScrews();
@@ -65,7 +67,7 @@ public class ScrewManager : BaseMicrogameClass
         //if enough screws are replaced, minigame is cmplete and minigame close func is activated
         if (completion == numberToCompleteMinigame)
         {
-            EndMicrogame();
+            EndMicrogame(tickImg);
         }
     }
 

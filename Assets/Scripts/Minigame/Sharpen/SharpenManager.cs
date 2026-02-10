@@ -14,6 +14,8 @@ public class SharpenManager : BaseMicrogameClass
     public int numberToCompleteMinigame;
     public AK.Wwise.Event AxeSharpen;
 
+    public GameObject tickImg;
+
     public override void StartMicrogame()
     {
         InitializeAxe();
@@ -48,7 +50,7 @@ public class SharpenManager : BaseMicrogameClass
 
         if (completion == numberToCompleteMinigame)
         {
-            EndMicrogame();
+            EndMicrogame(tickImg);
         }
     }
 }

@@ -35,6 +35,7 @@ public class RailgunManager : BaseMicrogameClass
     public AK.Wwise.Event sliderRight;
     public AK.Wwise.Event sliderWrong;
 
+    public GameObject tickImg;
     public override void StartMicrogame() { InitializeRailgun(); }
 
     private void InitializeRailgun()
@@ -120,7 +121,7 @@ public class RailgunManager : BaseMicrogameClass
         //if all sliders at target, minigame is complete and minigame close func is activated
         if (completion == numberToCompleteMinigame)
         {
-            EndMicrogame();
+            EndMicrogame(tickImg);
         }
     }
 }

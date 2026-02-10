@@ -8,6 +8,7 @@ public class JackBoxCrankManager : BaseMicrogameClass
     public float currentRotations;
     private Canvas canvas;
 
+    public GameObject tickImg;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +38,7 @@ public class JackBoxCrankManager : BaseMicrogameClass
     {
         if (Mathf.Abs(currentRotations) >= rotationsToComplete)
         {
-            EndMicrogame();
+            EndMicrogame(tickImg);
         }
     }
 }

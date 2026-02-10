@@ -14,6 +14,8 @@ public class NetConnectManager : BaseMicrogameClass
 
     public Rope currentlyHoveredRope;
     public Rope currentlyDraggedRope;
+
+    public GameObject tickImg;
     public override void StartMicrogame()
     {
         InitializeWires();
@@ -91,7 +93,7 @@ public class NetConnectManager : BaseMicrogameClass
             if (successfulWires >= rightSideRopes.Count)
             {
                 Debug.Log("TASK COMPLETED");
-                EndMicrogame();
+                EndMicrogame(tickImg);
                 break;
             }
             else
