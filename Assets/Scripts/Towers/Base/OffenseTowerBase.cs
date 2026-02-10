@@ -53,6 +53,10 @@ public class OffenseTowerBase : BaseTowerClass
     public GameObject statsUI;
     protected bool clickable;
 
+    //VFX Variables
+    public GameObject degradeVFX;
+    public GameObject overdriveVFX;
+
     //Audio events
     protected AK.Wwise.Event attackEvent;
     protected AK.Wwise.Event degradeEvent;
@@ -74,6 +78,14 @@ public class OffenseTowerBase : BaseTowerClass
         if (isStunned)
         {
             return;
+        }
+        if (isOverdrive)
+        {
+            overdriveVFX.SetActive(true);
+        }
+        else
+        {
+            overdriveVFX.SetActive(false);
         }
         GetTargetEnemy();
         TrackEnemy();
@@ -281,6 +293,9 @@ public class OffenseTowerBase : BaseTowerClass
 
         microgame = stats.Microgame;
 
+        degradeVFX.SetActive(false);
+        overdriveVFX.SetActive(false);
+
         attackEvent = stats.AttackEvent;
         degradeEvent = stats.DegradeEvent;
     }
@@ -310,11 +325,13 @@ public class OffenseTowerBase : BaseTowerClass
             isMaxDegraded = true;
             degradeEvent.Post(gameObject);
             degradeSign.SetActive(true);
+            degradeVFX.SetActive(true);
         }
 
         else if (!isMaxDegraded)
         {
             degradeSign.SetActive(false);
+            degradeVFX.SetActive(false);
         }
     }
 
