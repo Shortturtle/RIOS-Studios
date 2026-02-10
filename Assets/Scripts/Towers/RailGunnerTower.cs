@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class RailGunnerTower : OffenseTowerBase
 {
+    public Animator animator;
     protected override void Degrade()
     {
         damageValue = (float)Math.Round(damageBase * (1f - (0.5f * ((float)degradeRank / (float)maxDegradeRank))), 2);
@@ -12,7 +14,20 @@ public class RailGunnerTower : OffenseTowerBase
 
     protected override void Attack()
     {
+        StartCoroutine(PlayAnimation());
+    }
+
+    IEnumerator PlayAnimation()
+    {
+        if (animator)
+            animator.SetBool("Shooting", true);
+        yield return new WaitForSeconds(0.8f);
+
         base.Attack();
+
+        yield return new WaitForSeconds(1f);
+        if (animator)
+            animator.SetBool("Shooting", false);
     }
 
     protected override void OverDrive()

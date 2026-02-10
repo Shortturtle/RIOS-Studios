@@ -201,6 +201,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 41221308-9dfb-4ff0-bf0d-44707bbaa0ba
     m_ActionName: 'TowerInteractionSystem/PlayMinigame[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ee3c4c7-5102-4029-9b5c-dee26ead2d1a
+    m_ActionName: 'TowerInteractionSystem/EndMinigame[/Keyboard/i]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerAction
@@ -225,8 +229,9 @@ MonoBehaviour:
   decelerationFactor: 100
   gravity: -9.8
   stunAbilityCost: 3
+  transmutateAbilityCost: 0
   rewindAbilityCost: 5
-  stunRadius: 5
+  effectRadius: 5
   stunDuration: 5
   enemyLayer:
     serializedVersion: 2
@@ -315,15 +320,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c192f1ea735834348ad44ef66d04779c, type: 2}
     - target: {fileID: -8679921383154817045, guid: 0ac5b51c885a367429cc8cdc95b38b34, type: 3}
       propertyPath: m_LocalScale.x
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ac5b51c885a367429cc8cdc95b38b34, type: 3}
       propertyPath: m_LocalScale.y
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ac5b51c885a367429cc8cdc95b38b34, type: 3}
       propertyPath: m_LocalScale.z
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ac5b51c885a367429cc8cdc95b38b34, type: 3}
       propertyPath: m_LocalPosition.x
@@ -364,6 +369,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0ac5b51c885a367429cc8cdc95b38b34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0ac5b51c885a367429cc8cdc95b38b34, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8528873737998657810, guid: 0ac5b51c885a367429cc8cdc95b38b34, type: 3}
       propertyPath: m_Materials.Array.size

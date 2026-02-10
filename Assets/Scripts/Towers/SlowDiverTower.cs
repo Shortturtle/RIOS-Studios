@@ -1,9 +1,29 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class SlowDiverTower : OffenseTowerBase
 {
     public GameObject overdriveProjectile;
+    public Animator animator;
+
+    protected override void Attack()
+    {
+        StartCoroutine(PlayAnimation());
+    }
+
+    IEnumerator PlayAnimation()
+    {
+        if (animator)
+            animator.SetBool("Attacking", true);
+        yield return new WaitForSeconds(0.5f);
+
+        base.Attack();
+
+        yield return new WaitForSeconds(5f);
+        if (animator)
+            animator.SetBool("Attacking", false);
+    }
 
     protected override void Degrade()
     {
@@ -14,6 +34,9 @@ public class SlowDiverTower : OffenseTowerBase
 
     protected override void OverDrive()
     {
+        if (animator)
+            animator.SetBool("OverDrive", true);
+
         timeBetweenAttackValue = timeBetweenAttacksBase / 4;
         attackTimer = 0;
         overdriveCountdownTimer = overdriveTimerDuration;
@@ -33,6 +56,9 @@ public class SlowDiverTower : OffenseTowerBase
 
     protected override void OverDriveEnd()
     {
+        if (animator)
+            animator.SetBool("OverDrive", false);
+
         base.OverDriveEnd();
         damageValue = damageBase;
     }
