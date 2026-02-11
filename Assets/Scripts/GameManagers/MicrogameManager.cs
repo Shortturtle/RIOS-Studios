@@ -60,10 +60,11 @@ public class MicrogameManager : MonoBehaviour
 
     public void MicrogameQuit()
     {
-        if (microgameInstance != null)
+        if (microgameInstance != null && microgameInstance.GetComponent<BaseMicrogameClass>().minigameEnd)
         {
-            Destroy(microgameInstance);
+            return;
         }
+        Destroy(microgameInstance);
         currentlyPlayingMinigame = false;
         targettedTower = null;
         chosenMicrogame = null;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseMicrogameClass : MonoBehaviour
 {
     protected BaseTowerClass towerClass;
-    protected bool minigameEnd;
+    public bool minigameEnd;
     //public GameObject tickImg;
     public virtual void StartMicrogame() //starts microgame
     {
