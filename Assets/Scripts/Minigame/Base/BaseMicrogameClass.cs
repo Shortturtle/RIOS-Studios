@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseMicrogameClass : MonoBehaviour
 {
     protected BaseTowerClass towerClass;
-    protected bool minigameEnd;
+    public bool minigameEnd;
     //public GameObject tickImg;
     public virtual void StartMicrogame() //starts microgame
     {
@@ -25,7 +25,8 @@ public class BaseMicrogameClass : MonoBehaviour
     private IEnumerator TickAfterMinigame(GameObject tickImg)
     {
         GameObject img = Instantiate(tickImg, GameObject.FindGameObjectWithTag("MicrogameCanvas").transform);
-        yield return new WaitForSeconds(1.5f);
+        img.transform.parent = this.gameObject.transform;
+        yield return new WaitForSeconds(0.8f);
         Destroy(img);
         MicrogameManager.instance.MicrogameEnd();
     }

@@ -79,11 +79,11 @@ public class OffenseTowerBase : BaseTowerClass
         {
             return;
         }
-        if (isOverdrive)
+        if (isOverdrive && overdriveVFX != null)
         {
             overdriveVFX.SetActive(true);
         }
-        else
+        else if (overdriveVFX != null)
         {
             overdriveVFX.SetActive(false);
         }
@@ -325,13 +325,13 @@ public class OffenseTowerBase : BaseTowerClass
             isMaxDegraded = true;
             degradeEvent.Post(gameObject);
             degradeSign.SetActive(true);
-            degradeVFX.SetActive(true);
+            if (degradeVFX != null) { degradeVFX.SetActive(true); }
         }
 
         else if (!isMaxDegraded)
         {
             degradeSign.SetActive(false);
-            degradeVFX.SetActive(false);
+            if (degradeVFX != null) { degradeVFX.SetActive(false); }
         }
     }
 
