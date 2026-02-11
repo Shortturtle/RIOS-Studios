@@ -25,7 +25,8 @@ public class BaseMicrogameClass : MonoBehaviour
     private IEnumerator TickAfterMinigame(GameObject tickImg)
     {
         GameObject img = Instantiate(tickImg, GameObject.FindGameObjectWithTag("MicrogameCanvas").transform);
-        yield return new WaitForSeconds(1.5f);
+        img.transform.parent = this.gameObject.transform;
+        yield return new WaitForSeconds(0.8f);
         Destroy(img);
         MicrogameManager.instance.MicrogameEnd();
     }
