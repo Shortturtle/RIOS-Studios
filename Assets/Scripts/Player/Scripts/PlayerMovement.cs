@@ -136,21 +136,18 @@ public class PlayerMovement : MonoBehaviour
                 if (enemy != null)
                 {
                     enemiesDetected.Add(enemy);
-                    Debug.Log("Enemy detected" + enemy.name);
                 }
             }
 
             //Transmutate enemies from the list up to a limit of 3(set at the start)
             for (int maxToTransmute = maxTransmutedEnemies; maxToTransmute >= 0; maxToTransmute--)
             {
-                Debug.Log("Transmuting enemy");
                 BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count-1)];  //Takes a random enemy from the list
 
-                GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity);  //Spawns it in
+                GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity);  //Spawns in a random fantasy enemy
                 BaseEnemyClass tempClass = tempEnemy.GetComponent<BaseEnemyClass>();
                 tempClass.InitializeEnemy_OnTrack(enemy.waypointManager, enemy.waypointIndex, enemy.distanceTravelled);  //Moves it to the same position as the original enemy
-                Debug.Log("Enemy transmuted");
-
+                
                 //Kill the original enemy and remove from list
                 enemiesDetected.Remove(enemy);
                 Destroy(enemy.gameObject);
