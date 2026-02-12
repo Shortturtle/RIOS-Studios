@@ -9,6 +9,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text textName;
 
     public bool IsOpen { get; private set; }
+    private Coroutine dialogueCoroutine;
 
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
@@ -25,7 +26,7 @@ public class DialogueUI : MonoBehaviour
     {
         IsOpen = true;
         dialogueBox.SetActive(true);
-        StartCoroutine(RunDialogue(dialogueObject));
+        dialogueCoroutine = StartCoroutine(RunDialogue(dialogueObject));
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -49,12 +50,12 @@ public class DialogueUI : MonoBehaviour
             textLabel.text = dialogue.text;
 
             //Wait for input release so it doesn't instantly advance
-            yield return new WaitUntil(() => !Input.GetKey(KeyCode.Space) && !Input.GetMouseButton(0));
+            yield return new WaitUntil(() => !Input.GetKey(KeyCode.F) || !Input.GetMouseButton(0));
 
             //Check: Are we at the end of the dialogue?
             if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
             
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)); //"||" means "or"
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0)); //"||" means "or"
         }
 
         //If there are responses, show them
