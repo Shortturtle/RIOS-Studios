@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public float effectRadius = 5f;
     public float stunDuration = 5f;
     public LayerMask enemyLayer;
-    public GameObject transmuteEnemy;
+    public List<GameObject> fantasyEnemies;
     public int maxTransmutedEnemies = 3;
 
     private float currentSpeed;   //speed of player
@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Transmuting enemy");
                 BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count-1)];  //Takes a random enemy from the list
 
-                GameObject tempEnemy = Instantiate(transmuteEnemy, enemy.transform.position, Quaternion.identity);  //Spawns it in
+                GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity);  //Spawns it in
                 BaseEnemyClass tempClass = tempEnemy.GetComponent<BaseEnemyClass>();
                 tempClass.InitializeEnemy_OnTrack(enemy.waypointManager, enemy.waypointIndex, enemy.distanceTravelled);  //Moves it to the same position as the original enemy
                 Debug.Log("Enemy transmuted");
