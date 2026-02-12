@@ -41,10 +41,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     #endregion
 
     #region Distance Variables
-    protected WaypointManager waypointManager;
+    public WaypointManager waypointManager;
     protected Transform[] waypointList;
     protected float totalDistance;
-    protected float distanceTravelled;
+    public float distanceTravelled;
     public float percentageDistance; 
     protected enum direction
     {
@@ -172,14 +172,6 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         isStunned = true;
         yield return new WaitForSeconds(duration);
         isStunned = false;
-    }
-
-    public IEnumerator Transmutate()
-    {
-        //Insert transmutation vfx here
-        yield return new WaitForSeconds(0.5f); //Put some delay
-
-        //Insert actual code here
     }
 
     protected void Record()

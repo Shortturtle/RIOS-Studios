@@ -1,8 +1,9 @@
-using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
+using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(CharacterController))]
@@ -29,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public float effectRadius = 5f;
     public float stunDuration = 5f;
     public LayerMask enemyLayer;
+    public GameObject transmuteEnemy;
+    public int maxTransmutedEnemies = 3;
 
     private float currentSpeed;   //speed of player
     public bool hasControl = true;
@@ -79,8 +82,6 @@ public class PlayerMovement : MonoBehaviour
             Move();
         }
 
-        //PauseMenu();
-
         //manual interaction to activate dialogue
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -125,13 +126,34 @@ public class PlayerMovement : MonoBehaviour
             ResourceManager.instance.RemoveAbilityPoint(transmutateAbilityCost);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
 
+            List<BaseEnemyClass> enemiesDetected = new List<BaseEnemyClass>();
+
+
+            //Add all detected enemies to a list
             foreach (Collider hit in hitColliders)
             {
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
                 if (enemy != null)
                 {
-                    enemy.Transmutate();
+                    enemiesDetected.Add(enemy);
+                    Debug.Log("Enemy detected" + enemy.name);
                 }
+            }
+
+            //Transmutate enemies from the list up to a limit of 3(set at the start)
+            for (int maxToTransmute = maxTransmutedEnemies; maxToTransmute >= 0; maxToTransmute--)
+            {
+                Debug.Log("Transmuting enemy");
+                BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count-1)];  //Takes a random enemy from the list
+
+                GameObject tempEnemy = Instantiate(transmuteEnemy, enemy.transform.position, Quaternion.identity);  //Spawns it in
+                BaseEnemyClass tempClass = tempEnemy.GetComponent<BaseEnemyClass>();
+                tempClass.InitializeEnemy_OnTrack(enemy.waypointManager, enemy.waypointIndex, enemy.distanceTravelled);  //Moves it to the same position as the original enemy
+                Debug.Log("Enemy transmuted");
+
+                //Kill the original enemy and remove from list
+                enemiesDetected.Remove(enemy);
+                Destroy(enemy.gameObject);
             }
         }
     }

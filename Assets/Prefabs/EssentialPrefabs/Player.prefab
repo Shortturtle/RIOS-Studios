@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1046236937337777715}
   - component: {fileID: 6270313207204708720}
   - component: {fileID: 7759738891181934191}
+  - component: {fileID: 4121091444573562381}
+  - component: {fileID: 8983496927755183947}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -205,6 +207,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4ee3c4c7-5102-4029-9b5c-dee26ead2d1a
     m_ActionName: 'TowerInteractionSystem/EndMinigame[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046236937337777715}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: TransmutateEnemies
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cf45bcee-7ae1-4e3f-a918-7377dabdcaf1
+    m_ActionName: 'PlayerAction/Ability3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0062b6da-8547-4399-8d8f-ee4f8ccbefc2
+    m_ActionName: 'PlayerAction/Ability4[/Keyboard/4]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerAction
@@ -236,6 +258,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  transmuteEnemy: {fileID: 1713186030485041966, guid: c40f7d7ee6bac114683d998acc82859a, type: 3}
+  maxTransmutedEnemies: 3
   hasControl: 1
   pauseScreen: {fileID: 0}
   animator: {fileID: 9186037790980950284}
@@ -286,6 +310,47 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4121091444573562381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821637766708554384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa809a5e003a5642ab63c7609ccbcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FantasyEnemies:
+  - {fileID: 365992486123129261, guid: dbb5cfbafbcf62a448bc084a1ade9f5f, type: 3}
+  - {fileID: 8070748936374062218, guid: f03d085cc1133da42a5a44615fbaf18a, type: 3}
+  - {fileID: 1713186030485041966, guid: 14cf5f57310337e40a51ffe9e975bd66, type: 3}
+  - {fileID: 1713186030485041966, guid: b97120ec22553a542ad056ef0ecd2831, type: 3}
+  - {fileID: 1713186030485041966, guid: c40f7d7ee6bac114683d998acc82859a, type: 3}
+  - {fileID: 7414901018228439845, guid: 4bb3a968414a1eb459307c7f4aac885b, type: 3}
+--- !u!95 &8983496927755183947
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821637766708554384}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc53ccac09fa80e4ba284abdcba30a1e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &371669814174647687
 PrefabInstance:
   m_ObjectHideFlags: 0
