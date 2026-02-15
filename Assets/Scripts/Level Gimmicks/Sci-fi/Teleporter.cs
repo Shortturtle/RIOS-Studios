@@ -7,6 +7,8 @@ public class Teleporter : MonoBehaviour
     public Transform teleportDestination;
     private bool canTeleport = true;
 
+    public GameObject tpOther;
+
     private void OnTriggerEnter(Collider other)
     {
         if (!canTeleport) return;
@@ -18,6 +20,7 @@ public class Teleporter : MonoBehaviour
     private IEnumerator TeleportPlayer(Collider player)
     {
         canTeleport = false;
+        tpOther.SetActive(false);
 
         PlayerMovement movement = player.GetComponent<PlayerMovement>();
         if (movement) movement.enabled = false;
@@ -39,7 +42,14 @@ public class Teleporter : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            canTeleport = true;
+            StartCoroutine("TpWait");
         }
+    }
+
+    private IEnumerator TpWait()
+    {
+        yield return new WaitForSeconds(3f);
+        canTeleport = true;
+        tpOther.SetActive(true);
     }
 }
