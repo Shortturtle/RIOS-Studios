@@ -4,9 +4,15 @@ using System.Collections.Generic;
 
 public class TowerSelectMenu : MonoBehaviour
 {
+    public GameObject towerCollection;
+    public Animator towerMenuAnimator;
     private bool menuOpen = false;
     private bool canOpenMenu = true;
 
+    private void Start()
+    {
+        towerCollection.SetActive(false);
+    }
     //checks for conditions so menu open/close isnt wacko
     public void TowerSelectMenuPopup()
     {
@@ -29,18 +35,22 @@ public class TowerSelectMenu : MonoBehaviour
     //to open/close tower select menu
     private IEnumerator OpenTowerSelectMenu()
     {
-        transform.LeanMoveLocal(new Vector2(290, 0), 0.5f).setEaseOutCirc();
+        towerCollection.SetActive (true);
+        towerMenuAnimator.SetTrigger("Open");
         menuOpen = true;
         canOpenMenu = false;
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.42f);
+        towerMenuAnimator.SetBool("Stay", true);
         canOpenMenu = true;
     }
     private IEnumerator CloseTowerSelectMenu()
     {
-        transform.LeanMoveLocal(new Vector2(1925, 0), 0.5f).setEaseOutCirc();
+        towerMenuAnimator.SetBool("Stay", false);
         menuOpen = false;
         canOpenMenu = false;
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.42f);
         canOpenMenu = true;
+        towerCollection.SetActive(false);
+        towerMenuAnimator.ResetTrigger("Open");
     }
 }
