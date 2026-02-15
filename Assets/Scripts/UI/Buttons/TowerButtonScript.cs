@@ -2,21 +2,22 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Coffee.UIEffects;
 
 public class TowerButtonScript : MonoBehaviour
 {
     public GameObject tower;
     public float popOutDuration;
     public float popOutScaleMultiplier;
-    public Material material;
+    public UIEffect uiEffect;
     private Image image;
     private bool selectGoal = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         image = GetComponent<Image>();
-        material = new Material(image.material);
-        material.mainTexture = image.sprite.texture;
+        uiEffect = GetComponent<UIEffect>();
+        uiEffect.enabled = false;
     }
 
     // Update is called once per frame
@@ -51,6 +52,7 @@ public class TowerButtonScript : MonoBehaviour
     private IEnumerator ButtonMovement(bool selected)
     {
         float timer = 0f;
+        uiEffect.enabled = selected;
         while (timer < popOutDuration / 2)
         {
             timer += Time.deltaTime;
