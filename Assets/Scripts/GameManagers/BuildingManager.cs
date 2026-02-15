@@ -30,6 +30,7 @@ public class BuildingManager : MonoBehaviour
     private List<Renderer> renderers = new List<Renderer>();
     public bool isPlacing;
     private bool canPlace;
+    private EventSystem eventSystem;
 
     public Material placeableMaterial;
     public Material cannotPlaceMaterial;
@@ -43,7 +44,7 @@ public class BuildingManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        eventSystem = FindFirstObjectByType<EventSystem>();
     }
 
     // Update is called once per frame
@@ -79,7 +80,7 @@ public class BuildingManager : MonoBehaviour
             ghostTowerIndicator.SetActive(true);
         }
 
-        if ((Physics.Raycast(ray, out RaycastHit hitInfo, 100, acceptedLayers, QueryTriggerInteraction.Ignore)) || towerClass.cost > ResourceManager.instance.currentEnergy)
+        if ((Physics.Raycast(ray, out RaycastHit hitInfo, 100, acceptedLayers, QueryTriggerInteraction.Ignore)))
         {
             if(hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
@@ -89,7 +90,9 @@ public class BuildingManager : MonoBehaviour
                 SetGhostObjectMaterial(placeableMaterial);
             }
 
-            else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Path") || hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Tower"))
+            else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Path") 
+                || hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Tower") 
+                || towerClass.cost > ResourceManager.instance.currentEnergy)
             {
                 currentPlacement = hitInfo.point;
                 ghostTowerIndicator.transform.position = currentPlacement;
@@ -102,6 +105,8 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceTower(InputAction.CallbackContext ctx)
     {
+        if (eventSystem.IsPointerOverGameObject()) { return; }
+
        if (isPlacing)
         {
             if (!canPlace)
