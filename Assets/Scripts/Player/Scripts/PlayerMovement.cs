@@ -238,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Time.timeScale == 0) { ResumeGame(); }
-        else { PauseGame(); }        
+        else if (FindAnyObjectByType<GameManager>().gameEnd == false) { PauseGame(); }  
     }
 
     //for pause screen

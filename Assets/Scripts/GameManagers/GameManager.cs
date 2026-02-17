@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject winUI;
     public AK.Wwise.Event winSFX;
     public AK.Wwise.Event LevelMusic;
+    public bool gameEnd = false;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         {
             MicrogameManager.instance.MicrogameEnd();
         }
+        gameEnd = true;
         loseUI.SetActive(true);
         StopLevelMusic();
         loseSFX.Post(gameObject);
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
         {
             MicrogameManager.instance.MicrogameEnd();
         }
+        gameEnd = true;
         winUI.SetActive(true);
         StopLevelMusic();
         winSFX.Post(gameObject);
