@@ -9,9 +9,13 @@ public class MiscEvents
 
     public void KanadeCollected()
     {
-        if(onCollectKanade != null)
-        {
-            onCollectKanade();
-        }
+        if(onCollectKanade != null) { onCollectKanade(); }
+    }
+
+    public event Action talkedToPeople;
+
+    public void PeopleInteracted()
+    {
+        if (talkedToPeople != null) { talkedToPeople(); }
     }
 }
