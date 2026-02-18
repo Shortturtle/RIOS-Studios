@@ -6,8 +6,14 @@ public class Teleporter : MonoBehaviour
 {
     public Transform teleportDestination;
     private bool canTeleport = true;
+    public bool tpCamera;
 
     public GameObject tpOther;
+    public float timeToTp;
+    public float timeAfterTp;
+    public float tpCd;
+
+    public Animator tpAnim;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,20 +28,10 @@ public class Teleporter : MonoBehaviour
         canTeleport = false;
         tpOther.SetActive(false);
 
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
-        if (movement) movement.enabled = false;
-
-        player.transform.SetPositionAndRotation(
-            teleportDestination.position,
-            teleportDestination.rotation
-        );
-
+        StartCoroutine(Teleport(player));
+        
         // wait ONE frame
         yield return null;
-
-        if (movement) movement.enabled = true;
-
-        Debug.Log("Player teleported to: " + teleportDestination.position);
     }
 
     private void OnTriggerExit(Collider other)
@@ -48,8 +44,25 @@ public class Teleporter : MonoBehaviour
 
     private IEnumerator TpWait()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(tpCd);
         canTeleport = true;
         tpOther.SetActive(true);
+    }
+    private IEnumerator Teleport(Collider player)
+    {
+        if(tpCamera == true)
+        {
+            tpAnim.SetTrigger("teleport");
+        }
+        yield return new WaitForSeconds(timeToTp);
+        PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        if (movement) movement.enabled = false;
+
+        player.transform.SetPositionAndRotation(
+            teleportDestination.position,
+            teleportDestination.rotation
+        );
+        yield return new WaitForSeconds(timeAfterTp);
+        if (movement) movement.enabled = true;
     }
 }
