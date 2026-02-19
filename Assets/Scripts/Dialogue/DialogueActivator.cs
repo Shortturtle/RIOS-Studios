@@ -24,6 +24,8 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             player.Interactable = this;
+            player.DialogueUI.ShowInteractPrompt();
+            Debug.Log("Player entered dialogue trigger and can interact with " + gameObject.name);
         }
     }
 
@@ -36,6 +38,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
             if (player.Interactable is DialogueActivator dialogueActivator && dialogueActivator == this)
             {
                 player.Interactable = null;
+                player.DialogueUI.HideInteractPrompt();
             }
         }
     }
