@@ -7,6 +7,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private TMP_Text textName;
+    [SerializeField] public GameObject interactPrompt;
 
     public bool IsOpen { get; private set; }
     private Coroutine dialogueCoroutine;
@@ -16,14 +17,27 @@ public class DialogueUI : MonoBehaviour
 
     private void Start()
     {
-        typewriterEffect=GetComponent<TypewriterEffect>();
+        typewriterEffect =GetComponent<TypewriterEffect>();
         responseHandler=GetComponent<ResponseHandler>();
 
         CloseDialogueBox();
     }
 
+    public void ShowInteractPrompt()
+    {
+        Debug.Log("Showing interact prompt");
+        interactPrompt.SetActive(true);
+    }
+
+    public void HideInteractPrompt()
+    {
+        Debug.Log("Hiding interact prompt");
+        interactPrompt.SetActive(false);
+    }
+
     public void ShowDialogue(DialogueObject dialogueObject)
     {
+        interactPrompt.SetActive(false);
         IsOpen = true;
         dialogueBox.SetActive(true);
         dialogueCoroutine = StartCoroutine(RunDialogue(dialogueObject));

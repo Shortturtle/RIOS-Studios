@@ -10,7 +10,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class PlayerMovement : MonoBehaviour
 {
     //Dialogue stuff
-    [SerializeField] private DialogueUI dialogueUI;
+    [SerializeField] public DialogueUI dialogueUI;
     public DialogueUI DialogueUI => dialogueUI;
     public IInteractable Interactable { get; set; }
 

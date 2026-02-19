@@ -11398,6 +11398,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262648351}
   m_Mesh: {fileID: 8659943070623925175, guid: b6146b0aaa3e9214080981c9b67eb194, type: 3}
+--- !u!1 &262917169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262917170}
+  - component: {fileID: 262917171}
+  m_Layer: 0
+  m_Name: Wall1 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &262917170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262917169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 11.8, y: 0, z: -23.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1767939510}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &262917171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262917169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.53221875, y: 6.727825, z: 14.564276}
+  m_Center: {x: -0.02121076, y: 2.8639126, z: 0.78654766}
 --- !u!1 &264317899
 GameObject:
   m_ObjectHideFlags: 0
@@ -51873,7 +51926,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1081896085
 GameObject:
@@ -78115,6 +78168,7 @@ Transform:
   - {fileID: 1471707979}
   - {fileID: 987288722}
   - {fileID: 2130935440}
+  - {fileID: 262917170}
   - {fileID: 1512991888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88851,11 +88905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 891630357379561309, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1083096673311526388, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1147586547799905334, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_IsActive
@@ -88904,6 +88954,22 @@ PrefabInstance:
     - target: {fileID: 1698878174569841110, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_Name
       value: AllCanvasses
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085545987427315482, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: waveText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085545987427315482, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: energyText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085545987427315482, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085545987427315482, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: abilityPointText
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3035483339797140843, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
