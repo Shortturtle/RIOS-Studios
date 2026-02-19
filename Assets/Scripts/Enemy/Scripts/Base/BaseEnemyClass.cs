@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using static UnityEngine.EventSystems.EventTrigger;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
@@ -21,8 +22,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     #endregion
 
     #region Skill Variables
+    public GameObject freezeVFX;
     public bool isRewinding = false;
     public List<PointInTime> pointsInTime = new List<PointInTime>();
+    public Animator animator;
 
     public class PointInTime
     {
@@ -60,7 +63,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     public void InitializeEnemy_Start(WaypointManager wM)
@@ -164,14 +167,30 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
     public void Stun(float duration)
     {
-        StartCoroutine(StunRoutine(duration));        
+        StartCoroutine(StunRoutine(duration));
     }
-
     private IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
+        animator.speed = 0f; // Pause animation
         yield return new WaitForSeconds(duration);
         isStunned = false;
+        animator.speed = 1f; // Resume animation
+    }
+
+    public void freeze(float duration)
+    {
+        StartCoroutine(FreezeRoutine(duration));
+    }
+    private IEnumerator FreezeRoutine(float duration)
+    {
+        isStunned = true;
+        freezeVFX.SetActive(true);
+        //animator.speed = 0f; // Pause animation
+        yield return new WaitForSeconds(duration);
+        isStunned = false;
+        freezeVFX.SetActive(false);
+        //animator.speed = 1f; // Resume animation
     }
 
     protected void Record()

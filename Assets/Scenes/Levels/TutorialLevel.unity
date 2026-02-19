@@ -9182,6 +9182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: fc6229c0a9076a04d88b70dc9024b747, type: 2}
   questPoint: {fileID: 0}
+  talk: {fileID: 0}
 --- !u!65 &1489621695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9809,6 +9810,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09baf53c7248e5499e3ce25572840e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tower: {fileID: 0}
+  popOutDuration: 0
+  popOutScaleMultiplier: 0
+  uiEffect: {fileID: 0}
 --- !u!114 &1635427062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11563,6 +11568,10 @@ PrefabInstance:
       propertyPath: pauseScreen
       value: 
       objectReference: {fileID: 469683587}
+    - target: {fileID: 1046236937337777715, guid: a049e867b9780ec4289ef50b06374326, type: 3}
+      propertyPath: stunAbilityCost
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6170044618764361239, guid: a049e867b9780ec4289ef50b06374326, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

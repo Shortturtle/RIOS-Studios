@@ -106,7 +106,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1046236937337777715}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: StunBubble
+        m_MethodName: Freeze
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -249,23 +249,28 @@ MonoBehaviour:
   accelerationFactor: 10
   decelerationFactor: 100
   gravity: -9.8
-  stunAbilityCost: 3
-  transmutateAbilityCost: 0
-  rewindAbilityCost: 5
-  effectRadius: 5
-  stunDuration: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  hasControl: 1
+  pauseScreen: {fileID: 0}
+  animator: {fileID: 9186037790980950284}
+  stunAbilityCost: 0
+  transmutateAbilityCost: 4
+  rewindAbilityCost: 5
+  hologramAbilityCost: 5
+  effectRadius: 5
+  stunDuration: 5
   fantasyEnemies:
   - {fileID: 1713186030485041966, guid: 14cf5f57310337e40a51ffe9e975bd66, type: 3}
   - {fileID: 1713186030485041966, guid: b97120ec22553a542ad056ef0ecd2831, type: 3}
   - {fileID: 1713186030485041966, guid: c40f7d7ee6bac114683d998acc82859a, type: 3}
   maxTransmutedEnemies: 3
-  hasControl: 1
-  pauseScreen: {fileID: 0}
-  animator: {fileID: 9186037790980950284}
   vfxRenderer: {fileID: 0}
+  FreezeVFX: {fileID: 7900714421074514007, guid: 04cf9b11b466f354eb99bede8dd528ab, type: 3}
+  RewindVFX: {fileID: 6304806120856174424, guid: 0e5eddee4a32e454bb2de80a38e344b8, type: 3}
+  TransmutateVFX: {fileID: 308405796586870206, guid: e03b5781c2381024396b8c00add0dfb9, type: 3}
+  HologramVFX: {fileID: 0}
 --- !u!143 &6270313207204708720
 CharacterController:
   m_ObjectHideFlags: 0

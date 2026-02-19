@@ -3,6 +3,8 @@ using System.Collections;
 
 public class KillYourself : MonoBehaviour
 {
+    public float timeToLive = 1f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,7 +13,7 @@ public class KillYourself : MonoBehaviour
 
     private IEnumerator KYS()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeToLive);
         Destroy(gameObject);
     }
 }

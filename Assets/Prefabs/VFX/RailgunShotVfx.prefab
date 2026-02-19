@@ -4854,6 +4854,7 @@ GameObject:
   - component: {fileID: 4128053625406200925}
   - component: {fileID: 3961701018092776649}
   - component: {fileID: 8561563765127203089}
+  - component: {fileID: -59582387788214279}
   m_Layer: 0
   m_Name: RailgunShotVfx
   m_TagString: Untagged
@@ -4900,6 +4901,8 @@ PlayableDirector:
     value: {fileID: 8561563765127203089}
   - key: {fileID: -7977812027997613959, guid: b07ad8f3ffcd1ec4c830dc1875ed4f8f, type: 2}
     value: {fileID: 8561563765127203089}
+  - key: {fileID: 4767587673319039334, guid: b07ad8f3ffcd1ec4c830dc1875ed4f8f, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - fd124d9d6c3db5a4ca7650d74714fc67: {fileID: 7653545569339722504}
@@ -5006,6 +5009,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-59582387788214279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731712534914278404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596b1b32347e0df4597c28a64b101032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToLive: 1
 --- !u!1 &7364630165139919445
 GameObject:
   m_ObjectHideFlags: 0

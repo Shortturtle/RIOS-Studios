@@ -23,15 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     private Vector3 velocity;
 
-    //Ability stuff
-    public int stunAbilityCost;
-    public int transmutateAbilityCost;
-    public int rewindAbilityCost;
-    public float effectRadius = 5f;
-    public float stunDuration = 5f;
     public LayerMask enemyLayer;
-    public List<GameObject> fantasyEnemies;
-    public int maxTransmutedEnemies = 3;
 
     private float currentSpeed;   //speed of player
     public bool hasControl = true;
@@ -46,7 +38,24 @@ public class PlayerMovement : MonoBehaviour
     public GameObject pauseScreen;
     public Animator animator;
 
+    [Header("Ability Settings")]
+    public int stunAbilityCost;
+    public int transmutateAbilityCost;
+    public int rewindAbilityCost;
+    public int hologramAbilityCost;
+    public float effectRadius = 5f;
+    public float stunDuration = 5f;
+
+    public List<GameObject> fantasyEnemies;
+    public int maxTransmutedEnemies = 3;
+
+    [Header("VFX")]
     public VisualEffect vfxRenderer;
+    public GameObject FreezeVFX;
+    public GameObject RewindVFX;
+    public GameObject TransmutateVFX;
+    public GameObject HologramVFX;
+
     private void Awake()
     {
 
@@ -98,10 +107,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void StunBubble(InputAction.CallbackContext ctx)
+    public void Freeze(InputAction.CallbackContext ctx)
     {
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= stunAbilityCost)
         {
+            Instantiate(FreezeVFX, transform.position, Quaternion.identity);
             ResourceManager.instance.RemoveAbilityPoint(stunAbilityCost);
             //find colliders within the AoE that are on the enemy layer
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
@@ -111,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
                 if (enemy != null)
                 {
-                    enemy.Stun(stunDuration);
+                    enemy.freeze(stunDuration);
                 }
             }
         }
@@ -122,46 +132,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void TransmutateEnemies(InputAction.CallbackContext ctx)
-    {
-        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= transmutateAbilityCost)
-        {
-            ResourceManager.instance.RemoveAbilityPoint(transmutateAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
-
-            List<BaseEnemyClass> enemiesDetected = new List<BaseEnemyClass>();
-
-
-            //Add all detected enemies to a list
-            foreach (Collider hit in hitColliders)
-            {
-                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
-                if (enemy != null)
-                {
-                    enemiesDetected.Add(enemy);
-                }
-            }
-
-            //Transmutate enemies from the list up to a limit of 3(set at the start)
-            for (int maxToTransmute = maxTransmutedEnemies; maxToTransmute >= 0; maxToTransmute--)
-            {
-                BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count-1)];  //Takes a random enemy from the list
-
-                GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity);  //Spawns in a random fantasy enemy
-                BaseEnemyClass tempClass = tempEnemy.GetComponent<BaseEnemyClass>();
-                tempClass.InitializeEnemy_OnTrack(enemy.waypointManager, enemy.waypointIndex, enemy.distanceTravelled);  //Moves it to the same position as the original enemy
-                
-                //Kill the original enemy and remove from list
-                enemiesDetected.Remove(enemy);
-                Destroy(enemy.gameObject);
-            }
-        }
-    }
-
     public void RewindEnemies(InputAction.CallbackContext ctx)
     {
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= rewindAbilityCost)
         {
+            Instantiate(RewindVFX, transform.position, Quaternion.identity);
             ResourceManager.instance.RemoveAbilityPoint(rewindAbilityCost);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius * 10, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
 
@@ -181,6 +156,44 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
     }
+
+    public void TransmutateEnemies(InputAction.CallbackContext ctx)
+    {
+        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= transmutateAbilityCost)
+        {
+            Instantiate(TransmutateVFX, transform.position, Quaternion.identity);
+            ResourceManager.instance.RemoveAbilityPoint(transmutateAbilityCost);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+
+            List<BaseEnemyClass> enemiesDetected = new List<BaseEnemyClass>();
+
+
+            //Add all detected enemies to a list
+            foreach (Collider hit in hitColliders)
+            {
+                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+                if (enemy != null)
+                {
+                    enemiesDetected.Add(enemy);
+                }
+            }
+
+            //Transmutate enemies from the list up to a limit of 3(set at the start)
+            for (int maxToTransmute = maxTransmutedEnemies; maxToTransmute >= 0; maxToTransmute--)
+            {
+                BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count - 1)];  //Takes a random enemy from the list
+
+                GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity);  //Spawns in a random fantasy enemy
+                BaseEnemyClass tempClass = tempEnemy.GetComponent<BaseEnemyClass>();
+                tempClass.InitializeEnemy_OnTrack(enemy.waypointManager, enemy.waypointIndex, enemy.distanceTravelled);  //Moves it to the same position as the original enemy
+
+                //Kill the original enemy and remove from list
+                enemiesDetected.Remove(enemy);
+                Destroy(enemy.gameObject);
+            }
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
