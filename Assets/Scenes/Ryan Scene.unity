@@ -6833,20 +6833,25 @@ MonoBehaviour:
   accelerationFactor: 10
   decelerationFactor: 100
   gravity: -9.8
-  stunAbilityCost: 0
-  transmutateAbilityCost: 0
-  rewindAbilityCost: 0
-  effectRadius: 5
-  stunDuration: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  fantasyEnemies: []
-  maxTransmutedEnemies: 3
   hasControl: 1
   pauseScreen: {fileID: 0}
   animator: {fileID: 0}
+  stunAbilityCost: 0
+  transmutateAbilityCost: 0
+  rewindAbilityCost: 0
+  hologramAbilityCost: 0
+  effectRadius: 5
+  stunDuration: 5
+  fantasyEnemies: []
+  maxTransmutedEnemies: 3
   vfxRenderer: {fileID: 0}
+  FreezeVFX: {fileID: 0}
+  RewindVFX: {fileID: 0}
+  TransmutateVFX: {fileID: 0}
+  HologramVFX: {fileID: 0}
 --- !u!114 &1245682882
 MonoBehaviour:
   m_ObjectHideFlags: 0
