@@ -163,13 +163,14 @@ public class PlayerMovement : MonoBehaviour
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= rewindAbilityCost)
         {
             ResourceManager.instance.RemoveAbilityPoint(rewindAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius * 10, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
 
             foreach (Collider hit in hitColliders)
             {
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
                 if (enemy != null)
                 {
+
                     enemy.StartRewind();
                 }
             }
