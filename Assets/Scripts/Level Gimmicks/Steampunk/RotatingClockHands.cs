@@ -24,6 +24,7 @@ public class RotatingClockHands : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             SpinPickAndPoint();
+            Debug.Log("Clock Hand Pointing to: " + selectedBase.name);
         }
     }
 
@@ -41,7 +42,7 @@ public class RotatingClockHands : MonoBehaviour
 
         //Start the spin animation
         if (rotateRoutine != null)
-            StopCoroutine(rotateRoutine);
+        { StopCoroutine(rotateRoutine); }
 
         rotateRoutine = StartCoroutine(SpinThenPoint(selectedBase.transform));
 
