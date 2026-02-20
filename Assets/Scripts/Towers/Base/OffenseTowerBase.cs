@@ -296,7 +296,7 @@ public class OffenseTowerBase : BaseTowerClass
         if (degradeVFX != null) { degradeVFX.SetActive(false); }
         if (overdriveVFX != null) { overdriveVFX.SetActive(false); }
 
-        attackEvent = stats.AttackEvent;
+        if (stats.AttackEvent != null) attackEvent = stats.AttackEvent;
         degradeEvent = stats.DegradeEvent;
     }
 
@@ -313,7 +313,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void Attack()
     {
-        attackEvent.Post(gameObject);
+        if (attackEvent != null) attackEvent.Post(gameObject);
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
     }

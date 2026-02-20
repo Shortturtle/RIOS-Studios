@@ -3,6 +3,7 @@ using System;
 
 public class PortalTower : OffenseTowerBase
 {
+    public float portalDuration;
     public GameObject overdriveProjectile;
 
     protected override void Degrade()

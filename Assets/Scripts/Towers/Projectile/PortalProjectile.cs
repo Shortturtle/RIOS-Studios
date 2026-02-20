@@ -1,14 +1,19 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UIElements;
 using static BaseEnemyClass;
 
 public class PortalProjectile : BaseProjectileClass
 {
-    public float AoERange = 1f;
-    public static float portalDuration = 5f;
-    public GameObject Portal;
+    public static float portalDuration = 3f;
+    public PlayableDirector playableDirector;
+    public double loopStartTime = 2f;
+    public double loopEndTime = 3f;
+    public AK.Wwise.Event portalOpenEvent;
+    public AK.Wwise.Event portalCloseEvent;
+    private bool active = false;
 
     private void Start()
     {
@@ -17,42 +22,79 @@ public class PortalProjectile : BaseProjectileClass
         {
             targetPosition = hitInfo.point;
         }
+
+        Debug.Log(portalDuration);
+
+        ProjectileEffect();
     }
 
     protected override void ProjectileEffect() //Start Coroutine for the AoE and StunDoT
     {
-        speed = 0f; //Stop moving
+        transform.position = target.transform.position + (target.transform.forward * 2f);
+        transform.forward = (target.transform.position - transform.position).normalized;
         StartCoroutine(moveThisGuy());
     }
 
-    IEnumerator moveThisGuy()
+    protected override void Update()
     {
-        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, AoERange);
-
-        foreach (Collider hit in collidersInRange)
-        {
-            BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
-            if (enemy != null)
-            {
-                //Get the last point in time and teleport the enemy theres
-                BaseEnemyClass.PointInTime pointInTime = enemy.pointsInTime[enemy.pointsInTime.Count - 1];
-                enemy.transform.position = pointInTime.position;
-                enemy.transform.rotation = pointInTime.rotation;
-                enemy.distanceTravelled = pointInTime.distance;
-                enemy.waypointIndex = pointInTime.waypointIndex;
-                enemy.target = pointInTime.target;
-
-                enemy.pointsInTime.Clear(); //Clear the rewinding points to prevent issues(teleporting all over the place)
-            }
-        }
-
-        yield return new WaitForSeconds(portalDuration);
-        Destroy(gameObject);
+        
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnTriggerEnter(Collider other)
     {
-        Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, AoERange);
+        if (!active) { return; }
+
+        BaseEnemyClass enemy = other.GetComponent<BaseEnemyClass>();
+        if (enemy != null)
+        {
+            //Get the last point in time and teleport the enemy theres
+            BaseEnemyClass.PointInTime pointInTime = enemy.pointsInTime[enemy.pointsInTime.Count - 1];
+            enemy.transform.position = pointInTime.position;
+            enemy.transform.rotation = pointInTime.rotation;
+            enemy.distanceTravelled = pointInTime.distance;
+            enemy.waypointIndex = pointInTime.waypointIndex;
+            enemy.target = pointInTime.target;
+
+            enemy.pointsInTime.Clear(); //Clear the rewinding points to prevent issues(teleporting all over the place)
+        }
+    }
+
+    private IEnumerator moveThisGuy()
+    {
+        playableDirector.Play();
+        active = true;
+        portalOpenEvent.Post(gameObject);   
+
+        while (playableDirector.time  <=  loopStartTime)
+        {
+            yield return null;
+        }
+
+        float timer = 0;
+
+        while (timer < portalDuration)
+        {
+            timer += Time.deltaTime;
+            if (playableDirector.time >= loopEndTime)
+            {
+                playableDirector.time = loopStartTime;
+            }
+
+            yield return null;
+        }
+        
+        active = false;
+        portalCloseEvent.Post(gameObject);
+        playableDirector.time = loopEndTime;
+
+        while(playableDirector.time <= playableDirector.duration)
+        {
+            if (playableDirector.time == playableDirector.duration)
+            {
+                Destroy(gameObject);    
+            }
+
+            yield return null;
+        }
     }
 }

@@ -26,6 +26,8 @@ namespace AK
         static const AkUniqueID POTIONTHROWERATTACK = 1007541237U;
         static const AkUniqueID POTIONTHROWERBREAK = 2412449086U;
         static const AkUniqueID RAILGUNNERATTACK = 417816648U;
+        static const AkUniqueID RIFTCLOSE = 3584172652U;
+        static const AkUniqueID RIFTOPEN = 973282680U;
         static const AkUniqueID RIGHTINGREDIENT = 394147468U;
         static const AkUniqueID ROPETIE = 3692382261U;
         static const AkUniqueID SCIFISLIDERRIGHT = 3145432090U;

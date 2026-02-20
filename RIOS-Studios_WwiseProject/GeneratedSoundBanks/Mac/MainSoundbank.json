@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
     "Language": "SFX",
-    "Hash": "{699A3EBB-7391-BC9C-C550-2877BA2C88C0}",
+    "Hash": "{EF85CDAF-0C05-9E00-7A44-D3BCED94FE43}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
     "ShortName": "MainSoundbank",
     "Path": "MainSoundbank.bnk",
@@ -46,6 +46,14 @@
       "Location": "Memory",
       "ShortName": "WoodPlatformCreak.wav",
       "CachePath": "5D/{5D1E9334-F260-5B62-F12F-33B43F77605A}.wem"
+     },
+     {
+      "Id": "357743836",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "RiftClose2.wav",
+      "CachePath": "10/{10666F01-6CD5-A548-F325-BB0B8F86CBFA}.wem"
      },
      {
       "Id": "370408392",
@@ -86,6 +94,14 @@
       "Location": "Memory",
       "ShortName": "MedievilLobbyMusic2.wav",
       "CachePath": "90/{90EBC9A0-8064-706D-37D9-C83910243B49}.wem"
+     },
+     {
+      "Id": "488821046",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "RiftOpen2.wav",
+      "CachePath": "68/{688B94A8-BE30-ABB8-6C99-9231DEC288E0}.wem"
      },
      {
       "Id": "498538846",
@@ -414,6 +430,36 @@
       ]
      },
      {
+      "Id": "3584172652",
+      "Name": "RiftClose",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\RiftClose",
+      "GUID": "{53092972-423F-4FA3-A98F-F6F8BD47381F}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0258062",
+      "DurationMax": "1.0258062",
+      "MediaRefs": [
+       {
+        "Id": "357743836"
+       }
+      ]
+     },
+     {
+      "Id": "973282680",
+      "Name": "RiftOpen",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\RiftOpen",
+      "GUID": "{FE3CC86F-D196-42BA-AF2F-5A6D2BDCDBDA}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0790752",
+      "DurationMax": "1.0790752",
+      "MediaRefs": [
+       {
+        "Id": "488821046"
+       }
+      ]
+     },
+     {
       "Id": "394147468",
       "Name": "RightIngredient",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\MinigameSFX\\RightIngredient",
@@ -620,6 +666,6 @@
     ]
    }
   ],
-  "FileHash": "{ACF967D2-E278-0707-2EDB-9B2B33392DDD}"
+  "FileHash": "{8413F605-1CC8-903F-E205-2348C8DF1F5E}"
  }
 }

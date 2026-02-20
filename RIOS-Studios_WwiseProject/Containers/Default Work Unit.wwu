@@ -814,6 +814,90 @@
 										<ActiveSource Name="WoodPlatformBreaking" ID="{9DE95E23-FAA2-40E2-A5F7-789CF192459F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="RiftClose" ID="{EB7C8F0A-998A-4543-8F56-1AE75B542B22}" ShortID="784947024">
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Physically_Based" ID="{7AF96D5E-B0A7-4524-B96B-04F53DEAEC94}" WorkUnitID="{E312AA2F-7D32-49AE-9B3F-853E8C0370AC}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="RiftClose" ID="{93B4139D-7962-494D-8976-853BC02F733A}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>RiftClose.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="411046957"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="RiftClose2" ID="{A286EBD4-29E8-4497-AB77-7967F0339380}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.102362814928671"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.341935360506411"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.36774151100808"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>RiftClose2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="357743836"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="RiftClose2" ID="{A286EBD4-29E8-4497-AB77-7967F0339380}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="RiftOpen" ID="{7CB85ACB-5CAB-4D21-AD8E-F412DAD2EB09}" ShortID="11250830">
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Physically_Based" ID="{7AF96D5E-B0A7-4524-B96B-04F53DEAEC94}" WorkUnitID="{E312AA2F-7D32-49AE-9B3F-853E8C0370AC}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C41D86DE-69C0-4D68-B671-0709E0B0EEA8}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{226D8F51-BC47-458E-998A-C83C66F11F27}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="RiftOpen" ID="{D0DD69E8-77EC-4015-98F2-38F1240D11CA}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.4953614745743"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>RiftOpen.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="282518203"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="RiftOpen2" ID="{B3B3DD5F-2D14-4A2B-B05B-94B982DB1748}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.133760370057205"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0404653220341123"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.11954055084579"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>RiftOpen2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="488821046"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="RiftOpen2" ID="{B3B3DD5F-2D14-4A2B-B05B-94B982DB1748}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

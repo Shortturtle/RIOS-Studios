@@ -184,6 +184,8 @@ MonoBehaviour:
   hoverUI: {fileID: 25020122461886052, guid: 2fe2f888b6e101e43b9987a2f1541fdb, type: 3}
   hoverUIPosition: {fileID: 5311474754537666163}
   statsUI: {fileID: 0}
+  degradeVFX: {fileID: 0}
+  overdriveVFX: {fileID: 0}
 --- !u!136 &6960196048640580729
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -203,10 +205,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.53
-  m_Height: 5.7
+  m_Radius: 0.85
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 1.62, z: 0}
+  m_Center: {x: 0, y: 1.39, z: 0}
 --- !u!1 &7548102312198199832
 GameObject:
   m_ObjectHideFlags: 0
