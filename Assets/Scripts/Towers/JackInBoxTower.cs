@@ -51,7 +51,7 @@ public class JackInBoxTower : OffenseTowerBase
 
     protected override void Degrade()
     {
-        timeBetweenAttackValue = (float)Math.Round(timeBetweenAttacksBase * (1f + (0.5f * ((float)degradeRank / (float)maxDegradeRank))), 2);
+        timeBetweenAttackValue = (float)Math.Round(timeBetweenAttacksBase * (1f + (1f * ((float)degradeRank / (float)maxDegradeRank))), 2);
         degradeRank++;
         ResetDegradeTimer();
     }

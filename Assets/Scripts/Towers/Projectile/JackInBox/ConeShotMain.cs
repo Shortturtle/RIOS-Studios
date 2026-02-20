@@ -9,22 +9,29 @@ public class ConeShotMain : BaseProjectileClass
 
     public override void InitializeProjectile(float projectileDamage, GameObject projectileTarget, Vector3 projectileTargetPosition)
     {
+        int counter = 0;
         foreach (var projectile in coneProjectiles)
         {
-            int counter = 0;
             BaseProjectileClass temp = projectile.GetComponent<BaseProjectileClass>();
             if (temp != null)
             {
-                Vector3 offset;
+                Quaternion offset;
                 switch (counter)
                 {
                     case 0:
-                        offset = Vector3.zero;
+                    default:
+                        offset = Quaternion.Euler(0,0,0);
                         break;
                     case 1:
+                        offset = Quaternion.AngleAxis(spread, transform.up);
+                        break;
+                    case 2:
+                        offset = Quaternion.AngleAxis(spread, -transform.up);
                         break;
                 }
                 temp.InitializeProjectile(projectileDamage, projectileTarget, projectileTargetPosition);
+                temp.transform.forward = offset * (projectileTargetPosition - temp.transform.position).normalized;
+                counter++;
             }
         }
     }
@@ -33,13 +40,13 @@ public class ConeShotMain : BaseProjectileClass
     {
         foreach (var projectile in coneProjectiles)
         {
-            int counter = 0;
+            int deadProjectileCounter = 0;
             if (projectile == null)
             {
-                counter++;
+                deadProjectileCounter++;
             }
 
-            if(counter == coneProjectiles.Count)
+            if(deadProjectileCounter == coneProjectiles.Count)
             {
                 Destroy(this.gameObject);
             }

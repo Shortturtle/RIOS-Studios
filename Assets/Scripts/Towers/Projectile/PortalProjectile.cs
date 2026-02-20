@@ -37,6 +37,10 @@ public class PortalProjectile : BaseProjectileClass
                 //Get the last point in time and teleport the enemy theres
                 BaseEnemyClass.PointInTime pointInTime = enemy.pointsInTime[enemy.pointsInTime.Count - 1];
                 enemy.transform.position = pointInTime.position;
+                enemy.transform.rotation = pointInTime.rotation;
+                enemy.distanceTravelled = pointInTime.distance;
+                enemy.waypointIndex = pointInTime.waypointIndex;
+                enemy.target = pointInTime.target;
 
                 enemy.pointsInTime.Clear(); //Clear the rewinding points to prevent issues(teleporting all over the place)
             }

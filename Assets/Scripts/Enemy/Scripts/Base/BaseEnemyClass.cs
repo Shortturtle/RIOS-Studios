@@ -31,12 +31,18 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     {
         public Vector3 position;
         public Quaternion rotation;
+        public float distance;
+        public int waypointIndex;
+        public Transform target;
 
-        public PointInTime(Vector3 _position, Quaternion _rotation)
+        public PointInTime(Vector3 _position, Quaternion _rotation, float _distance, int _waypointIndex, Transform _target)
         {
             position = _position;
             rotation = _rotation;
-        }
+            distance = _distance;
+            waypointIndex = _waypointIndex;
+            target = _target;
+    }
     }
     protected float recordTime = 5f;
 
@@ -201,7 +207,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
             pointsInTime.RemoveAt(pointsInTime.Count - 1);                                                          //Remove the oldest point in time (elements at the BOTTOM of the list)
         }
 
-        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));                            //Add values(current position) to the START/TOP of the list
+        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation, distanceTravelled, waypointIndex, target));                            //Add values(current position) to the START/TOP of the list
     }
 
     protected void Rewind()
@@ -222,6 +228,9 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
+            distanceTravelled = pointInTime.distance;
+            waypointIndex = pointInTime.waypointIndex;
+            target = pointInTime.target;
 
             pointsInTime.RemoveAt(0);                                                                               //Remove the first element in the list
 
@@ -256,14 +265,14 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         {
             case direction.Forward:
                 distanceTravelled += speed * Time.deltaTime;
-                percentageDistance = (distanceTravelled / totalDistance) * 100;
-                return;
+                break;
 
             case direction.Backward:
                 distanceTravelled -= speed * Time.deltaTime;
-                percentageDistance = (distanceTravelled / totalDistance) * 100;
-                return;
+                break;
         }
+
+        percentageDistance = (distanceTravelled / totalDistance) * 100;
     }
 
     protected virtual void BaseReached()

@@ -31,6 +31,7 @@ public class BuildingManager : MonoBehaviour
     public bool isPlacing;
     private bool canPlace;
     private EventSystem eventSystem;
+    private bool overUI;
 
     public Material placeableMaterial;
     public Material cannotPlaceMaterial;
@@ -57,6 +58,8 @@ public class BuildingManager : MonoBehaviour
         {
             Raycast();
         }
+        
+        overUI = eventSystem.IsPointerOverGameObject()? true: false;
     }
 
     private void SetMinigameBool()
@@ -105,7 +108,7 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceTower(InputAction.CallbackContext ctx)
     {
-        if (eventSystem.IsPointerOverGameObject()) { return; }
+        if (overUI) { return; }
 
        if (isPlacing)
         {

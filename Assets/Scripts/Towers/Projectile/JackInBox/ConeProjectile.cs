@@ -1,16 +1,38 @@
 using UnityEngine;
 
-public class ConeProjectile : MonoBehaviour
+public class ConeProjectile : BaseProjectileClass
 {
+    public float deathTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        deathTimer  -= Time.deltaTime;
+        if (deathTimer < 0)
+        {
+            Destroy(gameObject);
+        }
+
+        base.Update();
+    }
+
+    protected override void ToTarget()
+    {
+        Vector3 dir = transform.forward;
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        BaseEnemyClass enemy = other.GetComponent<BaseEnemyClass>();
+        if (enemy != null)
+        {
+            target = other.gameObject;
+            ProjectileEffect();
+        }
     }
 }

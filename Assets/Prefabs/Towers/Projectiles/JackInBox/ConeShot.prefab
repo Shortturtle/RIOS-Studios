@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6651750330889366752}
   - component: {fileID: 3441514570076104103}
   - component: {fileID: 6685395100435182712}
-  - component: {fileID: 7661064665577327561}
+  - component: {fileID: 4363449793000557536}
   m_Layer: 0
   m_Name: ConeShot (1)
   m_TagString: Untagged
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345031829587410872}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4240840745112837200}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6651750330889366752
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -103,13 +103,13 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0.5}
---- !u!114 &7661064665577327561
+--- !u!114 &4363449793000557536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1345031829587410872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aad43906f8114f4daa2541b1c299a7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 27ddfd259bf153b49ab632f265a5fea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
@@ -126,7 +126,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  coneProjectiles: {fileID: 0}
+  deathTimer: 2
 --- !u!1 &3352627344900949102
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,12 +174,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aad43906f8114f4daa2541b1c299a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 0
   projectileEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  coneProjectiles: {fileID: 3352627344900949102}
+  coneProjectiles:
+  - {fileID: 4066912383784690373}
+  - {fileID: 7437023414028736574}
+  - {fileID: 1345031829587410872}
+  spread: 15
 --- !u!1 &4066912383784690373
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +196,7 @@ GameObject:
   - component: {fileID: 9007524080986205058}
   - component: {fileID: 1037757048055291667}
   - component: {fileID: 13551198111282817}
-  - component: {fileID: 1530682005522370655}
+  - component: {fileID: 2586324506383247145}
   m_Layer: 0
   m_Name: ConeShot
   m_TagString: Untagged
@@ -208,13 +212,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4066912383784690373}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4240840745112837200}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9007524080986205058
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -283,13 +287,13 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0.5}
---- !u!114 &1530682005522370655
+--- !u!114 &2586324506383247145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,7 +302,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4066912383784690373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aad43906f8114f4daa2541b1c299a7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 27ddfd259bf153b49ab632f265a5fea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
@@ -306,7 +310,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  coneProjectiles: {fileID: 0}
+  deathTimer: 2
 --- !u!1 &7437023414028736574
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +323,7 @@ GameObject:
   - component: {fileID: 7918121028740089717}
   - component: {fileID: 4225568783356922561}
   - component: {fileID: 6550870249384364239}
-  - component: {fileID: 3703927877745067112}
+  - component: {fileID: 2675471613019367053}
   m_Layer: 0
   m_Name: ConeShot (2)
   m_TagString: Untagged
@@ -335,13 +339,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7437023414028736574}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4240840745112837200}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7918121028740089717
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -410,13 +414,13 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0.5}
---- !u!114 &3703927877745067112
+--- !u!114 &2675471613019367053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,7 +429,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7437023414028736574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aad43906f8114f4daa2541b1c299a7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 27ddfd259bf153b49ab632f265a5fea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
@@ -433,4 +437,4 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  coneProjectiles: {fileID: 0}
+  deathTimer: 2
