@@ -1,12 +1,12 @@
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class StartFurnace : QuestStep
+public class CollectMetal : QuestStep
 {
-    private bool done;
+    private bool done = false;
     private void Start()
     {
-        string status = "Start up the furnace";
+        string status = "Collect the metal from the furnace";
         ChangeState("", status);
     }
 
@@ -20,7 +20,7 @@ public class StartFurnace : QuestStep
             if (Input.GetKeyDown("F"))
             {
                 done = true;
-                string status = "Furnace has been lit";
+                string status = "Obtained Metal";
                 ChangeState("", status);
                 player.DialogueUI.HideInteractPrompt();
                 FinishedQuestStep();

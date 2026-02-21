@@ -1,12 +1,12 @@
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class StartFurnace : QuestStep
+public class GetWhetstone : QuestStep
 {
-    private bool done;
+    private bool done = false;
     private void Start()
     {
-        string status = "Start up the furnace";
+        string status = "Find the whetstone";
         ChangeState("", status);
     }
 
@@ -15,12 +15,12 @@ public class StartFurnace : QuestStep
     {
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
-            if (done == false) { player.DialogueUI.ShowInteractPrompt(); }
-
+            if(done == false) { player.DialogueUI.ShowInteractPrompt(); }
+           
             if (Input.GetKeyDown("F"))
             {
                 done = true;
-                string status = "Furnace has been lit";
+                string status = "Got the whetstone!";
                 ChangeState("", status);
                 player.DialogueUI.HideInteractPrompt();
                 FinishedQuestStep();

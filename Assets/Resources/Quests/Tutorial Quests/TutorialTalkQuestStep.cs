@@ -4,7 +4,7 @@ public class TutorialTalkQuestStep : QuestStep
 {
     //numbers for quest functionality
     private int numberOfThingDone = 0;
-    private int numberNeededToComplete = 3;
+    private int numberNeededToComplete = 1;
 
 
     private void Start()
