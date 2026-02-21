@@ -1,13 +1,18 @@
 using UnityEngine;
 
-public class EnterLevel : MonoBehaviour
+public class EnterLevel : MonoBehaviour, IInteractable
 {
     public string levelToLoad;
+
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(levelToLoad);
+            if (CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
+            {
+                player.Interactable = this;
+                UnityEngine.SceneManagement.SceneManager.LoadScene(levelToLoad);
+            }
         }
     }
 
@@ -27,5 +32,10 @@ public class EnterLevel : MonoBehaviour
         {
             player.DialogueUI.HideInteractPrompt();
         }
+    }
+
+    void IInteractable.Interact(PlayerMovement player)
+    {
+        throw new System.NotImplementedException();
     }
 }
