@@ -94,11 +94,10 @@ public class PlayerMovement : MonoBehaviour
         //manual interaction to activate dialogue
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Interactable.Interact(this);
-            //if (!dialogueUI.IsOpen)
-            //{
-            //    Interactable.Interact(this);
-            //}
+            if (!dialogueUI.IsOpen)
+            {
+                Interactable.Interact(this);
+            }
         }
 
         //manual interaction to open quest menu

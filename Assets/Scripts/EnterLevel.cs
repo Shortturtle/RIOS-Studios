@@ -1,19 +1,23 @@
 using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
 
-public class EnterLevel : MonoBehaviour, IInteractable
+public class EnterLevel : MonoBehaviour
 {
     public string levelToLoad;
+    public PlayerMovement player;
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if (CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
-            {
-                player.Interactable = this;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(levelToLoad);
-            }
+            Interact(player);
         }
+    }
+
+    public void Interact(PlayerMovement player)
+    {
+        SceneManager.LoadScene(levelToLoad);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,10 +36,5 @@ public class EnterLevel : MonoBehaviour, IInteractable
         {
             player.DialogueUI.HideInteractPrompt();
         }
-    }
-
-    void IInteractable.Interact(PlayerMovement player)
-    {
-        throw new System.NotImplementedException();
     }
 }
