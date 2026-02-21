@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
@@ -111,25 +112,35 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= stunAbilityCost)
         {
-            Instantiate(FreezeVFX, transform.position, Quaternion.identity);
-            ResourceManager.instance.RemoveAbilityPoint(stunAbilityCost);
-            //find colliders within the AoE that are on the enemy layer
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
-
-            foreach (Collider hit in hitColliders)
-            {
-                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
-                if (enemy != null)
-                {
-                    enemy.freeze(stunDuration);
-                }
-            }
+            StartCoroutine(FreezeCo());
         }
 
         else
         {
             return;
         }
+    }
+
+    private IEnumerator FreezeCo()
+    {
+        GameObject freezeVFX = Instantiate(FreezeVFX, transform.position - new Vector3(0, 1f), FreezeVFX.transform.rotation);
+        ResourceManager.instance.RemoveAbilityPoint(stunAbilityCost);
+        //find colliders within the AoE that are on the enemy layer
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
+
+        foreach (Collider hit in hitColliders)
+        {
+            BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+            if (enemy != null)
+            {
+                enemy.freeze(stunDuration);
+            }
+        }
+
+        yield return new WaitForSeconds(stunDuration + 1.5f);
+
+        Destroy(freezeVFX);
+
     }
 
     public void RewindEnemies(InputAction.CallbackContext ctx)
