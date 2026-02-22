@@ -42,7 +42,7 @@ public class TutorialTalkQuestStep : QuestStep
     {
         //idk what this
         string state = numberOfThingDone.ToString();
-        string status = "Talked to " + numberOfThingDone + " / " + numberNeededToComplete + " people.";
+        string status = "Talked to " + numberOfThingDone + " / " + numberNeededToComplete + " people in tavern.";
         ChangeState(state, status);
     }
 

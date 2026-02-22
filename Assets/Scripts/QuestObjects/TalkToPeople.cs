@@ -4,7 +4,7 @@ public class TalkToPeople : MonoBehaviour
 {
     [Header("Quest")]
     //put the quest SO into this part in inspector
-    [SerializeField] private QuestInfoSO questInfoForKill;
+    [SerializeField] private QuestInfoSO questInfoForTalk;
 
     private string questId;
 
@@ -12,7 +12,7 @@ public class TalkToPeople : MonoBehaviour
 
     void Start()
     {
-        questId = questInfoForKill.id;
+        questId = questInfoForTalk.id;
     }
 
     private void OnEnable()
