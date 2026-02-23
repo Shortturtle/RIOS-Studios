@@ -30,14 +30,9 @@ public class PortalButtonManager : BaseMicrogameClass
 
     public GameObject tickImg;
 
-    //public override void StartMicrogame()
-    //{
-    //    InitializePotionGame(); //starts game
-    //}
-
-    private void Start()
+    public override void StartMicrogame()
     {
-        InitializePotionGame();
+        InitializePotionGame(); //starts game
     }
 
     public void InitializePotionGame()
@@ -74,8 +69,6 @@ public class PortalButtonManager : BaseMicrogameClass
         if (colour5 == 1) { Instantiate(theColourNeeded1, location5); }
         if (colour5 == 2) { Instantiate(theColourNeeded2, location5); }
         if (colour5 == 3) { Instantiate(theColourNeeded3, location5); }
-
-        Debug.Log(colour1);
     }
 
     public void ButtonPressWork(int buttonNumber)
