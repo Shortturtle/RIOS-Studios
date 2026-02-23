@@ -61,6 +61,8 @@ public class OffenseTowerBase : BaseTowerClass
     protected AK.Wwise.Event attackEvent;
     protected AK.Wwise.Event degradeEvent;
 
+    private int frameCount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
@@ -75,6 +77,8 @@ public class OffenseTowerBase : BaseTowerClass
     // Update is called once per frame
     protected virtual void Update()
     {
+        frameCount++;
+
         if (isStunned)
         {
             return;
@@ -87,7 +91,13 @@ public class OffenseTowerBase : BaseTowerClass
         {
             overdriveVFX.SetActive(false);
         }
-        GetTargetEnemy();
+        
+        if(frameCount % 6 == 0)
+        {
+            GetTargetEnemy();
+            frameCount = 0;
+        }
+        
         TrackEnemy();
         AttackTimer();
         GeneralDegradeTracker();

@@ -45,7 +45,7 @@ public class TutorialWaveManager : EnemyWaveManager
         currentWavePlaying = false;
         ResourceManager.instance.AddEnergy(waveEndEnergyReward);
         currentWave++;
-        PrepNextWave();
+        StartBuffer();
     }
 
     public override void EndGame()

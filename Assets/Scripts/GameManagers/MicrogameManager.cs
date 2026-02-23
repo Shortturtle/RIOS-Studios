@@ -25,10 +25,14 @@ public class MicrogameManager : MonoBehaviour
     public GameObject microgameInstance;
     public AK.Wwise.Event microgameWin;
 
+    //for tutorial
+    [HideInInspector] public bool repaired;
+
     public void MicrogameStart( BaseTowerClass tower,  GameObject microgame)
     {
         if (microgame.GetComponent<BaseMicrogameClass>() != null)
         {
+            repaired = false;
             targettedTower = tower;
             chosenMicrogame = microgame;
 
@@ -55,6 +59,7 @@ public class MicrogameManager : MonoBehaviour
         currentlyPlayingMinigame = false;
         targettedTower = null;
         chosenMicrogame = null;
+        repaired = true;
         microgameWin.Post(gameObject);
     }
 

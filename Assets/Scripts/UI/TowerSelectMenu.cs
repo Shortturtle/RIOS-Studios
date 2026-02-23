@@ -6,7 +6,7 @@ public class TowerSelectMenu : MonoBehaviour
 {
     public GameObject towerCollection;
     public Animator towerMenuAnimator;
-    private bool menuOpen = false;
+    public bool menuOpen = false;
     private bool canOpenMenu = true;
 
     private void Start()
@@ -37,18 +37,18 @@ public class TowerSelectMenu : MonoBehaviour
     {
         towerCollection.SetActive (true);
         towerMenuAnimator.SetTrigger("Open");
-        menuOpen = true;
         canOpenMenu = false;
         yield return new WaitForSeconds(0.42f);
         towerMenuAnimator.SetBool("Stay", true);
+        menuOpen = true;
         canOpenMenu = true;
     }
     private IEnumerator CloseTowerSelectMenu()
     {
         towerMenuAnimator.SetBool("Stay", false);
-        menuOpen = false;
         canOpenMenu = false;
         yield return new WaitForSeconds(0.42f);
+        menuOpen = false;
         canOpenMenu = true;
         towerCollection.SetActive(false);
         towerMenuAnimator.ResetTrigger("Open");

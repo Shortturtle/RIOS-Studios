@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    // This is one of the only comments im not writing retroactively but I wanna KILL MYSELF FUCK THIS
+    // This is one of the only comments im not writing retroactively but I wanna KILL MYSELF FUCK THIS  -Danish
     [Header("Tutorial GameObjects")]
     public List<GameObject> tutorialGameObjects = new List<GameObject>();
 
@@ -13,18 +13,25 @@ public class TutorialManager : MonoBehaviour
     public TutorialWaveManager waveManager;
 
     [Header("TutorialFlags")]
-    private TutorialState currentTutorialState = TutorialState.PlaceFirstTower;
+    public TowerSelectMenu towerSelectMenu;
+    private TutorialState currentTutorialState = TutorialState.OpenTowerMenu;
+    private bool openedTowerMenu;
     private bool placedFirstTower;
-    private bool firstWaveClear;
+    private bool towerDegraded;
+    private bool microgameOpen;
+
+    private int frameCount;
 
     private enum TutorialState
     {
+        OpenTowerMenu,
         PlaceFirstTower,
-        FirstWave,
-        RepairTower,
-        SecondWave,
+        TowerDegraded,
+        MicrogameExposition,
+        MicrogamePendingCompletion,
         Ability,
-        End
+        End,
+        Win
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,6 +63,11 @@ public class TutorialManager : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                     Time.timeScale = 1f;
+
+                    if(currentTutorialState == TutorialState.End)
+                    {
+                        currentTutorialState = TutorialState.Win;
+                    }
                     return;
                 }
             }
@@ -71,10 +83,41 @@ public class TutorialManager : MonoBehaviour
 
     private void TutorialProgressCheck()
     {
+        frameCount++;
+
+        if (!(frameCount % 3 == 0)) { return; }
+
         switch (currentTutorialState)
         {
+            case TutorialState.OpenTowerMenu:
+                OpenTowerMenuCheck(); break;
             case TutorialState.PlaceFirstTower:
                 PlaceFirstTowerCheck(); break;
+            case TutorialState.TowerDegraded:
+                TowerDegradeCheck(); break;
+            case TutorialState.MicrogameExposition:
+                MicrogameOpenCheck(); break;
+            case TutorialState.MicrogamePendingCompletion:
+                MicrogameCompletionCheck(); break;
+            case TutorialState.Ability:
+                AbilityUseCheck(); break;
+            case TutorialState.End:
+                GameWinCheck(); break;
+            case TutorialState.Win:
+                WinScreenCheck();  break;
+        }
+
+        frameCount = 0;
+    }
+
+    private void OpenTowerMenuCheck()
+    {
+        if (towerSelectMenu.menuOpen)
+        {
+            Debug.Log("MenuOpen");
+            StartCoroutine(OpenTutorialImage(1, 0.1f));
+            currentTutorialState = TutorialState.PlaceFirstTower;
+            openedTowerMenu = true;
         }
     }
 
@@ -85,17 +128,71 @@ public class TutorialManager : MonoBehaviour
         {
             Debug.Log("Placed First Tower");
             placedFirstTower = true;
-            currentTutorialState = TutorialState.FirstWave;
+            currentTutorialState = TutorialState.TowerDegraded;
             waveManager.StartWave();
         }
     }
 
-    private void FirstWaveClearCheck()
+    private void TowerDegradeCheck()
     {
-        if (waveManager.currentWave != 1 && !waveManager.currentWavePlaying)
+        BaseTowerClass[] allPlacedTowers = FindObjectsByType<BaseTowerClass>(FindObjectsSortMode.None);
+        foreach (BaseTowerClass tower in allPlacedTowers)
         {
-            firstWaveClear = true;
+            if (tower.isMaxDegraded)
+            {
+                Debug.Log("TowerDegraded");
+                StartCoroutine(OpenTutorialImage(2, 0.2f));
+                currentTutorialState = TutorialState.MicrogameExposition;
+                towerDegraded = true;
+            }
+        }
+    }
 
+    private void MicrogameOpenCheck()
+    {
+        if (MicrogameManager.instance.currentlyPlayingMinigame)
+        {
+            Debug.Log("MinigameOpen");
+            StartCoroutine(OpenTutorialImage(3, 0.2f));
+            currentTutorialState = TutorialState.MicrogamePendingCompletion;
+
+        }
+    }
+
+    private void MicrogameCompletionCheck()
+    {
+        if (MicrogameManager.instance.repaired)
+        {
+            Debug.Log("MinigameComplete");
+            StartCoroutine(OpenTutorialImage(4, 0.4f));
+            currentTutorialState = TutorialState.Ability;
+        }
+    }
+
+    private void AbilityUseCheck()
+    {
+        if(ResourceManager.instance.currentAbilityPoint == 3)
+        {
+            Debug.Log("EnoughToCastAbility");
+            StartCoroutine(OpenTutorialImage(5, 0.2f));
+            currentTutorialState = TutorialState.End;
+        }
+    }
+
+    private void GameWinCheck()
+    {
+        if (waveManager.winYes)
+        {
+            Debug.Log("Win");
+            StartCoroutine(OpenTutorialImage(6, 0.2f));
+        }
+    }
+
+    protected void WinScreenCheck()
+    {
+        if (GameManager.instance.gameEnd)
+        {
+            GameManager.instance.WinGame();
         }
     }
 }
