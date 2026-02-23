@@ -40,7 +40,7 @@ public class EnemyWaveManager : MonoBehaviour
     protected float spawnTimer;
     public bool currentWavePlaying;
     protected int waveEndEnergyReward;
-    protected bool winYes = false;
+    public bool winYes = false;
 
     protected float listCleanDelay = 0.2f;
     protected float listCleanTimer;
