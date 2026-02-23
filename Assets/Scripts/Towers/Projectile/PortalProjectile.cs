@@ -56,7 +56,7 @@ public class PortalProjectile : BaseProjectileClass
             enemy.target = pointInTime.target;
 
             enemy.pointsInTime.Clear(); //Clear the rewinding points to prevent issues(teleporting all over the place)
-        }
+            enemy.Damage(damage);        }
     }
 
     private IEnumerator moveThisGuy()

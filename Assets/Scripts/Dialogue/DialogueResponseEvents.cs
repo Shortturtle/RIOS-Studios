@@ -3,7 +3,7 @@ using System;
 
 public class DialogueResponseEvents : MonoBehaviour
 {
-    [SerializeField] private DialogueObject dialogueObject;
+    [SerializeField] public DialogueObject dialogueObject;
     [SerializeField] private ResponseEvent[] events;
 
     public DialogueObject DialogueObject => dialogueObject;

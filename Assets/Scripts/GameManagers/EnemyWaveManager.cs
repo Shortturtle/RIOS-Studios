@@ -5,7 +5,7 @@ public class EnemyWaveManager : MonoBehaviour
 {
     public static EnemyWaveManager instance;
 
-    private void Awake()
+    protected void Awake()
     {
         if (instance != null)
         {
@@ -28,28 +28,28 @@ public class EnemyWaveManager : MonoBehaviour
     public int maxWaves;
 
     public List<WaypointManager> spawnLocations = new List<WaypointManager>();
-    private int currentSpawnLocation;
+    protected int currentSpawnLocation;
 
-    private List<GameObject> enemiesToSpawn = new List<GameObject>();
+    protected List<GameObject> enemiesToSpawn = new List<GameObject>();
     public List<GameObject> enemiesCurrentlyAlive = new List<GameObject>();
 
     public float waveBufferTime;
-    private float waveBufferTimer;
-    private bool bufferActive;
+    protected float waveBufferTimer;
+    protected bool bufferActive;
     public float timeBetweenSpawns;
-    private float spawnTimer;
-    private bool currentWavePlaying;
-    private int waveEndEnergyReward;
-    private bool winYes = false;
+    protected float spawnTimer;
+    public bool currentWavePlaying;
+    protected int waveEndEnergyReward;
+    protected bool winYes = false;
 
-    private float listCleanDelay = 0.2f;
-    private float listCleanTimer;
+    protected float listCleanDelay = 0.2f;
+    protected float listCleanTimer;
 
     //medieval season gimmick
-    private SeasonsManager seasons;
+    protected SeasonsManager seasons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         currentWave = 1;
         listCleanTimer = listCleanDelay;
@@ -60,7 +60,7 @@ public class EnemyWaveManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (!winYes)
         {
@@ -80,13 +80,13 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void StartWave()
+    public virtual void StartWave()
     {
         currentWavePlaying = true;
         spawnTimer = timeBetweenSpawns;
     }
 
-    void EndWave()
+    public virtual void EndWave()
     {
         currentWavePlaying = false;
         ResourceManager.instance.AddEnergy(waveEndEnergyReward);
@@ -95,28 +95,28 @@ public class EnemyWaveManager : MonoBehaviour
         StartBuffer();
     }
 
-    void PrepNextWave()
+    protected void PrepNextWave()
     {
         enemiesToSpawn.Clear();
         enemiesCurrentlyAlive.Clear();
         InitializeWave(waveHolder.enemyWaves[currentWave - 1].wave);    
     }
 
-    void StartBuffer()
+    protected void StartBuffer()
     {
         PrepNextWave();
         bufferActive = true;
         waveBufferTimer = waveBufferTime;
     }
 
-    void EndBuffer()
+    protected void EndBuffer()
     {
         StartWave();
         bufferActive = false;
         spawnTimer = timeBetweenSpawns;
     }
 
-    void BufferTimer()
+    protected void BufferTimer()
     {
         if (waveBufferTimer > 0)
         {
@@ -129,7 +129,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void InitializeWave(List<EnemyWaves.EnemyClump> temp)
+    protected void InitializeWave(List<EnemyWaves.EnemyClump> temp)
     {
         Debug.Log(temp.Count);
         foreach (var enemyClump in temp)
@@ -141,14 +141,14 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void EndGame()
+    public virtual void EndGame()
     {
         currentWavePlaying = false;
         winYes = true;
         GameManager.instance.WinGame();
     }
 
-    void ListCleaning()
+    protected void ListCleaning()
     {
         listCleanTimer -= Time.deltaTime;
 
@@ -159,7 +159,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void CleanLists()
+    protected void CleanLists()
     {
         List<GameObject> toRemove1 = new List<GameObject>();
         List<GameObject> toRemove2 = new List<GameObject>();
@@ -199,7 +199,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void SpawnTimer()
+    protected void SpawnTimer()
     {
         if (spawnTimer > 0)
         {
@@ -212,7 +212,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    protected void SpawnEnemy()
     {
         if (enemiesToSpawn[0] != null)
         {
@@ -226,7 +226,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void ClampSpawnLocation()
+    protected void ClampSpawnLocation()
     {
         if (currentSpawnLocation > spawnLocations.Count - 1)
         {
@@ -234,7 +234,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void WaveEndCheck()
+    protected void WaveEndCheck()
     {
         if (enemiesCurrentlyAlive.Count == 0 && enemiesToSpawn.Count == 0)
         {
