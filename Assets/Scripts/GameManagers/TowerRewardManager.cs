@@ -12,7 +12,6 @@ public class TowerRewardManager : MonoBehaviour
     private string tower_Diver = "tower_Diver";
     private string tower_Axe = "tower_Axe";
     private string tower_Railgun = "tower_Railgun";
-    private string tower_Drone = "tower_Drone";
 
     public int towerRewardSet;
 
@@ -38,6 +37,8 @@ public class TowerRewardManager : MonoBehaviour
         {
             GameEventManager.instance.towerRewardEvents.TowerRewards(towerRewardSet);
         }
+
+
     }
 
     //this for the tower reward, if tower reward int sent over from quest is certain number, set the tower attached to the no to be able to be used

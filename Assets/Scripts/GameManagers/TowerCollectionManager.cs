@@ -16,10 +16,6 @@ public class TowerCollectionManager : MonoBehaviour
 
     private void Start()
     {
-        
-        Debug.Log(PlayerPrefs.GetInt("tower_Jinb"));
-        Debug.Log("test");
-
         if(PlayerPrefs.GetInt("tower_Portal") == 1) { tower_Portal.SetActive(true); }
         else { tower_Portal.SetActive(false); }
 
@@ -41,5 +37,4 @@ public class TowerCollectionManager : MonoBehaviour
         if(PlayerPrefs.GetInt("tower_Railgun") == 1) { tower_Railgun.SetActive(true); }
         else { tower_Railgun.SetActive(false); }
     }
-
 }
