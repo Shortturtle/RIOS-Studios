@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject FreezeVFX;
     public GameObject RewindVFX;
     public GameObject TransmutateVFX;
-    public GameObject HologramVFX;
 
     private void Awake()
     {
@@ -201,6 +200,25 @@ public class PlayerMovement : MonoBehaviour
                 //Kill the original enemy and remove from list
                 enemiesDetected.Remove(enemy);
                 Destroy(enemy.gameObject);
+            }
+        }
+    }
+
+    public void Hologram(InputAction.CallbackContext ctx)
+    {
+        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= hologramAbilityCost)
+        {
+            ResourceManager.instance.RemoveAbilityPoint(hologramAbilityCost);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+            
+            foreach (Collider hit in hitColliders)
+            {
+                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+                if (enemy != null)
+                {
+
+                    enemy.SpawnHologram();
+                }
             }
         }
     }

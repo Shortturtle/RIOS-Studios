@@ -24,6 +24,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     #region Skill Variables
     public GameObject freezeVFX;
     public bool isRewinding = false;
+    public bool isStunned = false;
     public List<PointInTime> pointsInTime = new List<PointInTime>();
     public Animator animator;
 
@@ -42,11 +43,13 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
             distance = _distance;
             waypointIndex = _waypointIndex;
             target = _target;
-    }
+        }
     }
     protected float recordTime = 5f;
 
-    public bool isStunned = false;
+    [Header("Hologram stuff")]
+    public GameObject enemyPrefab;
+    public Material hologramMaterial;
     #endregion
 
     #region Distance Variables
@@ -54,7 +57,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     protected Transform[] waypointList;
     protected float totalDistance;
     public float distanceTravelled;
-    public float percentageDistance; 
+    public float percentageDistance;
     protected enum direction
     {
         Forward, Backward
@@ -219,7 +222,8 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
             tempTarget = waypointList[waypointIndex - 1];                                                           //Reset the target waypoint to the previous one IF the enemy rewinds past it
         }
 
-        else {
+        else
+        {
             tempTarget = target;
         }
         if (pointsInTime.Count > 0)
@@ -259,6 +263,41 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         directionTravelling = direction.Forward;
     }
 
+    public void SpawnHologram()
+    {
+        //instantiate a copy of enemy and change material to hologram material, then spawn the hologram at the enemy position with 1hp
+        //when the hologram is destroyed, it will not give energy but deal 10%hp damage to the enemy and destroy itself
+
+        //Spawn hologram at enemy position
+        GameObject hologram = Instantiate(enemyPrefab, transform.position, transform.rotation);
+
+        //Change material to hologram material
+        Renderer[] renderers = hologram.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer rend in renderers)
+        {
+            Material[] mats = new Material[rend.materials.Length];
+
+            for (int i = 0; i < rend.materials.Length; i++)
+            {
+                mats[i] = hologramMaterial;
+            }
+
+            rend.materials = mats;
+        }
+
+        //Set hologram health to 1
+        BaseEnemyClass hologramEnemy = hologram.GetComponent<BaseEnemyClass>();
+        if (hologramEnemy != null)
+        {
+            currentHealth = 1f;
+        }
+
+        //Deal 10% damage to the enemy and destroy itself when destroyed
+        HologramScript hologramScript = hologram.AddComponent<HologramScript>();
+        hologramScript.originalEnemy = this; //ref to current enemy
+    }
+
     protected virtual void DistanceTracker()
     {
         switch (directionTravelling)
@@ -279,5 +318,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     {
         ResourceManager.instance.ReduceHealth(currentHealth);
         Destroy(this.gameObject);
+    }
+
+    public static implicit operator GameObject(BaseEnemyClass v)
+    {
+        throw new NotImplementedException();
     }
 }
