@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private TMP_Text textName;
     [SerializeField] public GameObject interactPrompt;
+    [SerializeField] public Image speakerSprite;
 
     public bool IsOpen { get; private set; }
     private Coroutine dialogueCoroutine;
@@ -20,6 +22,7 @@ public class DialogueUI : MonoBehaviour
         typewriterEffect =GetComponent<TypewriterEffect>();
         responseHandler=GetComponent<ResponseHandler>();
 
+        SetTransparentImage();
         CloseDialogueBox();
     }
 
@@ -40,7 +43,15 @@ public class DialogueUI : MonoBehaviour
         interactPrompt.SetActive(false);
         IsOpen = true;
         dialogueBox.SetActive(true);
+        ShowSpeakerSprite();
         dialogueCoroutine = StartCoroutine(RunDialogue(dialogueObject));
+    }
+
+    public void ShowSpeakerSprite()
+    {
+        Color color = speakerSprite.color;
+        color.a = 255f;
+        speakerSprite.color = color;
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -57,8 +68,9 @@ public class DialogueUI : MonoBehaviour
         {
             DialogueLine dialogue = dialogueObject.Dialogue[i];
 
-            //Change speaker name per line
+            //Change speaker name and sprite per line
             textName.text = dialogue.speakerName;
+            speakerSprite.sprite = dialogue.speakerSprite;
 
             yield return RunTypingEffect(dialogue.text);
             textLabel.text = dialogue.text;
@@ -79,6 +91,7 @@ public class DialogueUI : MonoBehaviour
         }
         else
         {
+            SetTransparentImage();
             CloseDialogueBox();
         }
     }
@@ -96,6 +109,13 @@ public class DialogueUI : MonoBehaviour
                 typewriterEffect.Stop();
             }
         }
+    }
+
+    public void SetTransparentImage()
+    {
+        Color color = speakerSprite.color;
+        color.a = 0f;
+        speakerSprite.color = color;
     }
 
     public void CloseDialogueBox()
