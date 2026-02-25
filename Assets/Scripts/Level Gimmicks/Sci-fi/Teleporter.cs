@@ -10,7 +10,7 @@ public class Teleporter : MonoBehaviour
 
     public GameObject tpOther;
     public float timeToTp;
-    public float timeAfterTp;
+    public float cdToMove;
     public float tpCd;
 
     public Animator tpAnim;
@@ -62,7 +62,7 @@ public class Teleporter : MonoBehaviour
             teleportDestination.position,
             teleportDestination.rotation
         );
-        yield return new WaitForSeconds(timeAfterTp);
+        yield return new WaitForSeconds(cdToMove);
         if (movement) movement.enabled = true;
     }
 }
