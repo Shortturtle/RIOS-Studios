@@ -40,35 +40,13 @@ public class TypewriterEffect : MonoBehaviour
 
         while (charIndex < textToType.Length)                                   //while typing is in progress
         {
-            //Old Typerwriter Effect Code
-            /*int lastCharIndex = charIndex - 1;                                //get the last character index we typed
-            t += Time.deltaTime * typeSpeed;                                    //shows each letter based on the typing speed (and time passsed)
-
-            charIndex = Mathf.FloorToInt(t);                                    //get the integer value of t (e.g. 5.9 = 5, 2.3 = 2, etc)
-            charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);           //clamp charIndex to be within the bounds of the string length
-
-            //Check: if we have typed any punctuation since the last frame, if the character types is the last, and if the next chara is a punctuation. If yes, wait for the specified time (essentially keep a consistent frame rate)
-            for (int i = lastCharIndex + 1; i < charIndex; i++)                 
-            {
-                bool isLast = i >= textToType.Length - 1;
-
-                textLabel.text = textToType.Substring(0, i + 1);
-
-                if (IsPunctuation(textToType[i], out float waitTime) && !isLast && !IsPunctuation(textToType[i + 1], out _))
-                {
-                    yield return new WaitForSeconds(waitTime);
-                }
-            }
-
-            textLabel.text = textToType.Substring(0, charIndex);                //set the text label to the substring of the text we want to type*/
-
             //New Typewriter Effect Code
             t += Time.deltaTime * typeSpeed;
             int targetIndex = Mathf.FloorToInt(t);
 
             while (charIndex < targetIndex && charIndex < textToType.Length)
             {
-                //Ignore the stuff inbetween "<" and ">" (this is for the rich text tags/when u wanna change the font mid sentence)
+                //Ignore the stuff inbetween "<" and ">" (this is for the rich text tags/when u wanna change the style mid sentence)
                 if (textToType[charIndex] == '<')
                 {
                     int tagEnd = textToType.IndexOf('>', charIndex);
