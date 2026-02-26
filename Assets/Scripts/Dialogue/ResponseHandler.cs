@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using NUnit.Framework;
 using System.Collections.Generic;
 
 public class ResponseHandler : MonoBehaviour
@@ -36,8 +35,8 @@ public class ResponseHandler : MonoBehaviour
 
             GameObject responseButton = Instantiate(responseButtonTemplate.gameObject, responseContainer);                  //create a game obj inside the container
             responseButton.SetActive(true);                                                                                 //make it visible
-            responseButton.GetComponent<TMP_Text>().text = response.ResponseText;                                           //set the text
-            responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response, responseIndex));     //add event callback when button is clicked (basically hardcoded the inspector button event)
+            responseButton.GetComponentInChildren<TMP_Text>().text = response.ResponseText;                                           //set the text
+            responseButton.GetComponentInChildren<Button>().onClick.AddListener(() => OnPickedResponse(response, responseIndex));     //add event callback when button is clicked (basically hardcoded the inspector button event)
 
             tempResponseButtons.Add(responseButton);                                                                        //keep track of created buttons to destroy them later if needed
 
