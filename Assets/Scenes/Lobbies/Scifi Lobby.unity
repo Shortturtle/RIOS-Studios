@@ -289,10 +289,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: b04da579e3cc96e4193a15af1678bec6, type: 2}
   events:
-  - name: 
+  - name: I uhhhhhh
     onPickedResponse:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1003441}
+          m_TargetAssemblyTypeName: DialogueActivator, Assembly-CSharp
+          m_MethodName: UpdateDialogueObject
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 049de78021f4c1a47825f4ffc9ede2a5, type: 2}
+            m_ObjectArgumentAssemblyTypeName: DialogueObject, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1003441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 1003439}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -224.74, y: 2.27, z: 1.02}
+  m_LocalPosition: {x: -224.76, y: 2.27, z: 0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22531,7 +22543,7 @@ Transform:
   m_GameObject: {fileID: 1843522056}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -224.74, y: 2.27, z: 1.02}
+  m_LocalPosition: {x: -224.76, y: 2.27, z: 0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
