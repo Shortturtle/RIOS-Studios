@@ -8,7 +8,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     public QuestPoint questPoint;
     private void Start()
     {
-        questPoint = GetComponentInChildren<QuestPoint>();
+        //questPoint = GetComponentInChildren<QuestPoint>();
     }
 
     public void UpdateDialogueObject(DialogueObject dialogueObject)

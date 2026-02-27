@@ -36,6 +36,7 @@ public class ChangeFurnace : MonoBehaviour
                 //put material on box
                 objectRenderer.material = originalMaterial;
             }
+            else { Debug.Log(quest.state); }
         }
     }
 }

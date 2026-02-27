@@ -17,7 +17,7 @@ public class CollectRoofBoxes : QuestStep
         {
             if (done == false) { player.DialogueUI.ShowInteractPrompt(); }
 
-            if (Input.GetKeyDown("F"))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 done = true;
                 string status = "Boxes grabbed";

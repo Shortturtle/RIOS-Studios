@@ -16,8 +16,14 @@ public class StartFurnace : QuestStep
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             if (done == false) { player.DialogueUI.ShowInteractPrompt(); }
+        }
+    }
 
-            if (Input.GetKeyDown("F"))
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
+        {
+            if (Input.GetKeyDown(KeyCode.F) && done == false)
             {
                 done = true;
                 string status = "Furnace has been lit";
