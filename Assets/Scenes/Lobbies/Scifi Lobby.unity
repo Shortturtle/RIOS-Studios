@@ -817,6 +817,7 @@ GameObject:
   - component: {fileID: 54027014}
   - component: {fileID: 54027016}
   - component: {fileID: 54027015}
+  - component: {fileID: 54027018}
   - component: {fileID: 54027017}
   m_Layer: 0
   m_Name: TempCrate8 (1)
@@ -863,10 +864,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
   - {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
   - {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
   - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
-  - {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -918,6 +919,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3698863850260856246, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+--- !u!114 &54027018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54027013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &61813021
 GameObject:
   m_ObjectHideFlags: 0
@@ -12001,19 +12016,19 @@ PrefabInstance:
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
+      objectReference: {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
+      objectReference: {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[3]'
       value: 
-      objectReference: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+      objectReference: {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
     - target: {fileID: -3524532588712065575, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: m_Materials.Array.size
       value: 3
@@ -13724,6 +13739,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1503352733805317200, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 456806289}
+    - targetCorrespondingSourceObject: {fileID: -891318163363284729, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1605566399}
     - targetCorrespondingSourceObject: {fileID: 2800154492634295799, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 660214716}
@@ -18515,6 +18533,7 @@ GameObject:
   - component: {fileID: 1418142444}
   - component: {fileID: 1418142446}
   - component: {fileID: 1418142445}
+  - component: {fileID: 1418142448}
   - component: {fileID: 1418142447}
   m_Layer: 0
   m_Name: TempCrate8 (3)
@@ -18561,10 +18580,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
   - {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
   - {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
   - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
-  - {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18616,6 +18635,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3698863850260856246, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+--- !u!114 &1418142448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418142443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &1419693289
 GameObject:
   m_ObjectHideFlags: 0
@@ -20312,6 +20345,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1226817584057097758, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+--- !u!1 &1605566395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -891318163363284729, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+  m_PrefabInstance: {fileID: 1094127718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1605566399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605566395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &1607725587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -22399943813980817, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
@@ -25173,6 +25225,7 @@ GameObject:
   - component: {fileID: 2031425099}
   - component: {fileID: 2031425101}
   - component: {fileID: 2031425100}
+  - component: {fileID: 2031425103}
   - component: {fileID: 2031425102}
   m_Layer: 0
   m_Name: TempCrate8 (2)
@@ -25219,10 +25272,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
   - {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
   - {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
   - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
-  - {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25274,6 +25327,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3698863850260856246, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+--- !u!114 &2031425103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031425098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &2038189223
 GameObject:
   m_ObjectHideFlags: 0
