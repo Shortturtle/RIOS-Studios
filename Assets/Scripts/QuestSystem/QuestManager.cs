@@ -102,6 +102,8 @@ public class QuestManager : MonoBehaviour
         Quest quest = GetQuestByID(id);
         quest.InstantiateCurrentQuestStep(this.transform);
         ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
+
+        SaveQuest(quest);
         Debug.Log(quest.state, quest.info);
     }
     private void AdvanceQuest(string id)
@@ -121,6 +123,8 @@ public class QuestManager : MonoBehaviour
         {
             ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
         }
+
+        SaveQuest(quest);
         Debug.Log(quest.state, quest.info);
     }
     private void FinishQuest(string id)
@@ -129,6 +133,7 @@ public class QuestManager : MonoBehaviour
         ClaimRewards(quest);
         ChangeQuestState(quest.info.id, QuestState.FINISHED);
 
+        SaveQuest(quest);
         Debug.Log(quest.state, quest.info);
     }
 

@@ -26,6 +26,8 @@ public class QuestPoint : MonoBehaviour
     {
         questId = questInfoForPoint.id;
 
+        Debug.Log(currentQuestState);
+
         //for quest icon, so if not using probably dont need to bring over
         questIcon = GetComponentInChildren<QuestIcon>();
     }
@@ -60,7 +62,8 @@ public class QuestPoint : MonoBehaviour
         if (quest.info.id.Equals(questId))
         {
             currentQuestState = quest.state;
-
+            Debug.Log(currentQuestState);
+            Debug.Log(quest.state);
             //for quest icons too
             //questIcon.SetState(currentQuestState, questStartPoint, questFinishPoint);
         }

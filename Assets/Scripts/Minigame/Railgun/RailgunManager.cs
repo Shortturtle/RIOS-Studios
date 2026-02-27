@@ -37,10 +37,6 @@ public class RailgunManager : BaseMicrogameClass
 
     public GameObject tickImg;
 
-    private void Start()
-    {
-        InitializeRailgun();
-    }
     public override void StartMicrogame() { InitializeRailgun(); }
 
     private void InitializeRailgun()
@@ -89,7 +85,6 @@ public class RailgunManager : BaseMicrogameClass
     //check bar progress, called on end drag in the inspector
     public void CheckBarOneProgress()
     {
-        Debug.Log(slider1.value);
         if(Mathf.Abs(slider1.value - barOneTarget) <= maxDifference && !isFinishedOne) 
         {
             isFinishedOne = true;
@@ -100,7 +95,6 @@ public class RailgunManager : BaseMicrogameClass
     }
     public void CheckBarTwoProgress()
     {
-        Debug.Log(slider2.value);
         if (Mathf.Abs(slider2.value - barTwoTarget) <= maxDifference && !isFinishedTwo) 
         {
             isFinishedTwo = true;
@@ -111,7 +105,6 @@ public class RailgunManager : BaseMicrogameClass
     }
     public void CheckBarThreeProgress()
     {
-        Debug.Log(slider3.value);
         if (Mathf.Abs(slider3.value - barThreeTarget) <= maxDifference && !isFinishedThree) 
         { 
             isFinishedThree = true;

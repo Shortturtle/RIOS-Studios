@@ -112,13 +112,16 @@ MonoBehaviour:
   energyOnDeath: 0
   freezeVFX: {fileID: 2705065892764194752}
   isRewinding: 0
-  animator: {fileID: 1883481529653644531}
   isStunned: 0
+  animator: {fileID: 1883481529653644531}
+  enemyPrefab: {fileID: 0}
+  hologramMaterial: {fileID: 0}
   waypointManager: {fileID: 0}
   distanceTravelled: 0
   percentageDistance: 0
   healthBarPosition: {fileID: 7708075468850574744}
   capShield: {fileID: 2705552253627408505, guid: 97d2014285025da43a8f9c1da216d42f, type: 3}
+  questInfoForKill: {fileID: 11400000, guid: 2f45f1164d629d94bb38e216314e4a16, type: 2}
 --- !u!114 &-6263618549634953981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d31c1cff13aade47a649f7cef8deaad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questInfoForKill: {fileID: 11400000, guid: 40afb0e86ab9c884a8962295622d5d32, type: 2}
 --- !u!136 &2778047706733796805
 CapsuleCollider:
   m_ObjectHideFlags: 0

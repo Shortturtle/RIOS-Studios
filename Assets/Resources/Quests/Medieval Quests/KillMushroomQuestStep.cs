@@ -4,7 +4,7 @@ public class KillMushroomQuestStep : QuestStep
 {
     //numbers for quest functionality
     private int numberOfMushroomsKilled = 0;
-    private int numberOfMushroomsToKill = 10;
+    private int numberOfMushroomsToKill = 5;
 
 
     private void Start()
