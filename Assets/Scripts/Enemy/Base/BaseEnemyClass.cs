@@ -181,10 +181,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     private IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
-        animator.speed = 0f; // Pause animation
+        //animator.speed = 0f; // Pause animation
         yield return new WaitForSeconds(duration);
         isStunned = false;
-        animator.speed = 1f; // Resume animation
+        //animator.speed = 1f; // Resume animation
     }
 
     public void freeze(float duration)

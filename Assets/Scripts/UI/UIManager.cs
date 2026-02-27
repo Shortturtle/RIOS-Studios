@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI abilityPointText;
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI loseScreenWaveText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,10 @@ public class UIManager : MonoBehaviour
         EnergyHandler();
         APHandler();
         WaveHandler();
+        if (healthCount <= 0)
+            {
+                UpdateLoseScreen();
+        }
     }
 
     private void HealthHandler()
@@ -69,5 +74,10 @@ public class UIManager : MonoBehaviour
 
         //update ui for wave count
         waveText.text = $"Wave: {waveCount}/{maxWaveCount}";
+    }
+
+    private void UpdateLoseScreen()
+    {
+        loseScreenWaveText.text = $"You made it to<color=#800EBF><size=120%><font=dum1 SDF Outline>{waveCount}/{maxWaveCount}</color></size></font>!";
     }
 }
