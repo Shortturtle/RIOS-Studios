@@ -7,6 +7,17 @@ public class UnitSwitch : MonoBehaviour
 
     public int questDisplayNo;
 
+    public string towerGained;
+
+    private void Start()
+    {
+        if(PlayerPrefs.GetInt(towerGained) == 1) 
+        {
+            unitBeforeQuest.SetActive(false);
+            unitAfterQuest.SetActive(true);
+        }
+    }
+
     private void OnEnable()
     {
         GameEventManager.instance.questEvents.onQuestStateChange += QuestStateChange;
@@ -20,7 +31,7 @@ public class UnitSwitch : MonoBehaviour
     {
         if(quest.info.displayNumber == questDisplayNo)
         {
-            if (quest.state.Equals(QuestState.CAN_START) || quest.state.Equals(QuestState.IN_PROGRESS))
+            if (quest.info.Equals(QuestState.CAN_START) || quest.state.Equals(QuestState.IN_PROGRESS))
             {
                 unitBeforeQuest.SetActive(true);
                 unitAfterQuest.SetActive(false);
@@ -30,6 +41,8 @@ public class UnitSwitch : MonoBehaviour
                 unitBeforeQuest.SetActive(false);
                 unitAfterQuest.SetActive(true);
             }
+            Debug.Log(quest.state);
+            Debug.Log(quest.info);
         }
     }
 }

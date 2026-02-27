@@ -11,6 +11,11 @@ public class ChangeBox : MonoBehaviour
     private void Start()
     {
         objectRenderer = GetComponent<Renderer>();
+
+        if (PlayerPrefs.GetInt("tower_Railgun") == 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnEnable()

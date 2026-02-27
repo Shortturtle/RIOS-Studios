@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.ShaderGraph;
 
 public class QuestLogButton : MonoBehaviour, ISelectHandler
 {
@@ -43,11 +44,13 @@ public class QuestLogButton : MonoBehaviour, ISelectHandler
                 buttonText.color = Color.red;
                 break;
             case QuestState.IN_PROGRESS:
+                buttonText.color = Color.red;
+                break;
             case QuestState.CAN_FINISH:
-                buttonText.color = Color.yellow;
+                buttonText.color = new Color32(0,0,255,255);
                 break;
             case QuestState.FINISHED:
-                buttonText.color = Color.green;
+                buttonText.color = new Color32(50, 180, 0, 255);
                 break;
             default:
                 Debug.LogWarning("Quest State not recognised by switch statement: " + state);

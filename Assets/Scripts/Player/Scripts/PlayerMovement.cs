@@ -100,10 +100,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //manual interaction to open quest menu
-        if (Input.GetKeyDown(KeyCode.Q))
+        //manual interaction to activate dialogue
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            questUI.QuestLogTogglePressed();
+            
         }
     }
 

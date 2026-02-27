@@ -509,6 +509,7 @@ GameObject:
   - component: {fileID: 32644772}
   - component: {fileID: 32644774}
   - component: {fileID: 32644773}
+  - component: {fileID: 32644775}
   m_Layer: 0
   m_Name: TempCrate8 (3)
   m_TagString: Untagged
@@ -554,6 +555,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
   - {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
   - {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
   - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
@@ -586,6 +588,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32644771}
   m_Mesh: {fileID: 3698863850260856246, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+--- !u!114 &32644775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32644771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &36665564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,6 +2036,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4cad1b5541ba2574a85055d3bbc34b1b, type: 3}
   m_PrefabInstance: {fileID: 113585137}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &113785521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -891318163363284729, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+  m_PrefabInstance: {fileID: 1273970729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &113785525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113785521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &131231963
 GameObject:
   m_ObjectHideFlags: 0
@@ -4264,7 +4299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3294de0db13c8408256e6369e2173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerRewardSet: 6
+  towerRewardSet: 0
 --- !u!1 &328396898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6542224050320270518, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
@@ -4498,7 +4533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: f7124d2ae0184f347b65f3f6abf5657b, type: 2}
-  questPoint: {fileID: 959520306}
+  questPoint: {fileID: 1955589275}
 --- !u!135 &349421707
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4609,8 +4644,7 @@ Transform:
   m_LocalPosition: {x: -224.25, y: 2.19, z: 1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 959520305}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &349584758
@@ -8957,6 +8991,7 @@ MonoBehaviour:
   unitBeforeQuest: {fileID: 1922953315}
   unitAfterQuest: {fileID: 349421704}
   questDisplayNo: 4
+  towerGained: tower_Railgun
 --- !u!4 &811785218
 Transform:
   m_ObjectHideFlags: 0
@@ -9801,53 +9836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d0cb182c6e8e141843f9a69393798e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &959520304
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 959520305}
-  - component: {fileID: 959520306}
-  m_Layer: 0
-  m_Name: QuestPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &959520305
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959520304}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 349421711}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &959520306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959520304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108ee3a8dc3e7204683147a345a78eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 50fdfb037fcf15441bd712ee475c8a6f, type: 2}
-  questStartPoint: 0
-  questFinishPoint: 1
 --- !u!1 &966338791
 GameObject:
   m_ObjectHideFlags: 0
@@ -11199,6 +11187,7 @@ GameObject:
   - component: {fileID: 1075352753}
   - component: {fileID: 1075352755}
   - component: {fileID: 1075352754}
+  - component: {fileID: 1075352756}
   m_Layer: 0
   m_Name: TempCrate8 (1)
   m_TagString: Untagged
@@ -11244,6 +11233,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
   - {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
   - {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
   - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
@@ -11276,6 +11266,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075352752}
   m_Mesh: {fileID: 3698863850260856246, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+--- !u!114 &1075352756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075352752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &1081798326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9152363913774390056, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
@@ -15487,18 +15491,22 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
+      objectReference: {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
     - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
+    - target: {fileID: -3537074164554268920, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
       value: 
       objectReference: {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
     - target: {fileID: -3524532588712065575, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
@@ -17168,6 +17176,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7710271800048978926, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1092350598}
+    - targetCorrespondingSourceObject: {fileID: -891318163363284729, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 113785525}
     - targetCorrespondingSourceObject: {fileID: 8034190907507845331, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 728554212}
@@ -23426,8 +23437,7 @@ Transform:
   m_LocalPosition: {x: -224.25, y: 2.19, z: 1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1955589274}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951306943
@@ -23544,11 +23554,11 @@ Transform:
   m_GameObject: {fileID: 1955589273}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -224.25, y: 2.19, z: 1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1922953322}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1955589275
 MonoBehaviour:
@@ -23564,7 +23574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questInfoForPoint: {fileID: 11400000, guid: 50fdfb037fcf15441bd712ee475c8a6f, type: 2}
   questStartPoint: 1
-  questFinishPoint: 0
+  questFinishPoint: 1
 --- !u!1 &1960977777
 GameObject:
   m_ObjectHideFlags: 0
@@ -23867,6 +23877,7 @@ GameObject:
   - component: {fileID: 1974370963}
   - component: {fileID: 1974370965}
   - component: {fileID: 1974370964}
+  - component: {fileID: 1974370966}
   m_Layer: 0
   m_Name: TempCrate8 (2)
   m_TagString: Untagged
@@ -23912,6 +23923,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
   - {fileID: 2100000, guid: 6ce7671b7037ee2458637ed1fee65581, type: 2}
   - {fileID: 2100000, guid: d1288ac02a29b5841bfeb1cf08aa5aa4, type: 2}
   - {fileID: 2100000, guid: 8739f46adc4753e4bac0d142feb24968, type: 2}
@@ -23944,6 +23956,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974370962}
   m_Mesh: {fileID: 3698863850260856246, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
+--- !u!114 &1974370966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974370962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7f1d3a405d7574fa0e7935464e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialToPut: {fileID: -876546973899608171, guid: 97c495d0a9ed3cc40871851010d62c81, type: 3}
+  questDisplayNo: 4
 --- !u!1 &1979388933
 GameObject:
   m_ObjectHideFlags: 0
@@ -26446,6 +26472,7 @@ SceneRoots:
   - {fileID: 1840620221}
   - {fileID: 542371638}
   - {fileID: 316316813}
+  - {fileID: 1955589274}
   - {fileID: 1922953322}
   - {fileID: 349421711}
   - {fileID: 811785218}
