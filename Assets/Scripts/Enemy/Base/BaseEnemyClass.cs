@@ -19,6 +19,8 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public int waypointIndex { get; set; } = 0;
 
     public int energyOnDeath = 0;
+
+    public GameObject enemyDeathVFX;
     #endregion
 
     #region Skill Variables
@@ -136,6 +138,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public virtual void Die() // death code (can be overridden)
     {
         ResourceManager.instance.AddEnergy(energyOnDeath);
+        Instantiate(enemyDeathVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
