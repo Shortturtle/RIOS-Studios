@@ -7,14 +7,6 @@ public class EnterLevel : MonoBehaviour
     public string levelToLoad;
     public PlayerMovement player;
 
-    void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Interact(player);
-        }
-    }
-
     public void Interact(PlayerMovement player)
     {
         SceneManager.LoadScene(levelToLoad);
