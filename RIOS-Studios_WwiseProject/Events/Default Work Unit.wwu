@@ -293,33 +293,24 @@
 								</Event>
 								<Event Name="PotionThrowerBreak" ID="{BCD32890-CAFE-4801-A332-F4EAFDEA702A}">
 									<ChildrenList>
-										<Action Name="" ID="{B3057722-D4ED-40B6-9AF4-705EBB8D272F}" ShortID="1073674446">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="13"/>
-												<Property Name="Pitch" Type="int32">
-													<ModifierList>
-														<ModifierInfo>
-															<Modifier Name="" ID="{E33D2F86-9D43-4321-A762-79166319A80F}">
-																<PropertyList>
-																	<Property Name="Enabled" Type="bool" Value="True"/>
-																	<Property Name="Max" Type="Real64" Value="500"/>
-																	<Property Name="Min" Type="Real64" Value="-500"/>
-																</PropertyList>
-															</Modifier>
-														</ModifierInfo>
-													</ModifierList>
-												</Property>
-											</PropertyList>
+										<Action Name="" ID="{A5AD0CFE-5926-4CB9-9EE9-AD7566ED855A}" ShortID="538634656">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="PotionThrowerBreak" ID="{8162D31D-3521-44FF-A295-33BD0675DB30}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+													<ObjectRef Name="eXPLOSION" ID="{259211B7-0D8E-46AE-9F93-F5B35FA6FACB}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
-										<Action Name="" ID="{8E92217D-0340-44BA-BE2C-9C82314D6694}" ShortID="108476070">
+										<Action Name="" ID="{BC793EC8-050C-4876-A342-21411E33FFD1}" ShortID="662655748">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="PotionThrowerBreak" ID="{8162D31D-3521-44FF-A295-33BD0675DB30}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+													<ObjectRef Name="Glass" ID="{CA18A1A6-938B-4DC2-A954-268CB78B88FB}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{4401B5D9-D187-4BDF-9F5C-0DEB867E306F}" ShortID="547948445">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Magicburst" ID="{FDB6A0DB-7F2F-46CF-AE43-46772C6CABBE}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -327,33 +318,30 @@
 								</Event>
 								<Event Name="RailgunnerAttack" ID="{5788368C-5DB7-424B-8864-B83DEA139BF1}">
 									<ChildrenList>
-										<Action Name="" ID="{8DD7E754-748E-49D8-9675-42089B3743E5}" ShortID="733610061">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="13"/>
-												<Property Name="Pitch" Type="int32">
-													<ModifierList>
-														<ModifierInfo>
-															<Modifier Name="" ID="{A06E55B3-9C5B-4052-A175-4D1FF26899A4}">
-																<PropertyList>
-																	<Property Name="Enabled" Type="bool" Value="True"/>
-																	<Property Name="Max" Type="Real64" Value="500"/>
-																	<Property Name="Min" Type="Real64" Value="-500"/>
-																</PropertyList>
-															</Modifier>
-														</ModifierInfo>
-													</ModifierList>
-												</Property>
-											</PropertyList>
+										<Action Name="" ID="{87B46128-DF5B-4C28-B720-6A60D003B7D2}" ShortID="8509204">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="RailgunnerAttack" ID="{8D9A84DB-0FE5-41EF-B2AC-E82657CCAF62}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+													<ObjectRef Name="Railgunbg" ID="{0E83012B-F913-4A84-B25D-C836C550AE29}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
-										<Action Name="" ID="{7678E035-D86C-4722-A001-6987AA9FF583}" ShortID="927271472">
+										<Action Name="" ID="{AB3F4AF2-0EB6-4F07-B3CD-BF307698DABD}" ShortID="721772237">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="0.05"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="RailgunnerAttack" ID="{8D9A84DB-0FE5-41EF-B2AC-E82657CCAF62}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+													<ObjectRef Name="Laser" ID="{BD9A2300-E7A0-4DA5-A1A6-8F19ADB09B8C}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{D1D199C4-1398-4B98-9C7F-BD8852B008A6}" ShortID="690883642">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="0.1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Railgun" ID="{DD537195-0C34-4783-9E6B-A858CB90A61E}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -546,6 +534,162 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="RiftClose" ID="{EB7C8F0A-998A-4543-8F56-1AE75B542B22}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="TsukiSoundVFX" ID="{9B45788E-D4CA-4B50-AB4B-1DCEFD9D5D12}">
+									<ChildrenList>
+										<Action Name="" ID="{65C8CAB1-529A-42EB-BDD5-351BB419C51E}" ShortID="1028074302">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="shadowman_sax_long_1" ID="{A647DF5D-335C-4B92-BC0B-2B69AD457C67}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{8E6F205B-2E26-4EF6-AFA3-FB979DAA2B8A}" ShortID="485969594">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="shadowman_sax_long_2" ID="{90CD0906-8713-4DA0-8A3E-1E78AAFAA2E9}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{F094E93F-8496-4066-B9EB-D700E1622F52}" ShortID="913007222">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="shadowman_sax_long_3" ID="{64A0CCCA-7744-42FB-BC79-B18A10CAA529}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{ECB178CE-BEE2-466F-973F-21B7FF671B90}" ShortID="821194334">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="shadowman_sax_long_4" ID="{DCD378E1-6EC0-4CE3-8521-86C8716EEEF3}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="TsukiFireworkLaunch" ID="{68ED4C83-2D70-4067-B846-588051BD0B2F}">
+									<ChildrenList>
+										<Action Name="" ID="{C8A51EC8-4A14-4026-A9B9-1F2C29D5074E}" ShortID="1056182290">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="13"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{3010BB0E-442C-48A2-9892-66B80632DCD0}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="500"/>
+																	<Property Name="Min" Type="Real64" Value="-500"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="FireworkLaunch" ID="{C081FED8-1090-4B86-B635-15F74D3DBD1B}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{55AC650C-8017-4BD6-B053-6A4FA5106430}" ShortID="852522467">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="FireworkLaunch" ID="{C081FED8-1090-4B86-B635-15F74D3DBD1B}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="TsukiFireworkExplosion" ID="{7D47FA82-B5F8-4D00-B80B-7C673A0CB405}">
+									<ChildrenList>
+										<Action Name="" ID="{D04DB36C-E596-4304-99FD-322A416C4BC2}" ShortID="541455233">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="13"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{865ADC6B-7103-4BA3-B411-8CCF493CB068}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="500"/>
+																	<Property Name="Min" Type="Real64" Value="-500"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="FireworkExplosion" ID="{422A736F-FB8A-40B7-A05C-AC65ED20DF90}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{1C61BBD2-65B5-42A9-BA39-492FE043CCB0}" ShortID="498010496">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="FireworkExplosion" ID="{422A736F-FB8A-40B7-A05C-AC65ED20DF90}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="RailgunChargeUp" ID="{C01DB861-9BD6-46EB-9D05-239C2E80AB02}">
+									<ChildrenList>
+										<Action Name="" ID="{04730BE4-75FE-4E6E-9510-D6D3ACC282FF}" ShortID="382194994">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="0.25"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="chargeup1" ID="{300DA3A7-A2C5-4455-8CD5-A3F73B551FC7}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{60D3766F-549C-4CAA-8798-04268C176A81}" ShortID="1015156690">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="spacey_novanox-charge-up-sound-effect-447383" ID="{BAA418E5-223D-4D96-843A-804F1805C3EE}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{36759933-1FCE-43FA-80CD-F57EA8C05209}" ShortID="10282834">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Chargeup2" ID="{D2D601B2-6480-413E-95C8-AD3D25F0B4F1}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="DiverSlow" ID="{594854DA-5EB4-4A4B-8449-A57CEE80ADCD}">
+									<ChildrenList>
+										<Action Name="" ID="{F30B7C8E-E65B-4E06-A275-2831DE58BF8D}" ShortID="217604372">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="WaterSplash1" ID="{94B37F08-4047-4DC4-918A-C1A40C0BB4EE}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{ED20B1DB-EDBA-4CE7-A1F1-33B2EAB9C637}" ShortID="877471375">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="WaterSplash2" ID="{86F7CF76-D737-43AF-B4E8-A1E3096D2306}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{FFD899CF-37A4-4328-9746-4A794A6B5750}" ShortID="576855957">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="0.65"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="WaterRipple" ID="{84B98569-92C6-44B1-8405-008479E143B8}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
