@@ -4483,6 +4483,8 @@ GameObject:
   - component: {fileID: 349421707}
   - component: {fileID: 349421706}
   - component: {fileID: 349421705}
+  - component: {fileID: 349421714}
+  - component: {fileID: 349421713}
   m_Layer: 0
   m_Name: Neiro (Quest Completed)
   m_TagString: Untagged
@@ -4647,6 +4649,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349421713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349421704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea3260ec2aa71e4584dde2deeffe7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 2
+  levelToLoad: ScifiStage
+  player: {fileID: 1018662252}
+--- !u!114 &349421714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349421704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c1a7a961de45d4aa047918e191df2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: 160831063708aea47a15f6e32f8b9dc8, type: 2}
+  events:
+  - name: A break could be nice...
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 349421713}
+          m_TargetAssemblyTypeName: EnterLevel, Assembly-CSharp
+          m_MethodName: enterLevel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1018662252}
+            m_ObjectArgumentAssemblyTypeName: PlayerMovement, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: I should go search for my friend...
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &349584758
 GameObject:
   m_ObjectHideFlags: 0

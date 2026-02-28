@@ -38162,6 +38162,7 @@ GameObject:
   - component: {fileID: 855592019}
   - component: {fileID: 855592018}
   - component: {fileID: 855592017}
+  - component: {fileID: 855592025}
   - component: {fileID: 855592024}
   m_Layer: 0
   m_Name: Astra
@@ -38184,17 +38185,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 721c523a5344a5e47af65c91a30a94d3, type: 2}
   events:
-  - name: 
+  - name: Sure!
     onPickedResponse:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 855592024}
           m_TargetAssemblyTypeName: EnterLevel, Assembly-CSharp
-          m_MethodName: Interact
+          m_MethodName: enterLevel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 1018662252}
             m_ObjectArgumentAssemblyTypeName: PlayerMovement, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Actaully...
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 855592018}
+          m_TargetAssemblyTypeName: DialogueActivator, Assembly-CSharp
+          m_MethodName: UpdateDialogueObject
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: f7a8c34b74628b14eb321beaf49d2067, type: 2}
+            m_ObjectArgumentAssemblyTypeName: DialogueObject, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -38213,7 +38230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 721c523a5344a5e47af65c91a30a94d3, type: 2}
-  questPoint: {fileID: 174155330}
+  questPoint: {fileID: 0}
 --- !u!135 &855592019
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -38338,8 +38355,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea3260ec2aa71e4584dde2deeffe7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 1.5
   levelToLoad: FantasyStage
   player: {fileID: 1018662252}
+--- !u!114 &855592025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855592016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c1a7a961de45d4aa047918e191df2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueObject: {fileID: 11400000, guid: f7a8c34b74628b14eb321beaf49d2067, type: 2}
+  events:
+  - name: Yep
+    onPickedResponse:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 855592024}
+          m_TargetAssemblyTypeName: EnterLevel, Assembly-CSharp
+          m_MethodName: enterLevel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1018662252}
+            m_ObjectArgumentAssemblyTypeName: PlayerMovement, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &860562638
 GameObject:
   m_ObjectHideFlags: 0

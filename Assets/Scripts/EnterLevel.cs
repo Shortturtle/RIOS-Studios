@@ -4,11 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class EnterLevel : MonoBehaviour
 {
+    public float waitTime = 1.5f;
     public string levelToLoad;
     public PlayerMovement player;
 
-    public void Interact(PlayerMovement player)
+    public void enterLevel(PlayerMovement player)
     {
+        StartCoroutine(loadLevel());
+    }
+
+    private System.Collections.IEnumerator loadLevel()
+    {
+        //Wait for the animation to finish
+        yield return new WaitForSeconds(waitTime);
+        //Load the new level
         SceneManager.LoadScene(levelToLoad);
     }
 

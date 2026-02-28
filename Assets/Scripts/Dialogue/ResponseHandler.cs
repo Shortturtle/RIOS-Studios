@@ -74,7 +74,6 @@ public class ResponseHandler : MonoBehaviour
         else
         {
             dialogueUI.CloseDialogueBox();
-            dialogueUI.SetTransparentImage();
         }
     }
 }

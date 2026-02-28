@@ -14,7 +14,7 @@ public class DialogueUI : MonoBehaviour
     public bool IsOpen { get; private set; }
     private Coroutine dialogueCoroutine;
 
-    private ResponseHandler responseHandler;
+    public ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
 
     private void Start()
@@ -22,7 +22,6 @@ public class DialogueUI : MonoBehaviour
         typewriterEffect =GetComponent<TypewriterEffect>();
         responseHandler=GetComponent<ResponseHandler>();
 
-        SetTransparentImage();
         CloseDialogueBox();
     }
 
@@ -91,7 +90,6 @@ public class DialogueUI : MonoBehaviour
         }
         else
         {
-            SetTransparentImage();
             CloseDialogueBox();
         }
     }
@@ -109,13 +107,6 @@ public class DialogueUI : MonoBehaviour
                 typewriterEffect.Stop();
             }
         }
-    }
-
-    public void SetTransparentImage()
-    {
-        Color color = speakerSprite.color;
-        color.a = 0f;
-        speakerSprite.color = color;
     }
 
     public void CloseDialogueBox()
