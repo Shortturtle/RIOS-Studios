@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ConeProjectile : BaseProjectileClass
 {
+    public ParticleSystem particleSys;
     public float deathTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,11 +23,9 @@ public class ConeProjectile : BaseProjectileClass
 
     protected override void ToTarget()
     {
-        Vector3 dir = transform.forward;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnParticleCollision(GameObject other)
     {
         BaseEnemyClass enemy = other.GetComponent<BaseEnemyClass>();
         if (enemy != null)

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6106429992420358786}
   - component: {fileID: 7841984514199916313}
-  - component: {fileID: -9189980303628714868}
   m_Layer: 0
   m_Name: PotionProjectile
   m_TagString: Untagged
@@ -51,7 +50,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 05834718a01d267489b227d499d9c5a0, type: 2}
-  AoERange: 5
+  AoERange: 4
   potion: {fileID: 518112336618132754}
   potionVFX: {fileID: 2167622962714799346, guid: 529c99f08891bce459cb1510afe0c6da, type: 3}
   start: {x: 0, y: 0, z: 0}
@@ -59,27 +58,6 @@ MonoBehaviour:
   crtl2: {x: 0, y: 0, z: 0}
   end: {x: 0, y: 0, z: 0}
   arcHeight: 1
---- !u!135 &-9189980303628714868
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518112336618132754}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.016025769
-  m_Center: {x: 0.007676398, y: 0.017056055, z: 0.055684082}
 --- !u!1 &1337832124867022847
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +171,7 @@ Transform:
   m_GameObject: {fileID: 2744896661899726935}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23313358, y: -0.24056484, z: -0.05964263, w: 0.9403298}
-  m_LocalPosition: {x: 0.036923353, y: 0.0130544305, z: 0.0738597}
+  m_LocalPosition: {x: 0.031, y: 0.0130544305, z: 0.0283}
   m_LocalScale: {x: 0.08948824, y: 0.08948824, z: 0.08948824}
   m_ConstrainProportionsScale: 0
   m_Children:
