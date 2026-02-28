@@ -18,6 +18,8 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI towerRewardsText;
     [SerializeField] private TextMeshProUGUI questRequirementsText;
 
+    [SerializeField] private Image towerShard;
+
     private Button firstSelectedButton;
 
 
@@ -99,6 +101,8 @@ public class QuestLogUI : MonoBehaviour
 
             //rewards text
             towerRewardsText.text = "";
+
+            //towerShard;
         }
     }
 
@@ -119,5 +123,7 @@ public class QuestLogUI : MonoBehaviour
 
         //rewards text
         towerRewardsText.text = quest.info.towerRewardName;
+
+        towerShard.sprite = quest.info.towerShard;
     }
 }

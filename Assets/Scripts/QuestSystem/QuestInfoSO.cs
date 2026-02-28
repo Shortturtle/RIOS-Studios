@@ -28,6 +28,8 @@ public class QuestInfoSO : ScriptableObject
     public int towerReward;
     public string towerRewardName;
 
+    public Sprite towerShard;
+
     //ensure id is always the name of Scriptable Object asset
     private void OnValidate()
     {
