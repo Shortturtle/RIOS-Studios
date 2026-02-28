@@ -6,6 +6,7 @@ public class AOEAtkJIB : BaseProjectileClass
 {
     public float AoERange;
     public GameObject atkProjectile;
+    public AK.Wwise.Event launchEvent;
     public VisualEffect vfx;
     public float lifeTime;
 
@@ -14,6 +15,7 @@ public class AOEAtkJIB : BaseProjectileClass
         base.InitializeProjectile(projectileDamage, projectileTarget, projectileTargetPosition);
         vfx.SetVector3("StartPosition", transform.position);
         vfx.SetVector3("EndPosition", targetPosition);
+        launchEvent.Post(gameObject);
         StartCoroutine(lifetimeCo());
     }
     protected override void ToTarget()

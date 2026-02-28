@@ -34,6 +34,7 @@ public class RailGunnerLaser : BaseProjectileClass
     private IEnumerator ProjectileEffectCo()
     {
         yield return new WaitForSeconds(0.6f);
+        projectileEvent.Post(gameObject);
         BaseEnemyClass frickThisGuy = target.GetComponent<BaseEnemyClass>();
 
         if (frickThisGuy != null)

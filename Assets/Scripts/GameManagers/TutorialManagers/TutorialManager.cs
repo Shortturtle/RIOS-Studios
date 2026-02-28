@@ -15,10 +15,6 @@ public class TutorialManager : MonoBehaviour
     [Header("TutorialFlags")]
     public TowerSelectMenu towerSelectMenu;
     private TutorialState currentTutorialState = TutorialState.OpenTowerMenu;
-    private bool openedTowerMenu;
-    private bool placedFirstTower;
-    private bool towerDegraded;
-    private bool microgameOpen;
 
     private int frameCount;
 
@@ -117,7 +113,6 @@ public class TutorialManager : MonoBehaviour
             Debug.Log("MenuOpen");
             StartCoroutine(OpenTutorialImage(1, 0.1f));
             currentTutorialState = TutorialState.PlaceFirstTower;
-            openedTowerMenu = true;
         }
     }
 
@@ -127,7 +122,6 @@ public class TutorialManager : MonoBehaviour
         if (placedTower != null && placedTower.enabled == true)
         {
             Debug.Log("Placed First Tower");
-            placedFirstTower = true;
             currentTutorialState = TutorialState.TowerDegraded;
             waveManager.StartWave();
         }
@@ -143,7 +137,6 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("TowerDegraded");
                 StartCoroutine(OpenTutorialImage(2, 0.2f));
                 currentTutorialState = TutorialState.MicrogameExposition;
-                towerDegraded = true;
             }
         }
     }

@@ -7,6 +7,7 @@ public class RailGunnerTower : OffenseTowerBase
 {
     public Animator animator;
     public GameObject chargeUpVFX;
+    public AK.Wwise.Event chargeUpEvent;
     protected override void Degrade()
     {
         damageValue = (float)Math.Round(damageBase * (1f - (0.5f * ((float)degradeRank / (float)maxDegradeRank))), 2);
@@ -32,6 +33,7 @@ public class RailGunnerTower : OffenseTowerBase
             animator.SetBool("Shooting", false);
         GameObject chargeUpVFXInstance = Instantiate(chargeUpVFX, bulletExitPoint.transform.position, Quaternion.identity);
         chargeUpVFXInstance.transform.parent = bulletExitPoint.transform;
+        chargeUpEvent.Post(gameObject);
         yield return new WaitForSeconds((float)chargeUpVFXInstance.GetComponent<PlayableDirector>().duration);
         Destroy(chargeUpVFXInstance);
     }

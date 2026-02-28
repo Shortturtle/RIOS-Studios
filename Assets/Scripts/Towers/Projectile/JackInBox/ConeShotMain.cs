@@ -34,6 +34,8 @@ public class ConeShotMain : BaseProjectileClass
                 counter++;
             }
         }
+
+        projectileEvent.Post(gameObject);
     }
 
     protected override void Update()
