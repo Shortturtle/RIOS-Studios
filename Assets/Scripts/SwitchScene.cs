@@ -14,8 +14,6 @@ public class SwitchScene : MonoBehaviour
         PanelAnim.SetTrigger("Fade");
     }
 
-
-
     // Update is called once per frame
     void Update()
     {

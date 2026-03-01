@@ -30,7 +30,7 @@ public class PauseFracture : MonoBehaviour
             shardCanvas = shardParent.gameObject.AddComponent<Canvas>();
         }
         shardCanvas.overrideSorting = true;
-        shardCanvas.sortingOrder = 999; // Always on top
+        shardCanvas.sortingOrder = 2; // Always on top
     }
 
     public void TogglePause()
@@ -77,23 +77,26 @@ public class PauseFracture : MonoBehaviour
         {
             for (int x = 0; x < columns; x++)
             {
-                // Slice screenshot
-                Rect rect = new Rect(x * shardWidth, y * shardHeight, shardWidth, shardHeight);
-                Sprite shardSprite = Sprite.Create(texture, rect, new Vector2(0.5f, 0.5f));
-
-                // Instantiate shard
+                // Instantiate shard prefab
                 GameObject shard = Instantiate(shardPrefab, shardParent);
-                Image img = shard.GetComponent<Image>();
-                img.sprite = shardSprite;
 
                 RectTransform rt = shard.GetComponent<RectTransform>();
                 rt.sizeDelta = new Vector2(shardWidth, shardHeight);
-
-                // Position shard
                 rt.anchoredPosition = new Vector2(
                     (-Screen.width / 2f) + shardWidth * x + shardWidth / 2f,
                     (-Screen.height / 2f) + shardHeight * y + shardHeight / 2f
                 );
+
+                // Assign screenshot to the child image
+                Image screenshotImg = shard.transform.GetChild(0).GetComponent<Image>();
+                screenshotImg.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
+                                                     new Vector2(0.5f, 0.5f));
+                screenshotImg.rectTransform.sizeDelta = new Vector2(texture.width, texture.height);
+
+                // **Offset the screenshot inside the shard so only the correct portion shows**
+                float offsetX = -rt.anchoredPosition.x;
+                float offsetY = -rt.anchoredPosition.y;
+                screenshotImg.rectTransform.anchoredPosition = new Vector2(offsetX, offsetY);
 
                 // Calculate direction from center
                 Vector2 dir = new Vector2(x - centerX, y - centerY).normalized;

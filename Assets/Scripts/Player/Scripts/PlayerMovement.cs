@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     //refs
     private CharacterController characterController;
     private QuestLogUI questUI;
+    private PauseFracture pause;
     public GameObject pauseScreen;
     public Animator animator;
 
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         //refs
         characterController = GetComponent<CharacterController>();
         questUI = FindFirstObjectByType<QuestLogUI>();
+        pause = FindFirstObjectByType<PauseFracture>();
     }
 
     //For input system, enable & disable
@@ -279,15 +281,11 @@ public class PlayerMovement : MonoBehaviour
     //for pause screen
     public void PauseGame()
     {
-        Time.timeScale = 0;
-        pauseScreen.SetActive(true);
-        hasControl = false;
+        pause.TogglePause();
     }
     public void ResumeGame()
     {
-        Time.timeScale = 1.0f;
-        pauseScreen.SetActive(false);
-        hasControl = true;
+        pause.UnpauseGame();
     }
 
     public void SelectMenu(InputAction.CallbackContext ctx)
