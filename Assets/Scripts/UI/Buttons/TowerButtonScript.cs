@@ -6,6 +6,9 @@ using Coffee.UIEffects;
 
 public class TowerButtonScript : MonoBehaviour
 {
+    public RectTransform portalBounds;
+    public RectTransform buttonBounds;
+
     public GameObject tower;
     public float popOutDuration;
     public float popOutScaleMultiplier;
@@ -28,7 +31,13 @@ public class TowerButtonScript : MonoBehaviour
 
     public void SpawnTower()
     {
-        if(tower.GetComponent<BaseTowerClass>() != null)
+        if (!IsFullyInside(buttonBounds, portalBounds))
+        {
+            Debug.Log("OutsidePortalBounds");
+            return;
+        }
+
+        if (tower.GetComponent<BaseTowerClass>() != null)
         {
             BuildingManager.instance.TowerPlacement(tower);
         }
@@ -36,6 +45,7 @@ public class TowerButtonScript : MonoBehaviour
 
     private void ButtonSelect()
     {
+
         if (BuildingManager.instance.towerToPlace == tower && !selectGoal)
         {
             selectGoal = true;
@@ -79,5 +89,29 @@ public class TowerButtonScript : MonoBehaviour
             yield return null;
         }
 
+    }
+    public bool IsFullyInside(RectTransform inner, RectTransform outer)
+    {
+        Vector3[] innerCorners = new Vector3[4];
+        Vector3[] outerCorners = new Vector3[4];
+
+        inner.GetWorldCorners(innerCorners);
+        outer.GetWorldCorners(outerCorners);
+
+        // outerCorners: [0] = bottom-left, [1] = top-left, [2] = top-right, [3] = bottom-right
+        Rect outerRect = new Rect(
+            outerCorners[0].x,
+            outerCorners[0].y,
+            outerCorners[2].x - outerCorners[0].x,
+            outerCorners[2].y - outerCorners[0].y
+        );
+
+        foreach (Vector3 corner in innerCorners)
+        {
+            if (!outerRect.Contains(corner))
+                return false;
+        }
+
+        return true;
     }
 }
