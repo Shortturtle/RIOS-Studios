@@ -7211,7 +7211,8 @@ PrefabInstance:
       propertyPath: 'spawnLocations.Array.data[3]'
       value: 
       objectReference: {fileID: 1885534110}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4360289957204395445, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3924108909055017986, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
@@ -7223,7 +7224,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3924108909055017986, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
       insertIndex: -1
       addedObject: {fileID: 473702949}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3371718519042332631, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 383090968}
   m_SourcePrefab: {fileID: 100100000, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
 --- !u!4 &254041783 stripped
 Transform:
@@ -8032,6 +8036,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &383090966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3371718519042332631, guid: df4e5a714d2bb0a42adb3e96983b9076, type: 3}
+  m_PrefabInstance: {fileID: 254041782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &383090968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383090966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa9d346026e89354bb3b7e1667bc1f63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveHolder: {fileID: 11400000, guid: 243ace5240c6fa34d900df20a2a2fc8c, type: 2}
+  currentWave: 0
+  maxWaves: 0
+  spawnLocations: []
+  enemiesCurrentlyAlive: []
+  waveBufferTime: 10
+  timeBetweenSpawns: 2
+  currentWavePlaying: 0
+  winYes: 0
+  allRotatingClockHands:
+  - {fileID: 903552181}
+  - {fileID: 1856004898}
+  - {fileID: 491919253}
+  selectedWaypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &388266448
 GameObject:
   m_ObjectHideFlags: 0
@@ -8810,10 +8848,10 @@ MonoBehaviour:
   spinRounds: 3
   spinSpeed: 600
   spawnBases:
-  - {fileID: 373105337}
-  - {fileID: 2139157594}
-  - {fileID: 1651949883}
-  - {fileID: 1705902040}
+  - {fileID: 1360011503}
+  - {fileID: 1047248324}
+  - {fileID: 521809123}
+  - {fileID: 1885534110}
   pointSpeed: 5
   modelRotationOffset: {x: 0, y: -90, z: 0}
 --- !u!1 &519681623
@@ -10814,10 +10852,10 @@ MonoBehaviour:
   spinRounds: 3
   spinSpeed: 450
   spawnBases:
-  - {fileID: 373105337}
-  - {fileID: 2139157594}
-  - {fileID: 1651949883}
-  - {fileID: 1705902040}
+  - {fileID: 1360011503}
+  - {fileID: 1047248324}
+  - {fileID: 521809123}
+  - {fileID: 1885534110}
   pointSpeed: 5
   modelRotationOffset: {x: 0, y: -90, z: 0}
 --- !u!1 &905342988
@@ -16579,10 +16617,10 @@ MonoBehaviour:
   spinRounds: 3
   spinSpeed: 550
   spawnBases:
-  - {fileID: 373105337}
-  - {fileID: 2139157594}
-  - {fileID: 1651949883}
-  - {fileID: 1705902040}
+  - {fileID: 1360011503}
+  - {fileID: 1047248324}
+  - {fileID: 521809123}
+  - {fileID: 1885534110}
   pointSpeed: 5
   modelRotationOffset: {x: 0, y: -90, z: 0}
 --- !u!1 &1885534109
