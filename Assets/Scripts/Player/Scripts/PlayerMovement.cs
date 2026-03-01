@@ -1,11 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -58,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-
         //refs
         characterController = GetComponent<CharacterController>();
         questUI = FindFirstObjectByType<QuestLogUI>();
@@ -76,35 +73,26 @@ public class PlayerMovement : MonoBehaviour
     {
         bool isGrounded = characterController.isGrounded;
 
-        if(vfxRenderer != null ) { vfxRenderer.SetVector3("ColliderPos", transform.position); }
-        
+        if (vfxRenderer != null) { vfxRenderer.SetVector3("ColliderPos", transform.position); }
 
+        //Gravity handling/Ground checks
         if (isGrounded && velocity.y < 0) { velocity.y = -2; }
         if (!isGrounded) { velocity.y = gravity * Time.deltaTime; }
 
+        //Player control check
         if (hasControl == true)
         {
-
             Look();
             CalculateSpeed();
             AnimatorUpdate();
             Move();
         }
+    }
 
-        //manual interaction to activate dialogue
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (!dialogueUI.IsOpen)
-            {
-                Interactable.Interact(this);
-            }
-        }
-
-        //manual interaction to activate dialogue
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            
-        }
+    //Interaction input
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (!dialogueUI.IsOpen){ Interactable.Interact(this); }
     }
 
     public void Freeze(InputAction.CallbackContext ctx)
@@ -113,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(FreezeCo());
         }
-
         else
         {
             return;
@@ -148,14 +135,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Instantiate(RewindVFX, transform.position, Quaternion.identity);
             ResourceManager.instance.RemoveAbilityPoint(rewindAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius * 10, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius * 10, enemyLayer); //Make the radius map wide :P
 
             foreach (Collider hit in hitColliders)
             {
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
                 if (enemy != null)
                 {
-
                     enemy.StartRewind();
                 }
             }
@@ -173,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Instantiate(TransmutateVFX, transform.position, Quaternion.identity);
             ResourceManager.instance.RemoveAbilityPoint(transmutateAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
 
             List<BaseEnemyClass> enemiesDetected = new List<BaseEnemyClass>();
 
@@ -209,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= hologramAbilityCost)
         {
             ResourceManager.instance.RemoveAbilityPoint(hologramAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
             
             foreach (Collider hit in hitColliders)
             {
@@ -234,7 +220,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveDirection = transform.forward * currentSpeed * Time.deltaTime + velocity;
         characterController.Move(moveDirection);
-
     }
 
     //player rotation
