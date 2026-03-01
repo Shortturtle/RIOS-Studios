@@ -47,6 +47,8 @@ public class BaseTowerClass: MonoBehaviour
 
     protected virtual void GeneralDegradeTracker()
     {
+        if (Time.timeScale == 0) { return; }
+
         if (isOverdrive)
         {
             OverDriveTimer();
