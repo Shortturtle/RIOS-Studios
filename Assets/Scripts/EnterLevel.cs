@@ -1,7 +1,5 @@
 using UnityEngine;
-using System;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.GraphView;
 
 public class EnterLevel : MonoBehaviour
 {
