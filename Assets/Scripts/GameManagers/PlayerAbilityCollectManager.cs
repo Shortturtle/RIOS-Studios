@@ -24,15 +24,15 @@ public class PlayerAbilityCollectManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(ability_Freeze, 1);
         }
-        if (abilityNumber == 2)
+        if (abilityNumber == 3)
         {
             PlayerPrefs.SetInt(ability_Reverse, 1);
         }
-        if (abilityNumber == 3)
+        if (abilityNumber == 4)
         {
             PlayerPrefs.SetInt(ability_Holo, 1);
         }
-        if (abilityNumber == 4)
+        if (abilityNumber == 2)
         {
             PlayerPrefs.SetInt(ability_Trans, 1);
         }

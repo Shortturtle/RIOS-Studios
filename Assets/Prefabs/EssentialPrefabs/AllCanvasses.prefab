@@ -1153,6 +1153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2652895860265041183}
   - component: {fileID: 3399121802281069011}
+  - component: {fileID: 1941191715115104999}
   m_Layer: 5
   m_Name: AbilityGrid
   m_TagString: Untagged
@@ -1207,6 +1208,22 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1941191715115104999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807303591927940349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd3ef6dbef9ca24588e643a1bad6c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability_Freeze: {fileID: 5026596970185201794}
+  ability_Reverse: {fileID: 352535190501125115}
+  ability_Holo: {fileID: 8884189900415369201}
+  ability_Trans: {fileID: 6052422828147461418}
 --- !u!1 &854536053292743274
 GameObject:
   m_ObjectHideFlags: 0
