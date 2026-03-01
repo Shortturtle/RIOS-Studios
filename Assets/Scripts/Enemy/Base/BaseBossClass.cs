@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BaseBossClass : BaseEnemyClass
 {
-    public List<BossAttack> attackList = new List<BossAttack>();
-    private BossAttack lastBossAttack = null;
     private bool attacking = false;
 
     public float timeBetweenAttacks = 1f;

@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent (typeof(SphereCollider))]
 public class OffenseTowerBase : BaseTowerClass
@@ -13,6 +11,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     // Range variables
     protected SphereCollider rangeSphere;
+    public GameObject rangeIndicator;
 
     // Target variables
     protected List<BaseEnemyClass> targets = new List<BaseEnemyClass>();
@@ -40,6 +39,9 @@ public class OffenseTowerBase : BaseTowerClass
     [HideInInspector] public float timeBetweenAttackValue;
     [HideInInspector] public float rangeValue;
     [HideInInspector] public bool canAttackFlying;
+    [HideInInspector] public float damageMod =1f;
+    [HideInInspector] public float timeBetweenAttackMod = 1f;
+    [HideInInspector] public float rangeMod =1f;
     protected float attackTimer;
 
     // Projectile variables
@@ -300,6 +302,7 @@ public class OffenseTowerBase : BaseTowerClass
         rangeValue = rangeBase;
         rangeSphere.isTrigger = true;
         rangeSphere.radius = rangeValue;
+        rangeIndicator.transform.localScale *= (rangeValue * 2);
 
         projectile = stats.Projectile;
 
@@ -326,12 +329,13 @@ public class OffenseTowerBase : BaseTowerClass
     protected virtual void AttackTimer()
     {
         //If there is a target in range, count down the attack timer. If the timer reaches 0, attack and reset the timer
+        if (Time.timeScale == 0) { return; }
         attackTimer -= Time.deltaTime;
 
         if (currentTarget != null && attackTimer <= 0)
             {
                 Attack();
-            attackTimer = timeBetweenAttackValue;
+                    attackTimer = timeBetweenAttackValue * timeBetweenAttackMod;
             }
     }
 
@@ -340,7 +344,7 @@ public class OffenseTowerBase : BaseTowerClass
         //Play attack event, spawn projectile, and initialize it with the damage value and target
         if (attackEvent != null) attackEvent.Post(gameObject);
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
-        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
+        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue * damageMod, currentTarget, currentTarget.transform.position);
     }
 
     protected override void MaxDegradeTracker()
@@ -419,11 +423,14 @@ public class OffenseTowerBase : BaseTowerClass
         {
             offenseHoverUI.SetValues(this);
         }
+
+        rangeIndicator.gameObject.SetActive(true);
     }
 
     public override void DeleteHoverUI()
     {
         Destroy(hoverUIInstance);
+        rangeIndicator.gameObject.SetActive(false);
     }
 
     protected void FixHoverUIPosition()
