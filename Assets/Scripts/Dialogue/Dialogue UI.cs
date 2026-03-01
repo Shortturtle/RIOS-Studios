@@ -40,15 +40,7 @@ public class DialogueUI : MonoBehaviour
     {
         IsOpen = true;
         dialogueBox.SetActive(true);
-        ShowSpeakerSprite();
         dialogueCoroutine = StartCoroutine(RunDialogue(dialogueObject));
-    }
-
-    public void ShowSpeakerSprite()
-    {
-        Color color = speakerSprite.color;
-        color.a = 255f;
-        speakerSprite.color = color;
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
