@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerAbilityCollectManager : MonoBehaviour
 {
-    private string ability_Freeze;
-    private string ability_Reverse;
-    private string ability_Holo;
-    private string ability_Trans;
+    private string ability_Freeze = "ability_Freeze";
+    private string ability_Reverse = "ability_Reverse";
+    private string ability_Holo = "ability_Holo";
+    private string ability_Trans = "ability_Trans";
 
     public int abilityGet;
 
