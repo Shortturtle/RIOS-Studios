@@ -9929,6 +9929,7 @@ GameObject:
   - component: {fileID: 85527575750477514}
   - component: {fileID: 1763109238365908375}
   - component: {fileID: 8453905124811717654}
+  - component: {fileID: 504891578068108736}
   m_Layer: 0
   m_Name: RewindVfx
   m_TagString: Untagged
@@ -9979,14 +9980,12 @@ PlayableDirector:
     value: {fileID: 8205388044388141857}
   - key: {fileID: -3266076025062828557, guid: 27e01d4f3be5d0c4aa9e9b8503ab2c4d, type: 2}
     value: {fileID: 9064096973690142748}
-  - key: {fileID: -3769324855878937433, guid: 27e01d4f3be5d0c4aa9e9b8503ab2c4d, type: 2}
-    value: {fileID: 3632424513702052581}
-  - key: {fileID: 8418683092315434149, guid: 27e01d4f3be5d0c4aa9e9b8503ab2c4d, type: 2}
-    value: {fileID: 3632424513702052581}
-  - key: {fileID: -267971956891922085, guid: 27e01d4f3be5d0c4aa9e9b8503ab2c4d, type: 2}
-    value: {fileID: 3632424513702052581}
   - key: {fileID: 8188056185255517887, guid: 27e01d4f3be5d0c4aa9e9b8503ab2c4d, type: 2}
     value: {fileID: 7913217436336767126}
+  - key: {fileID: -2028781293194428480, guid: 27e01d4f3be5d0c4aa9e9b8503ab2c4d, type: 2}
+    value: {fileID: 6304806120856174424}
+  - key: {fileID: 3127939496276011236, guid: 27e01d4f3be5d0c4aa9e9b8503ab2c4d, type: 2}
+    value: {fileID: 6304806120856174424}
   m_ExposedReferences:
     m_References:
     - b7994bc1805934548bcf4a42b01cb4f5: {fileID: 0}
@@ -10396,6 +10395,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToLive: 4.5
+--- !u!114 &504891578068108736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304806120856174424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f270dd772b78445bef4f398756b9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1001 &8145690101703490893
 PrefabInstance:
   m_ObjectHideFlags: 0

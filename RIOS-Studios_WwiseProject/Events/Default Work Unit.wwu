@@ -71,6 +71,28 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="ScifiLobby" ID="{FDD9E1A2-7C00-4ABF-A16F-F57F9F12B438}">
+							<ChildrenList>
+								<Action Name="" ID="{E18F6FF4-55C7-438B-8A33-FBA0F9FE158F}" ShortID="68535433">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="ScifiLobby" ID="{51C1067E-9CB1-43B7-B98E-2DBFCA3E350E}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ScifiGameplay" ID="{4B9D9553-A596-4D65-8E3B-45AAA588C32E}">
+							<ChildrenList>
+								<Action Name="" ID="{72E9FCFE-3079-42F9-BEA7-56B0F84732B1}" ShortID="117117292">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="ScifiGameplay" ID="{75263174-A73D-48D4-935E-2A496C8F63AE}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Sound Effect" ID="{A21831F3-E96B-412A-B8D7-EA1FEAF567FE}" ShortID="283633008">
@@ -695,6 +717,68 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="PortalOverdriveAttack" ID="{92DC9583-A167-43AC-9DB7-E913201B2D2E}">
+									<ChildrenList>
+										<Action Name="" ID="{21AE0FA7-FF9B-41EB-B6BF-C3A25028F925}" ShortID="305281484">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Firecackle" ID="{29E486AD-141D-4432-B1E5-A2D909F79036}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{CC782459-28D3-4310-9D16-D8524DCFBD26}" ShortID="862770420">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Railgun" ID="{DD537195-0C34-4783-9E6B-A858CB90A61E}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{0FC663B8-2E2D-49CA-8C49-BBBBD605C1E5}" ShortID="180016718">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sparks" ID="{987BA019-8D95-4A3F-A285-CDEDF1CE9BD3}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="DiverOverdrive" ID="{4672C002-620E-4512-AB01-7C9AA130FC0D}">
+									<ChildrenList>
+										<Action Name="" ID="{B9D1D771-B364-4711-A007-C8BAED1F2007}" ShortID="371995973">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="DiverOverDrive1" ID="{EECAD191-D493-4867-B2E0-D72D65857D7C}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{A342BE0F-9E4A-405F-876F-E6A13FE78EE3}" ShortID="648574080">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="DiverOverDrive2" ID="{3AE87112-8D37-4497-A2F7-B59AB88CB450}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="RewindSFX" ID="{137FAA78-7DFD-47B2-8AA4-2929CD97DD15}">
+									<ChildrenList>
+										<Action Name="" ID="{B8910DB8-9583-4104-BE94-84B70260F9F2}" ShortID="966968300">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="pocketwatchbreak" ID="{23325382-9F1A-44F5-9E39-9CEB80EA28E1}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{696E39C9-E5A3-448E-9F7E-E6FC9C2B1279}" ShortID="615374441">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="deandre_aaron-dj-turntable-rewind-429858" ID="{0A776E2F-4654-4FFC-B88B-C49A53739B68}" WorkUnitID="{B9F08342-63E9-4133-ACE3-C885D9EA8230}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="FreezeAudio" ID="{2A597058-DDA9-4493-A1BC-0D6F7F2B5F0A}"/>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
