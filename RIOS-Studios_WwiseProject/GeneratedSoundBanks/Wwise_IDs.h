@@ -18,6 +18,7 @@ namespace AK
         static const AkUniqueID DIVEROVERDRIVE = 3474785039U;
         static const AkUniqueID DIVERSLOW = 997748464U;
         static const AkUniqueID FREEZEAUDIO = 2255367838U;
+        static const AkUniqueID HOLOGRAMSFX = 2378465785U;
         static const AkUniqueID ICELEVELMUSIC = 980765601U;
         static const AkUniqueID LOSE = 221232726U;
         static const AkUniqueID MAINMENUMUSIC = 1991862712U;
@@ -47,6 +48,8 @@ namespace AK
         static const AkUniqueID STOPALLAUDIO = 14541412U;
         static const AkUniqueID TOWERBUILD = 1843285636U;
         static const AkUniqueID TOWERDEGRADE = 2642738694U;
+        static const AkUniqueID TRANSMUTESFX = 789931903U;
+        static const AkUniqueID TSUKIBULLET = 3039428043U;
         static const AkUniqueID TSUKIFIREWORKEXPLOSION = 3360822273U;
         static const AkUniqueID TSUKIFIREWORKLAUNCH = 3027104813U;
         static const AkUniqueID TSUKISOUNDVFX = 753485648U;

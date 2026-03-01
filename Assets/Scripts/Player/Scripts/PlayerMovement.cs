@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("VFX")]
     public VisualEffect vfxRenderer;
+    public AK.Wwise.Event hologramAudio;
     public GameObject FreezeVFX;
     public GameObject RewindVFX;
     public GameObject TransmutateVFX;
@@ -200,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
             //spawn VFX and remove ability points
             ResourceManager.instance.RemoveAbilityPoint(hologramAbilityCost);
 
+            hologramAudio.Post(gameObject);
             //find colliders within the AoE that are on the enemy layer and apply the effect to all of them
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
             foreach (Collider hit in hitColliders)
