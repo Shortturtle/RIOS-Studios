@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class BaseBossClass : BaseEnemyClass
 {
-    private bool attacking = false;
-
-    public float timeBetweenAttacks = 1f;
-    public float bufferDuration;
-
     protected override void Start()
     {
         base.Start();
@@ -17,8 +12,8 @@ public class BaseBossClass : BaseEnemyClass
     public override void InitializeEnemy_Start(WaypointManager wM)
     {
         base.InitializeEnemy_Start(wM);
+        recordTime = 3f;
     }
-
 
     protected override void Update()
     {
@@ -29,17 +24,11 @@ public class BaseBossClass : BaseEnemyClass
             Rewind();
         }
 
-        else if (!isStunned && !attacking)
+        else if (!isStunned)
         {
-            AttackTimer();
             Record();
             MoveEnemy();
         }
-    }
-
-    protected virtual void AttackTimer()
-    {
-        
     }
 
     public override void Stun(float duration)
