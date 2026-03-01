@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public SwitchScene switchScenes;
     public AK.Wwise.Event MainMenuMusic;
     public AK.Wwise.Event StopAllMusic;
+
     private void Start()
     {
         MainMenuMusic.Post(gameObject);
@@ -13,7 +14,7 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         StopAllMusic.Post(gameObject);
-        switchScenes.FadeOutAndLoad("World Menu");
+        switchScenes.FadeOutAndLoad("PreTutorialCutscene");
     }
 
     public void Options()
