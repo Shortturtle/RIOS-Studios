@@ -5,6 +5,7 @@ public class PortalTower : OffenseTowerBase
 {
     public float portalDuration;
     public Animator animator;
+    public GameObject portalOverdriveVFX;
 
     protected override void Attack()
     {
@@ -31,7 +32,10 @@ public class PortalTower : OffenseTowerBase
 
     protected override void OverDrive()
     {
-        damageValue = (30);
+        if (attackEvent != null) attackEvent.Post(gameObject);
+        GameObject projectileInstance = Instantiate(portalOverdriveVFX, bulletExitPoint.transform.position, Quaternion.identity);
+        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(30f, currentTarget, currentTarget.transform.position);
+
         overdriveCountdownTimer = overdriveTimerDuration;
     }
 
