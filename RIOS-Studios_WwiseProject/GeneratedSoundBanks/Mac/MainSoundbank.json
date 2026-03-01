@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
     "Language": "SFX",
-    "Hash": "{94EFDCDA-342C-58A6-C730-2D361B4A0331}",
+    "Hash": "{052CA929-2733-E358-9E02-D99085CD7D8C}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
     "ShortName": "MainSoundbank",
     "Path": "MainSoundbank.bnk",
@@ -173,7 +173,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chargeup2.wav",
-      "CachePath": "4C/{4CFB71AD-CCCC-DBAC-19D5-9F185113AE44}.wem"
+      "CachePath": "DF/{DF405F72-7830-ED4E-ECCA-48DE903642BC}.wem"
      },
      {
       "Id": "518363646",
@@ -213,7 +213,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "WaterSplash2.wav",
-      "CachePath": "10/{10E0C631-9348-B8FB-B29A-21EB4F931ED7}.wem"
+      "CachePath": "5B/{5B20BF43-D788-A940-2F0E-030B31D7BFE9}.wem"
      },
      {
       "Id": "582057948",
@@ -221,7 +221,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "WaterSplash1.wav",
-      "CachePath": "96/{9634BCB0-4EB7-3813-EFEE-CD491B58F06C}.wem"
+      "CachePath": "05/{05CB66D6-6905-6DDE-9E17-9DC935307CC0}.wem"
      },
      {
       "Id": "675324120",
@@ -269,7 +269,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FireworkLaunch.wav",
-      "CachePath": "94/{946741EA-0B6E-FE4E-17DE-81595C1FBB4B}.wem"
+      "CachePath": "2B/{2BF31273-5176-85A9-22EE-921C32209DAB}.wem"
      },
      {
       "Id": "757283419",
@@ -328,6 +328,14 @@
       "CachePath": "EE/{EE9B2C2A-ADCC-4718-5E84-053A8C9A4378}.wem"
      },
      {
+      "Id": "973904125",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Firecackle.wav",
+      "CachePath": "2D/{2DED9BA4-5CA3-2D3D-0573-0C37165EFA27}.wem"
+     },
+     {
       "Id": "992073420",
       "Language": "SFX",
       "Streaming": "false",
@@ -349,7 +357,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "FireworkExplosion.wav",
-      "CachePath": "41/{411F37A8-4E77-816D-02CE-FF3D4EEE5967}.wem"
+      "CachePath": "84/{84CBE95F-0E3D-874C-554E-74A2325A4223}.wem"
      },
      {
       "Id": "1010342366",
@@ -358,6 +366,14 @@
       "Location": "Memory",
       "ShortName": "ScrewIn.wav",
       "CachePath": "3B/{3B8C3F69-031F-7A69-6937-958DA0302489}.wem"
+     },
+     {
+      "Id": "1030376958",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "sparks.wav",
+      "CachePath": "D9/{D9A63B8F-3082-169B-2F3C-7ACB39F55706}.wem"
      },
      {
       "Id": "1047938799",
@@ -530,6 +546,26 @@
       "MediaRefs": [
        {
         "Id": "675808720"
+       }
+      ]
+     },
+     {
+      "Id": "2597606623",
+      "Name": "PortalOverdriveAttack",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\PortalOverdriveAttack",
+      "GUID": "{92DC9583-A167-43AC-9DB7-E913201B2D2E}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.46667",
+      "DurationMax": "2.46667",
+      "MediaRefs": [
+       {
+        "Id": "303458537"
+       },
+       {
+        "Id": "973904125"
+       },
+       {
+        "Id": "1030376958"
        }
       ]
      },
@@ -899,6 +935,6 @@
     ]
    }
   ],
-  "FileHash": "{D66202D3-51C5-2BB0-0536-A4BEC30FA83B}"
+  "FileHash": "{614AB3A3-126E-8BE6-9CDC-88A6A6009D1F}"
  }
 }

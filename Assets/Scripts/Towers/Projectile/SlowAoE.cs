@@ -29,6 +29,7 @@ public class SlowAoE : BaseProjectileClass
 
     IEnumerator slowAoe()
     {
+        projectileEvent.Post(gameObject);
         Collider[] collidersInRange = Physics.OverlapSphere(transform.position, SlowRadius);
         List<BaseEnemyClass> enemiesSlowed = new List<BaseEnemyClass>();
 
