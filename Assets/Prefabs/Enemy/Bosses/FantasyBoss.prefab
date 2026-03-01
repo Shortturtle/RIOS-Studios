@@ -132,17 +132,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: 49c07e3a1c1c9b244a0df693db3fb0dd, type: 2}
   energyOnDeath: 0
-  freezeVFX: {fileID: 3668095685800652463}
+  enemyDeathVFX: {fileID: 5752412268510849287, guid: 9c6a02a4fa759414c8a5b1a6f2088bba, type: 3}
+  freezeVFX: {fileID: 2084414567868139007}
   isRewinding: 0
-  animator: {fileID: 423472135235771703}
   isStunned: 0
+  isHologram: 0
+  enemyPrefab: {fileID: 0}
+  hologramMaterial: {fileID: 0}
   waypointManager: {fileID: 0}
   distanceTravelled: 0
   percentageDistance: 0
   healthBarPosition: {fileID: 156271350581381916}
-  attackList: []
-  timeBetweenAttacks: 1
-  bufferDuration: 0
 --- !u!1001 &1165374369801910446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -379,6 +379,11 @@ PrefabInstance:
 --- !u!4 &1704195391343189829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8ce9589dd03260a4abffe14a91c8820b, type: 3}
+  m_PrefabInstance: {fileID: 1165374369801910446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2084414567868139007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ce9589dd03260a4abffe14a91c8820b, type: 3}
   m_PrefabInstance: {fileID: 1165374369801910446}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4478504676341797886

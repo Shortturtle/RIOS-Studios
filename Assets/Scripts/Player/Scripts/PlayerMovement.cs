@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Freeze(InputAction.CallbackContext ctx)
     {
-        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= stunAbilityCost)
+        if (ctx.performed && ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= stunAbilityCost)
         {
             StartCoroutine(FreezeCo());
         }
@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void RewindEnemies(InputAction.CallbackContext ctx)
     {
-        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= rewindAbilityCost)
+        if (ctx.performed && ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= rewindAbilityCost)
         {
             //spawn VFX and remove ability points
             Instantiate(RewindVFX, transform.position, Quaternion.identity);
@@ -157,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TransmutateEnemies(InputAction.CallbackContext ctx)
     {
-        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= transmutateAbilityCost)
+        if (ctx.performed && ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= transmutateAbilityCost)
         {
             //spawn VFX and remove ability points
             Instantiate(TransmutateVFX, transform.position, Quaternion.identity);
@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Hologram(InputAction.CallbackContext ctx)
     {
-        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= hologramAbilityCost)
+        if (ctx.performed && ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= hologramAbilityCost)
         {
             //spawn VFX and remove ability points
             ResourceManager.instance.RemoveAbilityPoint(hologramAbilityCost);
