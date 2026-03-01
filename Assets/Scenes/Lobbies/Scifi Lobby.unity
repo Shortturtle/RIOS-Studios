@@ -5915,9 +5915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea3260ec2aa71e4584dde2deeffe7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 2
-  levelToLoad: ScifiStage
-  player: {fileID: 1018662252}
+  levelToLoad: PreScifiCutscene
 --- !u!114 &349421714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5939,10 +5937,10 @@ MonoBehaviour:
         - m_Target: {fileID: 349421713}
           m_TargetAssemblyTypeName: EnterLevel, Assembly-CSharp
           m_MethodName: enterLevel
-          m_Mode: 2
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 1018662252}
-            m_ObjectArgumentAssemblyTypeName: PlayerMovement, Assembly-CSharp
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

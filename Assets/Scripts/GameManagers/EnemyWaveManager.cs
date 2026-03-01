@@ -212,7 +212,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    protected void SpawnEnemy()
+    protected virtual void SpawnEnemy()
     {
         if (enemiesToSpawn[0] != null)
         {
@@ -226,7 +226,7 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    protected void ClampSpawnLocation()
+    protected virtual void ClampSpawnLocation()
     {
         if (currentSpawnLocation > spawnLocations.Count - 1)
         {
