@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e11ba7534ba6c14fa8773a9171a3791, type: 3}
-  m_Name: I'll do anything!
+  m_Name: Yes
   m_EditorClassIdentifier: 
   dialogue:
   - speakerName: Gwen (You)
     speakerSprite: {fileID: 736716699, guid: b8f420521dfb8654facb0ce5996feb91, type: 3}
-    text: I'll do anything!
-  - speakerName: Ivor
-    speakerSprite: {fileID: 453159133, guid: ebd9bc96c7121144a93a8020234058ab, type: 3}
-    text: In that case, I'm a bit thirsty. <color=yellow>Please get a drink from
-      the bar for me.</color>
+    text: Argg! She isn't here either!
+  - speakerName: Pierrot
+    speakerSprite: {fileID: -403000518, guid: b85821c9d4c19c54da77223d8939e3e6, type: 3}
+    text: Cheer up, Gwen. I'm sure your friend will turn up soon...
   responses:
-  - responseText: Yessiree!
-    dialogueObject: {fileID: 11400000, guid: 4356d100e7c077e47a8ab0c115ebdab2, type: 2}
+  - responseText: But what if she doesn't!
+    dialogueObject: {fileID: 11400000, guid: 3dcb50278c376904b8efb4246dec0267, type: 2}
+  - responseText: Yeah... you're right.
+    dialogueObject: {fileID: 11400000, guid: 85e9994da33bf4d46a247f86da2dee79, type: 2}

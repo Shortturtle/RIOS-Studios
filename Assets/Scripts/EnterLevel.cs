@@ -1,31 +1,43 @@
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 public class EnterLevel : MonoBehaviour
 {
-    public float waitTime = 1.5f;
     public string levelToLoad;
-    public PlayerMovement player;
+    private PlayerMovement player;
 
-    public void enterLevel(PlayerMovement player)
+    public void enterLevel()
     {
-        StartCoroutine(loadLevel());
+        if (player != null)
+        {
+            StartCoroutine(loadLevel());
+        }
     }
 
     private System.Collections.IEnumerator loadLevel()
     {
-        //Wait for the animation to finish
-        yield return new WaitForSeconds(waitTime);
-        //Load the new level
+        if (player == null)
+            yield break;
+
+        //Load the new level once dialogue is finished
+        while (player.dialogueUI.IsOpen)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Loading level: " + levelToLoad);
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene(levelToLoad);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Check: Does it have the Player tag and a PlayerMovement component?
-        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement p))
         {
+            player = p;
             player.DialogueUI.ShowInteractPrompt();
         }
     }
@@ -33,9 +45,10 @@ public class EnterLevel : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Check: Does it have the Player tag and a PlayerMovement component?
-        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement p))
         {
-            player.DialogueUI.HideInteractPrompt();
+            p.DialogueUI.HideInteractPrompt();
+            player = null;
         }
     }
 }
