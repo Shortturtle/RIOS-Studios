@@ -10,13 +10,13 @@ public class RotatingClockHands : MonoBehaviour
     public float spinSpeed;                     //Degrees per second
 
     [Header("Target Settings")]
-    public List<EnemySpawnBase> spawnBases = new List<EnemySpawnBase>();
+    public List<WaypointManager> spawnBases = new List<WaypointManager>();
     public float pointSpeed;
 
     public Vector3 modelRotationOffset;         //Adjust the model's rotation bc the pivot is offset by -90
 
     private Coroutine rotateRoutine;
-    private EnemySpawnBase selectedBase;
+    private WaypointManager selectedBase;
 
     public void Update()
     {
@@ -29,7 +29,7 @@ public class RotatingClockHands : MonoBehaviour
     }
 
     //Called by the Wave Manager at wave end
-    public EnemySpawnBase SpinPickAndPoint()
+    public WaypointManager SpinPickAndPoint()
     {
         if (spawnBases.Count == 0)
         {
