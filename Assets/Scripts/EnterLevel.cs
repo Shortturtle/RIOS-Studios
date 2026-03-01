@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class EnterLevel : MonoBehaviour
 {
+    public LobbyAudioPlayer lobbyAP;
     public string levelToLoad;
     private PlayerMovement player;
 
@@ -27,6 +28,7 @@ public class EnterLevel : MonoBehaviour
 
         Debug.Log("Loading level: " + levelToLoad);
         yield return new WaitForSeconds(0.2f);
+        lobbyAP.StopLevelMusic();
         SceneManager.LoadScene(levelToLoad);
     }
 

@@ -104,8 +104,6 @@ public class TutorialManager : MonoBehaviour
                 AbilityUseCheck(); break;
             case TutorialState.End:
                 GameWinCheck(); break;
-            case TutorialState.Win:
-                WinScreenCheck();  break;
         }
 
         frameCount = 0;
@@ -169,7 +167,7 @@ public class TutorialManager : MonoBehaviour
 
     private void AbilityUseCheck()
     {
-        if(ResourceManager.instance.currentAbilityPoint == 3)
+        if(ResourceManager.instance.currentAbilityPoint == 2)
         {
             Debug.Log("EnoughToCastAbility");
             StartCoroutine(OpenTutorialImage(5, 0.2f));
@@ -183,15 +181,17 @@ public class TutorialManager : MonoBehaviour
         {
             Debug.Log("Win");
             StartCoroutine(OpenTutorialImage(6, 0.2f));
-            currentTutorialState = TutorialState.Win;
+            StartCoroutine(WinScreenCheck());
         }
     }
 
-    protected void WinScreenCheck()
+    protected IEnumerator WinScreenCheck()
     {
-        if (!GameManager.instance.gameEnd)
+        while (tutorialGameObjects[6].activeSelf)
         {
-            GameManager.instance.WinGame();
+            yield return null;
         }
+
+        GameManager.instance.WinGame();
     }
 }
