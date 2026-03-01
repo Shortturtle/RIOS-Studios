@@ -4,8 +4,10 @@ using System.Collections;
 
 public class SlowDiverTower : OffenseTowerBase
 {
+    public float slowRadius = 6f;
     public GameObject overdriveProjectile;
     public Animator animator;
+    protected bool usedOverdriveAttack = true;
 
     protected override void Attack()
     {
@@ -34,32 +36,50 @@ public class SlowDiverTower : OffenseTowerBase
 
     protected override void OverDrive()
     {
-        if (animator)
-            animator.SetBool("OverDrive", true);
-
-        timeBetweenAttackValue = timeBetweenAttacksBase / 4;
-        attackTimer = 0;
+        if (attackEvent != null) attackEvent.Post(gameObject);
+        SlowAoE.SlowRadius = slowRadius;
         overdriveCountdownTimer = overdriveTimerDuration;
-        //if(currentTarget != null)
-        //{
-        //    AttackOverdrive();
-        //}
-
+        OverDriveAttack();
     }
 
-    protected void AttackOverdrive()
+    protected IEnumerator OverDriveAttackStall()
     {
-        attackEvent.Post(this.gameObject);
-        GameObject projectileInstance = Instantiate(overdriveProjectile, bulletExitPoint.transform.position, Quaternion.identity);
+        while (currentTarget == null)
+        {
+            Debug.Log("No target to overdrive");
+            yield return null;
+        }
+
+        StartCoroutine(OverdriveAttackCo());
+    }
+
+    protected void OverDriveAttack()
+    {
+        if (!usedOverdriveAttack) { return; }
+
+        usedOverdriveAttack = false;
+
+        if (currentTarget == null)
+        {
+            StartCoroutine(OverDriveAttackStall());
+        }
+
+        else
+        {
+            StartCoroutine(OverdriveAttackCo());
+        }
+    }
+
+    protected IEnumerator OverdriveAttackCo()
+    {
+        yield return null;
+        GameObject projectileInstance = Instantiate(overdriveProjectile, currentTarget.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
+        usedOverdriveAttack = true;
     }
 
     protected override void OverDriveEnd()
     {
-        if (animator)
-            animator.SetBool("OverDrive", false);
-
         base.OverDriveEnd();
-        damageValue = damageBase;
     }
 }
