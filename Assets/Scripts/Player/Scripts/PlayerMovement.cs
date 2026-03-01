@@ -261,16 +261,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void PauseMenu(InputAction.CallbackContext ctx)
     {
-        //If the player is currently playing a microgame, the pause button will instead function as a quit button for the microgame, allowing the player to exit out of it if they want to. Otherwise, it will function as a normal pause button.
-        if (MicrogameManager.instance != null && MicrogameManager.instance.currentlyPlayingMinigame == true)
+        if (ctx.performed)
         {
-            MicrogameManager.instance.MicrogameQuit();
-            return;
-        }
+            //If the player is currently playing a microgame, the pause button will instead function as a quit button for the microgame, allowing the player to exit out of it if they want to. Otherwise, it will function as a normal pause button.
+            if (MicrogameManager.instance != null && MicrogameManager.instance.currentlyPlayingMinigame == true)
+            {
+                MicrogameManager.instance.MicrogameQuit();
+                return;
+            }
 
-        //Toggle pause. If the game has ended, do nothing.
-        if (Time.timeScale == 0) { ResumeGame(); }
-        else if (FindAnyObjectByType<GameManager>().gameEnd == false) { PauseGame(); }  
+            //Toggle pause. If the game has ended, do nothing.
+            if (Time.timeScale == 0) { ResumeGame(); }
+            else if (FindAnyObjectByType<GameManager>().gameEnd == false) { PauseGame(); }
+        } 
     }
 
     //for pause screen

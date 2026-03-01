@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6106429992420358786}
-  - component: {fileID: -2522995696720796386}
+  - component: {fileID: 3393332978981512328}
   m_Layer: 0
   m_Name: SlowDiverOverdrive
   m_TagString: Untagged
@@ -25,14 +25,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518112336618132754}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.23313491, y: 0.24056132, z: 0.059642054, w: 0.94033045}
-  m_LocalPosition: {x: -2.585819, y: 4.812914, z: -7.118177}
-  m_LocalScale: {x: 11.174652, y: 11.174652, z: 11.174652}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 912446609290581780}
+  - {fileID: 1676713273776711272}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -27.849, y: 28.7, z: 0}
---- !u!114 &-2522995696720796386
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3393332978981512328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +43,107 @@ MonoBehaviour:
   m_GameObject: {fileID: 518112336618132754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b09941c63b2244d9bcf16ec772bfae, type: 3}
+  m_Script: {fileID: 11500000, guid: 2aed93abbd03e584fa8616e10d6d8116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   projectileEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  AttackRadius: 2
+  lifeTime: 2
+  boxSize: {x: 1, y: 0.5, z: 1}
+  waveTriggerCollider: {fileID: 5570637221961420827}
+--- !u!1 &5570637221961420827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1676713273776711272}
+  m_Layer: 0
+  m_Name: PierrotWaveTriggerCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676713273776711272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570637221961420827}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6106429992420358786}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &6628303724617270080
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6106429992420358786}
+    m_Modifications:
+    - target: {fileID: 613639018245524839, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_Name
+      value: DiverOverDriveVfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+--- !u!4 &912446609290581780 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6293180445986149460, guid: 43bf1d516982ead44a8d1865f8777369, type: 3}
+  m_PrefabInstance: {fileID: 6628303724617270080}
+  m_PrefabAsset: {fileID: 0}

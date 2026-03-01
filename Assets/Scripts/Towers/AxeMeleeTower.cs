@@ -1,8 +1,10 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class AxeMeleeTower : OffenseTowerBase
 {
+    public Animator animator;
     protected override void Degrade()
     {
         damageValue = (float)Math.Round(damageBase * (1f - (0.5f * ((float)degradeRank / (float)maxDegradeRank))), 2);
@@ -12,11 +14,23 @@ public class AxeMeleeTower : OffenseTowerBase
 
     protected override void Attack()
     {
+        StartCoroutine(PlayAnimation());
+    }
+
+    IEnumerator PlayAnimation()
+    {
+        if (animator)
+            animator.SetBool("Attacking", true);
+        yield return new WaitForSeconds(0.8f);
         base.Attack();
+        yield return new WaitForSeconds(0.4f);
+        if (animator)
+            animator.SetBool("Attacking", false);
     }
 
     protected override void OverDrive()
     {
+        damageValue = damageBase * 0.5f;
         timeBetweenAttackValue = (float)Math.Round(timeBetweenAttacksBase * 2, 2);
         overdriveCountdownTimer = overdriveTimerDuration;
     }
