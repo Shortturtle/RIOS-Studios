@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e11ba7534ba6c14fa8773a9171a3791, type: 3}
+  m_Name: Yes
+  m_EditorClassIdentifier: 
+  dialogue:
+  - speakerName: Gwen (You)
+    speakerSprite: {fileID: 736716699, guid: b8f420521dfb8654facb0ce5996feb91, type: 3}
+    text: Argg! She isn't here either!
+  - speakerName: Pierrot
+    speakerSprite: {fileID: -403000518, guid: b85821c9d4c19c54da77223d8939e3e6, type: 3}
+    text: Cheer up, Gwen. I'm sure your friend will turn up soon...
+  responses:
+  - responseText: But what if she doesn't!
+    dialogueObject: {fileID: 11400000, guid: 3dcb50278c376904b8efb4246dec0267, type: 2}
+  - responseText: Yeah... you're right.
+    dialogueObject: {fileID: 11400000, guid: 85e9994da33bf4d46a247f86da2dee79, type: 2}

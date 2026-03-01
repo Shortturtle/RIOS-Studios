@@ -27,7 +27,6 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowInteractPrompt()
     {
-        Debug.Log("Showing interact prompt");
         interactPrompt.SetActive(true);
     }
 
@@ -39,18 +38,9 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
-        interactPrompt.SetActive(false);
         IsOpen = true;
         dialogueBox.SetActive(true);
-        ShowSpeakerSprite();
         dialogueCoroutine = StartCoroutine(RunDialogue(dialogueObject));
-    }
-
-    public void ShowSpeakerSprite()
-    {
-        Color color = speakerSprite.color;
-        color.a = 255f;
-        speakerSprite.color = color;
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
