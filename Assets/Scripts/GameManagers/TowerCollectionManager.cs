@@ -10,10 +10,6 @@ public class TowerCollectionManager : MonoBehaviour
     public GameObject tower_Diver;
     public GameObject tower_Axe;
     public GameObject tower_Railgun;
-    public GameObject tower_Drone;
-
-    
-
     private void Start()
     {
         if(PlayerPrefs.GetInt("tower_Portal") == 1) { tower_Portal.SetActive(true); }
