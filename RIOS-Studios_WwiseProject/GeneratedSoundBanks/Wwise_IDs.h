@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID AXESHARPEN = 1479422892U;
         static const AkUniqueID AXESWING = 2157426783U;
+        static const AkUniqueID DIVEROVERDRIVE = 3474785039U;
         static const AkUniqueID DIVERSLOW = 997748464U;
         static const AkUniqueID ICELEVELMUSIC = 980765601U;
         static const AkUniqueID LOSE = 221232726U;

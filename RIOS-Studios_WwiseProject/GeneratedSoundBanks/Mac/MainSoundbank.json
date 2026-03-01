@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
     "Language": "SFX",
-    "Hash": "{052CA929-2733-E358-9E02-D99085CD7D8C}",
+    "Hash": "{377B1469-FFB2-6178-5480-2FBF43993571}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
     "ShortName": "MainSoundbank",
     "Path": "MainSoundbank.bnk",
@@ -104,6 +104,14 @@
       "CachePath": "94/{94632283-FC37-7317-9646-280100E02151}.wem"
      },
      {
+      "Id": "388930378",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DiverOverDrive1.wav",
+      "CachePath": "48/{4899EA33-C79E-CE55-3A62-D2DB98A4A486}.wem"
+     },
+     {
       "Id": "410739340",
       "Language": "SFX",
       "Streaming": "false",
@@ -166,6 +174,14 @@
       "Location": "Memory",
       "ShortName": "RiftOpen2.wav",
       "CachePath": "91/{91D4187F-E744-E435-4F3B-CE5832E09BEF}.wem"
+     },
+     {
+      "Id": "501591781",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DiverOverDrive2.wav",
+      "CachePath": "CE/{CEA87DCD-CB82-D005-453C-DD4A1EA611EF}.wem"
      },
      {
       "Id": "514154351",
@@ -419,6 +435,24 @@
       "MediaRefs": [
        {
         "Id": "812093938"
+       }
+      ]
+     },
+     {
+      "Id": "3474785039",
+      "Name": "DiverOverdrive",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\DiverOverdrive",
+      "GUID": "{4672C002-620E-4512-AB01-7C9AA130FC0D}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "2.25",
+      "DurationMax": "2.25",
+      "MediaRefs": [
+       {
+        "Id": "388930378"
+       },
+       {
+        "Id": "501591781"
        }
       ]
      },
@@ -935,6 +969,6 @@
     ]
    }
   ],
-  "FileHash": "{614AB3A3-126E-8BE6-9CDC-88A6A6009D1F}"
+  "FileHash": "{35B3CA85-DBC5-59E8-F33E-72DF55834622}"
  }
 }

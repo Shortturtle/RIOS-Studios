@@ -9,6 +9,7 @@ public class DiverOverdrive : BaseProjectileClass
     public override void InitializeProjectile(float projectileDamage, GameObject projectileTarget, Vector3 projectileTargetPosition)
     {
         base.InitializeProjectile(projectileDamage, projectileTarget, projectileTargetPosition);
+        projectileEvent.Post(gameObject);
         transform.position = target.transform.position + (target.transform.forward * 2f);
         transform.forward = (target.transform.position - transform.position).normalized;
     }
@@ -29,8 +30,6 @@ public class DiverOverdrive : BaseProjectileClass
                 enemy.target = pointInTime.target;
 
                 enemy.pointsInTime.RemoveRange(0,4);
-
-                Debug.Log("Enemy Damaged");
             }
         }
     }

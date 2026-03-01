@@ -5,6 +5,7 @@ using System.Collections;
 
 public class JackInBoxTower : OffenseTowerBase
 {
+    public Animator animator;
     public GameObject singleTargetProjectile;
     public GameObject coneShotProjectile;
     public GameObject aoeProjectile;
@@ -18,11 +19,25 @@ public class JackInBoxTower : OffenseTowerBase
     protected override void Attack()
     {
         SwapProjectile();
+        StartCoroutine(PlayAnimation());
+    }
+    IEnumerator PlayAnimation()
+    {
+        if (animator)
+            animator.SetBool("Attacking", true);
+        yield return new WaitForSeconds(1f);
         base.Attack();
+        yield return new WaitForSeconds(0.25f);
+        if (animator)
+            animator.SetBool("Attacking", false);
     }
 
     protected void SwapProjectile()
     {
+        animator.SetBool("Gun", false);
+        animator.SetBool("Megaphone", false);
+        animator.SetBool("Firework", false);
+
         projectileIndex++;
 
         if (projectileIndex > 2)
@@ -34,12 +49,15 @@ public class JackInBoxTower : OffenseTowerBase
         {
             case 0:
                 projectile = singleTargetProjectile;
+                animator.SetBool("Gun", true);
                 break;
             case 1:
                 projectile = coneShotProjectile;
+                animator.SetBool("Megaphone", true);
                 break;
             case 2:
                 projectile = aoeProjectile;
+                animator.SetBool("Firework", true);
                 break;
         }
     }
