@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PortalOverdrive : BaseProjectileClass
 {
+    public AK.Wwise.Event attackAudio;
     [Header("DoT Stuff")]
     public float dotDuration;
     public float tickInterval;
@@ -25,7 +26,9 @@ public class PortalOverdrive : BaseProjectileClass
 
     protected IEnumerator ProjectileEffectCo()
     {
+        projectileEvent.Post(gameObject);
         yield return new WaitForSeconds(1.3f);
+        attackAudio.Post(gameObject);
         ProjectileEffect();
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);

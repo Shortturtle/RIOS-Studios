@@ -24,6 +24,7 @@ namespace AK
         static const AkUniqueID MINIGAMECOMPLETE = 4226718115U;
         static const AkUniqueID NETTHROW = 2913537494U;
         static const AkUniqueID NETTRAP = 2262216515U;
+        static const AkUniqueID PORTALOVERDRIVEATTACK = 2597606623U;
         static const AkUniqueID POTIONTHROWERATTACK = 1007541237U;
         static const AkUniqueID POTIONTHROWERBREAK = 2412449086U;
         static const AkUniqueID RAILGUNCHARGEUP = 1480220082U;
