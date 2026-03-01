@@ -13238,7 +13238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea3260ec2aa71e4584dde2deeffe7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0.1
   levelToLoad: Scifi Lobby
 --- !u!114 &368333625
 MonoBehaviour:
@@ -40713,7 +40712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea3260ec2aa71e4584dde2deeffe7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 1.5
   levelToLoad: SteampunkStage
 --- !u!1 &1242277861
 GameObject:
@@ -65508,6 +65506,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 378469242086679158, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 765640018157924456, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_BlockingMask.m_Bits
       value: 4294967295
