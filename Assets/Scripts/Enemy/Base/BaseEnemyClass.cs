@@ -136,7 +136,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         }
     }
 
-    public virtual void Die() // death code (can be overridden)
+    public virtual void Die() //death code (can be overridden)
     {
         ResourceManager.instance.AddEnergy(energyOnDeath);
         Instantiate(enemyDeathVFX, transform.position, Quaternion.identity);
@@ -185,11 +185,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     private IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
-        
-        animator.speed = 0f; // Pause animation
+        animator.speed = 0f; //Pause animation
         yield return new WaitForSeconds(duration);
         isStunned = false;
-        animator.speed = 1f; // Resume animation
+        animator.speed = 1f; //Resume animation
     }
 
     public void freeze(float duration)
@@ -200,11 +199,11 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     {
         isStunned = true;
         freezeVFX.SetActive(true);
-        animator.speed = 0f; // Pause animation
+        animator.speed = 0f; //Pause animation
         yield return new WaitForSeconds(duration);
         isStunned = false;
         freezeVFX.SetActive(false);
-        animator.speed = 1f; // Resume animation
+        animator.speed = 1f; //Resume animation
     }
 
     protected void Record()
@@ -235,6 +234,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         {
             PointInTime pointInTime = pointsInTime[0]; //Get the first element in the list
 
+            //Set the position and rotation of the enemy to the values of the first element in the list
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
             distanceTravelled = pointInTime.distance;

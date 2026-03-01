@@ -29,6 +29,7 @@ public class TutorialManager : MonoBehaviour
         End,
         Win
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +56,7 @@ public class TutorialManager : MonoBehaviour
         {
             foreach (GameObject gameObject in tutorialGameObjects)
             {
+                // This is really scuffed but it works and I dont have time to rewrite it so here we are -Danish
                 if (gameObject.activeInHierarchy == true)
                 {
                     gameObject.SetActive(false);
@@ -81,8 +83,11 @@ public class TutorialManager : MonoBehaviour
     {
         frameCount++;
 
+        //Only check every 3 frames or so (perfomance optimisation)
         if (!(frameCount % 3 == 0)) { return; }
 
+        //switch case from hell, aka the tutorial manager -Danish
+        //Check the current tutorial state; if the condition to move to the next state is met then move to the next state and open the corresponding tutorial image
         switch (currentTutorialState)
         {
             case TutorialState.OpenTowerMenu:

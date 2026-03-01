@@ -79,6 +79,7 @@ public class OffenseTowerBase : BaseTowerClass
     {
         frameCount++;
 
+        //If the tower is stunned, skip the rest of the update loop to prevent it from attacking or doing anything else while stunned
         if (isStunned)
         {
             return;
@@ -92,6 +93,7 @@ public class OffenseTowerBase : BaseTowerClass
             overdriveVFX.SetActive(false);
         }
         
+        //Update the target enemy every 6 frames (performance optimisation)
         if(frameCount % 6 == 0)
         {
             GetTargetEnemy();
@@ -335,6 +337,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void Attack()
     {
+        //Play attack event, spawn projectile, and initialize it with the damage value and target
         if (attackEvent != null) attackEvent.Post(gameObject);
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
@@ -342,6 +345,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void MaxDegradeTracker()
     {
+        //If the degrade rank is at max && isn't already marked as max degraded, mark it as max degraded, play the degrade event, and show the degrade sign and VFX.
         if (degradeRank == maxDegradeRank && !isMaxDegraded)
         {
             isMaxDegraded = true;
@@ -349,7 +353,7 @@ public class OffenseTowerBase : BaseTowerClass
             degradeSign.SetActive(true);
             if (degradeVFX != null) { degradeVFX.SetActive(true); }
         }
-
+        //If the tower isn't at max degrade, make sure the degrade sign and VFX are hidden
         else if (!isMaxDegraded)
         {
             degradeSign.SetActive(false);
@@ -374,6 +378,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void OverDrive()
     {
+        //Set the tower to overdrive, which increases its attack speed for a short time. Also reset the attack timer so that the tower can immediately take advantage of the increased attack speed.
         timeBetweenAttackValue = timeBetweenAttacksBase / 4;
         attackTimer = 0;
         overdriveCountdownTimer = overdriveTimerDuration;
@@ -387,7 +392,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     public override void HoverUIHandler()
     {
-        if (hoverUIInstance  != null)
+        if (hoverUIInstance != null)
         {
             FixHoverUIPosition();
         }
@@ -405,6 +410,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     public override void InitializeHoverUI()
     {
+        //Instantiate the hover UI prefab as a child at the preset position of hoverUIPosition. Then set the values of the hover UI to match the tower's current stats.
         hoverUIInstance = Instantiate(hoverUI, GameObject.FindGameObjectWithTag("HoverCanvas"). transform);
         hoverUIInstance.transform.position = Camera.main.WorldToScreenPoint(hoverUIPosition.transform.position);
         var offenseHoverUI = hoverUIInstance.GetComponent<OffenseTowerHoverUI>();

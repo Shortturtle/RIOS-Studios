@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class HologramScript : MonoBehaviour
 {
-    public BaseEnemyClass originalEnemy;
+    public BaseEnemyClass originalEnemy; //Ref to the og enemy that the hologram is mimicking
 
-    BaseEnemyClass myEnemy;
+    BaseEnemyClass myEnemy; //Ref to the hologram's own enemy class
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
