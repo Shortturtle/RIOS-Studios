@@ -10,11 +10,19 @@
     "Type": "User",
     "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
     "Language": "SFX",
-    "Hash": "{F39D23C4-A6D5-B706-6917-9373798B6247}",
+    "Hash": "{DB2F9AF2-6A68-1718-C58A-74A7CA5C4D0B}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
     "ShortName": "MainSoundbank",
     "Path": "MainSoundbank.bnk",
     "Media": [
+     {
+      "Id": "37525450",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "soundreality-gun-shot-341144.wav",
+      "CachePath": "CE/{CE5E9A14-21D7-A0DA-C8D0-8BFA427FD907}.wem"
+     },
      {
       "Id": "56694352",
       "Language": "SFX",
@@ -22,6 +30,14 @@
       "Location": "Memory",
       "ShortName": "WaterRipple.wav",
       "CachePath": "06/{069B4B52-B324-630C-B509-FCE35053EEB2}.wem"
+     },
+     {
+      "Id": "65809007",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "soundreality-spring-forest-birds-327415.wav",
+      "CachePath": "A2/{A22B38FC-0228-2A88-0154-7A13E4E80EEF}.wem"
      },
      {
       "Id": "91615308",
@@ -48,6 +64,14 @@
       "CachePath": "58/{58104758-B62E-F1CE-C19A-BF28608F4BD1}.wem"
      },
      {
+      "Id": "187587941",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "pocketwatchbreak.wav",
+      "CachePath": "35/{35A939D5-DF61-59A0-0388-1712D6037C0D}.wem"
+     },
+     {
       "Id": "189914420",
       "Language": "SFX",
       "Streaming": "false",
@@ -70,6 +94,14 @@
       "Location": "Memory",
       "ShortName": "NetThrow.wav",
       "CachePath": "27/{277FD0A5-D42A-9D13-414B-46199809DDE7}.wem"
+     },
+     {
+      "Id": "291053632",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "dragon-studio-winter-landscape-447500.wav",
+      "CachePath": "C6/{C63D7632-5070-5CC2-5B25-1D20B2543389}.wem"
      },
      {
       "Id": "294256144",
@@ -341,7 +373,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "ScifiSliderRight.wav",
-      "CachePath": "42/{42491464-512A-5C2E-90A3-41B40EF61F08}.wem"
+      "CachePath": "FC/{FC7C7B2D-EE6D-34C8-D79C-4611A98A1BBD}.wem"
      },
      {
       "Id": "867617321",
@@ -365,7 +397,23 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "ScifiSliderWrong.wav",
-      "CachePath": "EE/{EE9B2C2A-ADCC-4718-5E84-053A8C9A4378}.wem"
+      "CachePath": "9A/{9A8DE384-CC94-2D39-B017-2F8752D4E038}.wem"
+     },
+     {
+      "Id": "911910612",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Freeze2.wav",
+      "CachePath": "79/{792476B4-C5CD-B380-AE97-2496123A5241}.wem"
+     },
+     {
+      "Id": "926093641",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Freeze.wav",
+      "CachePath": "EF/{EF9ECD55-5B06-19C3-7094-276D58EC3F9E}.wem"
      },
      {
       "Id": "973904125",
@@ -506,10 +554,36 @@
       "Name": "FreezeAudio",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\FreezeAudio",
       "GUID": "{2A597058-DDA9-4493-A1BC-0D6F7F2B5F0A}",
-      "MaxAttenuation": "0",
+      "MaxAttenuation": "75",
       "DurationType": "OneShot",
-      "DurationMin": "0",
-      "DurationMax": "0"
+      "DurationMin": "5.83333",
+      "DurationMax": "5.83333",
+      "MediaRefs": [
+       {
+        "Id": "291053632"
+       },
+       {
+        "Id": "911910612"
+       },
+       {
+        "Id": "926093641"
+       }
+      ]
+     },
+     {
+      "Id": "2378465785",
+      "Name": "HologramSFX",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\MinigameSFX\\HologramSFX",
+      "GUID": "{75B49BE1-2E4F-4B81-9C33-F98483A2C96A}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0971428",
+      "DurationMax": "1.0971428",
+      "MediaRefs": [
+       {
+        "Id": "179541847"
+       }
+      ]
      },
      {
       "Id": "980765601",
@@ -723,11 +797,11 @@
       "GUID": "{137FAA78-7DFD-47B2-8AA4-2929CD97DD15}",
       "MaxAttenuation": "75",
       "DurationType": "OneShot",
-      "DurationMin": "5.485578",
-      "DurationMax": "5.485578",
+      "DurationMin": "2.9805844",
+      "DurationMax": "2.9805844",
       "MediaRefs": [
        {
-        "Id": "123721421"
+        "Id": "187587941"
        },
        {
         "Id": "604188228"
@@ -822,8 +896,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\MinigameSFX\\ScifiSliderRight",
       "GUID": "{36337472-C091-4C32-8A67-8EA8069BCFCF}",
       "DurationType": "OneShot",
-      "DurationMin": "1.0235208",
-      "DurationMax": "1.0235208",
+      "DurationMin": "0.6485135",
+      "DurationMax": "0.6485135",
       "MediaRefs": [
        {
         "Id": "851359022"
@@ -836,8 +910,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\MinigameSFX\\ScifiSliderWrong",
       "GUID": "{CB654DE0-922D-425B-A3E5-7B6C7A29DE68}",
       "DurationType": "OneShot",
-      "DurationMin": "0.6355417",
-      "DurationMax": "0.6355417",
+      "DurationMin": "0.57628983",
+      "DurationMax": "0.57628983",
       "MediaRefs": [
        {
         "Id": "884681261"
@@ -931,6 +1005,36 @@
       "MediaRefs": [
        {
         "Id": "547858882"
+       }
+      ]
+     },
+     {
+      "Id": "789931903",
+      "Name": "TransmuteSFX",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\TransmuteSFX",
+      "GUID": "{734E4F77-7CCB-4C91-ACA7-BCFD2FF3418C}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "6",
+      "DurationMax": "6",
+      "MediaRefs": [
+       {
+        "Id": "65809007"
+       }
+      ]
+     },
+     {
+      "Id": "3039428043",
+      "Name": "TsukiBullet",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\MinigameSFX\\TsukiBullet",
+      "GUID": "{2A406E9D-D2C2-4B1B-9B9F-090B0B98FDAE}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "1.690575",
+      "DurationMax": "1.690575",
+      "MediaRefs": [
+       {
+        "Id": "37525450"
        }
       ]
      },
@@ -1049,6 +1153,6 @@
     ]
    }
   ],
-  "FileHash": "{8D6A6295-B495-1011-4339-6A7F8E289BA1}"
+  "FileHash": "{3CDFFF9F-3082-F6E7-1D2D-CEE5E5F88AC8}"
  }
 }

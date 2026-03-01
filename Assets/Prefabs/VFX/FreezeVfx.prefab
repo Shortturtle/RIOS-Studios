@@ -14632,6 +14632,7 @@ GameObject:
   - component: {fileID: 9164596485738408232}
   - component: {fileID: 1124551516666681375}
   - component: {fileID: 421949594730965872}
+  - component: {fileID: 20721663963078350}
   m_Layer: 0
   m_Name: FreezeVfx
   m_TagString: Untagged
@@ -14699,6 +14700,10 @@ PlayableDirector:
     value: {fileID: 1124551516666681375}
   - key: {fileID: -2080918661514259821, guid: 91ef34846e68e8b45b1437ca5a81798d, type: 2}
     value: {fileID: 1124551516666681375}
+  - key: {fileID: 3440139293777781815, guid: 91ef34846e68e8b45b1437ca5a81798d, type: 2}
+    value: {fileID: 7900714421074514007}
+  - key: {fileID: 7466714398647243630, guid: 91ef34846e68e8b45b1437ca5a81798d, type: 2}
+    value: {fileID: 7900714421074514007}
   m_ExposedReferences:
     m_References:
     - c6f8ea2ade1a1ee449dc7326967ae723: {fileID: 2996616323607471575}
@@ -14903,6 +14908,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &20721663963078350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7900714421074514007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f270dd772b78445bef4f398756b9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1001 &1502372737304642487
 PrefabInstance:
   m_ObjectHideFlags: 0
