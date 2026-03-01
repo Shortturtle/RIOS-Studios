@@ -25,8 +25,9 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public GameObject freezeVFX;
     public bool isRewinding = false;
     public bool isStunned = false;
+    public bool isHologram = false;
     public List<PointInTime> pointsInTime = new List<PointInTime>();
-    public Animator animator;
+    private Animator animator;
 
     public class PointInTime
     {
@@ -72,7 +73,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void InitializeEnemy_Start(WaypointManager wM)
@@ -181,10 +182,11 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     private IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
-        //animator.speed = 0f; // Pause animation
+        
+        animator.speed = 0f; // Pause animation
         yield return new WaitForSeconds(duration);
         isStunned = false;
-        //animator.speed = 1f; // Resume animation
+        animator.speed = 1f; // Resume animation
     }
 
     public void freeze(float duration)
@@ -195,11 +197,11 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     {
         isStunned = true;
         freezeVFX.SetActive(true);
-        //animator.speed = 0f; // Pause animation
+        animator.speed = 0f; // Pause animation
         yield return new WaitForSeconds(duration);
         isStunned = false;
         freezeVFX.SetActive(false);
-        //animator.speed = 1f; // Resume animation
+        animator.speed = 1f; // Resume animation
     }
 
     protected void Record()
@@ -207,10 +209,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         //Check: Do we have more points in time than we would get in 5s? If yes, then start overwriting the oldest points
         if (pointsInTime.Count > Mathf.Round(recordTime / Time.fixedDeltaTime/*get the time between each fixedUpdate*/))
         {
-            pointsInTime.RemoveAt(pointsInTime.Count - 1);                                                          //Remove the oldest point in time (elements at the BOTTOM of the list)
+            pointsInTime.RemoveAt(pointsInTime.Count - 1); //Remove the oldest point in time (elements at the BOTTOM of the list)
         }
 
-        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation, distanceTravelled, waypointIndex, target));                            //Add values(current position) to the START/TOP of the list
+        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation, distanceTravelled, waypointIndex, target)); //Add values(current position) to the START/TOP of the list
     }
 
     protected void Rewind()
@@ -219,7 +221,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
 
         if (waypointIndex != 0)
         {
-            tempTarget = waypointList[waypointIndex - 1];                                                           //Reset the target waypoint to the previous one IF the enemy rewinds past it
+            tempTarget = waypointList[waypointIndex - 1]; //Reset the target waypoint to the previous one IF the enemy rewinds past it
         }
 
         else
@@ -228,7 +230,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         }
         if (pointsInTime.Count > 0)
         {
-            PointInTime pointInTime = pointsInTime[0];                                                              //Get the first element in the list
+            PointInTime pointInTime = pointsInTime[0]; //Get the first element in the list
 
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
@@ -236,7 +238,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
             waypointIndex = pointInTime.waypointIndex;
             target = pointInTime.target;
 
-            pointsInTime.RemoveAt(0);                                                                               //Remove the first element in the list
+            pointsInTime.RemoveAt(0); //Remove the first element in the list
 
             if (Vector3.Distance(transform.position, tempTarget.position) <= 0.3f)
             {
@@ -254,6 +256,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         isRewinding = true;
         Debug.Log("Rewinding started");
         directionTravelling = direction.Backward;
+        animator.speed = -1f; //Play animation in reverse
     }
 
     public void StopRewind()
@@ -261,6 +264,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         isRewinding = false;
         Debug.Log("Rewinding stopped");
         directionTravelling = direction.Forward;
+        animator.speed = 1f; //Resume normal animation
     }
 
     public void SpawnHologram()
@@ -268,10 +272,10 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         //instantiate a copy of enemy and change material to hologram material, then spawn the hologram at the enemy position with 1hp
         //when the hologram is destroyed, it will not give energy but deal 10%hp damage to the enemy and destroy itself
 
-        //Spawn hologram at enemy position
+        //Spawn copy of enemy at enemy position
         GameObject hologram = Instantiate(enemyPrefab, transform.position, transform.rotation);
 
-        //Change material to hologram material
+        //Change every material in the list to hologram material
         Renderer[] renderers = hologram.GetComponentsInChildren<Renderer>();
 
         foreach (Renderer rend in renderers)
@@ -286,14 +290,19 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
             rend.materials = mats;
         }
 
-        //Set hologram health to 1
+        //Set hologram health to 5% and stop the hologram from moving
         BaseEnemyClass hologramEnemy = hologram.GetComponent<BaseEnemyClass>();
         if (hologramEnemy != null)
         {
-            currentHealth = 1f;
+            hologramEnemy.isHologram = true;
+            hologramEnemy.currentHealth = hologramEnemy.enemyStats.maxHealth * 0.05f;
+            hologramEnemy.speed = 0f;
+            hologramEnemy.animator.speed = 0f;
+
+            hologramEnemy.energyOnDeath = 0; //Set the hologram to not give energy on death
         }
 
-        //Deal 10% damage to the enemy and destroy itself when destroyed
+        //Add hologram script to actually make it function. (Deal 5% damage to the original enemy when destroyed)
         HologramScript hologramScript = hologram.AddComponent<HologramScript>();
         hologramScript.originalEnemy = this; //ref to current enemy
     }

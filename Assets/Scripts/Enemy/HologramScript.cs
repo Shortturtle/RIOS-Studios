@@ -15,13 +15,15 @@ public class HologramScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myEnemy.currentHealth <= 0)
+        if (myEnemy != null && myEnemy.currentHealth <= 0) //If the hologram dies, damage the original enemy and destroy the hologram
         {
             if (originalEnemy != null)
             {
-                float damageAmount = originalEnemy.enemyStats.maxHealth * 0.1f; //Calculate 10% of max health as damage
-                originalEnemy.Damage(damageAmount);
+                //The damage dealt to the original enemy is 5% of its max health, but it can be adjusted as needed
+                float damage = originalEnemy.enemyStats.maxHealth * 0.05f;
+                originalEnemy.Damage(damage);
             }
+
             Destroy(gameObject);
         }
     }

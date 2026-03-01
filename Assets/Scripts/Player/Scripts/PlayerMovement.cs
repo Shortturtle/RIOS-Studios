@@ -214,16 +214,16 @@ public class PlayerMovement : MonoBehaviour
             foreach (Collider hit in hitColliders)
             {
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
-                if (enemy != null)
+                if (enemy != null && !enemy.isHologram)
                 {
-
+                    Debug.Log("Hologram ability activated on " + enemy.name);
                     enemy.SpawnHologram();
                 }
             }
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() //visualize AoE radius in editor (its just for the devs to see better)
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, effectRadius);

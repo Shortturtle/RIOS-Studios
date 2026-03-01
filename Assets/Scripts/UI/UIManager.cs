@@ -78,6 +78,6 @@ public class UIManager : MonoBehaviour
 
     private void UpdateLoseScreen()
     {
-        loseScreenWaveText.text = $"You made it to<color=#800EBF><size=120%><font=dum1 SDF Outline>{waveCount}/{maxWaveCount}</color></size></font>!";
+        loseScreenWaveText.text = $"You made it to<color=#800EBF><size=120%><font=dum1 SDF Outline> {waveCount}/{maxWaveCount}</color></size></font>!";
     }
 }
