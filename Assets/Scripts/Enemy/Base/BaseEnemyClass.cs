@@ -29,7 +29,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
     public bool isStunned = false;
     public bool isHologram = false;
     public List<PointInTime> pointsInTime = new List<PointInTime>();
-    private Animator animator;
+    protected Animator animator;
 
     public class PointInTime
     {
@@ -78,7 +78,7 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         animator = GetComponentInChildren<Animator>();
     }
 
-    public void InitializeEnemy_Start(WaypointManager wM)
+    public virtual void InitializeEnemy_Start(WaypointManager wM)
     {
         currentHealth = enemyStats.maxHealth;
         speed = enemyStats.speed;
@@ -178,11 +178,11 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         }
     }
 
-    public void Stun(float duration)
+    public virtual void Stun(float duration)
     {
         StartCoroutine(StunRoutine(duration));
     }
-    private IEnumerator StunRoutine(float duration)
+    protected IEnumerator StunRoutine(float duration)
     {
         isStunned = true;
         animator.speed = 0f; //Pause animation
@@ -191,11 +191,11 @@ public class BaseEnemyClass : MonoBehaviour, IDamageable, IWaypointFollow
         animator.speed = 1f; //Resume animation
     }
 
-    public void freeze(float duration)
+    public virtual void freeze(float duration)
     {
         StartCoroutine(FreezeRoutine(duration));
     }
-    private IEnumerator FreezeRoutine(float duration)
+    protected IEnumerator FreezeRoutine(float duration)
     {
         isStunned = true;
         freezeVFX.SetActive(true);

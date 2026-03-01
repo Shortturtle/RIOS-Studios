@@ -68,7 +68,7 @@ public class PortalTower : OffenseTowerBase
         }
 
         GameObject projectileInstance = Instantiate(portalOverdriveVFX, bulletExitPoint.transform.position, Quaternion.identity);
-        projectileInstance.transform.forward = (currentTarget.transform.position - bulletExitPoint.transform.position).normalized;
+        projectileInstance.transform.forward = new Vector3((currentTarget.transform.position.x - bulletExitPoint.transform.position.x), 0, (currentTarget.transform.position.z - bulletExitPoint.transform.position.z)).normalized;
         projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
         usedOverdriveAttack = true;
     }

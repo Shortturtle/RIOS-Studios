@@ -28,7 +28,7 @@ public class PortalOverdrive : BaseProjectileClass
         yield return new WaitForSeconds(1.3f);
         ProjectileEffect();
         yield return new WaitForSeconds(3f);
-
+        Destroy(gameObject);
     }
 
     protected IEnumerator DoTDamage()

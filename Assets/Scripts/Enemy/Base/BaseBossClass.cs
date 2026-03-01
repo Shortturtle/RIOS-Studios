@@ -14,6 +14,11 @@ public class BaseBossClass : BaseEnemyClass
     {
         base.Start();
     }
+    public override void InitializeEnemy_Start(WaypointManager wM)
+    {
+        base.InitializeEnemy_Start(wM);
+    }
+
 
     protected override void Update()
     {
@@ -26,6 +31,7 @@ public class BaseBossClass : BaseEnemyClass
 
         else if (!isStunned && !attacking)
         {
+            AttackTimer();
             Record();
             MoveEnemy();
         }
@@ -34,5 +40,15 @@ public class BaseBossClass : BaseEnemyClass
     protected virtual void AttackTimer()
     {
         
+    }
+
+    public override void Stun(float duration)
+    {
+        StartCoroutine(StunRoutine(duration/2));
+    }
+
+    public override void freeze(float duration)
+    {
+        StartCoroutine(FreezeRoutine(duration/2));
     }
 }
