@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{75719218-6F9A-4C4D-81A9-7B80C65E76F2}",
     "Language": "SFX",
-    "Hash": "{377B1469-FFB2-6178-5480-2FBF43993571}",
+    "Hash": "{F39D23C4-A6D5-B706-6917-9373798B6247}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSoundbank",
     "ShortName": "MainSoundbank",
     "Path": "MainSoundbank.bnk",
@@ -22,6 +22,22 @@
       "Location": "Memory",
       "ShortName": "WaterRipple.wav",
       "CachePath": "06/{069B4B52-B324-630C-B509-FCE35053EEB2}.wem"
+     },
+     {
+      "Id": "91615308",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "27. Its TV Time! (DELTARUNE Chapter 34 Soundtrack) - Toby Fox.wav",
+      "CachePath": "6E/{6E698CBF-A8FF-2A82-AA9B-C93E33308303}.wem"
+     },
+     {
+      "Id": "123721421",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "pocketwatchbreak.wav",
+      "CachePath": "88/{88380D40-3244-1289-8DEC-EABAD62F7AC5}.wem"
      },
      {
       "Id": "179541847",
@@ -184,14 +200,6 @@
       "CachePath": "CE/{CEA87DCD-CB82-D005-453C-DD4A1EA611EF}.wem"
      },
      {
-      "Id": "514154351",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chargeup2.wav",
-      "CachePath": "DF/{DF405F72-7830-ED4E-ECCA-48DE903642BC}.wem"
-     },
-     {
       "Id": "518363646",
       "Language": "SFX",
       "Streaming": "false",
@@ -240,6 +248,14 @@
       "CachePath": "05/{05CB66D6-6905-6DDE-9E17-9DC935307CC0}.wem"
      },
      {
+      "Id": "604188228",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "deandre_aaron-dj-turntable-rewind-429858.wav",
+      "CachePath": "A5/{A52BF768-C58D-04CA-4977-7037B98724C6}.wem"
+     },
+     {
       "Id": "675324120",
       "Language": "SFX",
       "Streaming": "false",
@@ -286,6 +302,14 @@
       "Location": "Memory",
       "ShortName": "FireworkLaunch.wav",
       "CachePath": "2B/{2BF31273-5176-85A9-22EE-921C32209DAB}.wem"
+     },
+     {
+      "Id": "732368495",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "6. A CYBERS WORLD_ (DELTARUNE Chapter 2 Soundtrack) - Toby Fox.wav",
+      "CachePath": "7C/{7CFFB8C4-BDB6-D374-C6CB-D888FF07B6E1}.wem"
      },
      {
       "Id": "757283419",
@@ -478,6 +502,16 @@
       ]
      },
      {
+      "Id": "2255367838",
+      "Name": "FreezeAudio",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\FreezeAudio",
+      "GUID": "{2A597058-DDA9-4493-A1BC-0D6F7F2B5F0A}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
       "Id": "980765601",
       "Name": "IceLevelMusic",
       "ObjectPath": "\\Events\\Default Work Unit\\OST\\IceLevelMusic",
@@ -588,6 +622,7 @@
       "Name": "PortalOverdriveAttack",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\PortalOverdriveAttack",
       "GUID": "{92DC9583-A167-43AC-9DB7-E913201B2D2E}",
+      "MaxAttenuation": "75",
       "DurationType": "OneShot",
       "DurationMin": "2.46667",
       "DurationMax": "2.46667",
@@ -623,6 +658,7 @@
       "Name": "PotionThrowerBreak",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\PotionThrowerBreak",
       "GUID": "{BCD32890-CAFE-4801-A332-F4EAFDEA702A}",
+      "MaxAttenuation": "75",
       "DurationType": "OneShot",
       "DurationMin": "2.7951021",
       "DurationMax": "2.7951021",
@@ -643,15 +679,16 @@
       "Name": "RailgunChargeUp",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\RailgunChargeUp",
       "GUID": "{C01DB861-9BD6-46EB-9D05-239C2E80AB02}",
+      "MaxAttenuation": "75",
       "DurationType": "OneShot",
-      "DurationMin": "1.7",
-      "DurationMax": "1.7",
+      "DurationMin": "5.485578",
+      "DurationMax": "5.485578",
       "MediaRefs": [
        {
-        "Id": "179541847"
+        "Id": "123721421"
        },
        {
-        "Id": "514154351"
+        "Id": "179541847"
        },
        {
         "Id": "704474491"
@@ -663,6 +700,7 @@
       "Name": "RailgunnerAttack",
       "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\RailgunnerAttack",
       "GUID": "{5788368C-5DB7-424B-8864-B83DEA139BF1}",
+      "MaxAttenuation": "75",
       "DurationType": "OneShot",
       "DurationMin": "1.98333",
       "DurationMax": "1.98333",
@@ -675,6 +713,24 @@
        },
        {
         "Id": "518363646"
+       }
+      ]
+     },
+     {
+      "Id": "681960105",
+      "Name": "RewindSFX",
+      "ObjectPath": "\\Events\\Default Work Unit\\Sound Effect\\TowerSFX\\RewindSFX",
+      "GUID": "{137FAA78-7DFD-47B2-8AA4-2929CD97DD15}",
+      "MaxAttenuation": "75",
+      "DurationType": "OneShot",
+      "DurationMin": "5.485578",
+      "DurationMax": "5.485578",
+      "MediaRefs": [
+       {
+        "Id": "123721421"
+       },
+       {
+        "Id": "604188228"
        }
       ]
      },
@@ -733,6 +789,30 @@
       "MediaRefs": [
        {
         "Id": "1047964792"
+       }
+      ]
+     },
+     {
+      "Id": "2449534095",
+      "Name": "ScifiGameplay",
+      "ObjectPath": "\\Events\\Default Work Unit\\OST\\ScifiGameplay",
+      "GUID": "{4B9D9553-A596-4D65-8E3B-45AAA588C32E}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "91615308"
+       }
+      ]
+     },
+     {
+      "Id": "2135196617",
+      "Name": "ScifiLobby",
+      "ObjectPath": "\\Events\\Default Work Unit\\OST\\ScifiLobby",
+      "GUID": "{FDD9E1A2-7C00-4ABF-A16F-F57F9F12B438}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "732368495"
        }
       ]
      },
@@ -969,6 +1049,6 @@
     ]
    }
   ],
-  "FileHash": "{3F84AE4C-956E-6CED-1EE0-8D812B2EB83C}"
+  "FileHash": "{8D6A6295-B495-1011-4339-6A7F8E289BA1}"
  }
 }

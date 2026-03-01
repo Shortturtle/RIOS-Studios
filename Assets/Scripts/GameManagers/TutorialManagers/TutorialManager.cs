@@ -183,12 +183,13 @@ public class TutorialManager : MonoBehaviour
         {
             Debug.Log("Win");
             StartCoroutine(OpenTutorialImage(6, 0.2f));
+            currentTutorialState = TutorialState.Win;
         }
     }
 
     protected void WinScreenCheck()
     {
-        if (GameManager.instance.gameEnd)
+        if (!GameManager.instance.gameEnd)
         {
             GameManager.instance.WinGame();
         }

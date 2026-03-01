@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID AXESWING = 2157426783U;
         static const AkUniqueID DIVEROVERDRIVE = 3474785039U;
         static const AkUniqueID DIVERSLOW = 997748464U;
+        static const AkUniqueID FREEZEAUDIO = 2255367838U;
         static const AkUniqueID ICELEVELMUSIC = 980765601U;
         static const AkUniqueID LOSE = 221232726U;
         static const AkUniqueID MAINMENUMUSIC = 1991862712U;
@@ -30,10 +31,13 @@ namespace AK
         static const AkUniqueID POTIONTHROWERBREAK = 2412449086U;
         static const AkUniqueID RAILGUNCHARGEUP = 1480220082U;
         static const AkUniqueID RAILGUNNERATTACK = 417816648U;
+        static const AkUniqueID REWINDSFX = 681960105U;
         static const AkUniqueID RIFTCLOSE = 3584172652U;
         static const AkUniqueID RIFTOPEN = 973282680U;
         static const AkUniqueID RIGHTINGREDIENT = 394147468U;
         static const AkUniqueID ROPETIE = 3692382261U;
+        static const AkUniqueID SCIFIGAMEPLAY = 2449534095U;
+        static const AkUniqueID SCIFILOBBY = 2135196617U;
         static const AkUniqueID SCIFISLIDERRIGHT = 3145432090U;
         static const AkUniqueID SCIFISLIDERWRONG = 967495643U;
         static const AkUniqueID SCREWIN = 2811182890U;
