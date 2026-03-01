@@ -36,6 +36,7 @@ public class RailgunManager : BaseMicrogameClass
     public AK.Wwise.Event sliderWrong;
 
     public GameObject tickImg;
+
     public override void StartMicrogame() { InitializeRailgun(); }
 
     private void InitializeRailgun()
@@ -94,7 +95,7 @@ public class RailgunManager : BaseMicrogameClass
     }
     public void CheckBarTwoProgress()
     {
-        if(Mathf.Abs(slider2.value - barTwoTarget) <= maxDifference && !isFinishedTwo) 
+        if (Mathf.Abs(slider2.value - barTwoTarget) <= maxDifference && !isFinishedTwo) 
         {
             isFinishedTwo = true;
             slider2.interactable = false;
@@ -104,7 +105,7 @@ public class RailgunManager : BaseMicrogameClass
     }
     public void CheckBarThreeProgress()
     {
-        if(Mathf.Abs(slider3.value - barThreeTarget) <= maxDifference && !isFinishedThree) 
+        if (Mathf.Abs(slider3.value - barThreeTarget) <= maxDifference && !isFinishedThree) 
         { 
             isFinishedThree = true;
             slider3.interactable = false;

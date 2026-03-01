@@ -388,6 +388,7 @@ MonoBehaviour:
   textLabel: {fileID: 690604097}
   textName: {fileID: 0}
   interactPrompt: {fileID: 0}
+  speakerSprite: {fileID: 0}
 --- !u!114 &44603197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,7 +1214,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: fc6229c0a9076a04d88b70dc9024b747, type: 2}
   questPoint: {fileID: 2038489521}
-  talk: {fileID: 0}
 --- !u!65 &293839535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1584,9 +1584,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 120742691397352288, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989851858098134188, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275469135062811508, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3664532254400984610, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
       propertyPath: m_Name
       value: RailGunMinigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664532254400984610, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401867863415545393, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224083236741396288, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914168293144889788, guid: 89c8e02c6595d1341959288b01a32bb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5506,6 +5534,7 @@ MonoBehaviour:
   energyText: {fileID: 1137573464}
   abilityPointText: {fileID: 0}
   waveText: {fileID: 0}
+  loseScreenWaveText: {fileID: 0}
 --- !u!1 &989787171
 GameObject:
   m_ObjectHideFlags: 0
@@ -6051,6 +6080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCollection: {fileID: 0}
   towerMenuAnimator: {fileID: 0}
+  menuOpen: 0
 --- !u!1 &1091803450
 GameObject:
   m_ObjectHideFlags: 0
@@ -7821,7 +7851,6 @@ MonoBehaviour:
   FreezeVFX: {fileID: 0}
   RewindVFX: {fileID: 0}
   TransmutateVFX: {fileID: 0}
-  HologramVFX: {fileID: 0}
 --- !u!143 &1360997829
 CharacterController:
   m_ObjectHideFlags: 0
@@ -11805,6 +11834,10 @@ PrefabInstance:
     - target: {fileID: 5059630169071261666, guid: 2b524f3b6a89cd749a93f59dd1a075c4, type: 3}
       propertyPath: m_Name
       value: PortalMinigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059630169071261666, guid: 2b524f3b6a89cd749a93f59dd1a075c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 222845317282799443}
   - component: {fileID: 8180096169730861508}
   - component: {fileID: 1994821612847468223}
-  - component: {fileID: -6263618549634953981}
   - component: {fileID: 2778047706733796805}
   m_Layer: 10
   m_Name: MushroomEnemy
@@ -110,28 +109,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: e815f5cdd16619b49aaf0f84cb6bd81d, type: 2}
   energyOnDeath: 0
+  enemyDeathVFX: {fileID: 284593618592945986, guid: 1eb7f66a3311e8e4c969e9de1a5f5014, type: 3}
   freezeVFX: {fileID: 2705065892764194752}
   isRewinding: 0
-  animator: {fileID: 1883481529653644531}
   isStunned: 0
+  animator: {fileID: 1883481529653644531}
+  enemyPrefab: {fileID: 0}
+  hologramMaterial: {fileID: 0}
   waypointManager: {fileID: 0}
   distanceTravelled: 0
   percentageDistance: 0
   healthBarPosition: {fileID: 7708075468850574744}
   capShield: {fileID: 2705552253627408505, guid: 97d2014285025da43a8f9c1da216d42f, type: 3}
---- !u!114 &-6263618549634953981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8070748936374062218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d31c1cff13aade47a649f7cef8deaad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForKill: {fileID: 11400000, guid: 40afb0e86ab9c884a8962295622d5d32, type: 2}
+  questInfoForKill: {fileID: 11400000, guid: 2f45f1164d629d94bb38e216314e4a16, type: 2}
 --- !u!136 &2778047706733796805
 CapsuleCollider:
   m_ObjectHideFlags: 0

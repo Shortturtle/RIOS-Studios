@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e11ba7534ba6c14fa8773a9171a3791, type: 3}
+  m_Name: Are you alright
+  m_EditorClassIdentifier: 
+  dialogue:
+  - speakerName: Gwen (You)
+    speakerSprite: {fileID: 736716699, guid: b8f420521dfb8654facb0ce5996feb91, type: 3}
+    text: Are you okay?
+  - speakerName: ???
+    speakerSprite: {fileID: 453159133, guid: ebd9bc96c7121144a93a8020234058ab, type: 3}
+    text: Yes, I'm perfectly fine. Thank you for your concern.
+  responses:
+  - responseText: Then...why...?
+    dialogueObject: {fileID: 11400000, guid: b65ac7941d7d372448d70b415f2067a2, type: 2}

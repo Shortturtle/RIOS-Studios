@@ -7,6 +7,8 @@ public class RailGunnerTower : OffenseTowerBase
 {
     public Animator animator;
     public GameObject chargeUpVFX;
+    public AK.Wwise.Event chargeUpEvent;
+    public GameObject overDriveAttack;
     protected override void Degrade()
     {
         damageValue = (float)Math.Round(damageBase * (1f - (0.5f * ((float)degradeRank / (float)maxDegradeRank))), 2);
@@ -32,6 +34,7 @@ public class RailGunnerTower : OffenseTowerBase
             animator.SetBool("Shooting", false);
         GameObject chargeUpVFXInstance = Instantiate(chargeUpVFX, bulletExitPoint.transform.position, Quaternion.identity);
         chargeUpVFXInstance.transform.parent = bulletExitPoint.transform;
+        chargeUpEvent.Post(gameObject);
         yield return new WaitForSeconds((float)chargeUpVFXInstance.GetComponent<PlayableDirector>().duration);
         Destroy(chargeUpVFXInstance);
     }
@@ -39,12 +42,15 @@ public class RailGunnerTower : OffenseTowerBase
     protected override void OverDrive()
     {
         damageValue = (float) Math.Round(damageBase * 1.5, 2);
+        projectile = overDriveAttack;
+        attackTimer = 0;
         overdriveCountdownTimer = overdriveTimerDuration;
     }
 
     protected override void OverDriveEnd()
     {
         base.OverDriveEnd();
+        projectile = stats.Projectile;
         damageValue = damageBase;
     }
 }

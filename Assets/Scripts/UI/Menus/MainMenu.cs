@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     public void Options()
     {
         StopAllMusic.Post(gameObject);
-        switchScenes.FadeOutAndLoad("Options Menu");
+        switchScenes.FadeOutAndLoad("Credits");
     }
 
     public void Quit()

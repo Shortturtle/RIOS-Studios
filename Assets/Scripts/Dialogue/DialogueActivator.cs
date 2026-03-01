@@ -6,10 +6,9 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     //test for quest
     public QuestPoint questPoint;
-    public TalkToPeople talk;
     private void Start()
     {
-        questPoint = GetComponentInChildren<QuestPoint>();
+        //questPoint = GetComponentInChildren<QuestPoint>();
     }
 
     public void UpdateDialogueObject(DialogueObject dialogueObject)
@@ -58,10 +57,6 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         if(questPoint != null)
         {
             questPoint.ActivateQuest();
-        }
-        else if(talk != null)
-        {
-            talk.TalkedToSomeone();
         }
     }
 }

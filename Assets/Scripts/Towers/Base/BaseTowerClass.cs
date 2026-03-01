@@ -47,6 +47,8 @@ public class BaseTowerClass: MonoBehaviour
 
     protected virtual void GeneralDegradeTracker()
     {
+        if (Time.timeScale == 0) { return; }
+
         if (isOverdrive)
         {
             OverDriveTimer();
@@ -67,12 +69,13 @@ public class BaseTowerClass: MonoBehaviour
 
     protected virtual void MaxDegradeTracker()
     {
+        //If the degrade rank is at max && isn't already marked as max degraded, mark it as max degraded and show the degrade sign and VFX.
         if (degradeRank == maxDegradeRank && !isMaxDegraded)
         {
             isMaxDegraded = true;
             degradeSign.SetActive(true);
         }
-
+        
         else if (!isMaxDegraded)
         {
             degradeSign.SetActive(false);

@@ -18,6 +18,8 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI towerRewardsText;
     [SerializeField] private TextMeshProUGUI questRequirementsText;
 
+    [SerializeField] private Image towerShard;
+
     private Button firstSelectedButton;
 
 
@@ -37,7 +39,7 @@ public class QuestLogUI : MonoBehaviour
         {
             HideUI();
         }
-        else
+        else if(!contentParent.activeInHierarchy)
         {
             ShowUI();
         }
@@ -64,7 +66,7 @@ public class QuestLogUI : MonoBehaviour
 
     private void QuestStateChange(Quest quest)
     {
-        if (quest.state.Equals(QuestState.IN_PROGRESS) || quest.state.Equals(QuestState.CAN_FINISH))
+        if (quest.state.Equals(QuestState.IN_PROGRESS) || quest.state.Equals(QuestState.CAN_FINISH) || quest.state.Equals(QuestState.FINISHED))
         {
             //add the button to the scrolling list if not already added
             QuestLogButton questLogButton = scrollingList.CreateButtonIfNotExists(quest, () =>
@@ -88,7 +90,7 @@ public class QuestLogUI : MonoBehaviour
             questDisplayNameText.text = "";
 
             //quest status
-            questStatusText.text = "No quests have been started";
+            questStatusText.text = "This is the Quest Log";
 
             //requirements (so add world requirements here if needed)
             questRequirementsText.text = "";
@@ -99,6 +101,8 @@ public class QuestLogUI : MonoBehaviour
 
             //rewards text
             towerRewardsText.text = "";
+
+            //towerShard;
         }
     }
 
@@ -119,5 +123,7 @@ public class QuestLogUI : MonoBehaviour
 
         //rewards text
         towerRewardsText.text = quest.info.towerRewardName;
+
+        towerShard.sprite = quest.info.towerShard;
     }
 }

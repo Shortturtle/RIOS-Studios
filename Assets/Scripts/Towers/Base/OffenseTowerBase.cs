@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent (typeof(SphereCollider))]
 public class OffenseTowerBase : BaseTowerClass
@@ -13,6 +11,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     // Range variables
     protected SphereCollider rangeSphere;
+    public GameObject rangeIndicator;
 
     // Target variables
     protected List<BaseEnemyClass> targets = new List<BaseEnemyClass>();
@@ -40,6 +39,9 @@ public class OffenseTowerBase : BaseTowerClass
     [HideInInspector] public float timeBetweenAttackValue;
     [HideInInspector] public float rangeValue;
     [HideInInspector] public bool canAttackFlying;
+    [HideInInspector] public float damageMod =1f;
+    [HideInInspector] public float timeBetweenAttackMod = 1f;
+    [HideInInspector] public float rangeMod =1f;
     protected float attackTimer;
 
     // Projectile variables
@@ -79,6 +81,7 @@ public class OffenseTowerBase : BaseTowerClass
     {
         frameCount++;
 
+        //If the tower is stunned, skip the rest of the update loop to prevent it from attacking or doing anything else while stunned
         if (isStunned)
         {
             return;
@@ -92,6 +95,7 @@ public class OffenseTowerBase : BaseTowerClass
             overdriveVFX.SetActive(false);
         }
         
+        //Update the target enemy every 6 frames (performance optimisation)
         if(frameCount % 6 == 0)
         {
             GetTargetEnemy();
@@ -130,11 +134,13 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void OnTriggerStay(Collider other)
     {
+        //Check if the object is an enemy by tag or if it has a BaseEnemyClass component, then add it to the list of targets if it's not already in there
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.GetComponent<BaseEnemyClass>())
         {
             BaseEnemyClass tempEnemy = other.gameObject.GetComponent<BaseEnemyClass>();
 
-            if(tempEnemy.isFlying && !canAttackFlying)
+            //If the enemy is flying and the tower can't attack flying, don't add it to the list of targets
+            if (tempEnemy.isFlying && !canAttackFlying)
             {
                 return;
             }
@@ -148,6 +154,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void OnTriggerExit(Collider other)
     {
+        //Remove the enemy from the list of targets if it leaves the range of the tower
         if (targets.Contains(other.GetComponent<BaseEnemyClass>()))
         {
             targets.Remove(other.GetComponent<BaseEnemyClass>());
@@ -158,11 +165,13 @@ public class OffenseTowerBase : BaseTowerClass
     {
         targetModeNum = direction == ChangeDirection.Next ? targetModeNum++ : targetModeNum--;
 
+        //Loop the target mode number if it goes out of bounds
         if (targetModeNum < 0)
         {
             targetModeNum = Enum.GetNames(typeof(TargettingModes)).Length - 1;
         }
 
+        //If the target mode number is greater than the number of targetting modes, loop it back to 0
         else if (targetModeNum > (Enum.GetNames(typeof(TargettingModes)).Length - 1))
         {
             targetModeNum = 0;
@@ -174,12 +183,14 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected void GetTargetEnemy()
     {
+        //If there are targets in range, find the one that matches the targetting mode and set it as the current target. If there are no targets in range, set the current target to null
         if (targets.Count != 0)
         {
             GameObject targetedEnemy = null;
 
             switch (targettingMode)
             {
+                //First: Target the enemy that is closest to reaching the end of the path (highest percentage distance)
                 case TargettingModes.First:
                     float highestPercentage = 0;
                     foreach (var option in targets)
@@ -198,6 +209,7 @@ public class OffenseTowerBase : BaseTowerClass
                     }
                     break;
 
+                //Last: Target the enemy that is furthest from reaching the end of the path (lowest percentage distance)
                 case TargettingModes.Last:
                     float lowestPercentage = 999;
                     foreach (var option in targets)
@@ -216,6 +228,7 @@ public class OffenseTowerBase : BaseTowerClass
                     }
                     break;
 
+                //Close: Target the enemy that is closest to the tower (lowest distance)
                 case TargettingModes.Close:
                     float nearestDistance = 0;
                     float currentDistance;
@@ -237,6 +250,7 @@ public class OffenseTowerBase : BaseTowerClass
                     }
                     break;
 
+                //Strong: Target the enemy with the highest current health
                 case TargettingModes.Strong:
                     float currentHP = 0;
                     foreach (var option in targets)
@@ -267,6 +281,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void TrackEnemy()
     {
+        //If there is a current target, rotate the moveable target(tower model) to look at the enemy. (for the tower's aiming and shooting)
         if (currentTarget != null)
         {
             Vector3 lookAtDir = new Vector3(currentTarget.transform.position.x, MoveableTarget.transform.position.y, currentTarget.transform.position.z);
@@ -276,7 +291,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     public override void InitializeTower()
     {
-
+        //Set all the base values for the tower from the stats scriptable object
         damageBase = stats.Damage;
         damageValue = damageBase;
 
@@ -287,6 +302,7 @@ public class OffenseTowerBase : BaseTowerClass
         rangeValue = rangeBase;
         rangeSphere.isTrigger = true;
         rangeSphere.radius = rangeValue;
+        rangeIndicator.transform.localScale *= (rangeValue * 2);
 
         projectile = stats.Projectile;
 
@@ -312,24 +328,28 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected virtual void AttackTimer()
     {
+        //If there is a target in range, count down the attack timer. If the timer reaches 0, attack and reset the timer
+        if (Time.timeScale == 0) { return; }
         attackTimer -= Time.deltaTime;
 
         if (currentTarget != null && attackTimer <= 0)
             {
                 Attack();
-            attackTimer = timeBetweenAttackValue;
+                    attackTimer = timeBetweenAttackValue * timeBetweenAttackMod;
             }
     }
 
     protected virtual void Attack()
     {
+        //Play attack event, spawn projectile, and initialize it with the damage value and target
         if (attackEvent != null) attackEvent.Post(gameObject);
         GameObject projectileInstance = Instantiate(projectile, bulletExitPoint.transform.position, Quaternion.identity);
-        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue, currentTarget, currentTarget.transform.position);
+        projectileInstance.GetComponent<BaseProjectileClass>().InitializeProjectile(damageValue * damageMod, currentTarget, currentTarget.transform.position);
     }
 
     protected override void MaxDegradeTracker()
     {
+        //If the degrade rank is at max && isn't already marked as max degraded, mark it as max degraded, play the degrade event, and show the degrade sign and VFX.
         if (degradeRank == maxDegradeRank && !isMaxDegraded)
         {
             isMaxDegraded = true;
@@ -337,7 +357,7 @@ public class OffenseTowerBase : BaseTowerClass
             degradeSign.SetActive(true);
             if (degradeVFX != null) { degradeVFX.SetActive(true); }
         }
-
+        //If the tower isn't at max degrade, make sure the degrade sign and VFX are hidden
         else if (!isMaxDegraded)
         {
             degradeSign.SetActive(false);
@@ -362,6 +382,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     protected override void OverDrive()
     {
+        //Set the tower to overdrive, which increases its attack speed for a short time. Also reset the attack timer so that the tower can immediately take advantage of the increased attack speed.
         timeBetweenAttackValue = timeBetweenAttacksBase / 4;
         attackTimer = 0;
         overdriveCountdownTimer = overdriveTimerDuration;
@@ -375,7 +396,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     public override void HoverUIHandler()
     {
-        if (hoverUIInstance  != null)
+        if (hoverUIInstance != null)
         {
             FixHoverUIPosition();
         }
@@ -393,6 +414,7 @@ public class OffenseTowerBase : BaseTowerClass
 
     public override void InitializeHoverUI()
     {
+        //Instantiate the hover UI prefab as a child at the preset position of hoverUIPosition. Then set the values of the hover UI to match the tower's current stats.
         hoverUIInstance = Instantiate(hoverUI, GameObject.FindGameObjectWithTag("HoverCanvas"). transform);
         hoverUIInstance.transform.position = Camera.main.WorldToScreenPoint(hoverUIPosition.transform.position);
         var offenseHoverUI = hoverUIInstance.GetComponent<OffenseTowerHoverUI>();
@@ -401,11 +423,14 @@ public class OffenseTowerBase : BaseTowerClass
         {
             offenseHoverUI.SetValues(this);
         }
+
+        rangeIndicator.gameObject.SetActive(true);
     }
 
     public override void DeleteHoverUI()
     {
         Destroy(hoverUIInstance);
+        rangeIndicator.gameObject.SetActive(false);
     }
 
     protected void FixHoverUIPosition()

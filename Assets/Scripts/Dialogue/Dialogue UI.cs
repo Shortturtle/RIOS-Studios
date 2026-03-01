@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -8,11 +9,12 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private TMP_Text textName;
     [SerializeField] public GameObject interactPrompt;
+    [SerializeField] public Image speakerSprite;
 
     public bool IsOpen { get; private set; }
     private Coroutine dialogueCoroutine;
 
-    private ResponseHandler responseHandler;
+    public ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
 
     private void Start()
@@ -25,7 +27,6 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowInteractPrompt()
     {
-        Debug.Log("Showing interact prompt");
         interactPrompt.SetActive(true);
     }
 
@@ -37,7 +38,6 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
-        interactPrompt.SetActive(false);
         IsOpen = true;
         dialogueBox.SetActive(true);
         dialogueCoroutine = StartCoroutine(RunDialogue(dialogueObject));
@@ -57,8 +57,9 @@ public class DialogueUI : MonoBehaviour
         {
             DialogueLine dialogue = dialogueObject.Dialogue[i];
 
-            //Change speaker name per line
+            //Change speaker name and sprite per line
             textName.text = dialogue.speakerName;
+            speakerSprite.sprite = dialogue.speakerSprite;
 
             yield return RunTypingEffect(dialogue.text);
             textLabel.text = dialogue.text;

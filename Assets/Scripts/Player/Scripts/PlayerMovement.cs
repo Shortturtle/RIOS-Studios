@@ -1,11 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
-using static UnityEngine.EventSystems.EventTrigger;
-using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -55,11 +53,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject FreezeVFX;
     public GameObject RewindVFX;
     public GameObject TransmutateVFX;
-    public GameObject HologramVFX;
 
     private void Awake()
     {
-
         //refs
         characterController = GetComponent<CharacterController>();
         questUI = FindFirstObjectByType<QuestLogUI>();
@@ -77,35 +73,26 @@ public class PlayerMovement : MonoBehaviour
     {
         bool isGrounded = characterController.isGrounded;
 
-        if(vfxRenderer != null ) { vfxRenderer.SetVector3("ColliderPos", transform.position); }
-        
+        if (vfxRenderer != null) { vfxRenderer.SetVector3("ColliderPos", transform.position); }
 
+        //Gravity handling/Ground checks
         if (isGrounded && velocity.y < 0) { velocity.y = -2; }
         if (!isGrounded) { velocity.y = gravity * Time.deltaTime; }
 
+        //Player control check
         if (hasControl == true)
         {
-
             Look();
             CalculateSpeed();
             AnimatorUpdate();
             Move();
         }
+    }
 
-        //manual interaction to activate dialogue
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (!dialogueUI.IsOpen)
-            {
-                Interactable.Interact(this);
-            }
-        }
-
-        //manual interaction to open quest menu
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            questUI.QuestLogTogglePressed();
-        }
+    //Interaction input
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (!dialogueUI.IsOpen){ Interactable.Interact(this); }
     }
 
     public void Freeze(InputAction.CallbackContext ctx)
@@ -114,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(FreezeCo());
         }
-
         else
         {
             return;
@@ -123,11 +109,12 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator FreezeCo()
     {
+        //spawn VFX and remove ability points
         GameObject freezeVFX = Instantiate(FreezeVFX, transform.position - new Vector3(0, 1f), FreezeVFX.transform.rotation);
         ResourceManager.instance.RemoveAbilityPoint(stunAbilityCost);
-        //find colliders within the AoE that are on the enemy layer
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
 
+        //find colliders within the AoE that are on the enemy layer and apply the effect to all of them
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
         foreach (Collider hit in hitColliders)
         {
             BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
@@ -147,21 +134,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= rewindAbilityCost)
         {
+            //spawn VFX and remove ability points
             Instantiate(RewindVFX, transform.position, Quaternion.identity);
             ResourceManager.instance.RemoveAbilityPoint(rewindAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius * 10, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
 
+            //find colliders within the AoE that are on the enemy layer and apply the effect to all of them
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius * 10, enemyLayer); //Make the radius map wide :P
             foreach (Collider hit in hitColliders)
             {
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
                 if (enemy != null)
                 {
-
                     enemy.StartRewind();
                 }
             }
         }
-
         else
         {
             return;
@@ -172,14 +159,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= transmutateAbilityCost)
         {
+            //spawn VFX and remove ability points
             Instantiate(TransmutateVFX, transform.position, Quaternion.identity);
             ResourceManager.instance.RemoveAbilityPoint(transmutateAbilityCost);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);  //*CHANGE ONCE GAME MANAGER SET UP*
 
+            //find colliders within the AoE that are on the enemy layer and add them to a list to be transmuted
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
             List<BaseEnemyClass> enemiesDetected = new List<BaseEnemyClass>();
-
-
-            //Add all detected enemies to a list
             foreach (Collider hit in hitColliders)
             {
                 BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
@@ -189,14 +175,14 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            //Transmutate enemies from the list up to a limit of 3(set at the start)
+            //Transmutate enemies from the list up to a limit of 3(set at the start of the script)
             for (int maxToTransmute = maxTransmutedEnemies; maxToTransmute >= 0; maxToTransmute--)
             {
-                BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count - 1)];  //Takes a random enemy from the list
+                BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count - 1)]; //Takes a random enemy from the list
 
-                GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity);  //Spawns in a random fantasy enemy
+                GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity); //Spawns in a random fantasy enemy
                 BaseEnemyClass tempClass = tempEnemy.GetComponent<BaseEnemyClass>();
-                tempClass.InitializeEnemy_OnTrack(enemy.waypointManager, enemy.waypointIndex, enemy.distanceTravelled);  //Moves it to the same position as the original enemy
+                tempClass.InitializeEnemy_OnTrack(enemy.waypointManager, enemy.waypointIndex, enemy.distanceTravelled); //Moves it to the same position as the original enemy
 
                 //Kill the original enemy and remove from list
                 enemiesDetected.Remove(enemy);
@@ -205,7 +191,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    public void Hologram(InputAction.CallbackContext ctx)
+    {
+        if (ResourceManager.instance != null && ResourceManager.instance.currentAbilityPoint >= hologramAbilityCost)
+        {
+            //spawn VFX and remove ability points
+            ResourceManager.instance.RemoveAbilityPoint(hologramAbilityCost);
+
+            //find colliders within the AoE that are on the enemy layer and apply the effect to all of them
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, effectRadius, enemyLayer);
+            foreach (Collider hit in hitColliders)
+            {
+                BaseEnemyClass enemy = hit.GetComponent<BaseEnemyClass>();
+                if (enemy != null && !enemy.isHologram)
+                {
+                    enemy.SpawnHologram();
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected() //visualize AoE radius in editor (its just for the devs to see better)
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, effectRadius);
@@ -216,7 +222,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveDirection = transform.forward * currentSpeed * Time.deltaTime + velocity;
         characterController.Move(moveDirection);
-
     }
 
     //player rotation
@@ -256,12 +261,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void PauseMenu(InputAction.CallbackContext ctx)
     {
+        //If the player is currently playing a microgame, the pause button will instead function as a quit button for the microgame, allowing the player to exit out of it if they want to. Otherwise, it will function as a normal pause button.
         if (MicrogameManager.instance != null && MicrogameManager.instance.currentlyPlayingMinigame == true)
         {
             MicrogameManager.instance.MicrogameQuit();
             return;
         }
 
+        //Toggle pause. If the game has ended, do nothing.
         if (Time.timeScale == 0) { ResumeGame(); }
         else if (FindAnyObjectByType<GameManager>().gameEnd == false) { PauseGame(); }  
     }

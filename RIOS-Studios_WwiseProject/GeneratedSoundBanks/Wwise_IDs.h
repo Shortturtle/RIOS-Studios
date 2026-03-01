@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID AXESHARPEN = 1479422892U;
         static const AkUniqueID AXESWING = 2157426783U;
+        static const AkUniqueID DIVERSLOW = 997748464U;
         static const AkUniqueID ICELEVELMUSIC = 980765601U;
         static const AkUniqueID LOSE = 221232726U;
         static const AkUniqueID MAINMENUMUSIC = 1991862712U;
@@ -25,6 +26,7 @@ namespace AK
         static const AkUniqueID NETTRAP = 2262216515U;
         static const AkUniqueID POTIONTHROWERATTACK = 1007541237U;
         static const AkUniqueID POTIONTHROWERBREAK = 2412449086U;
+        static const AkUniqueID RAILGUNCHARGEUP = 1480220082U;
         static const AkUniqueID RAILGUNNERATTACK = 417816648U;
         static const AkUniqueID RIFTCLOSE = 3584172652U;
         static const AkUniqueID RIFTOPEN = 973282680U;
@@ -39,6 +41,9 @@ namespace AK
         static const AkUniqueID STOPALLAUDIO = 14541412U;
         static const AkUniqueID TOWERBUILD = 1843285636U;
         static const AkUniqueID TOWERDEGRADE = 2642738694U;
+        static const AkUniqueID TSUKIFIREWORKEXPLOSION = 3360822273U;
+        static const AkUniqueID TSUKIFIREWORKLAUNCH = 3027104813U;
+        static const AkUniqueID TSUKISOUNDVFX = 753485648U;
         static const AkUniqueID VICTORY = 2716678721U;
         static const AkUniqueID WOODPLATFORMBREAKING = 87504952U;
         static const AkUniqueID WOODPLATFORMCREAK = 309297417U;

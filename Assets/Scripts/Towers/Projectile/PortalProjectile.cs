@@ -28,7 +28,7 @@ public class PortalProjectile : BaseProjectileClass
         ProjectileEffect();
     }
 
-    protected override void ProjectileEffect() //Start Coroutine for the AoE and StunDoT
+    protected override void ProjectileEffect()
     {
         transform.position = target.transform.position + (target.transform.forward * 2f);
         transform.forward = (target.transform.position - transform.position).normalized;

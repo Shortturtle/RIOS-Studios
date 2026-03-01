@@ -1,10 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SlowAoE : BaseProjectileClass
 {
-    public static float SlowRadius = 8f;
+    public static float SlowRadius = 6f;
     public float slowDuration = 3f;
 
     protected override void Update()
@@ -29,6 +30,7 @@ public class SlowAoE : BaseProjectileClass
     IEnumerator slowAoe()
     {
         Collider[] collidersInRange = Physics.OverlapSphere(transform.position, SlowRadius);
+        List<BaseEnemyClass> enemiesSlowed = new List<BaseEnemyClass>();
 
         foreach (Collider hit in collidersInRange)
         {
@@ -36,10 +38,17 @@ public class SlowAoE : BaseProjectileClass
             if (enemy != null)
             {
                 enemy.speed *= 0.5f; //Half their speed
+                enemiesSlowed.Add(enemy);
+            }
+        }
 
-                yield return new WaitForSeconds(slowDuration);
+        yield return new WaitForSeconds(slowDuration);
 
-                enemy.speed *= 2f; //Reset speed to normal
+        foreach (BaseEnemyClass enemy in enemiesSlowed)
+        {
+            if (enemy != null)
+            {
+                enemy.speed *= 2.0f; //set speed back to normal
             }
         }
 

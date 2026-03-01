@@ -213,6 +213,7 @@ public class BuildingManager : MonoBehaviour
         {
             foreach(var r in ghostTowerIndicator.GetComponentsInChildren<Renderer>())
             {
+                if(!(r.gameObject.layer == LayerMask.GetMask("IgnoreRaycasts"))) { continue; }
                 renderers.Add(r);
             }
         }

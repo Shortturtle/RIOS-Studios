@@ -15,10 +15,6 @@ public class TutorialManager : MonoBehaviour
     [Header("TutorialFlags")]
     public TowerSelectMenu towerSelectMenu;
     private TutorialState currentTutorialState = TutorialState.OpenTowerMenu;
-    private bool openedTowerMenu;
-    private bool placedFirstTower;
-    private bool towerDegraded;
-    private bool microgameOpen;
 
     private int frameCount;
 
@@ -33,6 +29,7 @@ public class TutorialManager : MonoBehaviour
         End,
         Win
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,6 +56,7 @@ public class TutorialManager : MonoBehaviour
         {
             foreach (GameObject gameObject in tutorialGameObjects)
             {
+                // This is really scuffed but it works and I dont have time to rewrite it so here we are -Danish
                 if (gameObject.activeInHierarchy == true)
                 {
                     gameObject.SetActive(false);
@@ -85,8 +83,11 @@ public class TutorialManager : MonoBehaviour
     {
         frameCount++;
 
+        //Only check every 3 frames or so (perfomance optimisation)
         if (!(frameCount % 3 == 0)) { return; }
 
+        //switch case from hell, aka the tutorial manager -Danish
+        //Check the current tutorial state; if the condition to move to the next state is met then move to the next state and open the corresponding tutorial image
         switch (currentTutorialState)
         {
             case TutorialState.OpenTowerMenu:
@@ -117,7 +118,6 @@ public class TutorialManager : MonoBehaviour
             Debug.Log("MenuOpen");
             StartCoroutine(OpenTutorialImage(1, 0.1f));
             currentTutorialState = TutorialState.PlaceFirstTower;
-            openedTowerMenu = true;
         }
     }
 
@@ -127,7 +127,6 @@ public class TutorialManager : MonoBehaviour
         if (placedTower != null && placedTower.enabled == true)
         {
             Debug.Log("Placed First Tower");
-            placedFirstTower = true;
             currentTutorialState = TutorialState.TowerDegraded;
             waveManager.StartWave();
         }
@@ -143,7 +142,6 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("TowerDegraded");
                 StartCoroutine(OpenTutorialImage(2, 0.2f));
                 currentTutorialState = TutorialState.MicrogameExposition;
-                towerDegraded = true;
             }
         }
     }

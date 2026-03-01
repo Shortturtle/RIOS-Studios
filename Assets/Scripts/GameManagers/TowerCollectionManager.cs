@@ -10,16 +10,8 @@ public class TowerCollectionManager : MonoBehaviour
     public GameObject tower_Diver;
     public GameObject tower_Axe;
     public GameObject tower_Railgun;
-    public GameObject tower_Drone;
-
-    
-
     private void Start()
     {
-        
-        Debug.Log(PlayerPrefs.GetInt("tower_Jinb"));
-        Debug.Log("test");
-
         if(PlayerPrefs.GetInt("tower_Portal") == 1) { tower_Portal.SetActive(true); }
         else { tower_Portal.SetActive(false); }
 
@@ -41,5 +33,4 @@ public class TowerCollectionManager : MonoBehaviour
         if(PlayerPrefs.GetInt("tower_Railgun") == 1) { tower_Railgun.SetActive(true); }
         else { tower_Railgun.SetActive(false); }
     }
-
 }
