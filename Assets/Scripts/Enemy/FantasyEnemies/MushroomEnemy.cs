@@ -17,9 +17,6 @@ public class MushroomEnemy : BaseEnemyClass
     protected override void Start()
     {
         questId = questInfoForKill.id;
-        Debug.Log(currentQuestState);
-        Debug.Log(questInfoForKill.displayName);
-        //Debug.Log(questInfoForKill.);
         base.Start();
     }
 
@@ -40,13 +37,16 @@ public class MushroomEnemy : BaseEnemyClass
         }
     }
 
+
     public override void Die()
     {
         //increase mushroom killed
         if (currentQuestState.Equals(QuestState.IN_PROGRESS))
         {
-            GameEventManager.instance.killEvents.MushroomsKilled();
+            
         }
+
+        GameEventManager.instance.killEvents.MushroomsKilled();
 
         //spawn cap shield
         Instantiate(capShield, transform.position, Quaternion.identity);

@@ -6,6 +6,7 @@ public class KillMushroomQuestStep : QuestStep
     private int numberOfMushroomsKilled = 0;
     private int numberOfMushroomsToKill = 5;
 
+    private QuestState currentQuestState;
 
     private void Start()
     {
@@ -16,15 +17,32 @@ public class KillMushroomQuestStep : QuestStep
     private void OnEnable()
     {
         GameEventManager.instance.killEvents.onKillMushroom += FruitKillActionDone;
+
+        GameEventManager.instance.questEvents.onQuestStateChange += QuestStateChange;
     }
     private void OnDisable()
     {
         GameEventManager.instance.killEvents.onKillMushroom -= FruitKillActionDone;
+
+        GameEventManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
     }
 
-    //record of the number of kanades collected to progress the quest
+    private void QuestStateChange(Quest quest)
+    {
+        if (quest.info.displayNumber == 2)
+        {
+            Debug.Log("queststatechange");
+            currentQuestState = quest.state;
+        }
+    }
+
     private void FruitKillActionDone()
     {
+        if (currentQuestState.Equals(QuestState.IN_PROGRESS) == false)
+        {
+            Debug.Log("returned");
+            return;
+        }
         if (numberOfMushroomsKilled < numberOfMushroomsToKill)
         {
             numberOfMushroomsKilled++;

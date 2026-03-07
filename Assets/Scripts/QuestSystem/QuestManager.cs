@@ -86,13 +86,11 @@ public class QuestManager : MonoBehaviour
         foreach(Quest quest in questMap.Values)
         {
             //if player meets all the requirements & quest is not started, switch quest over to the CAN_START state
-            if(quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest))
+            if (quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest))
             {
                 Debug.Log("change");
                 ChangeQuestState(quest.info.id, QuestState.CAN_START);
             }
-                
-            
         }
     }
 

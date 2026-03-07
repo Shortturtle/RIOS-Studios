@@ -9,6 +9,7 @@ public class KillEvents
     {
         if (onKillMushroom != null)
         {
+            Debug.Log("Killed");
             onKillMushroom();
         }
     }
