@@ -97,6 +97,8 @@ MonoBehaviour:
   towerToPlace: {fileID: 0}
   towerClass: {fileID: 0}
   ghostTowerIndicator: {fileID: 0}
+  noEnergyText: {fileID: 8654101538631628735, guid: 4b0d8c04982cb634ba8fdffb0ca9e4c1, type: 3}
+  invalidPlaceLocationText: {fileID: 8654101538631628735, guid: 48a65889b456a1547a7c3715e4214f06, type: 3}
   isPlacing: 0
   placeableMaterial: {fileID: 2100000, guid: 4658e8acf2db96a4f9be3ed7ea08af1d, type: 2}
   cannotPlaceMaterial: {fileID: 2100000, guid: c2c6ce693c2a22a40a03407af7203c3f, type: 2}
@@ -214,6 +216,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 41221308-9dfb-4ff0-bf0d-44707bbaa0ba
     m_ActionName: 'TowerInteractionSystem/PlayMinigame[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1529edb0-2662-4359-9fac-ca8ab8d9c1df
+    m_ActionName: 'PlayerAction/Interact[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cf45bcee-7ae1-4e3f-a918-7377dabdcaf1
+    m_ActionName: 'PlayerAction/Ability3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0062b6da-8547-4399-8d8f-ee4f8ccbefc2
+    m_ActionName: 'PlayerAction/Ability4[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ee3c4c7-5102-4029-9b5c-dee26ead2d1a
+    m_ActionName: 'TowerInteractionSystem/EndMinigame[/Keyboard/i]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BuildingSystem
@@ -314,6 +332,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
+  gameEnd: 0
 --- !u!1 &3371718519042332631
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +385,8 @@ MonoBehaviour:
   enemiesCurrentlyAlive: []
   waveBufferTime: 6
   timeBetweenSpawns: 2
+  currentWavePlaying: 0
+  winYes: 0
 --- !u!1 &4926471223905804765
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,3 +591,4 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 8a66a5dc6ed5dcc458023b7962386061, type: 2}
+  repaired: 0

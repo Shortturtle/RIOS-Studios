@@ -27,6 +27,8 @@ public class BuildingManager : MonoBehaviour
     public GameObject towerToPlace;
     public BaseTowerClass towerClass;
     public GameObject ghostTowerIndicator;
+    public GameObject noEnergyText;
+    public GameObject invalidPlaceLocationText;
     private List<Renderer> renderers = new List<Renderer>();
     public bool isPlacing;
     private bool canPlace;
@@ -85,15 +87,8 @@ public class BuildingManager : MonoBehaviour
 
         if ((Physics.Raycast(ray, out RaycastHit hitInfo, 100, acceptedLayers, QueryTriggerInteraction.Ignore)))
         {
-            if(hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            {
-                currentPlacement = hitInfo.point;
-                ghostTowerIndicator.transform.position = currentPlacement;
-                canPlace = true;
-                SetGhostObjectMaterial(placeableMaterial);
-            }
 
-            else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Path") 
+            if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Path") 
                 || hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Tower") 
                 || towerClass.cost > ResourceManager.instance.currentEnergy)
             {
@@ -101,6 +96,14 @@ public class BuildingManager : MonoBehaviour
                 ghostTowerIndicator.transform.position = currentPlacement;
                 canPlace = false;
                 SetGhostObjectMaterial(cannotPlaceMaterial);
+            }
+
+            else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                currentPlacement = hitInfo.point;
+                ghostTowerIndicator.transform.position = currentPlacement;
+                canPlace = true;
+                SetGhostObjectMaterial(placeableMaterial);
             }
         }
 
@@ -114,12 +117,17 @@ public class BuildingManager : MonoBehaviour
         {
             if (!canPlace)
             {
-                Debug.Log("Invalid Position to place");
-            }
+                if (towerClass.cost > ResourceManager.instance.currentEnergy)
+                {
+                    Debug.Log("Not Enough Money");
+                    Instantiate(noEnergyText, GameObject.FindGameObjectWithTag("HoverCanvas").transform);
+                }
 
-            else if (towerClass.cost > ResourceManager.instance.currentEnergy)
-            {
-                Debug.Log("Not Enough Money");
+                else
+                {
+                    Debug.Log("Invalid Position to place");
+                    Instantiate(invalidPlaceLocationText, GameObject.FindGameObjectWithTag("HoverCanvas").transform);
+                }
             }
 
             else
