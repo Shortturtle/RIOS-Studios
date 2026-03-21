@@ -47,10 +47,4 @@ public class TutorialWaveManager : EnemyWaveManager
         currentWave++;
         StartBuffer();
     }
-
-    public override void EndGame()
-    {
-        currentWavePlaying = false;
-        winYes = true;
-    }
 }
