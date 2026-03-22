@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -182,6 +181,11 @@ public class PlayerMovement : MonoBehaviour
             for (int maxToTransmute = maxTransmutedEnemies; maxToTransmute >= 0; maxToTransmute--)
             {
                 BaseEnemyClass enemy = enemiesDetected[Random.Range(0, enemiesDetected.Count - 1)]; //Takes a random enemy from the list
+
+                if (enemy is BaseBossClass)
+                {
+                    continue;
+                }
 
                 GameObject tempEnemy = Instantiate(fantasyEnemies[Random.Range(0, 2)], enemy.transform.position, Quaternion.identity); //Spawns in a random fantasy enemy
                 BaseEnemyClass tempClass = tempEnemy.GetComponent<BaseEnemyClass>();

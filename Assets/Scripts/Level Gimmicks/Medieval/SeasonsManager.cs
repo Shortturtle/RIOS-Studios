@@ -7,6 +7,7 @@ public class SeasonsManager : MonoBehaviour
     //seasons manager
     //spring = 1, summer = 2, autumn = 3, winter = 4
     public int seasonNumber;
+    private int prevSeasonNum;
 
     //main gameobjects to enable and disable
     public GameObject seasonDefault;
@@ -15,17 +16,8 @@ public class SeasonsManager : MonoBehaviour
     public GameObject autumnObject;
     public GameObject winterObject;
 
-    public GameObject snowParticles;
-
     //misc to enable n disable
     public GameObject foliage;
-    public GameObject winterParticles;
-
-    //materials
-    public Material springMaterial;
-    public Material summerMaterial;
-    public Material autumnMaterial;
-    public Material winterMaterial;
 
     //material for rivers in lvl
     public Material waterRiver;
@@ -54,10 +46,17 @@ public class SeasonsManager : MonoBehaviour
     {
         int seasonChanger = Random.Range(1, 5);
 
-        if(seasonChanger == 1) { ToSpring(); }
+        if (seasonChanger == prevSeasonNum)
+        {
+            seasonChanger = Random.Range(1, 5);
+        }
+
+        if (seasonChanger == 1) { ToSpring(); }
         if(seasonChanger == 2) { ToSummer(); }
         if(seasonChanger == 3) { ToAutumn(); }
         if(seasonChanger == 4) { ToWinter(); }
+
+        prevSeasonNum = seasonChanger;
     }
 
     //func to changing to each season, mainly enabling and disabling GObjects
@@ -69,10 +68,8 @@ public class SeasonsManager : MonoBehaviour
         summerObject.SetActive(false);
         autumnObject.SetActive(false);
         winterObject.SetActive(false);
-        snowParticles.SetActive(false);
 
         riverRenderer.material = waterRiver;
-        terrainRenderer.material = springMaterial;
     }
     private void ToSummer()
     {
@@ -82,10 +79,8 @@ public class SeasonsManager : MonoBehaviour
         summerObject.SetActive(true);
         autumnObject.SetActive(false);
         winterObject.SetActive(false);
-        snowParticles.SetActive(false);
 
         riverRenderer.material = waterRiver;
-        terrainRenderer.material = summerMaterial;
     }
     private void ToAutumn()
     {
@@ -95,10 +90,8 @@ public class SeasonsManager : MonoBehaviour
         summerObject.SetActive(false);
         autumnObject.SetActive(true);
         winterObject.SetActive(false);
-        snowParticles.SetActive(false);
 
         riverRenderer.material = waterRiver;
-        terrainRenderer.material = autumnMaterial;
     }
     private void ToWinter()
     {
@@ -108,9 +101,7 @@ public class SeasonsManager : MonoBehaviour
         summerObject.SetActive(false);
         autumnObject.SetActive(false);
         winterObject.SetActive(true);
-        snowParticles.SetActive(true);
 
         riverRenderer.material = iceRiver;
-        terrainRenderer.material = winterMaterial;
     }
 }
