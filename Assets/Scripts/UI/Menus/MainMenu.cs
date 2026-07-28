@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         StopAllMusic.Post(gameObject);
+        //PlayerPrefs.DeleteAll();
         switchScenes.FadeOutAndLoad("PreTutorialCutscene");
     }
 

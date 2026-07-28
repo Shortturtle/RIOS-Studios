@@ -10,6 +10,8 @@ public class QuestManager : MonoBehaviour
     //world unlocked requirements
     private string worldPlayerUnlocked;
 
+    public static QuestManager instance;
+
     private Dictionary<string, Quest> questMap;
 
     private void Awake()
@@ -192,7 +194,9 @@ public class QuestManager : MonoBehaviour
             QuestData questData = quest.GetQuestData();
             //serialize using JsonUtility
             string serializedData = JsonUtility.ToJson(questData);
-            PlayerPrefs.SetString(quest.info.id, serializedData);
+            //PlayerPrefs.SetString(quest.info.id, serializedData);
+            currentQuestId = quest.info.displayNumber;
+            SaveSystem.Save();
 
             //test
             //Debug.Log(serializedData);
@@ -209,9 +213,12 @@ public class QuestManager : MonoBehaviour
         try
         {
             //load quest from saved data
-            if (PlayerPrefs.HasKey(questInfo.id) && loadQuestState)
+            if (/*PlayerPrefs.HasKey(questInfo.id) && */loadQuestState)
             {
-                string serializedData = PlayerPrefs.GetString(questInfo.id);
+                currentQuestId = questInfo.displayNumber;
+                SaveSystem.Load();
+                //string serializedData = PlayerPrefs.GetString(questInfo.id);
+                string serializedData = questDataToLoad;
                 QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
                 quest = new Quest(questInfo, questData.state, questData.questStepIndex, questData.questStepStates);
             }
@@ -227,4 +234,37 @@ public class QuestManager : MonoBehaviour
         }
         return quest;
     }
+
+    public int currentQuestId;
+    public string questDataToLoad;
+
+    #region Save and Load
+    public void Save(ref PlayerSaveData data)
+    {
+        Debug.Log("Save");
+        if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "",  }; }  //if list created but no numbers, create list with all 9 ints
+        data.questSaveDataList[currentQuestId] = questDataToLoad;  //save reward gained to specific number based on scene number in this(reward manager)
+    }
+
+    public void Load(PlayerSaveData data)
+    {
+        Debug.Log("Load");
+        questDataToLoad = data.questSaveDataList[currentQuestId];
+    }
+
+    #endregion
+
+
+    public void ResetQuestSaveData(ref PlayerSaveData data)
+    {
+        data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "", };
+    }
+}
+
+//save system part
+[System.Serializable]
+
+public struct PlayerSaveData
+{
+    public List<string> questSaveDataList;
 }

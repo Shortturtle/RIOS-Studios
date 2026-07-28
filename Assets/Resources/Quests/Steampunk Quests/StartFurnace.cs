@@ -23,6 +23,7 @@ public class StartFurnace : QuestStep
     {
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
+            Debug.Log("range to start furnace");
             if (Input.GetKeyDown(KeyCode.F) && done == false)
             {
                 done = true;

@@ -23,6 +23,7 @@ public class CollectMetal : QuestStep
     {
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
+            Debug.Log("range to collect metal");
             if (Input.GetKeyDown(KeyCode.F) && done == false)
             {
                 done = true;

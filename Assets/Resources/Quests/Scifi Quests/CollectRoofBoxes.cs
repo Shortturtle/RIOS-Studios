@@ -23,6 +23,8 @@ public class CollectRoofBoxes : QuestStep
     {
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
+            Debug.Log("can grab");
+
             if (Input.GetKeyDown(KeyCode.F) && done == false)
             {
                 done = true;
