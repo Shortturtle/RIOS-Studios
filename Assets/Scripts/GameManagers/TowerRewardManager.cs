@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerRewardManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class TowerRewardManager : MonoBehaviour
     private string tower_Railgun = "tower_Railgun";
 
     public int towerRewardSet;
+
+    public static TowerRewardManager instance;
 
     private void OnEnable()
     {
@@ -78,4 +81,28 @@ public class TowerRewardManager : MonoBehaviour
             PlayerPrefs.SetInt(tower_Railgun, 1);
         }
     }
+
+    #region Save and Load
+    public void Save(ref TowerSaveData data)
+    {
+        Debug.Log("Save");
+        //if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "", }; }  //if list created but no numbers, create list with all 9 ints
+        //data.questSaveDataList[currentQuestId] = questDataToLoad;  //save reward gained to specific number based on scene number in this(reward manager)
+    }
+
+    public void Load(TowerSaveData data)
+    {
+        Debug.Log("Load");
+        //questDataToLoad = data.questSaveDataList[currentQuestId];
+    }
+
+    #endregion
+}
+
+//save system part
+[System.Serializable]
+
+public struct TowerSaveData
+{
+    public List<int> towerSaveDataList;
 }

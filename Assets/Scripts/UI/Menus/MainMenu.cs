@@ -7,9 +7,13 @@ public class MainMenu : MonoBehaviour
     public AK.Wwise.Event MainMenuMusic;
     public AK.Wwise.Event StopAllMusic;
 
+    public GameObject continueButton;
+
     private void Start()
     {
         MainMenuMusic.Post(gameObject);
+
+
     }
     public void Play()
     {

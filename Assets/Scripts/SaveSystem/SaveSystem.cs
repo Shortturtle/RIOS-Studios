@@ -10,7 +10,8 @@ public class SaveSystem
 
     public struct SaveData
     {
-        public PlayerSaveData PlayerData;
+        public QuestSaveData QuestData;
+        public TowerSaveData TowerData;
     }
 
     public static string SaveFileName()
@@ -28,7 +29,8 @@ public class SaveSystem
 
     private static void HandleSaveData()
     {
-        QuestManager.instance.Save(ref _saveData.PlayerData);
+        QuestManager.instance.Save(ref _saveData.QuestData);
+        TowerRewardManager.instance.Save(ref _saveData.TowerData);
     }
 
 
@@ -42,6 +44,7 @@ public class SaveSystem
 
     private static void HandleLoadData()
     {
-        QuestManager.instance.Load(_saveData.PlayerData);
+        QuestManager.instance.Load(_saveData.QuestData);
+        TowerRewardManager.instance.Load(_saveData.TowerData);
     }
 }

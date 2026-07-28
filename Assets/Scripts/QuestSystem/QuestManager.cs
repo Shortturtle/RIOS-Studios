@@ -239,14 +239,14 @@ public class QuestManager : MonoBehaviour
     public string questDataToLoad;
 
     #region Save and Load
-    public void Save(ref PlayerSaveData data)
+    public void Save(ref QuestSaveData data)
     {
         Debug.Log("Save");
         if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "",  }; }  //if list created but no numbers, create list with all 9 ints
         data.questSaveDataList[currentQuestId] = questDataToLoad;  //save reward gained to specific number based on scene number in this(reward manager)
     }
 
-    public void Load(PlayerSaveData data)
+    public void Load(QuestSaveData data)
     {
         Debug.Log("Load");
         questDataToLoad = data.questSaveDataList[currentQuestId];
@@ -255,7 +255,7 @@ public class QuestManager : MonoBehaviour
     #endregion
 
 
-    public void ResetQuestSaveData(ref PlayerSaveData data)
+    public void ResetQuestSaveData(ref QuestSaveData data)
     {
         data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "", };
     }
@@ -264,7 +264,7 @@ public class QuestManager : MonoBehaviour
 //save system part
 [System.Serializable]
 
-public struct PlayerSaveData
+public struct QuestSaveData
 {
     public List<string> questSaveDataList;
 }
