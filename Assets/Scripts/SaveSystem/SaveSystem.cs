@@ -16,9 +16,7 @@ public class SaveSystem
 
     public static string SaveFileName()
     {
-        Debug.Log("save file name");
         string saveFile = Application.persistentDataPath + "/save" + ".save";
-        Debug.Log(saveFile);
         return saveFile;
     }
 
