@@ -16,6 +16,15 @@ public class QuestManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         questMap = CreateQuestMap();
         PlayerPrefs.SetInt(worldPlayerUnlocked, 0);
     }
@@ -40,7 +49,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        foreach(Quest quest in questMap.Values)
+        foreach (Quest quest in questMap.Values)
         {
             //initialize any loaded quest steps
             if (quest.state == QuestState.IN_PROGRESS)
@@ -181,6 +190,7 @@ public class QuestManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        if(questMap.Values == null) { Debug.Log("no quest values"); return; }
         foreach (Quest quest in questMap.Values)
         {
             SaveQuest(quest);
@@ -196,6 +206,8 @@ public class QuestManager : MonoBehaviour
             string serializedData = JsonUtility.ToJson(questData);
             //PlayerPrefs.SetString(quest.info.id, serializedData);
             currentQuestId = quest.info.displayNumber;
+            Debug.Log("serialzised data = " + serializedData + "quest id = " + currentQuestId);
+            questDataToLoad = serializedData;
             SaveSystem.Save();
 
             //test
@@ -210,13 +222,18 @@ public class QuestManager : MonoBehaviour
     private Quest LoadQuest(QuestInfoSO questInfo)
     {
         Quest quest = null;
+        Debug.Log("loading");
         try
         {
+            Debug.Log("trying");
+            currentQuestId = questInfo.displayNumber;
+            Debug.Log(questInfo.displayNumber);
+            SaveSystem.Load();
+            Debug.Log("quest data = " + questDataToLoad);
             //load quest from saved data
-            if (/*PlayerPrefs.HasKey(questInfo.id) && */loadQuestState)
+            if (/*PlayerPrefs.HasKey(questInfo.id) && */questDataToLoad != null && loadQuestState)
             {
-                currentQuestId = questInfo.displayNumber;
-                SaveSystem.Load();
+                
                 //string serializedData = PlayerPrefs.GetString(questInfo.id);
                 string serializedData = questDataToLoad;
                 QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
@@ -242,13 +259,14 @@ public class QuestManager : MonoBehaviour
     public void Save(ref QuestSaveData data)
     {
         Debug.Log("Save");
-        if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "",  }; }  //if list created but no numbers, create list with all 9 ints
+        if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h",  }; }  //if list created but no numbers, create list with all 9 ints
         data.questSaveDataList[currentQuestId] = questDataToLoad;  //save reward gained to specific number based on scene number in this(reward manager)
     }
 
     public void Load(QuestSaveData data)
     {
         Debug.Log("Load");
+        if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "", }; }  //if list created but no numbers, create list with all 9 ints
         questDataToLoad = data.questSaveDataList[currentQuestId];
     }
 

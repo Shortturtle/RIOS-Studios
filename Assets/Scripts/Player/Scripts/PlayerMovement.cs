@@ -232,6 +232,16 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(moveDirection);
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        //collision detection doesnt work
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            currentSpeed = 0;
+            Debug.Log("collided");
+        }
+    }
+
     //player rotation
     private void Look()
     {
