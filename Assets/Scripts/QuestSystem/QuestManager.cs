@@ -24,7 +24,7 @@ public class QuestManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //SaveSystem.Save();
+
         questMap = CreateQuestMap();
         PlayerPrefs.SetInt(worldPlayerUnlocked, 0);
     }
@@ -222,14 +222,10 @@ public class QuestManager : MonoBehaviour
     private Quest LoadQuest(QuestInfoSO questInfo)
     {
         Quest quest = null;
-        Debug.Log("loading");
         try
         {
-            Debug.Log("trying");
             currentQuestId = questInfo.displayNumber;
-            Debug.Log(questInfo.displayNumber);
             SaveSystem.Load();
-            Debug.Log("quest data = " + questDataToLoad);
             //load quest from saved data
             if (/*PlayerPrefs.HasKey(questInfo.id) && */questDataToLoad != null && loadQuestState)
             {
@@ -273,7 +269,7 @@ public class QuestManager : MonoBehaviour
     {
         Debug.Log("Save");
         Debug.Log(data.questSaveDataList);
-        if (data.questSaveDataList == null) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "",  }; }  //if list created but no numbers, create list with all 9 ints
+        if (data.questSaveDataList == null) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", ""}; }  //if list created but no numbers, create list with all 9 ints
         data.questSaveDataList[currentQuestId] = questDataToLoad;  //save reward gained to specific number based on scene number in this(reward manager)
     }
 
@@ -288,7 +284,7 @@ public class QuestManager : MonoBehaviour
 
     public void ResetQuestSaveData(ref QuestSaveData data)
     {
-        data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "", };
+        data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", ""};
     }
 }
 

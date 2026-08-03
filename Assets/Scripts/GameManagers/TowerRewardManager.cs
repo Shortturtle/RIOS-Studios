@@ -29,10 +29,21 @@ public class TowerRewardManager : MonoBehaviour
 
     private void Start()
     {
-        //to disable portal guy if not unlocked at the end yet
-        if(PlayerPrefs.GetInt(tower_Portal_Permanent) == 0)
+        if (instance == null)
         {
-            PlayerPrefs.SetInt(tower_Portal, 0);
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        SaveSystem.Load();
+
+        //to disable portal guy if not unlocked at the end yet
+        if (towerCollectionList[8] == 0)
+        {
+            towerCollectionList[7] = 0;
         }
 
         //for towers that are gained through going to new era
@@ -49,51 +60,59 @@ public class TowerRewardManager : MonoBehaviour
     {
         if(towerRewardNumber == 101)
         {
-            PlayerPrefs.SetInt(tower_Portal, 1);
+            //PlayerPrefs.SetInt(tower_Portal, 1);
+            towerRewardNumber = 7;
         }
-        if(towerRewardNumber == 202)
+        else if(towerRewardNumber == 202)
         {
-            PlayerPrefs.SetInt(tower_Portal, 1);
-            PlayerPrefs.SetInt(tower_Portal_Permanent, 1);
+            towerRewardNumber = 8;
+            //PlayerPrefs.SetInt(tower_Portal, 1);
+            //PlayerPrefs.SetInt(tower_Portal_Permanent, 1);
         }
-        if(towerRewardNumber == 1)
-        {
-            PlayerPrefs.SetInt(tower_Jinb, 1);
-        }
-        if(towerRewardNumber == 2)
-        {
-            PlayerPrefs.SetInt(tower_Potion, 1);
-        }
-        if(towerRewardNumber == 3)
-        {
-            PlayerPrefs.SetInt(tower_Net, 1);
-        }
-        if(towerRewardNumber == 4)
-        {
-            PlayerPrefs.SetInt(tower_Diver, 1);
-        }
-        if(towerRewardNumber == 5)
-        {
-            PlayerPrefs.SetInt(tower_Axe, 1);
-        }
-        if(towerRewardNumber == 6)
-        {
-            PlayerPrefs.SetInt(tower_Railgun, 1);
-        }
+        //else if(towerRewardNumber == 1)
+        //{
+        //    PlayerPrefs.SetInt(tower_Jinb, 1);
+        //}
+        //else if (towerRewardNumber == 2)
+        //{
+        //    PlayerPrefs.SetInt(tower_Potion, 1);
+        //}
+        //else if (towerRewardNumber == 3)
+        //{
+        //    PlayerPrefs.SetInt(tower_Net, 1);
+        //}
+        //else if (towerRewardNumber == 4)
+        //{
+        //    PlayerPrefs.SetInt(tower_Diver, 1);
+        //}
+        //else if (towerRewardNumber == 5)
+        //{
+        //    PlayerPrefs.SetInt(tower_Axe, 1);
+        //}
+        //else if (towerRewardNumber == 6)
+        //{
+        //    PlayerPrefs.SetInt(tower_Railgun, 1);
+        //}
+
+        towerCollectionList[towerRewardNumber] = 1;
     }
+
+    private int towerSaveInteger;
+    private int towerSavedState;
+    public List<int> towerCollectionList = new List<int>();
 
     #region Save and Load
     public void Save(ref TowerSaveData data)
     {
         Debug.Log("Save");
-        //if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "", }; }  //if list created but no numbers, create list with all 9 ints
-        //data.questSaveDataList[currentQuestId] = questDataToLoad;  //save reward gained to specific number based on scene number in this(reward manager)
+        if (data.towerSaveDataList == null) { data.towerSaveDataList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; }  //if list created but no numbers, create list with all 9 ints
+        data.towerSaveDataList = towerCollectionList;
     }
 
     public void Load(TowerSaveData data)
     {
         Debug.Log("Load");
-        //questDataToLoad = data.questSaveDataList[currentQuestId];
+        towerCollectionList = data.towerSaveDataList;
     }
 
     #endregion

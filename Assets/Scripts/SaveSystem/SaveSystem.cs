@@ -11,7 +11,7 @@ public class SaveSystem
     public struct SaveData
     {
         public QuestSaveData QuestData;
-        //public TowerSaveData TowerData;
+        public TowerSaveData TowerData;
     }
 
     public static string SaveFileName()
@@ -30,17 +30,14 @@ public class SaveSystem
     private static void HandleSaveData()
     {
         QuestManager.instance.Save(ref _saveData.QuestData);
-        //TowerRewardManager.instance.Save(ref _saveData.TowerData);
+        TowerRewardManager.instance.Save(ref _saveData.TowerData);
     }
 
 
     public static void Load()
     {
-        Debug.Log("savesystem load");
         string saveContent = File.ReadAllText(SaveFileName());
-        Debug.Log("middle");
         _saveData = JsonUtility.FromJson<SaveData>(saveContent);
-        Debug.Log("past");
         HandleLoadData();
     }
 
@@ -48,6 +45,6 @@ public class SaveSystem
     {
         Debug.Log("savesystem handleloaddata");
         QuestManager.instance.Load(_saveData.QuestData);
-        //TowerRewardManager.instance.Load(_saveData.TowerData);
+        TowerRewardManager.instance.Load(_saveData.TowerData);
     }
 }
