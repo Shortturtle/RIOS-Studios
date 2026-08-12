@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Transition : MonoBehaviour
 {
@@ -12,17 +13,14 @@ public class Transition : MonoBehaviour
     private Image _image;
     private Material _material;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void FadeIn()
     {
-        
+        StartFadeIn();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FadeOut()
     {
-        
+        StartFadeOut();
     }
 
     private void Awake()
@@ -36,6 +34,19 @@ public class Transition : MonoBehaviour
         _lastEffect = _Scroll;
     }
 
+    private void Update()
+    {
+        if (Keyboard.current.numpad1Key.wasPressedThisFrame)
+        {
+            FadeIn();
+        }
+
+        if (Keyboard.current.numpad2Key.wasPressedThisFrame)
+        {
+            FadeOut();
+        }
+    }
+
     private void StartFadeIn()
     {
         _material.SetFloat(_Scroll, 1.2f);
@@ -43,6 +54,12 @@ public class Transition : MonoBehaviour
         StartCoroutine(HandleFade(8.2f, 1.2f));
     }
 
+    private void StartFadeOut()
+    {
+        _material.SetFloat(_Scroll, 8.2f);
+
+        StartCoroutine(HandleFade(1.2f, 8.2f));
+    }
     private IEnumerator HandleFade(float targetAmount, float startAmount)
     {
         float elapsedTime = 1.2f;
