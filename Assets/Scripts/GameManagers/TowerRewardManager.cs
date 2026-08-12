@@ -27,7 +27,7 @@ public class TowerRewardManager : MonoBehaviour
         GameEventManager.instance.towerRewardEvents.onTowerRewarded -= TowerNumberRewardedToPlayer;
     }
 
-    private void Start()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -37,13 +37,17 @@ public class TowerRewardManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        SaveSystem.Load();
+    private void Start()
+    {
+
 
         //to disable portal guy if not unlocked at the end yet
-        if (towerCollectionList[8] == 0)
+        if (towerCollectionList.Count > 8 && towerCollectionList[8] == 0)
         {
-            towerCollectionList[7] = 0;
+            if (towerCollectionList.Count > 7)
+                towerCollectionList[7] = 0;
         }
 
         //for towers that are gained through going to new era
@@ -51,8 +55,6 @@ public class TowerRewardManager : MonoBehaviour
         {
             GameEventManager.instance.towerRewardEvents.TowerRewards(towerRewardSet);
         }
-
-
     }
 
     //this for the tower reward, if tower reward int sent over from quest is certain number, set the tower attached to the no to be able to be used
@@ -105,13 +107,19 @@ public class TowerRewardManager : MonoBehaviour
     public void Save(ref TowerSaveData data)
     {
         Debug.Log("Save");
-        if (data.towerSaveDataList == null) { data.towerSaveDataList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; }  //if list created but no numbers, create list with all 9 ints
+        if (data.towerSaveDataList.Count == 0) { data.towerSaveDataList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; }  //if list created but no numbers, create list with all 9 ints
         data.towerSaveDataList = towerCollectionList;
     }
 
     public void Load(TowerSaveData data)
     {
         Debug.Log("Load");
+        if (data.towerSaveDataList.Count == 0) { data.towerSaveDataList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0 }; }  //if list created but no numbers, create list with all 9 ints
+       
+        while (towerCollectionList.Count < data.towerSaveDataList.Count)
+        {
+            towerCollectionList.Add(0); // default "not unlocked"
+        }
         towerCollectionList = data.towerSaveDataList;
     }
 
