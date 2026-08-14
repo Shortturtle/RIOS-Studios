@@ -36,12 +36,12 @@ public class Transition : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.numpad1Key.wasPressedThisFrame)
+        if (Input.GetKeyDown(KeyCode.P)) 
         {
             FadeIn();
         }
 
-        if (Keyboard.current.numpad2Key.wasPressedThisFrame)
+        if (Input.GetKeyDown(KeyCode.O))
         {
             FadeOut();
         }
@@ -49,26 +49,26 @@ public class Transition : MonoBehaviour
 
     private void StartFadeIn()
     {
-        _material.SetFloat(_Scroll, 1.2f);
+        _material.SetFloat("_Scroll", 1.2f);
 
         StartCoroutine(HandleFade(8.2f, 1.2f));
     }
 
     private void StartFadeOut()
     {
-        _material.SetFloat(_Scroll, 8.2f);
+        _material.SetFloat("_Scroll", 8.2f);
 
         StartCoroutine(HandleFade(1.2f, 8.2f));
     }
     private IEnumerator HandleFade(float targetAmount, float startAmount)
     {
-        float elapsedTime = 1.2f;
+        float elapsedTime = 0f;
         while (elapsedTime < FadeDuration)
         {
             elapsedTime += Time.deltaTime;
 
             float lerpedAmount = Mathf.Lerp(startAmount, targetAmount, (elapsedTime / FadeDuration));
-            _material.SetFloat(_Scroll, lerpedAmount);
+            _material.SetFloat("_Scroll", lerpedAmount);
 
             yield return null;
         }
