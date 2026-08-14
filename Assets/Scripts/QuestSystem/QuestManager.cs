@@ -25,7 +25,10 @@ public class QuestManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        
+
         questMap = CreateQuestMap();
+
         PlayerPrefs.SetInt(worldPlayerUnlocked, 0);
     }
 
@@ -172,6 +175,7 @@ public class QuestManager : MonoBehaviour
             {
                 Debug.LogWarning("Duplicate ID found when creating quest map" + questInfo.id);
             }
+            Debug.Log("before load quest, trying to add");
             idToQuestMap.Add(questInfo.id, LoadQuest(questInfo));
         }
         return idToQuestMap;
@@ -252,6 +256,7 @@ public class QuestManager : MonoBehaviour
             else
             {
                 quest = new Quest(questInfo);
+                Debug.Log("new quest questInfo");
             }
         }
         catch(System.Exception e)
@@ -269,14 +274,20 @@ public class QuestManager : MonoBehaviour
     {
         Debug.Log("Save");
         Debug.Log(data.questSaveDataList);
-        if (data.questSaveDataList == null) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", ""}; }  //if list created but no numbers, create list with all 9 ints
+        if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", ""}; }  //if list created but no numbers, create list with all 9 ints
         data.questSaveDataList[currentQuestId] = questDataToLoad;  //save reward gained to specific number based on scene number in this(reward manager)
     }
 
     public void Load(QuestSaveData data)
     {
         Debug.Log("Load");
+        if (data.questSaveDataList.Count == 0) { data.questSaveDataList = new List<string> { "", "", "", "", "", "", "", "" }; }  //if list created but no numbers, create list with all 9 ints
         questDataToLoad = data.questSaveDataList[currentQuestId];
+        if(questDataToLoad == "")
+        {
+            questDataToLoad = null;
+            Debug.Log("set to null");
+        }
     }
 
     #endregion

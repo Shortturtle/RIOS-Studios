@@ -14,6 +14,19 @@ public class SaveSystem
         public TowerSaveData TowerData;
     }
 
+    public static void CreateSaveFile()
+    {
+        if (File.Exists(SaveFileName()))
+        {
+            Debug.Log("Save file created");
+        }
+        else
+        {
+            Debug.Log("Save file not found, creating");
+            File.WriteAllText(SaveFileName(), JsonUtility.ToJson(_saveData, true));
+        }
+    }
+
     public static string SaveFileName()
     {
         string saveFile = Application.persistentDataPath + "/save" + ".save";
