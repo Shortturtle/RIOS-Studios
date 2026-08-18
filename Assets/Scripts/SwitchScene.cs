@@ -17,14 +17,14 @@ public class SwitchScene : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         //Literally any input to switch scenes
         if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
         {
             FadePanel.SetActive(false);
         }
-    }
+    }*/
 
     public void FadeOutAndLoad(string sceneName)
     {

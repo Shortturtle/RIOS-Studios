@@ -11,7 +11,7 @@ public class Transition : MonoBehaviour
     private int? _lastEffect;
 
     private Image _image;
-    private Material _material;
+    public Material _material;
 
     public void FadeIn()
     {
