@@ -18,9 +18,6 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-
-        SaveSystem.CreateSaveFile();
-        SaveSystem.Load();
     }
 
     public GameObject loseUI;
