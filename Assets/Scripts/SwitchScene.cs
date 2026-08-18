@@ -7,11 +7,13 @@ public class SwitchScene : MonoBehaviour
     public Animator PanelAnim;
     public GameObject FadePanel;
     public AK.Wwise.Event StopAllAudio;
+    public Transition Transition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PanelAnim.SetTrigger("Fade");
+        //PanelAnim.SetTrigger("Fade");
+        Transition.FadeOut();
     }
 
     // Update is called once per frame
@@ -26,10 +28,12 @@ public class SwitchScene : MonoBehaviour
 
     public void FadeOutAndLoad(string sceneName)
     {
-        if (Time.timeScale == 0)
+
+        Transition.FadeIn();
+       /* if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
-        }
+        }*/
         //FadePanel.SetActive(true);
         //PanelAnim.SetTrigger("Idle");
 
