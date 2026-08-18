@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public IInteractable Interactable { get; set; }
 
     [SerializeField] private float maxSpeed = 10f;
-    [SerializeField] private float rotationSpeed = 360f;
+    [SerializeField] private float rotationSpeed = 900f;
 
     [SerializeField] private float accelerationFactor = 5f;
     [SerializeField] private float decelerationFactor = 10f;
@@ -245,13 +245,25 @@ public class PlayerMovement : MonoBehaviour
     //player rotation
     private void Look()
     {
-        if (playerInput == Vector3.zero) return;
+        if (playerInput == Vector3.zero)
+            return;
 
-        Matrix4x4 isometricMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-        Vector3 multipliedMatrix = isometricMatrix.MultiplyPoint3x4(playerInput);
+        Matrix4x4 isometricMatrix = Matrix4x4.Rotate(
+            Quaternion.Euler(0, 45, 0)
+        );
 
-        Quaternion rotation = Quaternion.LookRotation(multipliedMatrix, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+        Vector3 moveDirection = isometricMatrix.MultiplyPoint3x4(playerInput);
+
+        Quaternion targetRotation = Quaternion.LookRotation(
+            moveDirection,
+            Vector3.up
+        );
+
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            targetRotation,
+            rotationSpeed * Time.deltaTime
+        );
     }
 
     //for movement smoothing
@@ -272,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
     //gather player input
     private void GatherInput(Vector2 input)
     {
-        playerInput = new Vector3(input.x, 0, input.y);
+        playerInput = new Vector3(input.x, 0, input.y).normalized;
     }
 
     public void GatherInput(InputAction.CallbackContext ctx) { GatherInput(ctx.ReadValue<Vector2>()); }
