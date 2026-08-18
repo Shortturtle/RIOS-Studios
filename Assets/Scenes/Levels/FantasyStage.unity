@@ -19051,6 +19051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRewardSet: 0
+  towerCollectionList: 
 --- !u!1 &325127460
 GameObject:
   m_ObjectHideFlags: 0
@@ -25961,6 +25962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadQuestState: 1
+  currentQuestId: 0
+  questDataToLoad: 
 --- !u!1001 &478983487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40607,6 +40610,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 75c2eca8b7224ae46a49bfdc35563864, type: 2}
+  Transition: {fileID: 0}
 --- !u!114 &1749540332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54159,6 +54163,10 @@ PrefabInstance:
     - target: {fileID: 7094148271470535130, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_BlockingMask.m_Bits
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251030757854676341, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -894
       objectReference: {fileID: 0}
     - target: {fileID: 7485641715993296743, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_IsActive
