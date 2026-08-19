@@ -988,14 +988,14 @@ GameObject:
   - component: {fileID: 609521409}
   - component: {fileID: 609521412}
   - component: {fileID: 609521411}
-  - component: {fileID: 609521410}
+  - component: {fileID: 609521413}
   m_Layer: 5
   m_Name: Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &609521409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1015,28 +1015,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &609521410
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609521408}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 31746eb96f9a1784598ebc1f98d5e4c4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &609521411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,7 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 5613348adb93c60468cbff3d3168e165, type: 2}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1057,7 +1035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1075,6 +1053,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609521408}
   m_CullTransparentMesh: 1
+--- !u!114 &609521413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609521408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ae95ab9ed139c48ae38b331a963f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeDuration: 1
+  _material: {fileID: 2100000, guid: 5613348adb93c60468cbff3d3168e165, type: 2}
 --- !u!1 &646132261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2147,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 75c2eca8b7224ae46a49bfdc35563864, type: 2}
+  continueButton: {fileID: 0}
 --- !u!114 &1706412373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2316,12 +2309,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702a3fd57eb72ee4298f05253b59ee5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelAnim: {fileID: 609521410}
-  FadePanel: {fileID: 609521408}
+  PanelAnim: {fileID: 0}
+  FadePanel: {fileID: 0}
   StopAllAudio:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 75c2eca8b7224ae46a49bfdc35563864, type: 2}
+  Transition: {fileID: 609521413}
 --- !u!114 &1723230917
 MonoBehaviour:
   m_ObjectHideFlags: 0

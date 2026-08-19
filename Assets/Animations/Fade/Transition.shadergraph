@@ -542,6 +542,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "b4c48efd26d148baa928c1fb7fab8b6f"
+                },
+                "m_SlotId": 4
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "1df8e6a5f8f24c5785e6d527d95e92a2"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "b65c2fad833a4bdbb476e4400ed990fc"
                 },
                 "m_SlotId": 2
@@ -692,20 +706,6 @@
                 },
                 "m_SlotId": 0
             }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "fdec36ab7dd44d03a87928a8befb7534"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "1df8e6a5f8f24c5785e6d527d95e92a2"
-                },
-                "m_SlotId": 0
-            }
         }
     ],
     "m_VertexContext": {
@@ -727,8 +727,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 1790.4000244140625,
-            "y": -496.7999572753906
+            "x": 1566.400146484375,
+            "y": -456.0001525878906
         },
         "m_Blocks": [
             {
@@ -2084,7 +2084,7 @@
     "m_ObjectId": "50f5dd9cca694743a1f9c6576246d902",
     "m_Title": "Shape",
     "m_Position": {
-        "x": -1541.5999755859375,
+        "x": -1541.599853515625,
         "y": -1030.39990234375
     }
 }
@@ -3030,7 +3030,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 0.0,
+    "m_Value": 0.5,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
@@ -3312,7 +3312,7 @@
     "m_ActiveSubTarget": {
         "m_Id": "f1eb3eb8679249e3959a63f4974c0f09"
     },
-    "m_AllowMaterialOverride": false,
+    "m_AllowMaterialOverride": true,
     "m_SurfaceType": 1,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,

@@ -5107,6 +5107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRewardSet: 0
+  towerCollectionList: 
 --- !u!1 &328396898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6542224050320270518, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
@@ -7081,12 +7082,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702a3fd57eb72ee4298f05253b59ee5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelAnim: {fileID: 973379372}
-  FadePanel: {fileID: 973379370}
+  PanelAnim: {fileID: 0}
+  FadePanel: {fileID: 0}
   StopAllAudio:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 75c2eca8b7224ae46a49bfdc35563864, type: 2}
+  Transition: {fileID: 973379371}
 --- !u!114 &431442549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7634,6 +7636,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadQuestState: 1
+  currentQuestId: 0
+  questDataToLoad: 
 --- !u!1 &475030401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6947885535650644981, guid: 8eaec09eb45d40e40a210c9c1f0fa4fc, type: 3}
@@ -12730,11 +12734,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9039592776514879136, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
   m_PrefabInstance: {fileID: 1988222018}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &973379372 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3544816405876873423, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
-  m_PrefabInstance: {fileID: 1988222018}
+--- !u!114 &973379371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973379370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ae95ab9ed139c48ae38b331a963f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeDuration: 1
+  _material: {fileID: 2100000, guid: 5613348adb93c60468cbff3d3168e165, type: 2}
 --- !u!1 &988107905
 GameObject:
   m_ObjectHideFlags: 0
@@ -28544,6 +28557,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 939513091117460495, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 939513091117460495, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 5613348adb93c60468cbff3d3168e165, type: 2}
     - target: {fileID: 1157603131545393737, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -29168,6 +29189,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 131
       objectReference: {fileID: 0}
+    - target: {fileID: 9039592776514879136, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9066037892740432850, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -29185,7 +29210,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4951655577833143438, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 210304145}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9039592776514879136, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 973379371}
   m_SourcePrefab: {fileID: 100100000, guid: f8d29b887eeb2944fa8ca4202747d3e4, type: 3}
 --- !u!114 &1988222019 stripped
 MonoBehaviour:
